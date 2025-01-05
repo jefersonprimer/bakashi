@@ -1,0 +1,104 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  margin-top: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.navItems {
+  display: flex;
+  gap: 8px;
+}
+
+.btn {
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+
+.btn:disabled {
+  background: #999;
+  cursor: not-allowed;
+}
+
+.btn:hover:not(:disabled) {
+  background: #555;
+}
+
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  border-bottom: 1px solid rgb(78, 77, 77);
+}
+
+.cardContainer a {
+  text-decoration: none; /* Remove o sublinhado */
+  color: inherit; /* Herda a cor do texto do elemento pai */
+}
+
+.card {
+  width: 185px;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0; /* Impede que o card encolha */
+}
+
+.poster {
+  position: relative;
+  width: 185px;
+  height: 278px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.posterImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.info {
+  margin-top: 8px;
+  text-align: left;
+}
+
+.info h3 {
+  font-size: 14px;
+  font-weight: bold;
+  color: #FFFFFF;
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.info p {
+  font-size: 12px;
+  color: #FFFFFF;
+}
+
+.label {
+  position: absolute;
+  top: 8px; /* Coloquei no topo para não cobrir a parte inferior da imagem */
+  left: 8px;
+  background: rgba(255, 0, 0, 0.8);
+  color: #fff;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 4px;
+  z-index: 10; /* Garante que a label apareça por cima da imagem */
+}

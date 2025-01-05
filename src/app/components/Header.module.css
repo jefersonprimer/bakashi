@@ -1,0 +1,184 @@
+.header {
+  background-color: #0E0E0E;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); 
+  position: relative; 
+  padding: 16px 40px;
+}
+
+.header a {
+  text-decoration: none; /* Remove o sublinhado */
+  color: inherit; /* Herda a cor do texto do elemento pai */
+}
+
+.container {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.navLinks {
+  display: flex; 
+  gap: 24px; 
+  list-style: none; 
+  padding: 0; 
+  margin: 0; 
+}
+
+.navLinks li a {
+  text-decoration: none;
+  color: #FFFFFF;
+  font-size: 16px; 
+  display: flex; 
+  align-items: center; 
+  gap: 8px; 
+  padding: 8px 0; 
+  transition: color 0.3s ease; 
+}
+
+.navLinks li a:hover {
+  color: #007bff; 
+}
+
+/* Área de Busca */
+.search {
+  background-color: #272727;
+  display: flex; 
+  align-items: center; 
+  gap: 8px;
+}
+
+/* Input de busca */
+.searchInput {
+  text-decoration: none;
+  border-radius: 10px; 
+  width: 300px;
+  border: none; 
+  background-color: #272727;
+  padding: 10px 12px; 
+  font-size: 14px; 
+  color: #fff; 
+  outline: none; 
+}
+
+.searchInput:focus {
+  border: none; 
+  box-shadow: none; 
+}
+
+/* Botão de busca */
+.searchButton {
+  padding: 8px 12px; 
+  border: none; 
+  background-color: #272727;
+  color: #fff; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease; 
+}
+
+/* Menu Suspenso */
+.results {
+  text-decoration: none;
+  position: absolute;
+  top: calc(80%); /* Posiciona 10px abaixo do input */
+  background: rgba(0, 0, 0, 0.9);
+  border-radius: 4px;
+  max-height: 800px;
+  width: 370px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+/* Itens do Menu */
+.results {
+  list-style-type: none; /* Remove o marcador de lista */
+  padding: 0; /* Remove o padding padrão */
+  margin: 0; /* Remove o margin padrão */
+}
+
+.resultItem {
+  display: flex; /* Usamos flexbox para garantir que os itens fiquem alinhados */
+  align-items: center; /* Alinha verticalmente os itens dentro do li */
+  padding: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff; /* Cor padrão do texto */
+  border-bottom: 1px solid rgb(78, 77, 77);
+}
+
+.resultContent {
+  display: flex;
+  align-items: flex-start; /* Alinha a imagem e o nome ao topo */
+}
+
+/* Contêiner do texto (nome e score) */
+.textContent {
+  display: flex;
+  flex-direction: column; /* Coloca o nome e o score um abaixo do outro */
+  justify-content: center; /* Garante que o conteúdo fique centralizado */
+}
+
+/* Nome do Anime */
+.resultName {
+  font-size: 14px;
+  margin-top: 0;
+  margin-bottom: 5px;
+  white-space: nowrap; /* Impede o texto de quebrar em várias linhas */
+  overflow: hidden; /* Oculta o texto que ultrapassa a largura do contêiner */
+  text-overflow: ellipsis; /* Adiciona os três pontinhos (...) no final do texto */
+  max-width: 290px; /* Define a largura máxima para que o nome não ultrapasse 350px */
+}
+
+/* Score do Anime */
+.resultScore {
+  font-size: 12px; /* Tamanho do score */
+  color: #f5a623; /* Cor do score (pode ser qualquer cor desejada) */
+  margin-top: 2px; /* Ajuste fino para o espaçamento */
+}
+
+/* Para garantir que a imagem não tenha borda arredondada ou qualquer estilo indesejado */
+.resultImage {
+  border: none; /* Remover qualquer borda */
+  border-radius: 0; /* Garantir que não tenha bordas arredondadas */
+  object-fit: cover; /* Garantir que a imagem se ajuste bem ao espaço sem distorção */
+  margin-right: 10px; /* Espaço entre a imagem e o nome */
+}
+
+
+
+
+
+/* Link "View All Results" */
+.viewAll {
+  text-align: center;
+  padding: 8px;
+  border-top: 1px solid #ccc;
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.viewAll a {
+  text-decoration: none;
+  color: #007bff;
+  font-size: 14px;
+}
+
+.viewAll a:hover {
+  text-decoration: underline;
+  color: #0056b3;
+}
+
+.resultItemLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none; 
+  color: inherit; 
+}
+
+.resultItemLink:hover {
+  background-color: rgba(0, 0, 0, 0.1); /* Exemplo de efeito de hover */
+}

@@ -1,0 +1,53 @@
+/* calendar.module.css */
+
+.calendar {
+  padding: 20px;
+}
+
+.dayContainer {
+  margin-bottom: 40px;
+}
+
+.animesGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* Cria 5 colunas */
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.animeCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #fff;
+  transition: transform 0.3s;
+}
+
+.animeCard:hover {
+  transform: scale(1.05);
+}
+
+.animeImage {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.showMoreBtn {
+  padding: 10px;
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.showMoreBtn:hover {
+  background-color: #005bb5;
+}

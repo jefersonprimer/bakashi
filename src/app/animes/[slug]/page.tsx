@@ -1,8 +1,19 @@
 import fs from 'fs/promises';
 import path from 'path';
+import Link from 'next/link';
 
 interface AnimeDetailsProps {
   params: { slug: string };
+}
+
+interface Episode {
+  id: number;
+  animeId: number;
+  season: number;
+  title: string;
+  videoUrl: string;
+  releaseDate: string;
+  isLancamento: boolean;
 }
 
 interface Anime {
@@ -24,7 +35,7 @@ interface Anime {
 const AnimeDetails = async ({ params }: AnimeDetailsProps) => {
   const filePath = path.join(process.cwd(), 'src/data/animes.json');
   const data = await fs.readFile(filePath, 'utf-8');
-  const { Animes }: { Animes: Anime[] } = JSON.parse(data);
+  const { Animes, Episodes }: { Animes: Anime[]; Episodes: Episode[] } = JSON.parse(data);
 
   const anime = Animes.find((anime: Anime) => anime.slug === params.slug);
 
@@ -32,11 +43,13 @@ const AnimeDetails = async ({ params }: AnimeDetailsProps) => {
     return <div>Anime não encontrado</div>;
   }
 
+  // Filtrando os episódios que correspondem ao anime
+  const animeEpisodes = Episodes.filter((episode) => episode.animeId === anime.id);
+
   // Função para recomendar animes com base nos gêneros
   const getSimilarAnimes = (currentAnime: Anime, allAnimes: Anime[]): Anime[] => {
-    return allAnimes.filter((a) => 
-      a.id !== currentAnime.id && 
-      a.genres.some((genre) => currentAnime.genres.includes(genre))
+    return allAnimes.filter((a) =>
+      a.id !== currentAnime.id && a.genres.some((genre) => currentAnime.genres.includes(genre))
     );
   };
 
@@ -73,9 +86,7 @@ const AnimeDetails = async ({ params }: AnimeDetailsProps) => {
           </div>
 
           {/* Gêneros */}
-          <p>
-            Gêneros: {anime.genres.join(', ')}
-          </p>
+          <p>Gêneros: {anime.genres.join(', ')}</p>
         </div>
       </div>
 
@@ -83,8 +94,25 @@ const AnimeDetails = async ({ params }: AnimeDetailsProps) => {
       <div style={{ marginTop: '32px' }}>
         <h2>Episódios</h2>
         <p>
-          Temporadas: {anime.season} | Episódios: {anime.episodes}
+          Temporadas: {anime.season} | Episódios: {animeEpisodes.length}
         </p>
+
+        {/* Lista de Episódios */}
+        <div>
+          <ul>
+            {animeEpisodes.map((episode) => (
+              <li key={episode.id}>
+                <Link href={`/episodios/${anime.slug}/${episode.id}`}>
+                  <div>
+                    <h3>{episode.title}</h3>
+                    <p>Lançado em: {episode.releaseDate}</p>
+                    {episode.isLancamento && <span className="label">LANÇAMENTO</span>}
+                  </div>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
 
         {/* Sinopse */}
         <h3>Sinopse</h3>

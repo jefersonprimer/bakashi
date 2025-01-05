@@ -1,0 +1,21 @@
+.star-on-png {
+  color: gold;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.star-off-png {
+  color: gray;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.starstruck-rating-wrap {
+  margin-top: 8px;
+}
+
+.starstruck-rating {
+  margin-top: 16px;
+  font-size: 14px;
+  color: #555;
+}

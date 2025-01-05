@@ -1,0 +1,69 @@
+.letter_home {
+  border-bottom: 1px solid rgb(78, 77, 77);
+}
+
+.letter_home a {
+  text-decoration: none; /* Remove o sublinhado */
+  color: inherit; /* Herda a cor do texto do elemento pai */
+}
+
+.fixresp {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.glossary {
+  display: flex; /* Alinha os itens lado a lado */
+  flex-wrap: wrap; /* Permite quebra de linha */
+  list-style: none; /* Remove os marcadores */
+  padding: 0;
+  gap: 15px; /* Espaçamento entre as letras */
+  justify-content: center; /* Centraliza as letras horizontalmente */
+}
+
+.lglossary {
+  cursor: pointer;
+  text-decoration: none;
+  padding: 5px 10px;
+  color: white;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.lglossary:hover {
+  background-color: #0056b3;
+}
+
+.items_glossary {
+  margin-top: 20px;
+}
+
+.anime_card {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.anime_image {
+  width: 100px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.anime_details {
+  max-width: 600px;
+}
+
+.lglossary {
+  cursor: pointer;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.lglossary.active {
+  color: #f44336; /* Exemplo de cor para destacar a letra ativa */
+  font-weight: bold;
+}
+

@@ -1,0 +1,69 @@
+.animesPage {
+  padding: 20px;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.latestEpisodes, .latestAnimes {
+  margin-bottom: 40px;
+}
+
+.episodesGrid, .animesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.episodeCard, .animeCard {
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.episodeImage, .animeImage {
+  width: 100%;
+  height: auto;
+}
+
+.animeTitle {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.releaseDate {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.pagination {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.paginationControls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.pageButton, .activePage {
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: none;
+  background-color: #ddd;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.activePage {
+  font-weight: bold;
+  background-color: #666;
+  color: #fff;
+}
