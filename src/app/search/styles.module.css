@@ -1,0 +1,100 @@
+/* Estilos para a página de busca */
+.searchPage {
+  display: flex;
+  justify-content: center; /* Centraliza o conteúdo horizontalmente */
+  align-items: center; /* Centraliza o conteúdo verticalmente */
+  min-height: 100vh; /* Garantir que a página ocupe toda a altura da tela */
+  background-color: #f4f4f4;
+}
+
+/* Contêiner de busca */
+.searchContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza os itens dentro do contêiner */
+  justify-content: center;
+  width: 100%;
+  max-width: 800px; /* Limita a largura do contêiner */
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Campo de entrada de busca */
+.searchInput {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* Botão de busca */
+.searchButton {
+  background-color: #0070f3;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.searchButton:hover {
+  background-color: #005bb5;
+}
+
+/* Estilos para os resultados da busca */
+.results {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.resultItem {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.resultItem:hover {
+  background-color: #f0f0f0;
+}
+
+/* Conteúdo dos resultados */
+.resultContent {
+  display: flex;
+  align-items: center;
+}
+
+.resultImage {
+  border-radius: 8px;
+  margin-right: 10px;
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.resultName {
+  font-weight: bold;
+}
+
+.resultScore {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Mensagem de 'Nenhum resultado' */
+.noResults {
+  margin-top: 20px;
+  color: #888;
+  font-size: 16px;
+  text-align: center;
+}

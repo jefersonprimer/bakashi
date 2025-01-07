@@ -102,3 +102,56 @@
   border-radius: 4px;
   z-index: 10; /* Garante que a label apareça por cima da imagem */
 }
+
+/* Estilo da imagem */
+.posterImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Efeito de hover para aumentar a imagem e desfocar */
+.card:hover .posterImg {
+  transform: scale(1.1);
+  filter: blur(5px); /* Desfoque de 5px quando o mouse passar sobre a imagem */
+}
+
+/* Botão de play */
+.playButton {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.playButton .playIcon {
+  font-size: 40px;
+  color: white;
+  background-color: transparent;
+  border-radius: 0;
+  padding: 0;
+}
+
+/* Exibe o botão de play quando o mouse está sobre a imagem */
+.card:hover .playButton {
+  opacity: 1;
+}
+
+.statusLabel {
+  position: absolute;
+  top: 5px; /* Margem superior */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: yellow; /* Fundo semi-transparente */
+  color: white;
+  padding: 6px 100px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  z-index: 1000; /* Para ficar acima de tudo */
+  text-align: center;
+}
+

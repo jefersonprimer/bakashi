@@ -1,7 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import data from '@/data/animes.json';
+import styles from './styles.module.css';
 
 interface Anime {
   id: number;
@@ -51,31 +54,58 @@ const EpisodesPage = () => {
   };
 
   return (
-    <div>
-      <div className="episodes-container">
-        <div className="grid">
-          {currentEpisodes.length === 0 ? (
-            <div>Carregando episódios...</div>
-          ) : (
-            currentEpisodes.map((episode) => (
-              <div key={episode.id} className="episode-card">
-                <img src={episode.image} alt={`Episódio ${episode.id}`} />
-                <p>{`Episódio ${episode.title.split(' ')[1]}`}</p>
-                <p>{`S${episode.season} E${episode.id} / ${episode.releaseDate}`}</p>
-                <p>{getAnimeName(episode.animeId)}</p>
-              </div>
-            ))
-          )}
+    <div className={styles.pageContainer}>
+      {/* Header */}
+      <header className={styles.header}>
+        <h1 className={styles.title}>Episódios</h1>
+        <div className={styles.headerInfo}>
+          <h2 className={styles.subtitle}>Adicionados Recentemente</h2>
+          <span className={styles.episodeCount}>{episodes.length}</span>
         </div>
+      </header>
+
+      {/* Lista de Episódios */}
+      <div className={styles.grid}>
+        {currentEpisodes.length === 0 ? (
+          <div className={styles.loading}>Carregando episódios...</div>
+        ) : (
+          currentEpisodes.map((episode) => (
+            <div key={episode.id} className={styles.episodeCard}>
+              {episode.isLancamento && (
+                <span className={styles.lancamentoLabel}>LANÇAMENTO</span>
+              )}
+              <div className={styles.imageContainer}>
+                <img
+                  className={styles.image}
+                  src={episode.image}
+                  alt={`Episódio ${episode.id}`}
+                />
+                {/* Botão de Play */}
+                <div className={styles.playButton}>
+                  <FontAwesomeIcon icon={faPlay} className={styles.playIcon} />
+                </div>
+              </div>
+              <p className={styles.episodeInfo}>
+                {`Episódio ${episode.title.split(' ')[1]}`}
+              </p>
+              <p className={styles.episodeDetails}>
+                {`S${episode.season} E${episode.id} / ${episode.releaseDate}`}
+              </p>
+              <p className={styles.animeName}>{getAnimeName(episode.animeId)}</p>
+            </div>
+          ))
+        )}
       </div>
 
       {/* Paginação */}
-      <div className="pagination">
+      <div className={styles.pagination}>
         {Array.from({ length: totalPages }, (_, index) => (
           <button
             key={index}
             onClick={() => setCurrentPage(index + 1)}
-            className={currentPage === index + 1 ? 'active' : ''}
+            className={`${styles.pageButton} ${
+              currentPage === index + 1 ? styles.active : ''
+            }`}
           >
             {index + 1}
           </button>

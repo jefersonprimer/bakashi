@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import styles from "./Lancamentos.module.css";
 import Link from 'next/link';
 
@@ -19,6 +21,7 @@ interface Anime {
   airing: string;
   episodes: number;
   season: number;
+  status?: string; // Adicionado o campo "status" como opcional
 }
 
 // Props para o componente Lancamentos
@@ -81,21 +84,34 @@ const Lancamentos: React.FC<LancamentosProps> = ({ lancamentos }) => {
         {currentCards.map((anime) => (
           <Link key={anime.id} href={`/animes/${anime.slug}`}>
             <div className={styles.card}>
-            <div className={styles.poster}>
-              <img
-                src={anime.image}
-                alt={anime.name}
-                className={styles.posterImg}
-              />
-              {/* A label LANÇAMENTO sempre vai ser visível */}
-              <div className={styles.label}>LANÇAMENTO</div>
+              <div className={styles.poster}>
+                <div className={styles.imageContainer}>
+                  <img
+                    src={anime.image}
+                    alt={anime.name}
+                    className={styles.posterImg}
+                  />
+                  {/* Label de Status (se existir) */}
+                  {anime.status && (
+                    <div className={styles.statusLabel}>
+                      {anime.status.toUpperCase()}
+                    </div>
+                  )}
+
+                  {/* A label LANÇAMENTO sempre vai ser visível */}
+                  <div className={styles.label}>LANÇAMENTO</div>
+
+                  {/* Adicionando o botão de play */}
+                  <div className={styles.playButton}>
+                    <FontAwesomeIcon icon={faPlay} className={styles.playIcon} />
+                  </div>
+                </div>
+              </div>
+              <div className={styles.info}>
+                <h3>{anime.name}</h3>
+                <p>{anime.data}</p>
+              </div>
             </div>
-            <div className={styles.info}>
-              <h3>{anime.name}</h3>
-              <p><strong>Data:</strong> {anime.data}</p>
-              <p><strong>Nota:</strong> {anime.score}</p>
-            </div>
-          </div>
           </Link>
         ))}
       </div>

@@ -304,16 +304,18 @@
       "id": 21,
       "name": "Fairy Tail: 100-nen Quest",
       "slug": "Fairy Tail: 100-nen Quest",
-      "data": "Jul. 07, 2024",
+      "data": "2024",
       "image": "/uploads/2024-12/u54lCGnP6nhfsG6wuKBwUZtv3sZ-185x278.jpg",
       "synopsis": "Fairy Tail é um grupo de magos arruaceiros conhecidos como a guilda mais poderosa do Reino de Fiore. Seu grupo mais forte, composto de Natsu, Lucy, Happy, Gray, Erza, Wendy e Carla, está se preparando para encarar a lendária “Missão de 100 Anos”, uma missão com uma dificuldade ainda maior que as missões de classe S. O time de Natsu ganhou uma permissão especial para tentar esta missão depois de superar suas batalhas entre a vida e a morte contra o Mago das Trevas Zeref e o Dragão das Trevas Acnologia. Seu destino é a primeira guilda de magos da história, Magia Dragon, localizada no continente setentrional de Guiltina. No entanto, nas centenas de anos desde que Magia Dragon foi fundada, ninguém conseguiu completar essa missão particularmente brutal. Sua primeira visita à Guiltina deixa o time de Natsu cara-a-cara com misteriosas novas cidades, novos deuses enigmáticos e novos inimigos sinistros…",
-      "isLancamento": false,
+      "isLancamento": true,
       "rating": "16+",
       "score": 8.5,
       "genres": ["Ação", "Fantasia", "Aventura"],
       "airing": "Quinta-feira",
       "episodes": 12,
-      "season": 1
+      "season": 1,
+      "audioType": "Dublado",
+      "status": "Adiado"
     }
   ],
   "Episodes": [

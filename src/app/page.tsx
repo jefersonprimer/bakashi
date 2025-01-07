@@ -3,7 +3,7 @@ import path from 'path';
 import Glossary from './components/Glossary';
 import Lancamentos from './components/Lancamentos';
 import TodosAnimes from './components/TodosAnimes';
-// import Episodios from './components/Episodios';
+import Episodes from './components/Episodios';
 
 import './globals.css';
 
@@ -31,7 +31,7 @@ const HomePage = async () => {
       <Glossary animes={Animes} /> {/* Passando todos os animes para o Glossary */}
       <Lancamentos lancamentos={lancamentos} /> {/* Passando dados para o componente de Lançamentos */}
       <TodosAnimes todosAnimes={Animes} /> {/* Passando dados para o componente TodosAnimes */}
-      {/* <Episodios episodios={episodios} /> */}
+      <Episodes />
     </div>
   );
 };

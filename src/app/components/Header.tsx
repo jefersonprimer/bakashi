@@ -8,6 +8,7 @@ import { faSearch, faTv, faCalendar, faClock, faHistory } from '@fortawesome/fre
 import styles from './Header.module.css';
 import logo from '../../../public/uploads/2024-12/logoo.png';
 import animesData from '../../data/animes.json';
+import { useRouter } from 'next/navigation';
 
 // Defina o tipo para os animes
 type Anime = {
@@ -30,9 +31,8 @@ export default function Header() {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredAnimes, setFilteredAnimes] = useState<Anime[]>([]);
   const [isOpen, setIsOpen] = useState(false); // Controla se os resultados estão visíveis
-
-  // Alteração aqui: o tipo do useRef deve ser HTMLUListElement | null, já que é um <ul>
   const resultsRef = useRef<HTMLUListElement | null>(null); // Referência para o container dos resultados de pesquisa
+  const router = useRouter(); // Usando o useRouter para navegação programática
 
   useEffect(() => {
     // Filtra os animes com base no termo de busca
@@ -50,7 +50,6 @@ export default function Header() {
 
   // Função que detecta clique fora do contêiner de resultados
   const handleClickOutside = (event: MouseEvent) => {
-    // Verifica se o clique foi fora do contêiner de resultados
     if (resultsRef.current && !resultsRef.current.contains(event.target as Node)) {
       setIsOpen(false); // Fecha os resultados se clicar fora
     }
@@ -68,6 +67,15 @@ export default function Header() {
       document.removeEventListener('mousedown', handleClickOutside); // Limpa o ouvinte ao desmontar
     };
   }, [isOpen]);
+
+  // Função de redirecionamento quando o usuário pressionar Enter ou clicar no botão de pesquisa
+  const handleSearchSubmit = (event: React.FormEvent) => {
+    event.preventDefault(); // Evita o comportamento padrão do formulário
+    if (searchTerm) {
+      // Redireciona para a página de pesquisa
+      router.push(`/search?query=${searchTerm}`);
+    }
+  };
 
   return (
     <header className={styles.header}>
@@ -108,15 +116,20 @@ export default function Header() {
         </ul>
 
         {/* Área de Busca */}
-        <div className={styles.search}>
+        <form onSubmit={handleSearchSubmit} className={styles.search}>
           <input
             type="text"
             placeholder="Buscar..."
             className={styles.searchInput}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                handleSearchSubmit(e); // Submete a pesquisa ao pressionar Enter
+              }
+            }}
           />
-          <button className={styles.searchButton}>
+          <button type="submit" className={styles.searchButton}>
             <FontAwesomeIcon icon={faSearch} />
           </button>
 
@@ -136,7 +149,7 @@ export default function Header() {
                       />
                       <div className={styles.textContent}>
                         <span className={styles.resultName}>{anime.name}</span>
-                        <span className={styles.resultScore}>{anime.score}</span> {/* Adicionando o score */}
+                        <span className={styles.resultScore}>{anime.score}</span>
                       </div>
                     </div>
                   </Link>
@@ -146,13 +159,13 @@ export default function Header() {
               {filteredAnimes.length > 6 && (
                 <li className={styles.viewAll}>
                   <Link href={`/search?query=${searchTerm}`}>
-                    View All Results
+                    Ver todos os resultados
                   </Link>
                 </li>
               )}
             </ul>
           )}
-        </div>
+        </form>
       </div>
     </header>
   );

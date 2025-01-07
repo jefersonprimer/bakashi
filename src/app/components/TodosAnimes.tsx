@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import styles from "./TodosAnimes.module.css";
 
 // Interface para Anime, refletindo a estrutura do seu JSON
@@ -52,11 +54,24 @@ const TodosAnimes: React.FC<TodosAnimesProps> = ({ todosAnimes }) => {
     router.push(`/animes/${slug}`);
   };
 
+  const handleSeeAllClick = () => {
+    router.push('/animes'); // Redireciona para a página de todos os animes
+  };
+
   return (
     <div>
       <header className={styles.header}>
         <h2>Animes Online</h2>
         <div className={styles.navItems}>
+          {/* Espaço para o total de animes e o link "Ver todos", alinhado à esquerda */}
+          <div className={styles.leftContent}>
+            <span>{todosAnimes.length}</span>
+            <button onClick={handleSeeAllClick} className={styles.seeAll}>
+              Ver todos
+            </button>
+          </div>
+
+          {/* Botões de navegação */}
           <button
             className={`${styles.btn} ${styles.prev}`}
             onClick={handlePrev}
@@ -73,6 +88,7 @@ const TodosAnimes: React.FC<TodosAnimesProps> = ({ todosAnimes }) => {
           </button>
         </div>
       </header>
+
       <div className={styles.cardContainer}>
         {currentCards.map((anime) => (
           <div
@@ -86,8 +102,13 @@ const TodosAnimes: React.FC<TodosAnimesProps> = ({ todosAnimes }) => {
                 alt={anime.name}
                 className={styles.posterImg}
               />
-              {/* Renderizando a label "LANÇAMENTO" caso isLancamento seja true */}
-              {anime.isLancamento && <div className={styles.label}>LANÇAMENTO</div>}
+              {anime.isLancamento && (
+                <div className={styles.label}>LANÇAMENTO</div>
+              )}
+              {/* Adicionando o botão de play */}
+              <div className={styles.playButton}>
+                  <FontAwesomeIcon icon={faPlay} className={styles.playIcon} />
+              </div>
             </div>
             <div className={styles.data}>
               <h3>{anime.name}</h3>

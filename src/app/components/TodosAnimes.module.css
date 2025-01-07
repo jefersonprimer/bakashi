@@ -96,3 +96,58 @@
   font-size: 12px;
   color: #FFFFFF;
 }
+
+/* Efeito de hover para aumentar a imagem e desfocar */
+.card:hover .posterImg {
+  transform: scale(1.1);
+  filter: blur(2px); /* Desfoque de 5px quando o mouse passa sobre a imagem */
+}
+
+/* Botão de Play */
+.playButton {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.playButton .playIcon {
+  font-size: 60px;
+  color: white;
+  background-color: transparent;
+  padding: 0;
+}
+
+/* Exibe o botão de play quando o mouse está sobre a imagem */
+.card:hover .playButton {
+  opacity: 1;
+}
+
+/* Alinha o conteúdo à esquerda */
+.leftContent {
+  display: flex;
+  align-items: center;
+  margin-right: 20px; /* Adiciona um pequeno espaçamento entre os conteúdos à esquerda e os botões */
+}
+
+.leftContent span {
+  margin-right: 10px;
+}
+
+.seeAll {
+  border-radius: 5px;
+}
+
+.leftContent .seeAll {
+  padding: 5px 10px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.leftContent .seeAll:hover {
+  background-color: #0056b3;
+}
