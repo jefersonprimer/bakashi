@@ -91,7 +91,6 @@ export default function Glossary({ animes }: GlossaryProps) {
                 <div className={styles.anime_details}>
                   <h3>{anime.name}</h3>
                   <p><strong>Data:</strong> {anime.data}</p>
-                  <p>{anime.synopsis}</p>
                 </div>
               </div>
             </Link>

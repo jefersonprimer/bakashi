@@ -85,13 +85,13 @@ const EpisodesPage = () => {
                   <FontAwesomeIcon icon={faPlay} className={styles.playIcon} />
                 </div>
               </div>
+              <p className={styles.animeName}>{getAnimeName(episode.animeId)}</p>
               <p className={styles.episodeInfo}>
                 {`Episódio ${episode.title.split(' ')[1]}`}
               </p>
-              <p className={styles.episodeDetails}>
+              {/* <p className={styles.episodeDetails}>
                 {`S${episode.season} E${episode.id} / ${episode.releaseDate}`}
-              </p>
-              <p className={styles.animeName}>{getAnimeName(episode.animeId)}</p>
+              </p> */}
             </div>
           ))
         )}

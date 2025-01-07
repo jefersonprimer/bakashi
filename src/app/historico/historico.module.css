@@ -18,18 +18,17 @@
 }
 
 .history-item {
-  background-color: #f9f9f9;
-  border: 1px solid #e0e0e0;
+  
+  
   border-radius: 8px;
   padding: 8px;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .history-item:hover {
   transform: translateY(-4px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .history-item img {
@@ -41,12 +40,10 @@
 .history-item h3 {
   font-size: 16px;
   font-weight: bold;
-  margin-bottom: 4px;
-  color: #333;
+  color: #FFFFFF;
 }
 
 .history-item p {
   font-size: 14px;
-  color: #666;
-  margin: 4px 0;
+  color: #FFFFFF;
 }

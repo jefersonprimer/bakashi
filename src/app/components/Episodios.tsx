@@ -85,9 +85,9 @@ const EpisodesPage = () => {
                   
                   </Link>
                 </div>
-                <p>{`Episódio ${episode.title.split(' ')[1]}`}</p>
-                <p>{`S${episode.season} E${episode.id} / ${episode.releaseDate}`}</p>
                 <p>{getAnimeName(episode.animeId)}</p>
+                <p>{`Episódio ${episode.title.split(' ')[1]}`}</p>
+                {/* <p>Episodio{episode.id}</p> */}
               </div>
             ))
           )}

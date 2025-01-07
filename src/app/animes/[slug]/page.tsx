@@ -1,6 +1,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 import Link from 'next/link';
+import styles from './styles.module.css'
 
 interface AnimeDetailsProps {
   params: { slug: string };

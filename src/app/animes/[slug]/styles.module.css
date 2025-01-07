@@ -1,0 +1,10 @@
+.tab {
+  cursor: pointer;
+  color: black;
+  transition: color 0.3s;
+}
+
+.tab.active {
+  color: blue;
+  font-weight: bold;
+}
