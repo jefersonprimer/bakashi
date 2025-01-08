@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import styles from "./TodosAnimes.module.css";
 
-// Interface para Anime, refletindo a estrutura do seu JSON
+// Interface para Anime
 interface Anime {
   id: number;
   name: string;
@@ -29,41 +29,41 @@ interface TodosAnimesProps {
 
 const TodosAnimes: React.FC<TodosAnimesProps> = ({ todosAnimes }) => {
   const router = useRouter();
-  const [currentPage, setCurrentPage] = useState(0); // Página atual
-  const cardsPerPage = 7; // Número máximo de cards por página
+  const [currentCardIndex, setCurrentCardIndex] = useState(0); // Índice do card atual
+  const cardsPerPage = 7; // Número de animes por vez a serem exibidos
 
-  // Calcula o índice inicial e final dos cards a serem exibidos
-  const startIndex = currentPage * cardsPerPage;
-  const endIndex = startIndex + cardsPerPage;
-  const currentCards = todosAnimes.slice(startIndex, endIndex);
-
-  // Funções de navegação
+  // Função para navegar para o próximo card
   const handleNext = () => {
-    if (endIndex < todosAnimes.length) {
-      setCurrentPage((prev) => prev + 1);
+    if (currentCardIndex < todosAnimes.length - cardsPerPage) {
+      setCurrentCardIndex(currentCardIndex + 1);
     }
   };
 
+  // Função para navegar para o card anterior
   const handlePrev = () => {
-    if (startIndex > 0) {
-      setCurrentPage((prev) => prev - 1);
+    if (currentCardIndex > 0) {
+      setCurrentCardIndex(currentCardIndex - 1);
     }
   };
 
+  // Função de clique no card para abrir o anime
   const handleCardClick = (slug: string) => {
     router.push(`/animes/${slug}`);
   };
 
+  // Função para ver todos os animes
   const handleSeeAllClick = () => {
     router.push('/animes'); // Redireciona para a página de todos os animes
   };
+
+  // Slice dos animes que devem ser exibidos (7 por vez)
+  const currentAnimes = todosAnimes.slice(currentCardIndex, currentCardIndex + cardsPerPage);
 
   return (
     <div>
       <header className={styles.header}>
         <h2>Animes Online</h2>
         <div className={styles.navItems}>
-          {/* Espaço para o total de animes e o link "Ver todos", alinhado à esquerda */}
           <div className={styles.leftContent}>
             <span>{todosAnimes.length}</span>
             <button onClick={handleSeeAllClick} className={styles.seeAll}>
@@ -75,14 +75,14 @@ const TodosAnimes: React.FC<TodosAnimesProps> = ({ todosAnimes }) => {
           <button
             className={`${styles.btn} ${styles.prev}`}
             onClick={handlePrev}
-            disabled={startIndex === 0}
+            disabled={currentCardIndex === 0} // Desabilita se estiver no primeiro conjunto de 7 animes
           >
             <i className="fas fa-caret-left"></i>
           </button>
           <button
             className={`${styles.btn} ${styles.next}`}
             onClick={handleNext}
-            disabled={endIndex >= todosAnimes.length}
+            disabled={currentCardIndex + cardsPerPage >= todosAnimes.length} // Desabilita se não houver mais animes
           >
             <i className="fas fa-caret-right"></i>
           </button>
@@ -90,7 +90,7 @@ const TodosAnimes: React.FC<TodosAnimesProps> = ({ todosAnimes }) => {
       </header>
 
       <div className={styles.cardContainer}>
-        {currentCards.map((anime) => (
+        {currentAnimes.map((anime) => (
           <div
             key={anime.id}
             className={styles.card}
@@ -105,9 +105,8 @@ const TodosAnimes: React.FC<TodosAnimesProps> = ({ todosAnimes }) => {
               {anime.isLancamento && (
                 <div className={styles.label}>LANÇAMENTO</div>
               )}
-              {/* Adicionando o botão de play */}
               <div className={styles.playButton}>
-                  <FontAwesomeIcon icon={faPlay} className={styles.playIcon} />
+                <FontAwesomeIcon icon={faPlay} className={styles.playIcon} />
               </div>
             </div>
             <div className={styles.data}>

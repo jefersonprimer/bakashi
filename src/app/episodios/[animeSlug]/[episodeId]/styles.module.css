@@ -1,0 +1,131 @@
+.episodePage {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  gap: 20px; /* Espaçamento entre as colunas */
+}
+
+.videoPlayerSection {
+  flex: 2; /* Toma 2/3 da largura da página */
+}
+
+.rightColumn {
+  width: 350px;
+  padding: 20px;
+  background-color: #1c1c1c;
+  border-radius: 8px;
+}
+
+
+.recommendationsList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.recommendationItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  background-color: #333;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.recommendationImage {
+  width: 60px;
+  height: 90px;
+  object-fit: cover;
+  margin-right: 10px;
+  border-radius: 4px;
+}
+
+.recommendationDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-grow: 1;
+}
+
+.recommendationName {
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; /* Impede quebra de linha */
+  overflow: hidden; /* Oculta o texto que ultrapassa */
+  text-overflow: ellipsis; /* Adiciona '...' no texto que ultrapassa */
+  max-width: 200px; /* Limita o tamanho máximo do nome */
+}
+
+.recommendationDate {
+  font-size: 14px;
+  color: #777;
+  margin-top: 5px;
+}
+
+.noRecommendations {
+  color: #999;
+  font-style: italic;
+}
+
+/* Botões de navegação (anterior e próximo) */
+.episodeNavigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.prevEpisode,
+.nextEpisode {
+  padding: 10px;
+  background-color: #0070f3;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.prevEpisode:hover,
+.nextEpisode:hover {
+  background-color: #005bb5;
+}
+
+/* Estilo para a área do poster */
+.poster {
+  display: flex;
+  gap: 10px;
+}
+
+.genres {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.genres a {
+  border-radius: 5px;
+  background-color: #333;
+  padding: 5px 10px;
+  margin-right: 10px;
+  text-decoration: none;
+  color: #0070f3;
+  font-size: 14px;
+}
+
+.genres a:hover {
+  text-decoration: underline;
+}
+
+/* Não esconda o botão caso o episódio anterior ou próximo não exista */
+.prevEpisode.disabled,
+.nextEpisode.disabled {
+  pointer-events: none; /* Desativa o clique */
+  opacity: 0.5; /* Deixa o botão mais transparente */
+}

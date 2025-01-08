@@ -5,67 +5,82 @@ import { useState } from 'react';
 import animesData from '@/data/animes.json';
 
 const AnimesPage = () => {
+  const [currentEpisodeIndex, setCurrentEpisodeIndex] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [currentLaunchPage, setCurrentLaunchPage] = useState(1);
 
-  // Função para calcular os animes da página atual
+  // Configuração para o carrossel de episódios
+  const episodesPerView = 4;
+  const episodes = animesData.Episodes;
+  const totalEpisodes = episodes.length;
+  const maxEpisodeIndex = Math.ceil(totalEpisodes / episodesPerView) - 1;
+
+  // Configuração para Animes Adicionados Recentemente
   const animesPerPage = 18;
   const paginatedAnimes = animesData.Animes.slice(
     (currentPage - 1) * animesPerPage,
     currentPage * animesPerPage
   );
+  const totalPages = Math.ceil(animesData.Animes.length / animesPerPage);
 
+  // Configuração para Animes em Lançamento
   const launchAnimesPerPage = 6;
   const paginatedLaunchAnimes = animesData.Animes.filter((anime) => anime.isLancamento).slice(
     (currentLaunchPage - 1) * launchAnimesPerPage,
     currentLaunchPage * launchAnimesPerPage
   );
+  const totalLaunchPages = Math.ceil(
+    animesData.Animes.filter((anime) => anime.isLancamento).length / launchAnimesPerPage
+  );
 
-  // Função para calcular o total de páginas
-  const totalPages = Math.ceil(animesData.Animes.length / animesPerPage);
-  const totalLaunchPages = Math.ceil(animesData.Animes.filter((anime) => anime.isLancamento).length / launchAnimesPerPage);
+  // Controle do carrossel de episódios
+  const handleNextEpisode = () => {
+    if (currentEpisodeIndex < maxEpisodeIndex) setCurrentEpisodeIndex(currentEpisodeIndex + 1);
+  };
+
+  const handlePrevEpisode = () => {
+    if (currentEpisodeIndex > 0) setCurrentEpisodeIndex(currentEpisodeIndex - 1);
+  };
 
   return (
     <div className={styles.animesPage}>
       <h1 className={styles.title}>Animes</h1>
 
-      {/* Seção de Últimos Episódios */}
+      {/* Seção de Últimos Episódios como Carrossel */}
       <div className={styles.latestEpisodes}>
-        <div className={styles.episodesGrid}>
-          {animesData.Episodes.map((episode) => {
-            // Encontrando o anime correspondente a esse episódio
-            const anime = animesData.Animes.find((anime) => anime.id === episode.animeId); // Supondo que você tenha um `animeId` no episódio
-            
-            return (
-              <div key={episode.id} className={styles.episodeCard}>
-                {/* Contêiner da imagem */}
-                <div className={styles.episodeImageWrapper}>
-                  <img
-                    src={episode.image}
-                    alt={episode.title}
-                    className={styles.episodeImage}
-                  />
-                </div>
-
-                {/* Info sobre o episódio e o anime */}
-                <div className={styles.episodeInfo}>
-                  <h3>{anime?.name}</h3> {/* Exibe o nome do anime */}
-                  <span className={styles.releaseDate}>{episode.releaseDate}</span> {/* Exibe a data do episódio */}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Botões para navegar entre os episódios */}
-        <div className={styles.paginationControls}>
-          <button
-            onClick={() => setCurrentPage(currentPage + 1)}
-            disabled={currentPage === totalPages}
-            className={styles.pageButton}
+        <header className={styles.carouselHeader}>
+          <h2>Últimos Episódios</h2>
+          <div className={styles.carouselControls}>
+            <button onClick={handlePrevEpisode} disabled={currentEpisodeIndex === 0}>
+              &#8249;
+            </button>
+            <button onClick={handleNextEpisode} disabled={currentEpisodeIndex === maxEpisodeIndex}>
+              &#8250;
+            </button>
+          </div>
+        </header>
+        <div className={styles.carouselContainer}>
+          <div
+            className={styles.carousel}
+            style={{
+              transform: `translateX(-${currentEpisodeIndex * 100}%)`,
+            }}
           >
-            Carregar mais
-          </button>
+            {episodes.map((episode, index) => {
+              const anime = animesData.Animes.find((anime) => anime.id === episode.animeId);
+              return (
+                <div key={index} className={styles.episodeCard}>
+                  <div className={styles.episodeImageWrapper}>
+                    <img src={episode.image} alt={episode.title} className={styles.episodeImage} />
+                  </div>
+                  <div className={styles.episodeInfo}>
+                    <h3>{anime?.name || 'Anime Desconhecido'}</h3>
+                    <span className={styles.releaseDate}>{episode.releaseDate}</span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
 
@@ -73,19 +88,21 @@ const AnimesPage = () => {
       <div className={styles.launchingAnimes}>
         <header>
           <h2>Animes em Lançamento</h2>
-          <div className="nav_items_module">
-            <a
-              className="btn prevf"
+          <div className={styles.navItems}>
+            <button
               onClick={() => currentLaunchPage > 1 && setCurrentLaunchPage(currentLaunchPage - 1)}
+              disabled={currentLaunchPage === 1}
             >
-              <i className="fas fa-caret-left"></i>
-            </a>
-            <a
-              className="btn nextf"
-              onClick={() => currentLaunchPage < totalLaunchPages && setCurrentLaunchPage(currentLaunchPage + 1)}
+              &#8249;
+            </button>
+            <button
+              onClick={() =>
+                currentLaunchPage < totalLaunchPages && setCurrentLaunchPage(currentLaunchPage + 1)
+              }
+              disabled={currentLaunchPage === totalLaunchPages}
             >
-              <i className="fas fa-caret-right"></i>
-            </a>
+              &#8250;
+            </button>
           </div>
         </header>
         <div className={styles.animesGrid}>

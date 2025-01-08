@@ -23,15 +23,18 @@
 .episodesContainer {
   padding: 20px;
   border-bottom: 1px solid rgb(78, 77, 77);
+ 
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
+  
 }
 
 .episodeCard {
+   border-radius: 10px;
   position: relative;
   cursor: pointer;
 }
@@ -42,6 +45,7 @@
   height: 200px;
   overflow: hidden;
   transition: transform 0.3s ease;
+  border-radius: 5px;
 }
 
 .episodeImageContainer img {

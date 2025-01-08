@@ -114,7 +114,7 @@
 /* Efeito de hover para aumentar a imagem e desfocar */
 .card:hover .posterImg {
   transform: scale(1.1);
-  filter: blur(5px); /* Desfoque de 5px quando o mouse passar sobre a imagem */
+  filter: blur(2px); /* Desfoque de 5px quando o mouse passar sobre a imagem */
 }
 
 /* Botão de play */

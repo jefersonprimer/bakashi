@@ -40,11 +40,8 @@ const EpisodesPage = () => {
     currentPage * episodesPerPage
   );
 
-  // Retorna o nome do anime correspondente ao `animeId` de cada episódio
-  const getAnimeName = (animeId: number) => {
-    const anime = animes.find((a) => a.id === animeId);
-    return anime ? anime.name : 'Desconhecido';
-  };
+  // Retorna o anime correspondente ao `animeId` de cada episódio
+  const getAnimeById = (animeId: number) => animes.find((a) => a.id === animeId);
 
   return (
     <div>
@@ -65,37 +62,46 @@ const EpisodesPage = () => {
           {currentEpisodes.length === 0 ? (
             <div>Carregando episódios...</div>
           ) : (
-            currentEpisodes.map((episode) => (
-              <div key={episode.id} className={styles.episodeCard}>
-                <div className={styles.episodeImageContainer}>
-                  {/* Link para a página específica do episódio */}
-                  <Link href={`/episodios/${episode.id}`} className={styles.episodeLink}>
-                   
-                    <img
-                      src={episode.image}
-                      alt={`Episódio ${episode.title}`}
-                      className={styles.episodeImage}
-                    />
-                    {episode.isLancamento && (
-                      <div className={styles.lancamentoLabel}>LANÇAMENTO</div>
-                    )}
-                    <div className={styles.playButton}>
-                      <FontAwesomeIcon icon={faPlay} className={styles.playIcon} />
-                    </div>
-                  
-                  </Link>
+            currentEpisodes.map((episode) => {
+              const anime = getAnimeById(episode.animeId);
+              return (
+                <div key={episode.id} className={styles.episodeCard}>
+                  <div className={styles.episodeImageContainer}>
+                    {/* Link para a página específica do episódio */}
+                    <Link
+                      href={`/episodios/${anime?.slug || 'desconhecido'}/${episode.id}`}
+                      className={styles.episodeLink}
+                    >
+                      <img
+                        src={episode.image}
+                        alt={`Episódio ${episode.title}`}
+                        className={styles.episodeImage}
+                      />
+                      {episode.isLancamento && (
+                        <div className={styles.lancamentoLabel}>LANÇAMENTO</div>
+                      )}
+                      <div className={styles.playButton}>
+                        <FontAwesomeIcon icon={faPlay} className={styles.playIcon} />
+                      </div>
+                    </Link>
+                  </div>
+                  <p>{anime?.name || 'Anime Desconhecido'}</p>
+                  <p>{`Episódio ${episode.title.split(' ')[1] || episode.id}`}</p>
                 </div>
-                <p>{getAnimeName(episode.animeId)}</p>
-                <p>{`Episódio ${episode.title.split(' ')[1]}`}</p>
-                {/* <p>Episodio{episode.id}</p> */}
-              </div>
-            ))
+              );
+            })
           )}
         </div>
       </div>
 
       {/* Paginação */}
       <div className={styles.pagination}>
+        <button
+          disabled={currentPage === 1}
+          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+        >
+          Anterior
+        </button>
         {Array.from({ length: totalPages }, (_, index) => (
           <button
             key={index}
@@ -105,6 +111,12 @@ const EpisodesPage = () => {
             {index + 1}
           </button>
         ))}
+        <button
+          disabled={currentPage === totalPages}
+          onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+        >
+          Próximo
+        </button>
       </div>
     </div>
   );

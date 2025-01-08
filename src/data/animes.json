@@ -4,7 +4,7 @@
       "id": 1,
       "name": "Ishura",
       "slug": "ishura",
-      "data": "2024-01-03",
+      "data": "2024",
       "image": "/uploads/2025-01/Q0nbxeYiFQJxzJ8nTTOwWNij2z-185x278.jpg",
       "synopsis": "O Rei Demônio, que espalhou o medo por todo o mundo, foi derrotado. No entanto, o nome e a própria existência do Herói que realizou esse feito permanecem um mistério. Agora que a era do medo chegou ao fim, a batalha para coroar o Herói supremo se inicia.",
       "isLancamento": false,
@@ -26,7 +26,7 @@
       "rating": "16+",
       "score": 8.5,
       "genres": ["Ação", "Fantasia", "Aventura"],
-      "airing": "Quinta-feira",
+      "airing": "Segunda-feira",
       "episodes": 12,
       "season": 1
     },
@@ -41,7 +41,7 @@
       "rating": "16+",
       "score": 8.5,
       "genres": ["Ação", "Fantasia", "Aventura"],
-      "airing": "Quinta-feira",
+      "airing": "Terça-feira",
       "episodes": 12,
       "season": 1
     },
@@ -56,7 +56,7 @@
       "rating": "16+",
       "score": 8.5,
       "genres": ["Ação", "Fantasia", "Aventura"],
-      "airing": "Quinta-feira",
+      "airing": "Quarta-feira",
       "episodes": 12,
       "season": 1
     },
@@ -86,7 +86,7 @@
       "rating": "16+",
       "score": 8.5,
       "genres": ["Ação", "Fantasia", "Aventura"],
-      "airing": "Quinta-feira",
+      "airing": "Sexta-feira",
       "episodes": 12,
       "season": 1
     },
@@ -101,7 +101,7 @@
       "rating": "16+",
       "score": 8.5,
       "genres": ["Ação", "Fantasia", "Aventura"],
-      "airing": "Quinta-feira",
+      "airing": "Domingo",
       "episodes": 12,
       "season": 1
     },
@@ -251,7 +251,7 @@
       "rating": "16+",
       "score": 8.5,
       "genres": ["Ação", "Fantasia", "Aventura"],
-      "airing": "Quinta-feira",
+      "airing": "Quarta-feira",
       "episodes": 12,
       "season": 1
     },
@@ -266,7 +266,7 @@
       "rating": "16+",
       "score": 8.5,
       "genres": ["Ação", "Fantasia", "Aventura"],
-      "airing": "Quinta-feira",
+      "airing": "Quarta-feira",
       "episodes": 12,
       "season": 1
     },
@@ -281,7 +281,7 @@
       "rating": "16+",
       "score": 8.5,
       "genres": ["Ação", "Fantasia", "Aventura"],
-      "airing": "Quinta-feira",
+      "airing": "Quarta-feira",
       "episodes": 12,
       "season": 1
     },
@@ -296,7 +296,7 @@
       "rating": "16+",
       "score": 8.5,
       "genres": ["Ação", "Fantasia", "Aventura"],
-      "airing": "Quinta-feira",
+      "airing": "Quarta-feira",
       "episodes": 12,
       "season": 1 
     },
@@ -311,7 +311,7 @@
       "rating": "16+",
       "score": 8.5,
       "genres": ["Ação", "Fantasia", "Aventura"],
-      "airing": "Quinta-feira",
+      "airing": "Quarta-feira",
       "episodes": 12,
       "season": 1,
       "audioType": "Dublado",
@@ -336,6 +336,26 @@
       "title": "Episódio 2",
       "image": "/uploads/2025-01/abbzArBtIwTAaOCedkspbpveImL-300x170.jpg",
       "videoUrl": "https://s2.lightspeedst.net/s2/mp4/ishura/hd/2.mp4",
+      "releaseDate": "2024-01-03",
+      "isLancamento": true
+    },
+    {
+      "id": 3,
+      "animeId": 1,
+      "season": 1,
+      "title": "Episódio 3",
+      "image": "/uploads/2025-01/abbzArBtIwTAaOCedkspbpveImL-300x170.jpg",
+      "videoUrl": "https://s2.lightspeedst.net/s3/mp4/ishura/hd/3.mp4",
+      "releaseDate": "2024-01-03",
+      "isLancamento": true
+    },
+    {
+      "id": 4,
+      "animeId": 1,
+      "season": 1,
+      "title": "Episódio 4",
+      "image": "/uploads/2025-01/abbzArBtIwTAaOCedkspbpveImL-300x170.jpg",
+      "videoUrl": "https://s2.lightspeedst.net/s4/mp4/ishura/hd/4.mp4",
       "releaseDate": "2024-01-03",
       "isLancamento": true
     }
