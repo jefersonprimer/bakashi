@@ -7,6 +7,8 @@ body {
 }
 
 .home-container {
+  justify-content: center;
+  align-items: center;
   display: flex;
   flex-direction: column; /* Garante que os componentes fiquem empilhados verticalmente */
 }

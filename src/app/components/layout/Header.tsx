@@ -6,26 +6,12 @@ import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faTv, faCalendar, faClock, faHistory } from '@fortawesome/free-solid-svg-icons';
 import styles from './Header.module.css';
-import logo from '../../../public/uploads/2024-12/logoo.png';
-import animesData from '../../data/animes.json';
+import logo from '../../../../public/uploads/2024-12/logoo.png';
+import animesData from '@/data/animes.json';
 import { useRouter } from 'next/navigation';
 
-// Defina o tipo para os animes
-type Anime = {
-  id: number;
-  name: string;
-  slug: string;
-  data: string;
-  image: string;
-  synopsis: string;
-  isLancamento: boolean;
-  rating: string;
-  score: number;
-  genres: string[];
-  airing: string;
-  episodes: number;
-  season: number;
-};
+// Importando as interfaces dos arquivos corretos
+import { Anime } from '@/types/anime'; // Caminho correto para Anime
 
 export default function Header() {
   const [searchTerm, setSearchTerm] = useState('');

@@ -6,31 +6,9 @@ import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import data from '@/data/animes.json';
 import styles from './styles.module.css';
 
-interface Anime {
-  id: number;
-  name: string;
-  slug: string;
-  data: string;
-  image: string;
-  synopsis: string;
-  isLancamento: boolean;
-  rating: string;
-  score: number;
-  genres: string[];
-  airing: string;
-  episodes: number;
-  season: number;
-}
-
-interface Episode {
-  id: number;
-  animeId: number;
-  season: number;
-  title: string;
-  image: string;
-  releaseDate: string;
-  isLancamento: boolean;
-}
+// Importando as interfaces de Anime e Episode
+import { Anime } from '@/types/anime';
+import { Episode } from '@/types/episode';
 
 const EpisodesPage = () => {
   const animes: Anime[] = data.Animes;

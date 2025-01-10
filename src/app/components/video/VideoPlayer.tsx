@@ -21,6 +21,8 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
       <h2>{episodeTitle}</h2>
       <video controls poster={posterImage} width="100%">
         <source src={videoUrl} type="video/mp4" />
+        <source src={videoUrl} type="video/webm" />
+        <source src={videoUrl} type="video/ogg" />
         Seu navegador não suporta o formato de vídeo.
       </video>
       

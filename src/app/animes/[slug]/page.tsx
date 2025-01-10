@@ -1,39 +1,14 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';  // Importando useParams
+import { useParams } from 'next/navigation'; // Importando useParams
 import animesData from '../../../data/animes.json';
 import styles from './styles.module.css';
 import Link from 'next/link';
 
-interface Anime {
-  id: number;
-  name: string;
-  slug: string;
-  data: string;
-  image: string;
-  synopsis: string;
-  isLancamento: boolean;
-  rating: string;
-  score: number;
-  genres: string[];
-  airing: string;
-  episodes: number;
-  season: number;
-  audioType?: string;
-  status?: string;
-}
-
-interface Episode {
-  id: number;
-  animeId: number;
-  season: number;
-  title: string;
-  image: string;
-  videoUrl: string;
-  releaseDate: string;
-  isLancamento: boolean;
-}
+// Importando as interfaces do arquivo 'src/types/anime.ts' e 'src/types/episode.ts'
+import { Anime } from '@/types/anime';
+import { Episode } from '@/types/episode';
 
 const Page = () => {
   const { slug } = useParams(); // Usando useParams para pegar o slug da URL
@@ -98,7 +73,7 @@ const Page = () => {
                 {anime.genres.map((genre, index) => (
                   <span key={index} className={styles.genreItem}>{genre}</span>
                 ))}
-              </div> 
+              </div>
               <div className={styles.extra}>
                 <h2>Sinopse...</h2>
                 <span>{anime.synopsis}</span>
@@ -137,9 +112,7 @@ const Page = () => {
                   <div className={styles.episodeDetails}>
                     {/* Link para a página do episódio */}
                     <Link className={styles.episodeTitle} href={`/episodios/${anime.slug}/${episode.id}`}>
-                      
                       {episode.title}
-                     
                     </Link>
                     <span className={styles.releaseDate}>
                       {episode.releaseDate}

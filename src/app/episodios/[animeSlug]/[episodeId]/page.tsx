@@ -5,35 +5,12 @@ import { useParams } from 'next/navigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTh, faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import data from '../../../../data/animes.json'; // Caminho para o arquivo JSON
-import VideoPlayer from '../../../components/VideoPlayer';
+import VideoPlayer from '../../../components/video/VideoPlayer';
 
 import styles from './styles.module.css'; // Importando o CSS Module
 
-interface Anime {
-  id: number;
-  name: string;
-  slug: string;
-  data: string;
-  image: string;
-  synopsis: string;
-  isLancamento: boolean;
-  rating: string;
-  score: number;
-  genres: string[];
-  airing: string;
-  episodes: number;
-  season: number;
-  audioType?: string;
-  status?: string;
-}
-
-interface Episode {
-  id: number;
-  title: string;
-  videoUrl: string;
-  image: string;
-  animeId: number;
-}
+import { Anime } from '@/types/anime';
+import { Episode } from '@/types/episode';
 
 const EpisodePage: FC = () => {
   const { animeSlug, episodeId } = useParams();

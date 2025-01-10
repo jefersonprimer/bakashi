@@ -1,4 +1,8 @@
-// src/types.ts
+// src/types/anime.ts
+
+export type AudioType = 'Dublado' | 'Legendado';
+export type Status = 'Em exibição' | 'Finalizado' | 'Pausado' | 'Não anunciado';
+
 export interface Anime {
   id: number;
   name: string;
@@ -14,24 +18,12 @@ export interface Anime {
   episodes: number;
   season: number;
   isNextSeason: boolean;
-  audioType?: string;
-  status?: string;
-  isThumbnail?: boolean; 
+  audioType?: AudioType;
+  status?: Status;
+  isThumbnail?: boolean;
   imageThumbnail?: string;
-}
-
-export interface Episode {
-  id: number;
-  animeId: number;
-  season: number;
-  title: string;
-  image: string;
-  videoUrl: string;
-  releaseDate: string;
-  isLancamento: boolean;
 }
 
 export interface AnimesData {
   Animes: Anime[];
-  Episodes: Episode[];
 }

@@ -4,15 +4,8 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import styles from "./Glossary.module.css";
 
-interface Anime {
-  id: number;
-  name: string;
-  slug: string;
-  data: string;
-  image: string;
-  synopsis: string;
-  isLancamento: boolean;
-}
+// Importando as interfaces dos arquivos corretos
+import { Anime } from '@/types/anime';
 
 interface GlossaryProps {
   animes: Anime[];

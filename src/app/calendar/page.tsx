@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import styles from './calendar.module.css';
-import animesData from '../../data/animes.json';
-import AnimeCarousel from '../components/AnimeCarousel'; // Ajuste o caminho conforme necessário
-import { Anime, AnimesData } from '../../types'; // Importando a tipagem
+import { useState, useEffect } from "react";
+import styles from "./calendar.module.css";
+import animesData from "@/data/animes.json";
+import AnimeCarousel from "../components/cards/AnimeCarousel"; // Ajuste o caminho conforme necessário
+import { Anime, AnimesData } from "../../types/anime"; // Importando a tipagem
 
 const CalendarPage = () => {
-  const [currentDay, setCurrentDay] = useState<string>('');
+  const [currentDay, setCurrentDay] = useState<string>("");
 
   // Função para agrupar os animes por dia de exibição (airing)
   const groupAnimesByDay = () => {
@@ -27,7 +27,15 @@ const CalendarPage = () => {
   // Função para calcular o dia da semana atual no cliente
   useEffect(() => {
     const currentDate = new Date();
-    const daysOfWeek = ['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado', 'Domingo'];
+    const daysOfWeek = [
+      "Segunda-feira",
+      "Terça-feira",
+      "Quarta-feira",
+      "Quinta-feira",
+      "Sexta-feira",
+      "Sábado",
+      "Domingo",
+    ];
     const currentDayIndex = currentDate.getDay();
     setCurrentDay(daysOfWeek[(currentDayIndex + 6) % 7]);
   }, []);
@@ -37,7 +45,18 @@ const CalendarPage = () => {
     return <div>Carregando...</div>;
   }
 
-  const orderedDays = [currentDay, ...['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado', 'Domingo'].filter(day => day !== currentDay)];
+  const orderedDays = [
+    currentDay,
+    ...[
+      "Segunda-feira",
+      "Terça-feira",
+      "Quarta-feira",
+      "Quinta-feira",
+      "Sexta-feira",
+      "Sábado",
+      "Domingo",
+    ].filter((day) => day !== currentDay),
+  ];
 
   return (
     <div className={styles.calendar}>

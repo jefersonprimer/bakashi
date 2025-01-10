@@ -1,4 +1,4 @@
-'use client';
+// src/pages/episodios/EpisodiosPage.tsx (ou o caminho correto do seu arquivo)
 
 import { useState } from 'react';
 import Link from 'next/link';
@@ -7,24 +7,9 @@ import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import data from '@/data/animes.json';
 import styles from './Episodios.module.css';
 
-interface Anime {
-  id: number;
-  name: string;
-  slug: string;
-  image: string;
-  isLancamento: boolean;
-}
-
-interface Episode {
-  id: number;
-  animeId: number;
-  season: number;
-  title: string;
-  image: string;
-  videoUrl: string;
-  releaseDate: string;
-  isLancamento: boolean;
-}
+// Importando as interfaces dos arquivos corretos
+import { Anime } from '@/types/anime'; // Caminho correto para Anime
+import { Episode } from '@/types/episode'; // Caminho correto para Episode
 
 const EpisodesPage = () => {
   const animes: Anime[] = data.Animes;

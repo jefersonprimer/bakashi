@@ -1,19 +1,19 @@
-'use client';
+"use client";
 
-import { useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import { Anime } from '../../types';
-import animesData from '../../data/animes.json'; // Dados de animes
-import styles from './styles.module.css';
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import { Anime } from "../../types/anime";
+import animesData from "../../data/animes.json"; // Dados de animes
+import styles from "./styles.module.css";
 
 const ListaPage = () => {
   const [animeList, setAnimeList] = useState<Anime[]>([]);
   const router = useRouter();
   const searchParams = useSearchParams();
-  const animeId = searchParams.get('id'); // ID do anime passado via query
+  const animeId = searchParams.get("id"); // ID do anime passado via query
 
   useEffect(() => {
-    const storedList = localStorage.getItem('animeList');
+    const storedList = localStorage.getItem("animeList");
     if (storedList) {
       setAnimeList(JSON.parse(storedList));
     }
@@ -22,7 +22,9 @@ const ListaPage = () => {
       const anime = animesData.Animes.find((a) => a.id === Number(animeId));
       if (anime) {
         if (!animeList.some((a) => a.id === anime.id)) {
-          const confirmAdd = confirm(`O anime "${anime.name}" não está na lista. Deseja adicionar?`);
+          const confirmAdd = confirm(
+            `O anime "${anime.name}" não está na lista. Deseja adicionar?`
+          );
           if (confirmAdd) {
             handleAddAnime(anime);
           }
@@ -33,21 +35,21 @@ const ListaPage = () => {
 
   const handleAddAnime = (anime: Anime) => {
     if (animeList.length >= 20) {
-      alert('Lista cheia. Remova um anime para adicionar outro.');
+      alert("Lista cheia. Remova um anime para adicionar outro.");
       return;
     }
 
     if (!animeList.find((a) => a.id === anime.id)) {
       const updatedList = [...animeList, anime];
       setAnimeList(updatedList);
-      localStorage.setItem('animeList', JSON.stringify(updatedList));
+      localStorage.setItem("animeList", JSON.stringify(updatedList));
     }
   };
 
   const handleRemoveAnime = (id: number) => {
     const updatedList = animeList.filter((anime) => anime.id !== id);
     setAnimeList(updatedList);
-    localStorage.setItem('animeList', JSON.stringify(updatedList));
+    localStorage.setItem("animeList", JSON.stringify(updatedList));
   };
 
   const handlePlusClick = (animeId: number) => {
@@ -66,7 +68,11 @@ const ListaPage = () => {
         <ul className={styles.list}>
           {animeList.map((anime) => (
             <li key={anime.id} className={styles.listItem}>
-              <img src={anime.image} alt={anime.name} className={styles.image} />
+              <img
+                src={anime.image}
+                alt={anime.name}
+                className={styles.image}
+              />
               <div className={styles.info}>
                 <h3>{anime.name}</h3>
                 <button

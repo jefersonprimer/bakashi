@@ -1,0 +1,29 @@
+.comments-area {
+  margin: 20px 0;
+}
+
+.comments-title {
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.comment-avatar img {
+  border-radius: 50%;
+}
+
+.comment-reply-link {
+  margin-left: 10px;
+  color: #0070f3;
+  text-decoration: none;
+}
+
+.comment-reply-link:hover {
+  text-decoration: underline;
+}
+
+.comment-form textarea {
+  width: 100%;
+  min-height: 80px;
+  margin-bottom: 10px;
+}
