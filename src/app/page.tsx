@@ -1,37 +1,37 @@
-import fs from 'fs/promises';
-import path from 'path';
-import Glossary from './components/Glossary';
-import Lancamentos from './components/Lancamentos';
-import TodosAnimes from './components/TodosAnimes';
-import Episodes from './components/Episodios';
+'use client';
 
-import './globals.css';
+// src/app/page.tsx ou src/pages/index.tsx
 
-const HomePage = async () => {
-  // Caminho do arquivo JSON
-  const filePath = path.join(process.cwd(), 'src/data/animes.json');
-  
-  // Lendo o conteúdo do arquivo JSON
-  const data = await fs.readFile(filePath, 'utf-8');
-  
-  // Desestruturando as seções do JSON
-  const { Animes } = JSON.parse(data);
+import { useState, useEffect } from 'react';
+import AnimeCarouselFullScreen from './components/AnimeCarouselFullScreen'; // Importa o componente de carrossel
+import animesData from '../data/animes.json'; // Importa os dados JSON
+import { Anime } from '../types'; // Importa a tipagem do Anime
+import './globals.css'; // Estilos globais
+import AnimeCarouselLancamentos from './components/AnimeCarouselLancamentos';
+import AnimeCarouselNextSeason from './components/AnimeCarouselNextSeason';
+import AnimeCarouselByDay from './components/AnimeCarouselByDay';
 
-  // Verifique se os dados realmente existem
-  if (!Animes) {
-    return <div>Erro ao carregar os dados.</div>;
-  }
+const HomePage = () => {
+  // Tipagem do estado 'animes' como 'Anime[]'
+  const [animes, setAnimes] = useState<Anime[]>([]);
 
-  // Filtrando os lançamentos para o componente Lancamentos
-  const lancamentos = Animes.filter((anime: any) => anime.isLancamento);
+  useEffect(() => {
+    setAnimes(animesData.Animes); // Define os animes do JSON
+  }, []);
 
-  // Passando os dados para os componentes
   return (
-    <div className='home-container'>
-      <Glossary animes={Animes} /> {/* Passando todos os animes para o Glossary */}
-      <Lancamentos lancamentos={lancamentos} /> {/* Passando dados para o componente de Lançamentos */}
-      <TodosAnimes todosAnimes={Animes} /> {/* Passando dados para o componente TodosAnimes */}
-      <Episodes />
+    <div className="home-container">
+      {/* Passa os dados dos animes para o AnimeCarouselFullScreen */}
+      <AnimeCarouselFullScreen animes={animes} className="anime-carousel-fullscreen" />
+      <AnimeCarouselLancamentos className="anime-carousel-lancamentos" />
+      <AnimeCarouselByDay />
+      <AnimeCarouselNextSeason />
+      <div>
+        <img src='https://www.crunchyroll.com/build/assets/img/home/yuzu.png'/>
+        <h1>Ainda está procurando algo pra assistir?</h1>
+        <p>Confira o nosso acervo completo</p>
+        <a href='./animes'>VER TUDO</a>
+      </div>
     </div>
   );
 };

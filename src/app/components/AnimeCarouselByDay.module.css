@@ -1,0 +1,20 @@
+.anime-carousel-lancamentos {
+  padding: 0 20px; /* Adiciona espaçamento lateral */
+  text-align: center; /* Centraliza o texto horizontalmente */
+}
+
+.titulo {
+
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #fff;
+  padding-left: 30px;
+}
+
+.subtitulo {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #ccc;
+  padding-left: 30px;
+}
+

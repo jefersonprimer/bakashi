@@ -1,0 +1,11 @@
+.maturityRating {
+  border: 1px solid #FFF;
+  display: inline-block;
+  border-radius: 2px;
+  color: white; /* Cor do texto */
+  font-weight: bold;
+  font-size: 12px;
+  padding: 2px 4px; /* Ajustando o padding */
+  text-align: center;
+  letter-spacing: -2px; /* Removendo o espaço entre as letras */
+}

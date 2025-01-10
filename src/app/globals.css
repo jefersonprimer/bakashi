@@ -1,5 +1,5 @@
 body {
-  background-color: #0E0E0E;
+  background-color: #000000;
   color: #FFFFFF;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
@@ -7,6 +7,24 @@ body {
 }
 
 .home-container {
-  background-color: #0E0E0E;
+  display: flex;
+  flex-direction: column; /* Garante que os componentes fiquem empilhados verticalmente */
 }
+
+.anime-carousel-fullscreen {
+  position: relative; /* Não use absoluto */
+  height: 100vh; /* Continua ocupando a tela inteira */
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+.anime-carousel-lancamentos {
+  position: relative; /* Certifique-se de que está no fluxo normal */
+  margin-top: -22vh; /* Sobrepõe parcialmente o fullscreen */
+  padding: 20px;
+  z-index: 2;
+  backdrop-filter: blur(5px); /* Desfoque no fundo */
+}
+
 

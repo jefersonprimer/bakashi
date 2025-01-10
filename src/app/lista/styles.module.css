@@ -1,0 +1,73 @@
+.listPage {
+  padding: 2rem;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.listItem .image {
+  width: 80px;
+  margin-right: 1rem;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.removeButton {
+  background-color: #ff4d4f;
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.animeGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.animeCard {
+  text-align: center;
+}
+
+.animeCard .image {
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+}
+
+.cardButtons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 0.5rem;
+}
+
+.bookmarkButton,
+.plusButton {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.bookmarkButton {
+  background-color: #007bff;
+  color: white;
+}
+
+.plusButton {
+  background-color: #28a745;
+  color: white;
+}

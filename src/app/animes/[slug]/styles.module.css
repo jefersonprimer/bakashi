@@ -208,7 +208,6 @@
   padding: 20px;
   padding: 1rem;
   border-radius: 5px;
-  background-color: gray;
 }
 
 .rightColumn h2 {
@@ -225,9 +224,9 @@
 }
 
 .recommendationItem {
-  background-color: black;
   display: flex;
   margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgb(78, 77, 77);
 }
 
 .recommendationImage {

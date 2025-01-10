@@ -1,97 +1,110 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { Anime } from '../../types';
+import animesData from '../../data/animes.json'; // Dados de animes
+import styles from './styles.module.css';
 
-const ListaLocal = () => {
-  const [lista, setLista] = useState<string[]>([]);
-  const [novoItem, setNovoItem] = useState('');
+const ListaPage = () => {
+  const [animeList, setAnimeList] = useState<Anime[]>([]);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const animeId = searchParams.get('id'); // ID do anime passado via query
 
-  // Carrega a lista do Local Storage ao carregar o componente
   useEffect(() => {
-    const listaSalva = localStorage.getItem('minhaLista');
-    if (listaSalva) {
-      setLista(JSON.parse(listaSalva));
+    const storedList = localStorage.getItem('animeList');
+    if (storedList) {
+      setAnimeList(JSON.parse(storedList));
     }
-  }, []);
 
-  // Atualiza o Local Storage sempre que a lista mudar
-  useEffect(() => {
-    localStorage.setItem('minhaLista', JSON.stringify(lista));
-  }, [lista]);
+    if (animeId) {
+      const anime = animesData.Animes.find((a) => a.id === Number(animeId));
+      if (anime) {
+        if (!animeList.some((a) => a.id === anime.id)) {
+          const confirmAdd = confirm(`O anime "${anime.name}" não está na lista. Deseja adicionar?`);
+          if (confirmAdd) {
+            handleAddAnime(anime);
+          }
+        }
+      }
+    }
+  }, [animeId]);
 
-  // Adiciona um item à lista
-  const adicionarItem = () => {
-    if (novoItem.trim() !== '') {
-      setLista([...lista, novoItem]);
-      setNovoItem('');
+  const handleAddAnime = (anime: Anime) => {
+    if (animeList.length >= 20) {
+      alert('Lista cheia. Remova um anime para adicionar outro.');
+      return;
+    }
+
+    if (!animeList.find((a) => a.id === anime.id)) {
+      const updatedList = [...animeList, anime];
+      setAnimeList(updatedList);
+      localStorage.setItem('animeList', JSON.stringify(updatedList));
     }
   };
 
-  // Remove um item da lista
-  const removerItem = (index: number) => {
-    const novaLista = lista.filter((_, i) => i !== index);
-    setLista(novaLista);
+  const handleRemoveAnime = (id: number) => {
+    const updatedList = animeList.filter((anime) => anime.id !== id);
+    setAnimeList(updatedList);
+    localStorage.setItem('animeList', JSON.stringify(updatedList));
+  };
+
+  const handlePlusClick = (animeId: number) => {
+    const anime = animesData.Animes.find((a) => a.id === animeId);
+    if (anime) {
+      handleAddAnime(anime);
+    }
   };
 
   return (
-    <div style={{ padding: '20px', maxWidth: '400px', margin: 'auto' }}>
-      <h2>Minha Lista Local</h2>
+    <div className={styles.listPage}>
+      <h1>Sua Lista de Animes</h1>
+      {animeList.length === 0 ? (
+        <p>Sua lista está vazia. Adicione animes!</p>
+      ) : (
+        <ul className={styles.list}>
+          {animeList.map((anime) => (
+            <li key={anime.id} className={styles.listItem}>
+              <img src={anime.image} alt={anime.name} className={styles.image} />
+              <div className={styles.info}>
+                <h3>{anime.name}</h3>
+                <button
+                  onClick={() => handleRemoveAnime(anime.id)}
+                  className={styles.removeButton}
+                >
+                  Remover
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
 
-      {/* Campo para adicionar itens */}
-      <div>
-        <input
-          type="text"
-          value={novoItem}
-          onChange={(e) => setNovoItem(e.target.value)}
-          placeholder="Adicionar item"
-          style={{
-            width: 'calc(100% - 60px)',
-            padding: '8px',
-            marginRight: '10px',
-          }}
-        />
-        <button
-          onClick={adicionarItem}
-          style={{ padding: '8px 15px', cursor: 'pointer' }}
-        >
-          Adicionar
-        </button>
-      </div>
-
-      {/* Lista de itens */}
-      <ul style={{ marginTop: '20px', padding: '0', listStyleType: 'none' }}>
-        {lista.map((item, index) => (
-          <li
-            key={index}
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              marginBottom: '10px',
-              background: '#f8f8f8',
-              padding: '8px',
-              borderRadius: '4px',
-            }}
-          >
-            <span>{item}</span>
-            <button
-              onClick={() => removerItem(index)}
-              style={{
-                padding: '5px 10px',
-                background: 'red',
-                color: 'white',
-                border: 'none',
-                borderRadius: '4px',
-                cursor: 'pointer',
-              }}
-            >
-              Remover
-            </button>
-          </li>
+      <div className={styles.animeGrid}>
+        <h2>Adicionar Mais Animes</h2>
+        {animesData.Animes.map((anime) => (
+          <div key={anime.id} className={styles.animeCard}>
+            <img src={anime.image} alt={anime.name} className={styles.image} />
+            <div className={styles.cardButtons}>
+              <button
+                onClick={() => router.push(`/lista?id=${anime.id}`)}
+                className={styles.bookmarkButton}
+              >
+                Bookmark
+              </button>
+              <button
+                onClick={() => handlePlusClick(anime.id)}
+                className={styles.plusButton}
+              >
+                Plus
+              </button>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
 
-export default ListaLocal;
+export default ListaPage;

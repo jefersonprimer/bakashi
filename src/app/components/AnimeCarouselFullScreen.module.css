@@ -1,0 +1,232 @@
+.carouselContainer {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.backgroundImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  filter: brightness(0.5); /* Escurece a imagem de fundo para destacar o conteúdo */
+}
+
+.cardContainer {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  height: 300px;
+  color: white;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Alinha o conteúdo ao topo */
+  align-items: flex-start; /* Alinha o conteúdo à esquerda */
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transform: translateX(-60%); /* Move o card para o lado esquerdo */
+  padding: 20px;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alinha o conteúdo da cardContent à esquerda */
+  width: 100%;
+}
+
+.leftColumn {
+  width: 100%;
+  text-align: left; /* Alinha o texto à esquerda */
+}
+
+.name,
+.audioType,
+.synopsis {
+  text-align: left; /* Garantir que os textos dentro de 'name', 'audioType' e 'synopsis' fiquem alinhados à esquerda */
+}
+
+.name {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.audioType {
+  margin: 5px 0;
+  font-size: 1rem;
+}
+
+.synopsis {
+  margin: 10px 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.buttonsContainer {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  display: flex; /* Para alinhar os itens em linha */
+  align-items: center; /* Alinha os itens verticalmente */
+  gap: 10px; /* Espaço entre os botões */
+}
+
+.playButton,
+.bookmarkButton {
+  display: flex; /* Usado para alinhar os ícones e o texto */
+  align-items: center; /* Alinha verticalmente os itens dentro do botão */
+  background: none;
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 10px 15px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.audioType {
+  margin: 5px 0;
+  font-size: 1rem;
+  color: white; /* Certifique-se de que a cor é visível */
+}
+
+
+/* calendar.module.css */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.iconPlay {
+  margin-right: 8px; /* Adiciona espaço entre o ícone de play e o texto */
+  fill: #ff640a;
+  display: flex;
+  stroke-width: 2;
+  height: 1.5rem;
+  justify-content: center;
+  width: 1.5rem;
+}
+
+.playButton {
+  display: flex;
+}
+
+.iconBookmark {
+  margin-left: 8px; /* Adiciona espaço entre o ícone de bookmark e o texto */
+  border: 1px solid #ff640a;
+  padding: 5px;
+  align-items: center;
+  fill: #ff640a;
+  stroke-width: 2;
+  height: 1.5rem;
+  justify-content: center;
+  width: 1.5rem;
+}
+
+.tooltipText {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* A posição fica acima do ícone */
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltipText {
+  visibility: visible;
+  opacity: 1;
+}
+
+.navigationButtons {
+  position: absolute;
+  top: 35%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  z-index: 3;
+  transform: translateY(-50%);
+}
+
+.arrowButton {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 10px;
+  transition: color 0.3s ease;
+}
+
+.arrowButton:hover {
+  color: #f0f0f0;
+}
+
+.pageIndicator {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.pageDot {
+  border: 2px solid white;
+  border-radius: 5px;
+  width: 20px; /* Largura inicial da bolinha */
+  height: 10px;
+  position: relative;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: width 0.3s ease, background-color 0.3s ease; /* Transição suave para a largura e cor de fundo */
+}
+
+.pageLoader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%; /* Inicialmente sem preenchimento */
+  height: 100%;
+  background-color: orangered;
+  transition: width 5s ease-in-out; /* Transição para o preenchimento */
+}
+
+.pageDot.active {
+  width: 40px; /* Aumenta a largura quando a bolinha estiver ativa */
+}
+
+.pageDot.active .pageLoader {
+  width: 100%; /* Preenche totalmente a bolinha ativa */
+}
+
+.pageDot:hover {
+  border-color: orangered; /* Opção de cor de borda no hover */
+}
