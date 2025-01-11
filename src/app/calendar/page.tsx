@@ -3,17 +3,17 @@
 import { useState, useEffect } from "react";
 import styles from "./calendar.module.css";
 import animesData from "@/data/animes.json";
-import AnimeCarousel from "../components/cards/AnimeCarousel"; // Ajuste o caminho conforme necessário
-import { Anime, AnimesData } from "../../types/anime"; // Importando a tipagem
+import AnimeCarousel from "../components/cards/AnimeCarousel"; 
+import { Anime } from "@/types/anime";
 
 const CalendarPage = () => {
   const [currentDay, setCurrentDay] = useState<string>("");
 
-  // Função para agrupar os animes por dia de exibição (airing)
+  // Tipando corretamente os dados importados de animesData
   const groupAnimesByDay = () => {
     const groupedAnimes: { [key: string]: Anime[] } = {};
-    (animesData as AnimesData).Animes.forEach((anime) => {
-      const day = anime.airing;
+    (animesData as { animes: Anime[] }).animes.forEach((anime) => {
+      const day = anime.airingDay; 
       if (!groupedAnimes[day]) {
         groupedAnimes[day] = [];
       }
@@ -24,7 +24,6 @@ const CalendarPage = () => {
 
   const groupedAnimes = groupAnimesByDay();
 
-  // Função para calcular o dia da semana atual no cliente
   useEffect(() => {
     const currentDate = new Date();
     const daysOfWeek = [
@@ -40,7 +39,6 @@ const CalendarPage = () => {
     setCurrentDay(daysOfWeek[(currentDayIndex + 6) % 7]);
   }, []);
 
-  // Se o currentDay ainda não foi definido, mostra o carregamento
   if (!currentDay) {
     return <div>Carregando...</div>;
   }
@@ -63,7 +61,6 @@ const CalendarPage = () => {
       <h1>Calendário</h1>
       {orderedDays.map((day) => {
         const dayAnimes = groupedAnimes[day] || [];
-
         return (
           <div key={day} className={styles.dayContainer}>
             <h2>{day}</h2>

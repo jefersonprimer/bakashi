@@ -1,8 +1,8 @@
 "use client";
 
-import AnimeCarousel from "./AnimeCarousel"; // Importe o AnimeCarousel existente
-import { Anime } from "@/types/anime"; // Importe a interface de tipagem
-import animesData from "@/data/animes.json"; // Importa o JSON diretamente
+import AnimeCarousel from "./AnimeCarousel";
+import { Anime } from "@/types/anime";
+import animesData from "@/data/animes.json"; 
 import styles from "./AnimeCarouselLancamentos.module.css";
 
 interface AnimeCarouselLancamentosProps {
@@ -14,8 +14,8 @@ const AnimeCarouselLancamentos: React.FC<AnimeCarouselLancamentosProps> = ({
   itemsPerPage = 5,
 }) => {
   // Acessar a propriedade "Animes" e filtrar os lançamentos
-  const lancamentos: Anime[] = animesData.Animes.filter(
-    (anime) => anime.isLancamento
+  const lancamentos: Anime[] = animesData.animes.filter(
+    (anime) => anime.isRelease
   );
 
   return (

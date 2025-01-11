@@ -2,78 +2,79 @@
 
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
-import animesData from '../../data/animes.json';
+import animesData from '@/data/animes.json';
+import { Anime } from '@/types/anime';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from './styles.module.css'; // Adapte o caminho conforme necessário
-import Head from 'next/head'; // Importando o Head para atualizar o título da página
-
-// Defina o tipo para os animes
-type Anime = {
-  id: number;
-  name: string;
-  slug: string;
-  data: string;
-  image: string;
-  synopsis: string;
-  isLancamento: boolean;
-  rating: string;
-  score: number;
-  genres: string[];
-  airing: string;
-  episodes: number;
-  season: number;
-};
+import styles from './styles.module.css';
+import Head from 'next/head';
 
 export default function Search() {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredAnimes, setFilteredAnimes] = useState<Anime[]>([]);
-  const searchParams = useSearchParams(); // Para acessar a query string
-  const query = searchParams?.get('query'); // Pegando o valor da query "query" (ex: ?query=naruto)
+  const [loading, setLoading] = useState(false);
+  const searchParams = useSearchParams();
+  const query = searchParams?.get('query');
 
   useEffect(() => {
     if (query) {
-      setSearchTerm(query); // Atualiza o campo de busca com o termo da query
+      setSearchTerm(query);
     }
   }, [query]);
 
   useEffect(() => {
-    // Filtra os animes com base no termo de busca
+    setLoading(true);
     if (searchTerm) {
-      const filtered = animesData.Animes.filter((anime) =>
+      const filtered = animesData.animes.filter((anime) =>
         anime.name.toLowerCase().includes(searchTerm.toLowerCase())
       );
       setFilteredAnimes(filtered);
     } else {
       setFilteredAnimes([]);
     }
+    setLoading(false);
   }, [searchTerm]);
+
+  const handleSearch = () => {
+    const params = new URLSearchParams(window.location.search);
+    params.set('query', searchTerm);
+    window.history.replaceState({}, '', `${window.location.pathname}?${params.toString()}`);
+  };
 
   return (
     <div className={styles.searchPage}>
-      {/* Atualizando o título da página com o termo de pesquisa */}
       <Head>
         <title>{searchTerm ? `Você pesquisou por "${searchTerm}" - Bakashi TV` : 'Pesquisa de Animes - Bakashi TV'}</title>
+        <meta
+          name="description"
+          content={
+            searchTerm
+              ? `Resultados de busca para "${searchTerm}" em Bakashi TV. Explore animes populares e descubra novas séries!`
+              : 'Pesquise seus animes favoritos em Bakashi TV, o melhor portal para fãs de animes!'
+          }
+        />
       </Head>
 
       <div className={styles.searchContainer}>
         <input
           type="text"
-          placeholder="Buscar..."
+          placeholder="Digite o nome de um anime..."
           className={styles.searchInput}
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
+          aria-label="Campo de busca"
         />
-        <button className={styles.searchButton}>
+        <button className={styles.searchButton} onClick={handleSearch}>
           Buscar
         </button>
 
-        {/* Exibe os resultados filtrados */}
-        {filteredAnimes.length > 0 && (
+        {loading ? (
+          <p className={styles.loading}>Carregando resultados...</p>
+        ) : filteredAnimes.length > 0 ? (
           <ul className={styles.results}>
             {filteredAnimes.map((anime) => (
               <li key={anime.id} className={styles.resultItem}>
-                <Link href={`/animes/${anime.slug}`}>
+                <Link href={`/series/${anime.id}/${anime.slug}`} key={anime.id}>
                   <div className={styles.resultContent}>
                     <Image
                       src={anime.image}
@@ -91,10 +92,7 @@ export default function Search() {
               </li>
             ))}
           </ul>
-        )}
-
-        {/* Caso não encontre resultados */}
-        {filteredAnimes.length === 0 && searchTerm && (
+        ) : (
           <p className={styles.noResults}>Nenhum anime encontrado para "{searchTerm}"</p>
         )}
       </div>

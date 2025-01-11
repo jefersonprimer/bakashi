@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faTv, faCalendar, faClock, faHistory } from '@fortawesome/free-solid-svg-icons';
 import styles from './Header.module.css';
-import logo from '../../../../public/uploads/2024-12/logoo.png';
+import logo from '../../../../public/logo.png';
 import animesData from '@/data/animes.json';
 import { useRouter } from 'next/navigation';
 
@@ -23,7 +23,7 @@ export default function Header() {
   useEffect(() => {
     // Filtra os animes com base no termo de busca
     if (searchTerm) {
-      const filtered = animesData.Animes.filter((anime) =>
+      const filtered = animesData.animes.filter((anime) =>
         anime.name.toLowerCase().includes(searchTerm.toLowerCase())
       );
       setFilteredAnimes(filtered);
@@ -76,7 +76,7 @@ export default function Header() {
         {/* Links de Navegação */}
         <ul className={styles.navLinks}>
           <li>
-            <Link href="/animes">
+            <Link href="/series">
               <FontAwesomeIcon icon={faTv} className={styles.icon} />
               Animes
             </Link>
@@ -88,7 +88,7 @@ export default function Header() {
             </Link>
           </li>
           <li>
-            <Link href="/episodios">
+            <Link href="/watch">
               <FontAwesomeIcon icon={faClock} className={styles.icon} />
               Episódios
             </Link>
@@ -111,7 +111,7 @@ export default function Header() {
             onChange={(e) => setSearchTerm(e.target.value)}
             onKeyDown={(e) => {
               if (e.key === 'Enter') {
-                handleSearchSubmit(e); // Submete a pesquisa ao pressionar Enter
+                handleSearchSubmit(e); 
               }
             }}
           />
@@ -124,7 +124,7 @@ export default function Header() {
             <ul ref={resultsRef} className={styles.results}>
               {filteredAnimes.slice(0, 6).map((anime) => (
                 <li key={anime.id} className={styles.resultItem}>
-                  <Link href={`/animes/${anime.slug}`}>
+                  <Link href={`/series/${anime.id}/${anime.slug}`} key={anime.id}>
                     <div className={styles.resultContent}>
                       <Image
                         src={anime.image}

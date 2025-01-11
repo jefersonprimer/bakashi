@@ -56,8 +56,9 @@ const AnimeCarouselFullScreen: React.FC<AnimeCarouselFullScreenProps> = ({
       <div
         className={styles.backgroundImage}
         style={{
-          backgroundImage: `url(${thumbnailAnimes[currentIndex].imageThumbnail})`,
+          backgroundImage: `url("http://localhost:3000${thumbnailAnimes[currentIndex].thumbnailImage}")`,
         }}
+        
       />
 
       <div className={styles.cardContainer}>

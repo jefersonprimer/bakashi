@@ -1,14 +1,14 @@
 "use client";
 
-import AnimeCarousel from "./AnimeCarousel"; // Componente de carrossel existente
-import { Anime } from "../../../types/anime"; // Tipagem de anime
-import animesData from "../../../data/animes.json"; // Dados do JSON
-import styles from "./AnimeCarouselByDay.module.css"; // Estilos específicos
 import { useEffect, useState } from "react";
+import AnimeCarousel from "./AnimeCarousel"; 
+import animesData from "../../../data/animes.json";
+import { Anime } from "../../../types/anime"; 
+import styles from "./AnimeCarouselByDay.module.css"; 
 
 interface AnimeCarouselByDayProps {
-  itemsPerPage?: number; // Número de itens por página (opcional)
-  className?: string; // Classe CSS adicional (opcional)
+  itemsPerPage?: number; 
+  className?: string; 
 }
 
 const AnimeCarouselByDay: React.FC<AnimeCarouselByDayProps> = ({
@@ -34,7 +34,7 @@ const AnimeCarouselByDay: React.FC<AnimeCarouselByDayProps> = ({
 
   // Filtrar os animes pelo dia atual
   const todaysAnimes: Anime[] =
-    animesData.Animes?.filter((anime) => anime.airing === currentDay) || [];
+    animesData.animes?.filter((anime) => anime.airingDay === currentDay) || [];
 
   if (!currentDay) {
     return <div>Carregando...</div>;

@@ -2,14 +2,11 @@
 
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faChevronRight,
-  faChevronLeft,
-  faStar,
-} from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight, faChevronLeft, faStar } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 import styles from "./AnimeCarousel.module.css";
-import MaturityRating from "../elements/MaturityRating"; // Ajuste o caminho conforme necessário
-import { Anime } from "@/types/anime"; // Importando a interface Anime
+import MaturityRating from "../elements/MaturityRating"; 
+import { Anime } from "@/types/anime"; 
 
 interface AnimeCarouselProps {
   animes: Anime[]; // Utilizando a interface importada
@@ -51,7 +48,7 @@ const AnimeCarousel: React.FC<AnimeCarouselProps> = ({
         {animes
           .slice(currentIndex, currentIndex + itemsPerPage)
           .map((anime) => (
-            <div key={anime.id} className={styles.animeCard}>
+            <Link className={styles.animeCard} href={`/series/${anime.id}/${anime.slug}`} key={anime.id}>
               <img
                 src={anime.image}
                 alt={anime.name}
@@ -80,6 +77,7 @@ const AnimeCarousel: React.FC<AnimeCarouselProps> = ({
                 </p>
               </div>
 
+              {/* Botões de Ação (Play, Watchlist, Primerlist) */}
               <div className={styles.playButton}>
                 <div className={styles.tooltip}>
                   <span className={styles.tooltipText}>Play</span>
@@ -126,7 +124,7 @@ const AnimeCarousel: React.FC<AnimeCarouselProps> = ({
                   </svg>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
       </div>
 

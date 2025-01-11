@@ -1,0 +1,26 @@
+{
+  "episodes": [
+    {
+      "id": "G9DUEMW42",  
+      "animeId": "GDKHZEJ0K",  
+      "season": 1,
+      "title": "Episódio 1", 
+      "slug": "episodio-1", 
+      "image": "/uploads/2025-01/abbzArBtIwTAaOCedkspbpveImL-300x170.jpg",
+      "videoUrl": "https://s2.lightspeedst.net/s1/mp4/ishura/hd/1.mp4",
+      "releaseDate": "2024-01-03",
+      "isLancamento": true
+    },
+    {
+      "id": "G9DUEMW43",  
+      "animeId": "GDKHZEJ0K",  
+      "season": 1,
+      "title": "Episódio 2",  
+      "slug": "episodio-2",  
+      "image": "/uploads/2025-01/abbzArBtIwTAaOCedkspbpveImL-300x170.jpg",
+      "videoUrl": "https://s2.lightspeedst.net/s2/mp4/ishura/hd/2.mp4",
+      "releaseDate": "2024-01-03",
+      "isLancamento": true
+    }
+  ]
+}

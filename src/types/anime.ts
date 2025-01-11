@@ -1,29 +1,36 @@
-// src/types/anime.ts
+// Definição do tipo para áudio
+export type AudioType = 'Dublado' | 'Legendado' | 'Dub | Leg';
 
-export type AudioType = 'Dublado' | 'Legendado';
-export type Status = 'Em exibição' | 'Finalizado' | 'Pausado' | 'Não anunciado';
+// Definição do tipo para gênero
+export type Genre = 'Ação' | 'Fantasia' | 'Aventura' | 'Comédia' | 'Drama' | 'Shoujo';
 
+// Definição do tipo para o dia da semana em que o anime é transmitido
+export type AiringDay = 'Segunda-feira' | 'Terça-feira' | 'Quarta-feira' | 'Quinta-feira' | 'Sexta-feira' | 'Sábado' | 'Domingo';
+
+// Interface para o objeto Anime
 export interface Anime {
-  id: number;
-  name: string;
+  isRelease: boolean;
+  isPopularSeason: boolean;
+  isNextSeason: boolean;
+  isThumbnail: boolean;
+  isMovie: boolean;
+  id: string;
   slug: string;
-  data: string;
+  name: string;
+  releaseYear: string;
   image: string;
   synopsis: string;
-  isLancamento: boolean;
   rating: number;
   score: number;
-  genres: string[];
-  airing: string;
+  genres: Genre[]; // Agora o tipo é um array de Genre
+  airingDay: AiringDay;
   episodes: number;
   season: number;
-  isNextSeason: boolean;
-  audioType?: AudioType;
-  status?: Status;
-  isThumbnail?: boolean;
-  imageThumbnail?: string;
+  audioType: AudioType;
+  thumbnailImage: string;
 }
 
-export interface AnimesData {
-  Animes: Anime[];
+// Interface para o conjunto de animes
+export interface AnimeData {
+  animes: Anime[]; 
 }
