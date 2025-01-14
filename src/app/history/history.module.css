@@ -18,12 +18,9 @@
 }
 
 .history-item {
-  
-  
   border-radius: 8px;
   padding: 8px;
   text-align: left;
-  
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 

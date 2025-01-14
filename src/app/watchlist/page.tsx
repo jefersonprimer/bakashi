@@ -3,14 +3,14 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Anime } from "../../types/anime";
-import animesData from "../../data/animes.json"; // Dados de animes
+import animesData from "../../data/animes.json"; 
 import styles from "./styles.module.css";
 
 const ListaPage = () => {
   const [animeList, setAnimeList] = useState<Anime[]>([]);
   const router = useRouter();
   const searchParams = useSearchParams();
-  const animeId = searchParams.get("id"); // ID do anime passado via query
+  const animeId = searchParams.get("id"); 
 
   useEffect(() => {
     const storedList = localStorage.getItem("animeList");
@@ -19,7 +19,7 @@ const ListaPage = () => {
     }
 
     if (animeId) {
-      const anime = animesData.Animes.find((a) => a.id === Number(animeId));
+      const anime = animesData.animes.find((a) => a.id === Number(animeId));
       if (anime) {
         if (!animeList.some((a) => a.id === anime.id)) {
           const confirmAdd = confirm(
@@ -53,7 +53,7 @@ const ListaPage = () => {
   };
 
   const handlePlusClick = (animeId: number) => {
-    const anime = animesData.Animes.find((a) => a.id === animeId);
+    const anime = animesData.animes.find((a) => a.id === animeId);
     if (anime) {
       handleAddAnime(anime);
     }
@@ -89,7 +89,7 @@ const ListaPage = () => {
 
       <div className={styles.animeGrid}>
         <h2>Adicionar Mais Animes</h2>
-        {animesData.Animes.map((anime) => (
+        {animesData.animes.map((anime) => (
           <div key={anime.id} className={styles.animeCard}>
             <img src={anime.image} alt={anime.name} className={styles.image} />
             <div className={styles.cardButtons}>

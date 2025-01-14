@@ -4,20 +4,20 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faTv, faCalendar, faClock, faHistory } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faTv, faCalendar, faClock, faHistory, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import styles from './Header.module.css';
 import logo from '../../../../public/logo.png';
 import animesData from '@/data/animes.json';
 import { useRouter } from 'next/navigation';
-
-// Importando as interfaces dos arquivos corretos
-import { Anime } from '@/types/anime'; // Caminho correto para Anime
+import { Anime } from '@/types/anime'; // Importando a interface Anime
 
 export default function Header() {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredAnimes, setFilteredAnimes] = useState<Anime[]>([]);
   const [isOpen, setIsOpen] = useState(false); // Controla se os resultados estão visíveis
+  const [isDropdownOpen, setDropdownOpen] = useState(false); // Controla o dropdown de navegação
   const resultsRef = useRef<HTMLUListElement | null>(null); // Referência para o container dos resultados de pesquisa
+  const dropdownRef = useRef<HTMLDivElement | null>(null); // Referência para o container do menu dropdown
   const router = useRouter(); // Usando o useRouter para navegação programática
 
   useEffect(() => {
@@ -34,25 +34,25 @@ export default function Header() {
     }
   }, [searchTerm]);
 
-  // Função que detecta clique fora do contêiner de resultados
+  // Função que detecta clique fora do contêiner de resultados ou dropdown
   const handleClickOutside = (event: MouseEvent) => {
-    if (resultsRef.current && !resultsRef.current.contains(event.target as Node)) {
+    if (
+      (resultsRef.current && !resultsRef.current.contains(event.target as Node)) ||
+      (dropdownRef.current && !dropdownRef.current.contains(event.target as Node))
+    ) {
       setIsOpen(false); // Fecha os resultados se clicar fora
+      setDropdownOpen(false); // Fecha o dropdown se clicar fora
     }
   };
 
   // Adiciona e remove o ouvinte de clique fora do container
   useEffect(() => {
-    if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-    } else {
-      document.removeEventListener('mousedown', handleClickOutside);
-    }
+    document.addEventListener('mousedown', handleClickOutside);
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside); // Limpa o ouvinte ao desmontar
     };
-  }, [isOpen]);
+  }, []);
 
   // Função de redirecionamento quando o usuário pressionar Enter ou clicar no botão de pesquisa
   const handleSearchSubmit = (event: React.FormEvent) => {
@@ -61,6 +61,11 @@ export default function Header() {
       // Redireciona para a página de pesquisa
       router.push(`/search?query=${searchTerm}`);
     }
+  };
+
+  // Função para alternar a visibilidade do dropdown
+  const toggleDropdown = () => {
+    setDropdownOpen((prevState) => !prevState);
   };
 
   return (
@@ -75,6 +80,59 @@ export default function Header() {
 
         {/* Links de Navegação */}
         <ul className={styles.navLinks}>
+          {/* Navegação com Dropdown */}
+          <li className={styles.navItem} onClick={toggleDropdown}>
+            <Link href="#">
+              Navegação
+              
+              <FontAwesomeIcon icon={faCaretDown} className={styles.icon} />
+            </Link>
+            {/* Dropdown */}
+            {isDropdownOpen && (
+              <div ref={dropdownRef} className={styles.dropdownMenu}>
+                <div className={styles.menuContent}>
+                  {/* Coluna de Categorias (Popular, Novidades, A-Z) */}
+                  <div className={styles.categoriesColumn}>
+                    <div className={styles.categoryTitle}>Categorias</div>
+                    <Link href="/videos/popular">Popular</Link>
+                    <Link href="/videos/new">Novidades</Link>
+                    <Link href="/videos/alphabetical">A-Z</Link>
+                  </div>
+
+                  {/* Divisória entre as colunas */}
+                  <div className={styles.divider}></div>
+
+                  {/* Coluna de Gêneros */}
+                  <div className={styles.genresSection}>
+                    <h3 className={styles.dropdownTitle}>Gêneros</h3>
+                    <div className={styles.genresGrid}>
+                      <div className={styles.genresColumn}>
+                        <Link href="/videos/action">Ação</Link>
+                        <Link href="/videos/adventure">Aventura</Link>
+                        <Link href="/videos/comedy">Comédia</Link>
+                        <Link href="/videos/drama">Drama</Link>
+                        <Link href="/videos/fantasy">Fantasia</Link>
+                      </div>
+                      <div className={styles.genresColumn}>
+                        <Link href="/series/music">Música</Link>
+                        <Link href="/series/romance">Romance</Link>
+                        <Link href="/series/sci-fi">Ficção Científica</Link>
+                        <Link href="/series/seinen">Seinen</Link>
+                        <Link href="/series/shoujo">Shoujo</Link>
+                      </div>
+                      <div className={styles.genresColumn}>
+                        <Link href="/series/shounen">Shounen</Link>
+                        <Link href="/series/slice-of-life">Slice-of-Life</Link>
+                        <Link href="/series/sports">Esportes</Link>
+                        <Link href="/series/supernatural">Sobrenatural</Link>
+                        <Link href="/series/thriller">Suspense</Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </li>
           <li>
             <Link href="/series">
               <FontAwesomeIcon icon={faTv} className={styles.icon} />
@@ -94,7 +152,7 @@ export default function Header() {
             </Link>
           </li>
           <li>
-            <Link href="/historico">
+            <Link href="/history">
               <FontAwesomeIcon icon={faHistory} className={styles.icon} />
               Histórico
             </Link>
@@ -141,7 +199,7 @@ export default function Header() {
                   </Link>
                 </li>
               ))}
-              {/* Exibe o link "View All Results" se houver mais de 6 itens */}
+              {/* Exibe o link "Ver todos os resultados" se houver mais de 6 itens */}
               {filteredAnimes.length > 6 && (
                 <li className={styles.viewAll}>
                   <Link href={`/search?query=${searchTerm}`}>

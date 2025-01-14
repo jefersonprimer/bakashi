@@ -61,11 +61,16 @@ const AnimeCarousel: React.FC<AnimeCarouselProps> = ({
 
               <div className={styles.cardInfo}>
                 <h3 className={styles.name}>{anime.name}</h3>
-                <p className={styles.infoText}>
-                  <MaturityRating rating={anime.rating} />
-                  {anime.score}{" "}
-                  <FontAwesomeIcon icon={faStar} className={styles.iconStar} />
-                </p>
+                <div className={styles.infoText}>
+                  <div className={styles.flexContainer}>
+                      <MaturityRating rating={anime.rating} />
+                      <span className={styles.score}>
+                          {anime.score}
+                          <FontAwesomeIcon icon={faStar} className={styles.iconStar} />
+                      </span>
+                  </div>
+                 </div>
+
                 <p className={`${styles.infoText} ${styles.seasonText}`}>
                   Season: {anime.season}
                 </p>

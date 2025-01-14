@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { Anime } from '@/types/anime';
 import { Episode } from '@/types/episode';
 
-import styles from './historico.module.css';
+import styles from './history.module.css';
 
 const HistoryPage = () => {
   const [history, setHistory] = useState<Episode[]>([]);
@@ -14,10 +14,9 @@ const HistoryPage = () => {
     const loadData = async () => {
       const animesData = await import('@/data/animes.json');
       const episodesData = await import('@/data/episodes.json');
-      setAnimes(animesData.animes); // Array de animes
-      setHistory(episodesData.episodes.slice(0, 10)); // Últimos 10 episódios
+      setAnimes(animesData.animes); 
+      setHistory(episodesData.episodes.slice(0, 10)); 
     };
-
     loadData();
   }, []);
 

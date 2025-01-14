@@ -7,10 +7,10 @@ body {
 }
 
 .home-container {
-  justify-content: center;
+  /* justify-content: center;
   align-items: center;
   display: flex;
-  flex-direction: column; /* Garante que os componentes fiquem empilhados verticalmente */
+  flex-direction: column;  */
 }
 
 .anime-carousel-fullscreen {
@@ -23,10 +23,11 @@ body {
 
 .anime-carousel-lancamentos {
   position: relative; /* Certifique-se de que está no fluxo normal */
-  margin-top: -22vh; /* Sobrepõe parcialmente o fullscreen */
-  padding: 20px;
+  margin-top: -20vh; /* Sobrepõe parcialmente o fullscreen */
+  /* margin: auto -10vh; */
+  /* padding: 20px; */
   z-index: 2;
-  backdrop-filter: blur(5px); /* Desfoque no fundo */
+  backdrop-filter: blur(2px); /* Desfoque no fundo */
 }
 
 

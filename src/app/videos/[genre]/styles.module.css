@@ -1,0 +1,19 @@
+.genreSection {
+  margin: 2rem 0;
+}
+
+.genreTitle {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.carouselContainer {
+  margin-bottom: 2rem;
+}
+
+.carouselTitle {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #666;
+}

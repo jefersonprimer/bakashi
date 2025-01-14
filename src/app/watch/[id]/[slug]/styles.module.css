@@ -1,110 +1,66 @@
 .episodePage {
   display: flex;
   justify-content: center;
-  padding: 20px;
 }
 
 .content {
   display: flex;
   width: 100%;
-  gap: 20px; /* Espaçamento entre as colunas */
 }
 
 .videoPlayerSection {
-  flex: 2; /* Toma 2/3 da largura da página */
-}
-
-.rightColumn {
-  width: 350px;
-  padding: 20px;
-  background-color: #1c1c1c;
-  border-radius: 8px;
-}
-
-
-.recommendationsList {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.recommendationItem {
-  display: flex;
-  align-items: center;
-  margin-bottom: 15px;
-  background-color: #333;
-  border-radius: 8px;
+  width: 1200px; 
   padding: 10px;
 }
 
-.recommendationImage {
-  width: 60px;
-  height: 90px;
-  object-fit: cover;
-  margin-right: 10px;
-  border-radius: 4px;
-}
-
-.recommendationDetails {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  flex-grow: 1;
-}
-
-.recommendationName {
-  font-size: 16px;
-  font-weight: 500;
-  color: #fff;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap; /* Impede quebra de linha */
-  overflow: hidden; /* Oculta o texto que ultrapassa */
-  text-overflow: ellipsis; /* Adiciona '...' no texto que ultrapassa */
-  max-width: 200px; /* Limita o tamanho máximo do nome */
-}
-
-.recommendationDate {
-  font-size: 14px;
-  color: #777;
-  margin-top: 5px;
-}
-
-.noRecommendations {
-  color: #999;
-  font-style: italic;
-}
-
-/* Botões de navegação (anterior e próximo) */
+/* Botões de navegação (anterior, detalhes e próximo) */
 .episodeNavigation {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
+  gap: 10px; /* Espaçamento entre os botões */
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.prevEpisode,
-.nextEpisode {
+.episodeNavigation a {
+  flex: 1; /* Todos os botões ocupam o mesmo espaço proporcional */
+  text-align: center; /* Centraliza o conteúdo */
   padding: 10px;
-  background-color: #0070f3;
   color: white;
-  border-radius: 5px;
   text-decoration: none;
-  margin-right: 10px;
+  background-color: #0070f3; /* Cor de fundo padrão */
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Animação suave */
 }
 
+.detailsButton {
+ 
+}
+
+.detailsButton:hover,
 .prevEpisode:hover,
 .nextEpisode:hover {
-  background-color: #005bb5;
+  background-color: #005bb5; /* Cor ao passar o mouse */
 }
 
-/* Estilo para a área do poster */
-.poster {
+.prevEpisode.disabled,
+.nextEpisode.disabled {
+  pointer-events: none; 
+  opacity: 0.5; /* Visual de botão desativado */
+}
+
+
+.infoBox {
+  padding: 20px;
+}
+
+.infoBox h1 {
   display: flex;
-  gap: 10px;
+  align-items: center;
+  justify-content: center;
 }
 
-.genres {
+ .genres {
   margin-top: 15px;
   margin-bottom: 10px;
 }
@@ -123,9 +79,96 @@
   text-decoration: underline;
 }
 
-/* Não esconda o botão caso o episódio anterior ou próximo não exista */
-.prevEpisode.disabled,
-.nextEpisode.disabled {
-  pointer-events: none; /* Desativa o clique */
-  opacity: 0.5; /* Deixa o botão mais transparente */
+.poster {
+  display: flex;
+  gap: 10px;
 }
+
+.poster img {
+  width: 140px;
+  height: 210px;
+}
+
+/* Coluna Direita: Recomendações */
+.rightColumn {
+  overflow-x: hidden;
+  width: 350px;
+  padding: 1rem;
+  color: #FFF;
+  background-color: #1c1c1c;
+}
+
+.rightColumn a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.rightColumn h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #FFFFFF;
+}
+
+.recommendationsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.recommendationItem {
+  display: flex; 
+  margin-bottom: 16px;
+  overflow: hidden;
+  border-bottom: 1px solid rgb(78, 77, 77);
+}
+
+.recommendationContent {
+  display: flex;
+  align-items: flex-start; 
+  width: 100%;
+  padding: 8px;
+}
+
+.recommendationImage {
+  width: 80px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 12px;
+  flex-shrink: 0; 
+}
+
+.recommendationDetails {
+  display: flex;
+  flex-direction: column; 
+  justify-content: flex-start; 
+  align-items: flex-start;
+  flex-grow: 1;
+}
+
+.recommendationName {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #FFFFFF;
+  white-space: nowrap; 
+  overflow: hidden;    
+  text-overflow: ellipsis; 
+  max-width: 200px;
+}
+
+.recommendationName:hover {
+  color: #007acc;
+}
+
+.recommendationDate {
+  font-size: 0.85rem; 
+  color: #666;
+  margin-top: 4px;
+}
+
+.noRecommendations {
+  font-size: 1.1rem;
+  color: #FFFFFF;
+  text-align: center;
+}
+

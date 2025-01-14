@@ -66,13 +66,13 @@ const AnimeCarouselFullScreen: React.FC<AnimeCarouselFullScreenProps> = ({
           <div className={styles.leftColumn}>
             <MaturityRating rating={thumbnailAnimes[currentIndex].rating} />{" "}
             {thumbnailAnimes[currentIndex].audioType}{" "}
-            {thumbnailAnimes[currentIndex].genres.join(", ")}
+            {/* {thumbnailAnimes[currentIndex].genres.join(", ")} */}
             <p className={styles.name}>{thumbnailAnimes[currentIndex].name}</p>
             <p className={styles.synopsis}>
               {thumbnailAnimes[currentIndex].synopsis}
             </p>
             <div className={styles.buttonsContainer}>
-              <button className={styles.playButton}>
+              <div className={styles.playButton}>
                 <div className={styles.tooltip}>
                   <span className={styles.tooltipText}>Play</span>
                   <div className={styles.playButtonContent}>
@@ -88,8 +88,8 @@ const AnimeCarouselFullScreen: React.FC<AnimeCarouselFullScreenProps> = ({
                     </svg>
                   </div>
                 </div>
-                <span>comeca a assistir</span>
-              </button>
+                <span className={styles.titleName}>COMEÇAR A ASSISTIR E1</span>
+              </div>
 
               <div className={styles.buttonBookmark}>
                 <div className={styles.tooltip}>
@@ -108,22 +108,22 @@ const AnimeCarouselFullScreen: React.FC<AnimeCarouselFullScreenProps> = ({
               </div>
             </div>
           </div>
+            <div className={styles.pageIndicator}>
+              {thumbnailAnimes.map((anime, index) => (
+                <button
+                  key={anime.id}
+                  className={`${styles.pageDot} ${
+                    currentIndex === index ? styles.active : ""
+                  }`}
+                  onClick={() => navigateToPage(index)}
+                >
+                  <span className={styles.pageLoader}></span>
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
 
-        <div className={styles.pageIndicator}>
-          {thumbnailAnimes.map((anime, index) => (
-            <button
-              key={anime.id}
-              className={`${styles.pageDot} ${
-                currentIndex === index ? styles.active : ""
-              }`}
-              onClick={() => navigateToPage(index)}
-            >
-              <span className={styles.pageLoader}></span>
-            </button>
-          ))}
-        </div>
-      </div>
 
       <div className={styles.navigationButtons}>
         <button

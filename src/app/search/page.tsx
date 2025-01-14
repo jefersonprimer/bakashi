@@ -2,12 +2,14 @@
 
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
-import animesData from '@/data/animes.json';
-import { Anime } from '@/types/anime';
+
+import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+
+import animesData from '@/data/animes.json';
+import { Anime } from '@/types/anime';
 import styles from './styles.module.css';
-import Head from 'next/head';
 
 export default function Search() {
   const [searchTerm, setSearchTerm] = useState('');

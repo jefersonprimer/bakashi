@@ -133,23 +133,22 @@ const Page = () => {
           {recommendations.length > 0 ? (
             recommendations.map((recommendation) => (
               <li key={recommendation.id} className={styles.recommendationItem}>
-  <Link href={`/series/${recommendation.id}/${recommendation.slug}`}>
-    <div className={styles.recommendationContent}>
-      <img
-        src={recommendation.image}
-        alt={recommendation.name}
-        className={styles.recommendationImage}
-      />
-      <div className={styles.recommendationDetails}>
-        <h3 className={styles.recommendationName}>{recommendation.name}</h3>
-        <span className={styles.recommendationDate}>
-          {recommendation.releaseYear}
-        </span>
-      </div>
-    </div>
-  </Link>
-</li>
-
+               <Link href={`/series/${recommendation.id}/${recommendation.slug}`}>
+                  <div className={styles.recommendationContent}>
+                    <img
+                      src={recommendation.image}
+                      alt={recommendation.name}
+                      className={styles.recommendationImage}
+                    />
+                    <div className={styles.recommendationDetails}>
+                      <h3 className={styles.recommendationName}>{recommendation.name}</h3>
+                      <span className={styles.recommendationDate}>
+                        {recommendation.releaseYear}
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              </li>
             ))
           ) : (
             <p className={styles.noRecommendations}>

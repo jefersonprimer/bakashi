@@ -1,27 +1,24 @@
-/* Estilos para a página de busca */
 .searchPage {
   display: flex;
-  justify-content: center; /* Centraliza o conteúdo horizontalmente */
-  align-items: center; /* Centraliza o conteúdo verticalmente */
-  min-height: 100vh; /* Garantir que a página ocupe toda a altura da tela */
+  justify-content: center; 
+  align-items: center;
+  min-height: 100vh;
   background-color: #f4f4f4;
 }
 
-/* Contêiner de busca */
 .searchContainer {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centraliza os itens dentro do contêiner */
+  align-items: center; 
   justify-content: center;
   width: 100%;
-  max-width: 800px; /* Limita a largura do contêiner */
+  max-width: 800px; 
   padding: 20px;
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Campo de entrada de busca */
 .searchInput {
   width: 100%;
   padding: 10px;
@@ -31,7 +28,6 @@
   font-size: 16px;
 }
 
-/* Botão de busca */
 .searchButton {
   background-color: #0070f3;
   color: white;
@@ -47,7 +43,6 @@
   background-color: #005bb5;
 }
 
-/* Estilos para os resultados da busca */
 .results {
   list-style-type: none;
   padding: 0;
@@ -66,7 +61,6 @@
   background-color: #f0f0f0;
 }
 
-/* Conteúdo dos resultados */
 .resultContent {
   display: flex;
   align-items: center;
@@ -91,7 +85,6 @@
   color: #555;
 }
 
-/* Mensagem de 'Nenhum resultado' */
 .noResults {
   margin-top: 20px;
   color: #888;

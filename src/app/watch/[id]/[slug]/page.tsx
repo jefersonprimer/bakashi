@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import { FC } from "react";
 import { useParams } from "next/navigation";
@@ -71,6 +71,7 @@ const EpisodePage: FC = () => {
             </Link>
           </div>
 
+          {/* Passando o videoUrl do JSON para o VideoPlayer */}
           <VideoPlayer videoUrl={episode.videoUrl} posterImage={episode.image} />
 
           <div className={styles.infoBox}>
@@ -106,19 +107,21 @@ const EpisodePage: FC = () => {
             {suggestedAnimes.length > 0 ? (
               suggestedAnimes.map((recommendation: Anime) => (
                 <li key={recommendation.id} className={styles.recommendationItem}>
-                  <img
-                    src={recommendation.image}
-                    alt={recommendation.name}
-                    className={styles.recommendationImage}
-                  />
-                  <div className={styles.recommendationDetails}>
-                    <h3 className={styles.recommendationName}>
-                      {recommendation.name}
-                    </h3>
-                    <span className={styles.recommendationDate}>
-                      {recommendation.releaseYear}
-                    </span>
-                  </div>
+                  <Link href={`/series/${recommendation.id}/${recommendation.slug}`}>
+                    <div className={styles.recommendationContent}>
+                      <img
+                        src={recommendation.image}
+                        alt={recommendation.name}
+                        className={styles.recommendationImage}
+                      />
+                      <div className={styles.recommendationDetails}>
+                        <h3 className={styles.recommendationName}>{recommendation.name}</h3>
+                        <span className={styles.recommendationDate}>
+                          {recommendation.releaseYear}
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
                 </li>
               ))
             ) : (

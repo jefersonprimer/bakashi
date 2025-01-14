@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './MaturityRating.module.css'; // Ajuste o caminho do CSS conforme necessário
+import styles from './MaturityRating.module.css'; 
 
 interface MaturityRatingProps {
   rating: number;

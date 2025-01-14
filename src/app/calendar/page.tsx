@@ -9,7 +9,6 @@ import { Anime } from "@/types/anime";
 const CalendarPage = () => {
   const [currentDay, setCurrentDay] = useState<string>("");
 
-  // Tipando corretamente os dados importados de animesData
   const groupAnimesByDay = () => {
     const groupedAnimes: { [key: string]: Anime[] } = {};
     (animesData as { animes: Anime[] }).animes.forEach((anime) => {

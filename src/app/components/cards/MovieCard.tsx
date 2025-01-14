@@ -16,13 +16,13 @@ const MovieCard: React.FC<MovieCardProps> = ({
 }) => {
   // Filtrar itens onde isMovie = true
   const movies: Anime[] =
-    animesData.Animes?.filter((anime) => anime.isMovie) || [];
+    animesData.animes?.filter((anime) => anime.isMovie) || [];
 
   return (
     <div className={`${styles.movieContainer} ${className}`}>
       <h1 className={styles.titulo}>Filmes Disponíveis</h1>
       <p className={styles.subtitulo}>
-        Descubra os filmes disponíveis na nossa coleção!
+       Pegue a pipoca!
       </p>
       <AnimeCarousel animes={movies} itemsPerPage={itemsPerPage} />
     </div>

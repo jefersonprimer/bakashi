@@ -22,7 +22,7 @@ const AnimeCarouselDub: React.FC<AnimeCarouselDubProps> = ({
 
   return (
     <div className={`${styles.audioTypeContainer} ${className}`}>
-      <h1 className={styles.titulo}>Animes com Áudio Dublado</h1>
+      <h1 className={styles.titulo}>Dublagens em português</h1>
       <p className={styles.subtitulo}>
         Descubra os animes disponíveis com áudio dublado!
       </p>

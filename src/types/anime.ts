@@ -11,6 +11,8 @@ export type AiringDay = 'Segunda-feira' | 'Terça-feira' | 'Quarta-feira' | 'Qui
 export interface Anime {
   isRelease: boolean;
   isPopularSeason: boolean;
+  newReleases: boolean;
+  isPopular: boolean,
   isNextSeason: boolean;
   isThumbnail: boolean;
   isMovie: boolean;

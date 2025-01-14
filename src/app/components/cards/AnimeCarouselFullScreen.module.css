@@ -46,6 +46,22 @@
   width: 100%;
 }
 
+.cardContent {
+  
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  height: 300px; /* Define a altura fixa */
+ 
+  min-height: 300px;
+  padding: 16px;
+  box-sizing: border-box;
+  overflow: hidden; /* Esconde o texto excedente */
+  
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .leftColumn {
   width: 100%;
   text-align: left; /* Alinha o texto à esquerda */
@@ -61,6 +77,11 @@
   font-size: 1.8rem;
   font-weight: bold;
   margin: 10px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .audioType {
@@ -80,25 +101,28 @@
 }
 
 .buttonsContainer {
+  border: none;
   margin-top: 20px;
   margin-bottom: 30px;
   display: flex; /* Para alinhar os itens em linha */
   align-items: center; /* Alinha os itens verticalmente */
-  gap: 10px; /* Espaço entre os botões */
 }
 
 .playButton,
 .bookmarkButton {
   display: flex; /* Usado para alinhar os ícones e o texto */
   align-items: center; /* Alinha verticalmente os itens dentro do botão */
-  background: none;
-  border: 2px solid white;
-  border-radius: 5px;
-  padding: 10px 15px;
-  color: white;
+  padding: 8px 15px;
+  background-color: #ff640a;
+  color: #000;
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.titleName {
+  font-size: 0.9rem;
+  font-weight: bold;
 }
 
 .audioType {
@@ -106,7 +130,6 @@
   font-size: 1rem;
   color: white; /* Certifique-se de que a cor é visível */
 }
-
 
 /* calendar.module.css */
 .tooltip {
@@ -116,8 +139,7 @@
 }
 
 .iconPlay {
-  margin-right: 8px; /* Adiciona espaço entre o ícone de play e o texto */
-  fill: #ff640a;
+  fill: #000;
   display: flex;
   stroke-width: 2;
   height: 1.5rem;
@@ -131,14 +153,15 @@
 
 .iconBookmark {
   margin-left: 8px; /* Adiciona espaço entre o ícone de bookmark e o texto */
-  border: 1px solid #ff640a;
-  padding: 5px;
+  border: 2px solid #ff640a;
+  padding: 6px;
   align-items: center;
   fill: #ff640a;
   stroke-width: 2;
   height: 1.5rem;
   justify-content: center;
   width: 1.5rem;
+  cursor: pointer;
 }
 
 .tooltipText {
@@ -191,14 +214,14 @@
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-top: 20px;
+ 
 }
 
 .pageDot {
-  border: 2px solid white;
+  border: 1px solid gray;
   border-radius: 5px;
   width: 20px; /* Largura inicial da bolinha */
-  height: 10px;
+  height: 8px;
   position: relative;
   background-color: transparent;
   cursor: pointer;
@@ -206,6 +229,7 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  background-color: gray;
   transition: width 0.3s ease, background-color 0.3s ease; /* Transição suave para a largura e cor de fundo */
 }
 

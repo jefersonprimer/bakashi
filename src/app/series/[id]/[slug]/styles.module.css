@@ -1,56 +1,26 @@
-/* Container principal, com as duas colunas */
 .container {
   display: flex;
   justify-content: space-between;
   gap: 20px;
 }
 
-/* Coluna Esquerda: Conteúdo Principal */
 .leftColumn {
   flex: 1;
   text-align: center;
 }
 
-/* Cabeçalho com a imagem de poster e dados do anime */
 .sheader {
   margin-top: 20px;
   margin-bottom: 20px;
   display: flex;
   gap: 20px;
-  justify-content: center; /* Centraliza o conteúdo dentro da seção de cabeçalho */
+  justify-content: center; 
 }
-
-/* Estilo para o gênero */
-/* Container dos gêneros */
-.genresContainer {
-  
-  flex-wrap: wrap;
-  gap: 10px; /* Espaçamento entre os gêneros */
-  margin-bottom: 15px; /* Espaço entre os gêneros e a sinopse */
-}
-
-/* Cada gênero */
-.genreItem {
-  gap: 10px;
-  padding: 5px 10px;
-  background-color: #333; /* Fundo escuro para os itens de gênero */
-  border-radius: 2px; /* Bordas arredondadas */
-  font-size: 14px;
-  color: #fff;
-  margin: 2px 0; /* Pequeno espaçamento vertical entre os itens */
-  transition: background-color 0.3s;
-}
-
-/* Efeito de hover para os itens de gênero */
-.genreItem:hover {
-  background-color: #007acc; /* Muda a cor de fundo ao passar o mouse */
-}
-
 
 .sheader .blur {
   position: relative;
   flex: 1;
-  justify-content: center; /* Garante que a imagem de poster seja centralizada */
+  justify-content: center; 
 }
 
 .poster img {
@@ -80,6 +50,28 @@
   color: #fff;
 }
 
+/* Container dos gêneros */
+.genresContainer {
+  flex-wrap: wrap;
+  gap: 10px; 
+  margin-bottom: 15px;
+}
+
+.genreItem {
+  gap: 10px;
+  padding: 5px 10px;
+  background-color: #333; 
+  border-radius: 2px; 
+  font-size: 14px;
+  color: #fff;
+  margin: 2px 0; 
+  transition: background-color 0.3s;
+}
+
+.genreItem:hover {
+  background-color: #007acc; 
+}
+
 .extra {
   margin-top: 1rem;
   font-size: 1.1rem;
@@ -87,7 +79,7 @@
   color: #ccc;
 }
 
-/* Botões de ação */
+/* Botões container */
 .buttonsContainer {
   display: flex;
   gap: 10px;
@@ -124,7 +116,7 @@
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* Lista de episódios */
+/* episódios container */
 .episodesContainer {
   padding: 20px;
   background-color: #1b1b1b;
@@ -171,12 +163,6 @@
   width: 100%;
 }
 
-.episodeNumber {
-  margin-right: 10px;
-  font-size: 14px;
-  color: #aaa;
-}
-
 .episodeTitle {
   flex: 1;
   font-size: 16px;
@@ -203,11 +189,16 @@
 
 /* Coluna Direita: Recomendações */
 .rightColumn {
-  overflow-x: hidden; /* Impede o scroll horizontal */
-  width: 380px;
-  padding: 20px;
+  overflow-x: hidden;
+  width: 350px;
   padding: 1rem;
-  border-radius: 5px;
+  color: #FFF;
+  background-color: #1c1c1c;
+}
+
+.rightColumn a {
+  color: inherit;
+  text-decoration: none;
 }
 
 .rightColumn h2 {
@@ -216,49 +207,6 @@
   color: #FFFFFF;
 }
 
-.recommendationItem {
-  display: flex;
-  margin-bottom: 16px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.recommendationContent {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  padding: 8px;
-}
-
-.recommendationImage {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-right: 12px;
-}
-
-.recommendationDetails {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.recommendationName {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-}
-
-.recommendationDate {
-  font-size: 14px;
-  color: #666;
-}
-
-
-/* Lista de recomendações */
 .recommendationsList {
   list-style: none;
   padding: 0;
@@ -266,33 +214,44 @@
 }
 
 .recommendationItem {
-  display: flex;
-  margin-bottom: 1.5rem;
+  display: flex; 
+  margin-bottom: 16px;
+  overflow: hidden;
   border-bottom: 1px solid rgb(78, 77, 77);
+}
+
+.recommendationContent {
+  display: flex;
+  align-items: flex-start; 
+  width: 100%;
+  padding: 8px;
 }
 
 .recommendationImage {
   width: 80px;
   height: 100px;
   object-fit: cover;
-  border-radius: 5px;
-  margin-right: 1rem;
+  margin-right: 12px;
+  flex-shrink: 0; 
 }
 
 .recommendationDetails {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex-direction: column; 
+  justify-content: flex-start; 
+  align-items: flex-start;
+  flex-grow: 1;
 }
 
 .recommendationName {
+  margin: 0;
   font-size: 1rem;
   font-weight: bold;
   color: #FFFFFF;
-  white-space: nowrap; /* Impede quebra de linha */
-  overflow: hidden;    /* Esconde o texto que ultrapassar o limite */
-  text-overflow: ellipsis; /* Adiciona "..." no final do texto se ele for muito grande */
-  max-width: 200px; /* Garante que o texto não ultrapasse a largura da coluna */
+  white-space: nowrap; 
+  overflow: hidden;    
+  text-overflow: ellipsis; 
+  max-width: 200px;
 }
 
 .recommendationName:hover {
@@ -300,8 +259,9 @@
 }
 
 .recommendationDate {
-  font-size: 0.9rem;
-  color: #FFFFFF;
+  font-size: 0.85rem; /* Deixa a data menor que o nome */
+  color: #666;
+  margin-top: 4px; /* Espaçamento entre o nome e a data */
 }
 
 .noRecommendations {

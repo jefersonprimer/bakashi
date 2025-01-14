@@ -1,0 +1,16 @@
+.videoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #000; /* Fundo preto para destacar o vídeo */
+
+}
+
+.videoIframe {
+  width: 1200px; /* Largura fixa */
+  height: calc(1200px * 9 / 16); /* Altura calculada para 16:9 */
+  max-width: 100%; /* Responsivo em telas menores */
+  border: none; /* Remove bordas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra opcional */
+}
