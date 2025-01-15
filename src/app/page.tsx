@@ -3,10 +3,10 @@
 import { useState, useEffect } from "react";
 
 import AnimeCarouselFullScreen from "./components/cards/AnimeCarouselFullScreen";
-// import AnimeCarouselLancamentos from './components/cards/AnimeCarouselLancamentos';
+import AnimeCarouselLancamentos from './components/cards/AnimeCarouselLancamentos';
 
 import { Anime } from "../types/anime"; 
-import animesData from "../data/animes.json"; 
+import animesData from "@/data/animes.json"; 
 
 import "./globals.css";
 
@@ -29,11 +29,11 @@ const HomePage = () => {
 
   return (
     <div className="home-container">
-      {/* <AnimeCarouselFullScreen
+      <AnimeCarouselFullScreen
         animes={animes}
         className="anime-carousel-fullscreen"
-      /> */}
-      {/* <AnimeCarouselLancamentos className="anime-carousel-lancamentos" /> */}
+      />
+      <AnimeCarouselLancamentos className="anime-carousel-lancamentos" />
       {/* <div>
         <h1>Ainda está procurando algo pra assistir?</h1>
         <p>Confira o nosso acervo completo</p>

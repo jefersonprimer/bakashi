@@ -76,7 +76,7 @@ export default function Header() {
           {/* Navegação com Dropdown */}
           <li className={styles.navItem} onClick={toggleDropdownNav}>
             <Link href="#">
-              <span>Navegar</span>
+              <span className={styles.titleNavegation}>Navegar</span>
               <div className={`${styles.ercHeaderSvg} menu-icon`}>
                 <svg
                   className={styles.headerSvgIcon}
@@ -104,7 +104,7 @@ export default function Header() {
                     <Link href="/calendar">Calendário</Link>
                     <Link href="/history">Histórico</Link>
                     <Link href="/series">Animes</Link>
-                    <Link href="/watch">Episódios</Link>
+                    {/* <Link href="/watch">Episódios</Link> */}
                   </div>
 
                   {/* Divisória entre as colunas */}
@@ -112,7 +112,7 @@ export default function Header() {
 
                   {/* Coluna de Gêneros */}
                   <div className={styles.genresSection}>
-                    <h3 className={styles.dropdownTitle}>GÊNEROS</h3>
+                    <h3 className={styles.genresTitle}>GÊNEROS</h3>
                     <div className={styles.genresGrid}>
                       <div className={styles.genresColumn}>
                         <Link href="/videos/action">Ação</Link>
@@ -145,7 +145,7 @@ export default function Header() {
           {/* Dropdown de Notícias */}
           <li className={styles.navItem} onClick={toggleDropdownNews}>
             <Link href="#">
-              <span>Notícias</span>
+              <span className={styles.titleNews}>Notícias</span>
               <div className={`${styles.ercHeaderSvg} menu-icon`}>
                 <svg
                   className={styles.headerSvgIcon}
@@ -166,9 +166,9 @@ export default function Header() {
               <div ref={dropdownNewsRef} className={`${styles.dropdownMenu} ${styles.newsDropdown}`}>
                 <div className={styles.menuContent}>
                   <div className={styles.categoriesColumn}>
-                    <Link href="/news/popular">Anunciamentos</Link>
+                    <Link href="/news/popular">Todas as Notícias</Link>
                     <Link href="/news/new">Animes do Ano</Link>
-                    <Link href="/news/alphabetical">Latest</Link>
+                    <Link href="/news/alphabetical">Animes da Temporada</Link>
                   </div>
                 </div>
               </div>

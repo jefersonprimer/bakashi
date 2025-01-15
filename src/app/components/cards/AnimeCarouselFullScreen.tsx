@@ -2,11 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faChevronRight,
-  faChevronLeft,
-  faStar,
-} from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight, faChevronLeft, faStar } from "@fortawesome/free-solid-svg-icons";
 import styles from "./AnimeCarouselFullScreen.module.css";
 import animesData from "@/data/animes.json";
 import { Anime } from "@/types/anime";
