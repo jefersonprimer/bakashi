@@ -4,20 +4,22 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faTv, faCalendar, faClock, faHistory, faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import styles from './Header.module.css';
 import logo from '../../../../public/logo.png';
 import animesData from '@/data/animes.json';
 import { useRouter } from 'next/navigation';
-import { Anime } from '@/types/anime'; // Importando a interface Anime
+import { Anime } from '@/types/anime'; 
 
 export default function Header() {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredAnimes, setFilteredAnimes] = useState<Anime[]>([]);
   const [isOpen, setIsOpen] = useState(false); // Controla se os resultados estão visíveis
-  const [isDropdownOpen, setDropdownOpen] = useState(false); // Controla o dropdown de navegação
+  const [isDropdownNavOpen, setDropdownNavOpen] = useState(false); // Dropdown de navegação
+  const [isDropdownNewsOpen, setDropdownNewsOpen] = useState(false); // Dropdown de notícias
   const resultsRef = useRef<HTMLUListElement | null>(null); // Referência para o container dos resultados de pesquisa
-  const dropdownRef = useRef<HTMLDivElement | null>(null); // Referência para o container do menu dropdown
+  const dropdownNavRef = useRef<HTMLDivElement | null>(null); // Referência para o container do menu dropdown de navegação
+  const dropdownNewsRef = useRef<HTMLDivElement | null>(null); // Referência para o container do menu dropdown de notícias
   const router = useRouter(); // Usando o useRouter para navegação programática
 
   useEffect(() => {
@@ -38,10 +40,12 @@ export default function Header() {
   const handleClickOutside = (event: MouseEvent) => {
     if (
       (resultsRef.current && !resultsRef.current.contains(event.target as Node)) ||
-      (dropdownRef.current && !dropdownRef.current.contains(event.target as Node))
+      (dropdownNavRef.current && !dropdownNavRef.current.contains(event.target as Node)) ||
+      (dropdownNewsRef.current && !dropdownNewsRef.current.contains(event.target as Node))
     ) {
       setIsOpen(false); // Fecha os resultados se clicar fora
-      setDropdownOpen(false); // Fecha o dropdown se clicar fora
+      setDropdownNavOpen(false); // Fecha o dropdown de navegação
+      setDropdownNewsOpen(false); // Fecha o dropdown de notícias
     }
   };
 
@@ -63,9 +67,13 @@ export default function Header() {
     }
   };
 
-  // Função para alternar a visibilidade do dropdown
-  const toggleDropdown = () => {
-    setDropdownOpen((prevState) => !prevState);
+  // Funções para alternar a visibilidade dos dropdowns
+  const toggleDropdownNav = () => {
+    setDropdownNavOpen((prevState) => !prevState);
+  };
+
+  const toggleDropdownNews = () => {
+    setDropdownNewsOpen((prevState) => !prevState);
   };
 
   return (
@@ -81,22 +89,24 @@ export default function Header() {
         {/* Links de Navegação */}
         <ul className={styles.navLinks}>
           {/* Navegação com Dropdown */}
-          <li className={styles.navItem} onClick={toggleDropdown}>
+          <li className={styles.navItem} onClick={toggleDropdownNav}>
             <Link href="#">
-              Navegação
-              
+              Navegar
               <FontAwesomeIcon icon={faCaretDown} className={styles.icon} />
             </Link>
-            {/* Dropdown */}
-            {isDropdownOpen && (
-              <div ref={dropdownRef} className={styles.dropdownMenu}>
+            {/* Dropdown de Navegação */}
+            {isDropdownNavOpen && (
+              <div ref={dropdownNavRef} className={styles.dropdownMenu}>
                 <div className={styles.menuContent}>
                   {/* Coluna de Categorias (Popular, Novidades, A-Z) */}
                   <div className={styles.categoriesColumn}>
-                    <div className={styles.categoryTitle}>Categorias</div>
-                    <Link href="/videos/popular">Popular</Link>
+                    <Link href="/videos/popular">Populares</Link>
                     <Link href="/videos/new">Novidades</Link>
                     <Link href="/videos/alphabetical">A-Z</Link>
+                    <Link href="/calendar">Calendário</Link>
+                    <Link href="/history">Histórico</Link>
+                    <Link href="/series">Animes</Link>
+                    <Link href="/watch">Episódios</Link>
                   </div>
 
                   {/* Divisória entre as colunas */}
@@ -104,7 +114,7 @@ export default function Header() {
 
                   {/* Coluna de Gêneros */}
                   <div className={styles.genresSection}>
-                    <h3 className={styles.dropdownTitle}>Gêneros</h3>
+                    <h3 className={styles.dropdownTitle}>GÊNEROS</h3>
                     <div className={styles.genresGrid}>
                       <div className={styles.genresColumn}>
                         <Link href="/videos/action">Ação</Link>
@@ -114,18 +124,18 @@ export default function Header() {
                         <Link href="/videos/fantasy">Fantasia</Link>
                       </div>
                       <div className={styles.genresColumn}>
-                        <Link href="/series/music">Música</Link>
-                        <Link href="/series/romance">Romance</Link>
-                        <Link href="/series/sci-fi">Ficção Científica</Link>
-                        <Link href="/series/seinen">Seinen</Link>
-                        <Link href="/series/shoujo">Shoujo</Link>
+                        <Link href="/videos/music">Música</Link>
+                        <Link href="/videos/romance">Romance</Link>
+                        <Link href="/videos/sci-fi">Ficção Científica</Link>
+                        <Link href="/videos/seinen">Seinen</Link>
+                        <Link href="/videos/shoujo">Shoujo</Link>
                       </div>
                       <div className={styles.genresColumn}>
-                        <Link href="/series/shounen">Shounen</Link>
-                        <Link href="/series/slice-of-life">Slice-of-Life</Link>
-                        <Link href="/series/sports">Esportes</Link>
-                        <Link href="/series/supernatural">Sobrenatural</Link>
-                        <Link href="/series/thriller">Suspense</Link>
+                        <Link href="/videos/shounen">Shounen</Link>
+                        <Link href="/videos/slice-of-life">Slice-of-Life</Link>
+                        <Link href="/videos/sports">Esportes</Link>
+                        <Link href="/videos/supernatural">Sobrenatural</Link>
+                        <Link href="/videos/thriller">Suspense</Link>
                       </div>
                     </div>
                   </div>
@@ -133,29 +143,24 @@ export default function Header() {
               </div>
             )}
           </li>
-          <li>
-            <Link href="/series">
-              <FontAwesomeIcon icon={faTv} className={styles.icon} />
-              Animes
+
+          {/* Dropdown de Notícias */}
+          <li className={styles.navItem} onClick={toggleDropdownNews}>
+            <Link href="#">
+              Notícias
+              <FontAwesomeIcon icon={faCaretDown} className={styles.icon} />
             </Link>
-          </li>
-          <li>
-            <Link href="/calendar">
-              <FontAwesomeIcon icon={faCalendar} className={styles.icon} />
-              Calendário
-            </Link>
-          </li>
-          <li>
-            <Link href="/watch">
-              <FontAwesomeIcon icon={faClock} className={styles.icon} />
-              Episódios
-            </Link>
-          </li>
-          <li>
-            <Link href="/history">
-              <FontAwesomeIcon icon={faHistory} className={styles.icon} />
-              Histórico
-            </Link>
+            {isDropdownNewsOpen && (
+              <div ref={dropdownNewsRef} className={`${styles.dropdownMenu} ${styles.newsDropdown}`}>
+                <div className={styles.menuContent}>
+                  <div className={styles.categoriesColumn}>
+                    <Link href="/news/popular">Anunciamentos</Link>
+                    <Link href="/news/new">Animes do Ano</Link>
+                    <Link href="/news/alphabetical">Latest</Link>
+                  </div>
+                </div>
+              </div>
+            )}
           </li>
         </ul>
 
@@ -169,7 +174,7 @@ export default function Header() {
             onChange={(e) => setSearchTerm(e.target.value)}
             onKeyDown={(e) => {
               if (e.key === 'Enter') {
-                handleSearchSubmit(e); 
+                handleSearchSubmit(e);
               }
             }}
           />
@@ -199,7 +204,6 @@ export default function Header() {
                   </Link>
                 </li>
               ))}
-              {/* Exibe o link "Ver todos os resultados" se houver mais de 6 itens */}
               {filteredAnimes.length > 6 && (
                 <li className={styles.viewAll}>
                   <Link href={`/search?query=${searchTerm}`}>

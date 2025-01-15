@@ -1,0 +1,190 @@
+.glossaryContainer {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;  /* Muda para coluna */
+  align-items: center;     /* Centraliza os itens */
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  position: relative;
+}
+
+.filterOptions {
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  top: 100%;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.filterOptions button {
+  margin: 5px 0;
+}
+
+.letterFilter {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;         /* Permite que os botões quebrem para a próxima linha, caso necessário */
+  margin-bottom: 20px;
+}
+
+.letterFilter button {
+  padding: 10px 16px;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.letterFilter button:hover {
+  background-color: #dcdcdc;
+}
+
+.carousel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 80%;
+  max-width: 1000px;
+}
+
+.anime_card {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+}
+
+.anime_card:hover {
+  transform: translateY(-10px);
+}
+
+.anime_content {
+  display: flex;
+  padding: 16px;
+  gap: 16px;
+}
+
+.anime_image {
+  width: 120px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.anime_details {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.anime_name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.anime_synopsis {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.anime_audio {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* src/app/popular/styles.module.css */
+
+.popularContainer {
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between; /* Alinha o título e o botão */
+  align-items: center; /* Alinha verticalmente */
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.filters {
+  display: flex;
+  align-items: center; /* Alinha verticalmente o SVG com o título */
+}
+
+.filters button {
+  display: flex;
+  align-items: center; /* Alinha o ícone e o texto */
+  padding: 10px 16px;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.filters button:hover {
+  background-color: #dcdcdc;
+}
+
+/* Diminuindo o tamanho do SVG */
+.svgIcon {
+  width: 20px; /* Ajuste o tamanho desejado */
+  height: 20px;
+  margin-right: 8px; /* Dá um espaçamento entre o ícone e o texto */
+}
+
+/* Filtro de opções */
+.filterOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.filterOptions button {
+  background-color: #f0f0f0;
+  padding: 10px 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.filterOptions button:hover {
+  background-color: #dcdcdc;
+}

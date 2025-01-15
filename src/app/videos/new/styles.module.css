@@ -1,0 +1,141 @@
+/* src/app/new-releases/styles.module.css */
+
+.newReleasesContainer {
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  position: relative; /* Necessário para a posição dos filtros sobre o conteúdo */
+}
+
+.header h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative; /* Garante que o botão de filtro e as opções fiquem no mesmo contexto */
+}
+
+.filters button {
+  padding: 10px 16px;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.filters button:hover {
+  background-color: #dcdcdc;
+}
+
+/* Filtro de opções */
+.filterOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: absolute; /* Posiciona os filtros sobre os outros elementos */
+  top: 100%; /* Fica logo abaixo do botão */
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10; /* Garante que fique sobre o conteúdo */
+}
+
+.filterOptions button {
+  background-color: #f0f0f0;
+  padding: 10px 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.filterOptions button:hover {
+  background-color: #dcdcdc;
+}
+
+/* src/app/popular/styles.module.css */
+
+.popularContainer {
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between; /* Alinha o título e o botão */
+  align-items: center; /* Alinha verticalmente */
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.filters {
+  display: flex;
+  align-items: center; /* Alinha verticalmente o SVG com o título */
+}
+
+.filters button {
+  display: flex;
+  align-items: center; /* Alinha o ícone e o texto */
+  padding: 10px 16px;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.filters button:hover {
+  background-color: #dcdcdc;
+}
+
+/* Diminuindo o tamanho do SVG */
+.svgIcon {
+  width: 20px; /* Ajuste o tamanho desejado */
+  height: 20px;
+  margin-right: 8px; /* Dá um espaçamento entre o ícone e o texto */
+}
+
+/* Filtro de opções */
+.filterOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.filterOptions button {
+  background-color: #f0f0f0;
+  padding: 10px 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.filterOptions button:hover {
+  background-color: #dcdcdc;
+}

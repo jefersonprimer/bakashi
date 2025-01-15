@@ -1,11 +1,90 @@
-os generos vao dentro da rota video, como action, fantasy, como pasta para se tornar rotas
+.glossaryContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
 
-cor audiotype = #9A9A9A
-cor hover card = #23252B / #1F2024
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+}
 
-cor body = #000000 
-cor segundaria das letras = #A0A0A0 , #9F9F9F
-cor book mark = #FF640A
-cor bolinhas de navegacao = #838586
-cor da bolinha do card atual = #FF640A
+.filters {
+  display: flex;
+  gap: 10px;
+  position: relative;
+}
+
+.filterOptions {
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  top: 100%;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.filterOptions button {
+  margin: 5px 0;
+}
+
+.letterFilter {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+.carousel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.anime_card {
+  width: 250px;
+  background-color: #f8f8f8;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.anime_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.anime_image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.anime_details {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.anime_name {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.anime_synopsis {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.anime_audio {
+  font-size: 0.8rem;
+  color: #777;
+}
