@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -22,22 +23,8 @@ export default function Header() {
   const dropdownNewsRef = useRef<HTMLDivElement | null>(null); // Referência para o container do menu dropdown de notícias
   const router = useRouter(); // Usando o useRouter para navegação programática
 
-  useEffect(() => {
-    // Filtra os animes com base no termo de busca
-    if (searchTerm) {
-      const filtered = animesData.animes.filter((anime) =>
-        anime.name.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-      setFilteredAnimes(filtered);
-      setIsOpen(true); // Exibe os resultados quando há algo para filtrar
-    } else {
-      setFilteredAnimes([]);
-      setIsOpen(false); // Oculta os resultados quando a busca é limpa
-    }
-  }, [searchTerm]);
-
-  // Função que detecta clique fora do contêiner de resultados ou dropdown
-  const handleClickOutside = (event: MouseEvent) => {
+   // Função que detecta clique fora do contêiner de resultados ou dropdown
+   const handleClickOutside = (event: MouseEvent) => {
     if (
       (resultsRef.current && !resultsRef.current.contains(event.target as Node)) ||
       (dropdownNavRef.current && !dropdownNavRef.current.contains(event.target as Node)) ||
@@ -58,15 +45,6 @@ export default function Header() {
     };
   }, []);
 
-  // Função de redirecionamento quando o usuário pressionar Enter ou clicar no botão de pesquisa
-  const handleSearchSubmit = (event: React.FormEvent) => {
-    event.preventDefault(); // Evita o comportamento padrão do formulário
-    if (searchTerm) {
-      // Redireciona para a página de pesquisa
-      router.push(`/search?query=${searchTerm}`);
-    }
-  };
-
   // Funções para alternar a visibilidade dos dropdowns
   const toggleDropdownNav = () => {
     setDropdownNavOpen((prevState) => !prevState);
@@ -76,23 +54,43 @@ export default function Header() {
     setDropdownNewsOpen((prevState) => !prevState);
   };
 
+  // Função para redirecionar para a página de pesquisa ao clicar no ícone de busca
+  const handleSearchClick = () => {
+    router.push('/search');
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.container}>
         {/* Logo */}
-        <div className={styles.logo}>
+        <div className={styles.headerLogo}>
           <Link href="/">
             <Image src={logo} alt="Logo do Site" width={180} height={40} priority />
           </Link>
         </div>
 
-        {/* Links de Navegação */}
+        <div className={styles.headerMenu}>
+          {/* Links de Navegação */}
+          {/* Links de Navegação */}
         <ul className={styles.navLinks}>
           {/* Navegação com Dropdown */}
           <li className={styles.navItem} onClick={toggleDropdownNav}>
             <Link href="#">
-              Navegar
-              <FontAwesomeIcon icon={faCaretDown} className={styles.icon} />
+              <span>Navegar</span>
+              <div className={`${styles.ercHeaderSvg} menu-icon`}>
+                <svg
+                  className={styles.headerSvgIcon}
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  data-t="dropdown-svg"
+                  aria-labelledby="dropdown-svg"
+                  aria-hidden="true"
+                  role="img"
+                >
+                  <title id="dropdown-svg">Menu dropdown</title>
+                  <path d="M7 10h10l-5 5z"></path>
+                </svg>
+              </div>
             </Link>
             {/* Dropdown de Navegação */}
             {isDropdownNavOpen && (
@@ -147,8 +145,22 @@ export default function Header() {
           {/* Dropdown de Notícias */}
           <li className={styles.navItem} onClick={toggleDropdownNews}>
             <Link href="#">
-              Notícias
-              <FontAwesomeIcon icon={faCaretDown} className={styles.icon} />
+              <span>Notícias</span>
+              <div className={`${styles.ercHeaderSvg} menu-icon`}>
+                <svg
+                  className={styles.headerSvgIcon}
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  data-t="dropdown-svg"
+                  aria-labelledby="dropdown-svg"
+                  aria-hidden="true"
+                  role="img"
+                >
+                  <title id="dropdown-svg">Menu dropdown</title>
+                  <path d="M7 10h10l-5 5z"></path>
+                </svg>
+              </div>
+
             </Link>
             {isDropdownNewsOpen && (
               <div ref={dropdownNewsRef} className={`${styles.dropdownMenu} ${styles.newsDropdown}`}>
@@ -163,58 +175,61 @@ export default function Header() {
             )}
           </li>
         </ul>
+        </div>
 
-        {/* Área de Busca */}
-        <form onSubmit={handleSearchSubmit} className={styles.search}>
-          <input
-            type="text"
-            placeholder="Buscar..."
-            className={styles.searchInput}
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') {
-                handleSearchSubmit(e);
-              }
-            }}
-          />
-          <button type="submit" className={styles.searchButton}>
-            <FontAwesomeIcon icon={faSearch} />
-          </button>
-
-          {/* Exibe os resultados filtrados */}
-          {isOpen && filteredAnimes.length > 0 && (
-            <ul ref={resultsRef} className={styles.results}>
-              {filteredAnimes.slice(0, 6).map((anime) => (
-                <li key={anime.id} className={styles.resultItem}>
-                  <Link href={`/series/${anime.id}/${anime.slug}`} key={anime.id}>
-                    <div className={styles.resultContent}>
-                      <Image
-                        src={anime.image}
-                        alt={anime.name}
-                        width={50}
-                        height={75}
-                        className={styles.resultImage}
-                      />
-                      <div className={styles.textContent}>
-                        <span className={styles.resultName}>{anime.name}</span>
-                        <span className={styles.resultScore}>{anime.score}</span>
-                      </div>
-                    </div>
-                  </Link>
-                </li>
-              ))}
-              {filteredAnimes.length > 6 && (
-                <li className={styles.viewAll}>
-                  <Link href={`/search?query=${searchTerm}`}>
-                    Ver todos os resultados
-                  </Link>
-                </li>
-              )}
-            </ul>
-          )}
-        </form>
+        {/* Ícones de Busca, Watchlist e Menu de Conta */}
+        <div className={styles.headerActions}>
+          <div className={styles.searchContainer}>
+            <div className={styles.searchIcon}>
+              <button onClick={handleSearchClick} className={styles.searchButton}>
+                <div className={styles.ercHeaderSvg}>
+                  <svg
+                    className={styles.headerSvgIcon}
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    data-t="search-svg"
+                    aria-labelledby="search-svg"
+                    aria-hidden="false"
+                    role="img"
+                  >
+                    <title id="search-svg">Buscar</title>
+                    <path d="M15.474 14.035l6.235 6.26a1 1 0 1 1-1.418 1.41l-6.228-6.253a7.5 7.5 0 1 1 1.41-1.418zM9.5 15a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11z"></path>
+                  </svg>
+                </div>
+              </button>
+            </div>
+            <div className={styles.ercHeaderSvg}>
+              <svg
+                className={styles.headerSvgIcon}
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                data-t="watchlist-svg"
+                aria-labelledby="watchlist-svg"
+                aria-hidden="false"
+                role="img"
+              >
+                <title id="watchlist-svg">Fila</title>
+                <path d="M17 18.113l-3.256-2.326A2.989 2.989 0 0 0 12 15.228c-.629 0-1.232.194-1.744.559L7 18.113V4h10v14.113zM18 2H6a1 1 0 0 0-1 1v17.056c0 .209.065.412.187.581a.994.994 0 0 0 1.394.233l4.838-3.455a1 1 0 0 1 1.162 0l4.838 3.455A1 1 0 0 0 19 20.056V3a1 1 0 0 0-1-1z"></path>
+              </svg>
+            </div>
+            <div className={styles.ercHeaderSvg}>
+              <svg
+                className={styles.headerSvgIcon}
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                data-t="user-settings-svg"
+                aria-labelledby="user-settings-svg"
+                aria-hidden="true"
+                role="img"
+              >
+                <title id="user-settings-svg">Menu da conta</title>
+                <path d="M12 20a6.01 6.01 0 0 1-5.966-5.355L12 12.088l5.966 2.557A6.01 6.01 0 0 1 12 20m0-16c1.654 0 3 1.346 3 3s-1.345 3-2.999 3h-.002A3.003 3.003 0 0 1 9 7c0-1.654 1.346-3 3-3m7.394 9.081l-4.572-1.959A4.997 4.997 0 0 0 17 7c0-2.757-2.243-5-5-5S7 4.243 7 7c0 1.71.865 3.22 2.178 4.122l-4.572 1.959A.999.999 0 0 0 4 14c0 4.411 3.589 8 8 8s8-3.589 8-8c0-.4-.238-.762-.606-.919"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
       </div>
     </header>
+
   );
 }

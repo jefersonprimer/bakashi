@@ -60,19 +60,18 @@ export default function Search() {
       <div className={styles.searchContainer}>
         <input
           type="text"
-          placeholder="Digite o nome de um anime..."
+          placeholder="Buscar..."
           className={styles.searchInput}
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           aria-label="Campo de busca"
         />
-        <button className={styles.searchButton} onClick={handleSearch}>
-          Buscar
-        </button>
+      </div>
 
+      <div className={styles.resultsContainer}>
         {loading ? (
           <p className={styles.loading}>Carregando resultados...</p>
-        ) : filteredAnimes.length > 0 ? (
+        ) : (
           <ul className={styles.results}>
             {filteredAnimes.map((anime) => (
               <li key={anime.id} className={styles.resultItem}>
@@ -94,8 +93,6 @@ export default function Search() {
               </li>
             ))}
           </ul>
-        ) : (
-          <p className={styles.noResults}>Nenhum anime encontrado para "{searchTerm}"</p>
         )}
       </div>
     </div>
