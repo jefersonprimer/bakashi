@@ -1,6 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from "next/image";
+
 import { Anime } from '@/types/anime';
 import { Episode } from '@/types/episode';
 
@@ -31,7 +33,7 @@ const HistoryPage = () => {
       <div className={styles['history-grid']}>
         {history.map((episode) => (
           <div key={episode.id} className={styles['history-item']}>
-            <img src={episode.image} alt={episode.title} className={styles['history-image']} />
+            <Image src={episode.image} alt={episode.title} className={styles['history-image']} />
             <h3>{getAnimeName(episode.animeId)}</h3>
             <p>{`S${episode.season} / ${episode.releaseDate}`}</p>
             <p>{episode.title}</p>

@@ -42,9 +42,9 @@ export default function PopularPage() {
     <div className={styles.popularContainer}>
       <div className={styles.header}>
         {/* Título e ícone alinhados horizontalmente */}
-        <h1 className={styles.title}>Animes Populares</h1>
+        <h1 className={styles.title}>Animes Mais Populares</h1>
         <div className={styles.filters}>
-          <button onClick={toggleFilterOptions}>
+          <div onClick={toggleFilterOptions}>
             <svg 
               className={styles.svgIcon}
               xmlns="http://www.w3.org/2000/svg" 
@@ -56,15 +56,15 @@ export default function PopularPage() {
               <title id="sort-svg">Ordenar</title>
               <path d="M9 18a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2h6zM21 4a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2h18zm-6 7a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2h12z"></path>
             </svg>
-            Mais Populares
-          </button>
+            MAIS POPULARES
+          </div>
           
           {/* Filtro de opções que aparece sobre o botão */}
           {showFilterOptions && (
             <div className={styles.filterOptions}>
-              <button onClick={goToPopular}>Mais Populares</button>
-              <button onClick={goToNewReleases}>Mais Recentes</button>
-              <button onClick={goToAlphabeticOrder}>Ordem Alfabética</button>
+              <div onClick={goToPopular}>Mais Populares</div>
+              <div onClick={goToNewReleases}>Mais Recentes</div>
+              <div onClick={goToAlphabeticOrder}>Ordem Alfabética</div>
             </div>
           )}
         </div>

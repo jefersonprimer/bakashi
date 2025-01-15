@@ -40,7 +40,7 @@ body {
 
 .anime-carousel-lancamentos {
   position: relative; /* Certifique-se de que está no fluxo normal */
-  margin-top: -20vh; /* Sobrepõe parcialmente o fullscreen */
+  margin-top: -17vh; /* Sobrepõe parcialmente o fullscreen */
   /* margin: auto -10vh; */
   /* padding: 20px; */
   z-index: 2;

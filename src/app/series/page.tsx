@@ -4,6 +4,7 @@ import styles from './styles.module.css';
 import { useState } from 'react';
 import animesData from '@/data/animes.json';
 import episodesData from '@/data/episodes.json';
+import Image from 'next/image';
 
 const AnimesPage = () => {
   const [currentEpisodeIndex, setCurrentEpisodeIndex] = useState(0);
@@ -72,7 +73,7 @@ const AnimesPage = () => {
               return (
                 <div key={index} className={styles.episodeCard}>
                   <div className={styles.episodeImageWrapper}>
-                    <img src={episode.image} alt={episode.title} className={styles.episodeImage} />
+                    <Image src={episode.image} alt={episode.title} className={styles.episodeImage} />
                   </div>
                   <div className={styles.episodeInfo}>
                     <h3>{anime?.name || 'Anime Desconhecido'}</h3>
@@ -110,7 +111,7 @@ const AnimesPage = () => {
           {paginatedLaunchAnimes.map((anime) => (
             <div key={anime.id} className={styles.animeCard}>
               <div className={styles.animeImageWrapper}>
-                <img src={anime.image} alt={anime.name} className={styles.animeImage} />
+                <Image src={anime.image} alt={anime.name} className={styles.animeImage} />
                 <span className={styles.label}>LANÇAMENTO</span>
               </div>
               <div className={styles.animeInfo}>
@@ -132,7 +133,7 @@ const AnimesPage = () => {
           {paginatedAnimes.map((anime) => (
             <div key={anime.id} className={styles.animeCard}>
               <div className={styles.animeImageWrapper}>
-                <img src={anime.image} alt={anime.name} className={styles.animeImage} />
+                <Image src={anime.image} alt={anime.name} className={styles.animeImage} />
                 {anime.isRelease && <span className={styles.label}>LANÇAMENTO</span>}
               </div>
               <div className={styles.animeInfo}>

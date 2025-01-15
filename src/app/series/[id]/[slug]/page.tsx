@@ -9,6 +9,7 @@ import Link from 'next/link';
 
 import { Anime } from '@/types/anime';
 import { Episode } from '@/types/episode';
+import Image from 'next/image';
 
 const Page = () => {
   const { slug } = useParams();
@@ -57,7 +58,7 @@ const Page = () => {
         <div className={styles.sheader}>
           <div className={styles.blur}>
             <div className={styles.poster}>
-              <img src={anime.image} alt={anime.name} />
+              <Image src={anime.image} alt={anime.name} />
               <span className={styles.mtipoEstrelas}>
                 <i className="fas fa-star"></i>
                 <span>{anime.score}</span>
@@ -101,7 +102,7 @@ const Page = () => {
               {filteredEpisodes.map((episode) => (
                 <li key={episode.id} className={styles.episodeItem}>
                   <div className={styles.imageContainer}>
-                    <img
+                    <Image
                       src={episode.image}
                       alt={`Episódio ${episode.id}`}
                       className={styles.episodeImage}
@@ -135,7 +136,7 @@ const Page = () => {
               <li key={recommendation.id} className={styles.recommendationItem}>
                <Link href={`/series/${recommendation.id}/${recommendation.slug}`}>
                   <div className={styles.recommendationContent}>
-                    <img
+                    <Image
                       src={recommendation.image}
                       alt={recommendation.name}
                       className={styles.recommendationImage}

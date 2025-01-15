@@ -18,45 +18,26 @@
   font-weight: bold;
 }
 
-.filters {
-  display: flex;
-  gap: 10px;
-  position: relative;
-}
-
-.filterOptions {
-  position: absolute;
-  background-color: white;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  padding: 10px;
-  top: 100%;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.filterOptions button {
-  margin: 5px 0;
-}
-
 .letterFilter {
   display: flex;
-  gap: 10px;
+  gap: 5px;
   flex-wrap: wrap;         /* Permite que os botões quebrem para a próxima linha, caso necessário */
   margin-bottom: 20px;
 }
 
 .letterFilter button {
-  padding: 10px 16px;
-  background-color: #f0f0f0;
-  border: 1px solid #ddd;
+  color: white;
+  padding: 10px 8px;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  background-color: transparent; /* Remove fundo */
+  border: none; /* Remove bordas */
 }
 
 .letterFilter button:hover {
-  background-color: #dcdcdc;
+  background-color: transparent; /* Remove o fundo no hover */
+  color: inherit; /* Mantém a cor original do texto */
 }
 
 .carousel {
@@ -68,7 +49,6 @@
 }
 
 .anime_card {
-  background-color: #fff;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -84,6 +64,7 @@
   display: flex;
   padding: 16px;
   gap: 16px;
+  align-items: flex-start; /* Alinha o conteúdo ao topo */
 }
 
 .anime_image {
@@ -108,6 +89,11 @@
 .anime_synopsis {
   font-size: 1rem;
   margin-bottom: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limita a sinopse a 2 linhas */
+  -webkit-box-orient: vertical;
 }
 
 .anime_audio {
@@ -126,6 +112,8 @@
   justify-content: space-between; /* Alinha o título e o botão */
   align-items: center; /* Alinha verticalmente */
   margin-bottom: 20px;
+  margin: auto 80px;
+  max-width: 1000px;
 }
 
 .title {
@@ -133,8 +121,33 @@
   font-weight: bold;
 }
 
-.filters {
+/* Diminuindo o tamanho do SVG */
+
+.popularContainer {
+  padding: 20px;
+}
+
+.header {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  margin: auto 600px;
+  position: relative;
+  max-width: 1000px;
+}
+
+.header h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.filters {
+  width: 160px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
   align-items: center; /* Alinha verticalmente o SVG com o título */
 }
 
@@ -142,9 +155,7 @@
   display: flex;
   align-items: center; /* Alinha o ícone e o texto */
   padding: 10px 16px;
-  background-color: #f0f0f0;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  background-color: #23252B;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -153,38 +164,37 @@
   background-color: #dcdcdc;
 }
 
-/* Diminuindo o tamanho do SVG */
-.svgIcon {
-  width: 20px; /* Ajuste o tamanho desejado */
-  height: 20px;
-  margin-right: 8px; /* Dá um espaçamento entre o ícone e o texto */
-}
-
 /* Filtro de opções */
 .filterOptions {
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   gap: 10px;
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  background-color: #23252B;
   padding: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 10;
 }
 
 .filterOptions button {
-  background-color: #f0f0f0;
+  background-color: #23252B;
+  color: white;
   padding: 10px 16px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.filterOptions button:hover {
-  background-color: #dcdcdc;
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* Diminuindo o tamanho do SVG */
+.svgIcon {
+  width: 14px; /* Ajuste o tamanho desejado */
+  height: 14px;
+  margin-right: 8px; /* Dá um espaçamento entre o ícone e o texto */
+  fill: white;
 }

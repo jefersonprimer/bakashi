@@ -38,11 +38,11 @@ export default function NewReleasesPage() {
   return (
     <div className={styles.newReleasesContainer}>
       <div className={styles.header}>
-        <h1>Novos Lançamentos</h1>
+        <h1>Animes Recém-Adicionados</h1>
 
         {/* Filtro de Ordem Alfabética e as opções */}
         <div className={styles.filters}>
-          <button onClick={toggleFilterOptions}>
+          <div onClick={toggleFilterOptions}>
             <svg 
               className={styles.svgIcon}
               xmlns="http://www.w3.org/2000/svg" 
@@ -54,15 +54,15 @@ export default function NewReleasesPage() {
               <title id="sort-svg">Ordenar</title>
               <path d="M9 18a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2h6zM21 4a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2h18zm-6 7a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2h12z"></path>
             </svg>
-            Mais Recentes
-          </button>
+            MAIS RECENTES
+          </div>
           
           {/* Filtro de opções que aparece sobre o botão */}
           {showFilterOptions && (
             <div className={styles.filterOptions}>
-              <button onClick={goToPopular}>Mais Populares</button>
-              <button onClick={goToNewReleases}>Mais Recentes</button>
-              <button onClick={goToAlphabeticOrder}>Ordem Alfabética</button>
+              <div onClick={goToPopular}>Mais Populares</div>
+              <div onClick={goToNewReleases}>Mais Recentes</div>
+              <div onClick={goToAlphabeticOrder}>Ordem Alfabética</div>
             </div>
           )}
         </div>

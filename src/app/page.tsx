@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import AnimeCarouselFullScreen from "./components/cards/AnimeCarouselFullScreen";
 import AnimeCarouselLancamentos from './components/cards/AnimeCarouselLancamentos';
 
-import { Anime } from "../types/anime"; 
+import { Anime, Genre, AiringDay } from "../types/anime"; 
 import animesData from "@/data/animes.json"; 
 
 import "./globals.css";
