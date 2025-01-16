@@ -48,16 +48,19 @@
   max-width: 1000px;
 }
 
+.carousel a {
+  text-decoration: none; /* Remove o sublinhado */
+  color: inherit; /* Herda a cor do elemento pai (ex: a cor do texto) */
+}
+
 .anime_card {
-  border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
   display: flex;
 }
 
 .anime_card:hover {
-  transform: translateY(-10px);
+  background-color: #23252B;
 }
 
 .anime_content {
@@ -71,7 +74,6 @@
   width: 120px;
   height: 180px;
   object-fit: cover;
-  border-radius: 8px;
 }
 
 .anime_details {
@@ -101,11 +103,6 @@
   color: #555;
 }
 
-/* src/app/popular/styles.module.css */
-
-.popularContainer {
-  padding: 20px;
-}
 
 .header {
   display: flex;
@@ -121,20 +118,8 @@
   font-weight: bold;
 }
 
-/* Diminuindo o tamanho do SVG */
-
-.popularContainer {
-  padding: 20px;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  margin: auto 600px;
-  position: relative;
-  max-width: 1000px;
+.ordemAlfabetica {
+  cursor: pointer;
 }
 
 .header h1 {
@@ -184,11 +169,6 @@
   padding: 10px 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-}
-
-.title {
-  font-size: 2rem;
-  font-weight: bold;
 }
 
 /* Diminuindo o tamanho do SVG */

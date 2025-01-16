@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import styles from './styles.module.css';
 import animeData from '@/data/animes.json'; // Dados importados corretamente
 import { Anime } from "@/types/anime";
+import Link from 'next/link';
 
 export default function Glossary() {
   const [filteredAnimes, setFilteredAnimes] = useState<Anime[]>([]);
@@ -71,7 +72,7 @@ export default function Glossary() {
               <title id="sort-svg">Ordenar</title>
               <path d="M9 18a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2h6zM21 4a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2h18zm-6 7a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2h12z"></path>
             </svg>
-            ORDEM ALFÁBETICA
+            <span className={styles.ordemAlfabetica}>ORDEM ALFÁBETICA</span>
           </div>
           {showFilterOptions && (
             <div className={styles.filterOptions}>
@@ -96,22 +97,22 @@ export default function Glossary() {
       <div className={styles.carousel}>
         {filteredAnimes.length > 0 ? (
           filteredAnimes.map((anime) => (
-            <div key={anime.id} className={styles.anime_card}>
-              <div className={styles.anime_content}>
-                <img
-                  src={anime.image}
-                  alt={anime.name}
-                  className={styles.anime_image}
-                />
-                <div className={styles.anime_details}>
-                  <h3 className={styles.anime_name}>{anime.name}</h3>
-                  <p className={styles.anime_synopsis}>{anime.synopsis}</p>
-                  <p className={styles.anime_audio}>
-                    <strong>Áudio:</strong> {anime.audioType}
-                  </p>
+            <Link href={`/series/${anime.id}/${anime.slug}`} key={anime.id}>
+              <div key={anime.id} className={styles.anime_card}>
+                <div className={styles.anime_content}>
+                  <img
+                    src={anime.image}
+                    alt={anime.name}
+                    className={styles.anime_image}
+                  />
+                  <div className={styles.anime_details}>
+                    <h3 className={styles.anime_name}>{anime.name}</h3>
+                    <p className={styles.anime_synopsis}>{anime.synopsis}</p>
+                    <p className={styles.anime_audio}>{anime.audioType}</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))
         ) : (
           <p>Nenhum anime encontrado com a letra "{activeLetter}".</p>

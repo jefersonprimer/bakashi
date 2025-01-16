@@ -1,9 +1,8 @@
-// src/app/popular/page.tsx
 'use client';
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import AnimeCarousel from "../../components/cards/AnimeCarousel";
+import AnimeGrid from "../../components/cards/AnimeGrid"; // Importando o novo componente
 import { Anime } from "@/types/anime";
 
 // Dados importados de JSON ou pode ser via API
@@ -56,7 +55,7 @@ export default function PopularPage() {
               <title id="sort-svg">Ordenar</title>
               <path d="M9 18a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2h6zM21 4a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2h18zm-6 7a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2h12z"></path>
             </svg>
-            MAIS POPULARES
+            <span className={styles.maisPopulares}>MAIS POPULARES</span>
           </div>
           
           {/* Filtro de opções que aparece sobre o botão */}
@@ -70,8 +69,11 @@ export default function PopularPage() {
         </div>
       </div>
 
-      {/* Carrossel de Animes Populares */}
-      <AnimeCarousel animes={filteredAnimes} />
+      {/* Grade de Animes Populares */}
+      <div>
+        <h1 className={styles.popularTitle}>Populares</h1>
+        <AnimeGrid animes={filteredAnimes} />
+      </div>
     </div>
   );
 }

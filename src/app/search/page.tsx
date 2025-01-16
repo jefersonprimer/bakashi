@@ -2,14 +2,12 @@
 
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
-
 import Head from 'next/head';
-import Image from 'next/image';
-import Link from 'next/link';
-
+import AnimeGrid from '../../app/components/cards/AnimeGrid'; // Importando o AnimeGrid
 import animesData from '@/data/animes.json';
 import { Anime } from '@/types/anime';
 import styles from './styles.module.css';
+
 
 export default function Search() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -72,27 +70,8 @@ export default function Search() {
         {loading ? (
           <p className={styles.loading}>Carregando resultados...</p>
         ) : (
-          <ul className={styles.results}>
-            {filteredAnimes.map((anime) => (
-              <li key={anime.id} className={styles.resultItem}>
-                <Link href={`/series/${anime.id}/${anime.slug}`} key={anime.id}>
-                  <div className={styles.resultContent}>
-                    <Image
-                      src={anime.image}
-                      alt={anime.name}
-                      width={50}
-                      height={75}
-                      className={styles.resultImage}
-                    />
-                    <div className={styles.textContent}>
-                      <span className={styles.resultName}>{anime.name}</span>
-                      <span className={styles.resultScore}>{anime.score}</span>
-                    </div>
-                  </div>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          // Passando os animes filtrados para o AnimeGrid
+          <AnimeGrid animes={filteredAnimes} />
         )}
       </div>
     </div>

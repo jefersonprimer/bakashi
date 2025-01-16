@@ -58,7 +58,7 @@ const Page = () => {
         <div className={styles.sheader}>
           <div className={styles.blur}>
             <div className={styles.poster}>
-              <Image src={anime.image} alt={anime.name} />
+              <img src={anime.image} alt={anime.name} />
               <span className={styles.mtipoEstrelas}>
                 <i className="fas fa-star"></i>
                 <span>{anime.score}</span>
@@ -102,7 +102,7 @@ const Page = () => {
               {filteredEpisodes.map((episode) => (
                 <li key={episode.id} className={styles.episodeItem}>
                   <div className={styles.imageContainer}>
-                    <Image
+                    <img
                       src={episode.image}
                       alt={`Episódio ${episode.id}`}
                       className={styles.episodeImage}
@@ -136,7 +136,7 @@ const Page = () => {
               <li key={recommendation.id} className={styles.recommendationItem}>
                <Link href={`/series/${recommendation.id}/${recommendation.slug}`}>
                   <div className={styles.recommendationContent}>
-                    <Image
+                    <img
                       src={recommendation.image}
                       alt={recommendation.name}
                       className={styles.recommendationImage}

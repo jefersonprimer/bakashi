@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import styles from './styles.module.css';
 import animesData from '@/data/animes.json'; // Dados importados corretamente
 import { Anime } from "@/types/anime";
-import AnimeCarousel from "../../components/cards/AnimeCarousel"; // Importação do componente AnimeCarousel
+import AnimeGrid from "../../components/cards/AnimeGrid"; // Importação do componente AnimeGrid
 
 export default function NewReleasesPage() {
   const [filteredAnimes, setFilteredAnimes] = useState<Anime[]>([]);
@@ -54,7 +54,7 @@ export default function NewReleasesPage() {
               <title id="sort-svg">Ordenar</title>
               <path d="M9 18a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2h6zM21 4a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2h18zm-6 7a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2h12z"></path>
             </svg>
-            MAIS RECENTES
+            <span className={styles.maisRecentes}>MAIS RECENTES</span>
           </div>
           
           {/* Filtro de opções que aparece sobre o botão */}
@@ -68,8 +68,11 @@ export default function NewReleasesPage() {
         </div>
       </div>
 
-      {/* Carrossel de Animes */}
-      <AnimeCarousel animes={filteredAnimes} />
+      {/* Substituindo AnimeCarousel por AnimeGrid */}
+      <div>
+        <h1 className={styles.newTitle}>Ultimos Lançamentos</h1>
+        <AnimeGrid animes={filteredAnimes} />
+      </div>
     </div>
   );
 }

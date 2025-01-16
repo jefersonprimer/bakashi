@@ -1,41 +1,52 @@
+/* Container para a grid de resultados */
+.resultsContainer {
+  display: grid;
+  gap: 16px; /* Espaçamento entre os itens */
+  margin-top: 20px;
+  width: 100%;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+/* Outros estilos da página */
 .searchPage {
   display: flex;
-  flex-direction: column;  /* Mudamos para coluna para garantir que o conteúdo fique empilhado */
+  flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  background-color: #f4f4f4;
-  padding-top: 20px;  /* Espaçamento superior */
+  background-color: #141519;
+  padding-top: 20px;
 }
 
 .searchContainer {
   display: flex;
   flex-direction: column;
-  align-items: center; 
-  justify-content: flex-start; /* Garantir que o input fique ao topo */
+  align-items: center;
+  justify-content: flex-start;
   width: 100%;
   max-width: 800px;
   padding: 20px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px; /* Espaço entre o input e os resultados */
+  margin-bottom: 20px;
 }
 
 .searchInput {
+  color: white;
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
   border: none;
-  font-size: 16px;
+  font-size: 32px;
+  background-color: #141519;
   border-bottom: 1px solid gray;
 }
 
 .searchInput:focus {
-  outline: none; /* Remove a borda padrão */
+  outline: none;
   border: none;
   border-bottom: 1px solid orangered;
 }
 
+/* Estilos do botão de pesquisa */
 .searchButton {
   background-color: #0070f3;
   color: white;
@@ -51,12 +62,7 @@
   background-color: #005bb5;
 }
 
-.resultsContainer {
-  width: 100%;
-  max-width: 800px;
-  padding: 0 20px;
-}
-
+/* Estilos para os itens de resultado */
 .results {
   list-style-type: none;
   padding: 0;
