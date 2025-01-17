@@ -1,9 +1,7 @@
-// src/app/videos/[genre]/page.tsx
-
 import React from 'react';
 import { Anime } from '@/types/anime';
 import animesData from '@/data/animes.json';
-import AnimeCarousel from '../../components/cards/AnimeCarousel';
+import AnimeGrid from '../../components/cards/AnimeGrid'; // Importando AnimeGrid
 
 const genreMapping: Record<string, string> = {
   action: "Ação",
@@ -53,28 +51,28 @@ const GenrePage: React.FC<GenrePageProps> = ({ params }) => {
     <div>
       <h1>Animes de {genreInPortuguese}</h1>
 
-      {/* Anime Carousel para Populares */}
+      {/* AnimeGrid para Populares */}
       {popularAnimes.length > 0 && (
         <div>
           <h3>Populares</h3>
-          <AnimeCarousel animes={popularAnimes.slice(0, 2)} />
+          <AnimeGrid animes={popularAnimes} />
         </div>
       )}
 
-      {/* Anime Carousel para Novidades */}
+      {/* AnimeGrid para Novidades */}
       {newReleasesAnimes.length > 0 && (
         <div>
           <h3>Novidades</h3>
-          <AnimeCarousel animes={newReleasesAnimes.slice(0, 2)} />
+          <AnimeGrid animes={newReleasesAnimes} />
         </div>
       )}
 
-      {/* Carrosséis para os outros gêneros */}
+      {/* AnimeGrid para os outros gêneros */}
       <div>
         {otherGenresAnimes.map(({ genre, animes }) => (
           <div key={genre}>
             <h3>Outros Animes de {genre}</h3>
-            <AnimeCarousel animes={animes} />
+            <AnimeGrid animes={animes} />
           </div>
         ))}
       </div>

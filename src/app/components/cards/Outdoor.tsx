@@ -41,7 +41,7 @@ const Outdoor: React.FC<OutdoorProps> = ({
       {/* Imagem */}
       <div
         style={{
-          flex: "1 1 40%",
+          flex: "1", // Ajustado para ocupar 50% do container
           overflow: "hidden",
           borderRadius: "8px",
         }}
@@ -50,15 +50,19 @@ const Outdoor: React.FC<OutdoorProps> = ({
           src={imageUrl}
           alt={title}
           style={{
-            width: "660px",
-            height: "371px",
+            width: "100%",
+            height: "100%",
             objectFit: "cover",
           }}
         />
       </div>
 
       {/* Texto */}
-      <div style={{ flex: "1 1 60%" }}>
+      <div
+        style={{
+          flex: "1", // Ajustado para ocupar 50% do container
+        }}
+      >
         <h2
           style={{
             fontSize: "24px",

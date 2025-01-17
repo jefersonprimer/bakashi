@@ -2,37 +2,37 @@
 
 import { useEffect, useState } from 'react';
 import Image from "next/image";
-import useFetchAnimes from '../../app/hooks/useFetchAnimes'; // Importando o hook para os animes
-import useFetchEpisodes from '../../app/hooks/useFetchEpisodes'; // Importando o hook para os episódios
+import useFetchAnimes from '../../app/hooks/useFetchAnimes';
+import useFetchEpisodes from '../../app/hooks/useFetchEpisodes';
 
 import { Anime } from '@/types/anime';
 import { Episode } from '@/types/episode';
 
 import styles from './history.module.css';
+import Loading from '../loading';
 
 const HistoryPage = () => {
-  const { animes, loading: loadingAnimes, error: errorAnimes } = useFetchAnimes(); // Usando o hook para animes
-  const { episodes, loading: loadingEpisodes, error: errorEpisodes } = useFetchEpisodes(); // Usando o hook para episódios
+  const { animes, loading: loadingAnimes, error: errorAnimes } = useFetchAnimes(); 
+  const { episodes, loading: loadingEpisodes, error: errorEpisodes } = useFetchEpisodes();
   const [history, setHistory] = useState<Episode[]>([]);
 
   useEffect(() => {
     if (episodes.length > 0) {
-      setHistory(episodes.slice(0, 10)); // Pegando os últimos 10 episódios
+      setHistory(episodes.slice(0, 10)); 
     }
   }, [episodes]);
 
-  // Função para obter o nome do anime com base no ID
   const getAnimeName = (animeId: string): string => {
     const anime = animes.find((a) => a.id === animeId);
     return anime ? anime.name : 'Anime Desconhecido';
   };
 
   if (loadingAnimes || loadingEpisodes) {
-    return <div>Carregando...</div>; // Exibição enquanto os dados estão sendo carregados
+    return <Loading/>;
   }
 
   if (errorAnimes || errorEpisodes) {
-    return <div>Erro ao carregar os dados.</div>; // Exibição de erro
+    return <div>Erro ao carregar os dados.</div>; 
   }
 
   return (

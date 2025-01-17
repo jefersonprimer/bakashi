@@ -1,7 +1,7 @@
 /* Container para a grid de resultados */
 .resultsContainer {
   display: grid;
-  gap: 16px; /* Espaçamento entre os itens */
+  gap: 16px;
   margin-top: 20px;
   width: 100%;
   max-width: 800px;
