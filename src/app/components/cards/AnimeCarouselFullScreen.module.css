@@ -1,3 +1,14 @@
+.ratingAndAudioType {
+  display: flex;
+  align-items: center; /* Alinha os itens verticalmente ao centro */
+  gap: 5px; /* Pequeno espaço entre o rating e o audioType */
+}
+
+.audioType {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
 .carouselContainer {
   position: relative;
   width: 100%;
@@ -25,7 +36,7 @@
   position: relative;
   width: 100%;
   max-width: 600px;
-  height: 300px;
+  height: 340px;
   color: white;
   z-index: 2;
   display: flex;
@@ -158,9 +169,9 @@
   align-items: center;
   fill: #ff640a;
   stroke-width: 2;
-  height: 1.5rem;
+  height: 2.4rem;
   justify-content: center;
-  width: 1.5rem;
+  width: 2.4rem;
   cursor: pointer;
 }
 
@@ -193,7 +204,7 @@
   display: flex;
   justify-content: space-between;
   z-index: 3;
-  transform: translateY(-50%);
+  transform: translateY(-10%); /*estava em -50%*/
 }
 
 .arrowButton {

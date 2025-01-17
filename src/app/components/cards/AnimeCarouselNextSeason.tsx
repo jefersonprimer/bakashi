@@ -1,9 +1,10 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import AnimeCarousel from "./AnimeCarousel"; // Componente de carrossel existente
 import { Anime } from "@/types/anime"; // Tipagem de anime
-import animesData from "@/data/animes.json"; // Dados do JSON
 import styles from "./AnimeCarouselNextSeason.module.css"; // Estilos específicos
+import useFetchAnimes from "@/app/hooks/useFetchAnimes"; // Hook customizado para buscar os animes da API
 
 interface AnimeCarouselNextSeasonProps {
   itemsPerPage?: number; // Número de itens por página (opcional)
@@ -13,9 +14,27 @@ interface AnimeCarouselNextSeasonProps {
 const AnimeCarouselNextSeason: React.FC<AnimeCarouselNextSeasonProps> = ({
   itemsPerPage = 5,
 }) => {
-  // Filtrar os animes que são da próxima temporada
-  const nextSeasonAnimes: Anime[] =
-    animesData.Animes?.filter((anime) => anime.isNextSeason) || [];
+  const { animes, loading, error } = useFetchAnimes(); // Hook para buscar os animes da API
+  const [nextSeasonAnimes, setNextSeasonAnimes] = useState<Anime[]>([]);
+
+  useEffect(() => {
+    if (animes) {
+      const filteredAnimes = animes.filter((anime) => anime.isNextSeason);
+      setNextSeasonAnimes(filteredAnimes);
+    }
+  }, [animes]);
+
+  if (loading) {
+    return <div>Carregando...</div>;
+  }
+
+  if (error) {
+    return <div>Erro ao carregar os dados: {error}</div>;
+  }
+
+  if (nextSeasonAnimes.length === 0) {
+    return <div>Não há animes programados para a próxima temporada.</div>;
+  }
 
   return (
     <div className={`${styles.nextSeasonContainer} anime-carousel-next-season`}>

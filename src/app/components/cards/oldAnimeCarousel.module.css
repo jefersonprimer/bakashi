@@ -1,0 +1,271 @@
+.carouselContainer {
+    display: flex;
+    align-items: center; /* Centraliza os itens verticalmente */
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+  }
+  
+  .arrowButton {
+    background: none;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+  }
+  
+  .arrowLeft {
+    left: 0; /* Coloca a seta à esquerda */
+    margin-left: 10px; /* Ajuste da margem para aproximar mais a seta da borda */
+  }
+  
+  .arrowRight {
+    right: 0; /* Coloca a seta à direita */
+    margin-right: 10px; /* Ajuste da margem para aproximar mais a seta da borda */
+  }
+  
+  .arrowButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .arrowIcon {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  /* Grade para os cards de animes */
+  .animesGrid {
+    display: flex; /* Alinha os itens horizontalmente */
+    gap: 25px;
+    overflow: hidden; /* Oculta o conteúdo fora da área visível */
+    width: 100%;
+  }
+  
+  .animesGrid {
+    display: flex;
+    overflow: hidden;
+    width: calc(100% - 0px); /* estava em (100% - 60px) Ajusta para dar espaço para as setas */
+    justify-content: center;
+  }
+  
+  /* Estilo dos cards */
+  .animeCard {
+    position: relative;
+    flex: 0 0 254px; /* 240 */
+    height: 437px; /* 414 */
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-align: left;
+  }
+  
+  /* Efeito ao passar o mouse */
+  .animeCard:hover .animeImage {
+    height: 100%; /* Expande para cobrir todo o card */
+  }
+  
+  .animeCard:hover .cardInfo {
+    opacity: 1; /* Torna visível */
+    background-color: rgba(20, 21, 25, 0.9);
+  }
+  
+  .animeCard:hover .nomeDataContainer {
+    opacity: 0; /* Esconde o contêiner de nome e data */
+    transition: opacity 0.3s ease;
+  }
+  
+  /* Exibir botão de play ao passar o mouse */
+  .animeCard:hover .playButton {
+    opacity: 1;
+  }
+  
+  /* Imagem do card */
+  .animeImage {
+    width: 100%;
+    height: 85%;
+    object-fit: cover;
+    transition: height 0.3s ease;
+  }
+  
+  /* Nome e data do anime */
+  .nomeDataContainer {
+    position: absolute;
+    bottom: 10px;
+    
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 90%;
+    opacity: 1; /* Visível por padrão */
+    transition: opacity 0.3s ease;
+  }
+  
+  /* Texto do nome */
+  .nome {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  /* Texto da data */
+  .data {
+    font-size: 12px;
+    margin: 0;
+  }
+  
+  /* Informações do card */
+  .cardInfo {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    padding: 10px;
+    color: white;
+    text-align: left;
+    opacity: 0; /* Inicialmente invisível */
+    background-color: rgba(20, 21, 25, 0.8); /* Fundo semi-transparente */
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+    z-index: 2; /* Garante que fique sobre a imagem */
+    height: 100%;
+    width: 100%;
+  }
+  
+  .name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    width: 220px;
+  }
+  
+  /* Texto das informações (rating, season, episódios) */
+  .infoText {
+    font-size: 14px;
+    margin: 5px 0;
+    color: #f1f1f1;
+  }
+  
+  .flexContainer {
+    display: flex; /* Alinha todos os elementos horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    gap: 2px; /* Espaçamento horizontal entre rating e score */
+  }
+  
+  .score {
+    display: flex; /* Alinha o score e o ícone horizontalmente */
+    align-items: center; /* Centraliza verticalmente o texto e o ícone */
+  }
+  
+  .iconStar {
+    margin-left: 2px; /* Espaço entre o score e a estrela */
+    font-size: 12px; /* Tamanho do ícone */
+    color: #f1f1f1;
+  }
+  
+  .iconStar {
+    font-size: 12px;
+  }
+  
+  /* Estilo específico para Season */
+  .seasonText {
+    color: #9A9A9A; /* Cor desejada */
+  }
+  
+  /* Estilo específico para Episódios */
+  .episodesText {
+    color: #9A9A9A; /* Cor desejada */
+  }
+  
+  /* Sinopse com limite de 4 linhas */
+  .synopsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    width: 220px;
+  }
+  
+  /* Botão de play */
+  .playButton {
+    position: absolute;
+    bottom: 5px;
+    left: 10px;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 3;
+  }
+  
+  /* calendar.module.css */
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  .tooltipText {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* A posição fica acima do ícone */
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .tooltip:hover .tooltipText {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  .iconPlay {
+    align-items: center;
+    fill:#ff640a;
+    display: flex;
+    stroke-width: 2;
+    height: 1.5rem;
+    justify-content: center;
+    width: 1.5rem;
+  }
+  
+  .iconBookmark {
+    align-items: center;
+    fill:#ff640a;
+    display: flex;
+    stroke-width: 2;
+    height: 1.5rem;
+    justify-content: center;
+    width: 1.5rem;
+  }
+  
+  .iconPlus {
+    align-items: center;
+    fill:#ff640a;
+    display: flex;
+    stroke-width: 2;
+    height: 1.5rem;
+    justify-content: center;
+    width: 1.5rem;
+  }

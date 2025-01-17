@@ -9,6 +9,7 @@ import { Anime, Genre, AiringDay } from "../types/anime";
 import animesData from "@/data/animes.json"; 
 
 import "./globals.css";
+import AnimeCarouselByDay from "./components/cards/AnimeCarouselByDay";
 
 const HomePage = () => {
   const [animes, setAnimes] = useState<Anime[]>([]);
@@ -29,16 +30,10 @@ const HomePage = () => {
 
   return (
     <div className="home-container">
-      <AnimeCarouselFullScreen
-        animes={animes}
-        className="anime-carousel-fullscreen"
-      />
+      <AnimeCarouselFullScreen />
       <AnimeCarouselLancamentos className="anime-carousel-lancamentos" />
-      {/* <div>
-        <h1>Ainda está procurando algo pra assistir?</h1>
-        <p>Confira o nosso acervo completo</p>
-        <a href="./series">VER TUDO</a>
-      </div> */}
+      <AnimeCarouselByDay />
+   
     </div>
   );
 };

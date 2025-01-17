@@ -1,9 +1,10 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import AnimeCarousel from "./AnimeCarousel"; // Componente de carrossel existente
 import { Anime } from "@/types/anime"; // Tipagem de anime
-import animesData from "@/data/animes.json"; // Dados do JSON
 import styles from "./AnimeCarouselPopularSeason.module.css"; // Estilos específicos
+import useFetchAnimes from "@/app/hooks/useFetchAnimes"; // Hook customizado para buscar os animes da API
 
 interface AnimeCarouselPopularSeasonProps {
   itemsPerPage?: number; // Número de itens por página (opcional)
@@ -14,9 +15,27 @@ const AnimeCarouselPopularSeason: React.FC<AnimeCarouselPopularSeasonProps> = ({
   itemsPerPage = 5,
   className = "",
 }) => {
-  // Filtrar os animes populares da temporada
-  const popularSeasonAnimes: Anime[] =
-    animesData.Animes?.filter((anime) => anime.isPopularSeason) || [];
+  const { animes, loading, error } = useFetchAnimes(); // Hook para buscar os animes da API
+  const [popularSeasonAnimes, setPopularSeasonAnimes] = useState<Anime[]>([]);
+
+  useEffect(() => {
+    if (animes) {
+      const filteredAnimes = animes.filter((anime) => anime.isPopularSeason);
+      setPopularSeasonAnimes(filteredAnimes);
+    }
+  }, [animes]);
+
+  if (loading) {
+    return <div>Carregando...</div>;
+  }
+
+  if (error) {
+    return <div>Erro ao carregar os dados: {error}</div>;
+  }
+
+  if (popularSeasonAnimes.length === 0) {
+    return <div>Não há animes populares nesta temporada disponíveis no momento.</div>;
+  }
 
   return (
     <div className={`${styles.popularSeasonContainer} ${className}`}>

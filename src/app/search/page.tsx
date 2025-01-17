@@ -1,40 +1,41 @@
-'use client';
+"use client";
 
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Head from 'next/head';
 import AnimeGrid from '../../app/components/cards/AnimeGrid'; // Importando o AnimeGrid
-import animesData from '@/data/animes.json';
 import { Anime } from '@/types/anime';
 import styles from './styles.module.css';
 
+import useFetchAnimes from '../hooks/useFetchAnimes'; // Hook para buscar animes da API
 
 export default function Search() {
+  const { animes, loading, error } = useFetchAnimes(); // Usando o hook para buscar os animes da API
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredAnimes, setFilteredAnimes] = useState<Anime[]>([]);
-  const [loading, setLoading] = useState(false);
   const searchParams = useSearchParams();
   const query = searchParams?.get('query');
 
+  // Atualiza o estado searchTerm com o valor da query da URL
   useEffect(() => {
     if (query) {
       setSearchTerm(query);
     }
   }, [query]);
 
+  // Filtra os animes sempre que searchTerm ou animes mudarem
   useEffect(() => {
-    setLoading(true);
-    if (searchTerm) {
-      const filtered = animesData.animes.filter((anime) =>
+    if (animes.length > 0 && searchTerm) {
+      const filtered = animes.filter((anime) =>
         anime.name.toLowerCase().includes(searchTerm.toLowerCase())
       );
       setFilteredAnimes(filtered);
     } else {
-      setFilteredAnimes([]);
+      setFilteredAnimes([]); // Se o campo de busca estiver vazio, não mostra resultados
     }
-    setLoading(false);
-  }, [searchTerm]);
+  }, [searchTerm, animes]);
 
+  // Atualiza a URL com o termo de pesquisa
   const handleSearch = () => {
     const params = new URLSearchParams(window.location.search);
     params.set('query', searchTerm);
@@ -67,11 +68,13 @@ export default function Search() {
       </div>
 
       <div className={styles.resultsContainer}>
-        {loading ? (
+        {/* Mostrar resultados apenas se houver pesquisa ou se não estiver carregando */}
+        {searchTerm && loading ? (
           <p className={styles.loading}>Carregando resultados...</p>
+        ) : searchTerm && !loading && filteredAnimes.length === 0 ? (
+          <p className={styles.loading}>Nenhum anime encontrado.</p>
         ) : (
-          // Passando os animes filtrados para o AnimeGrid
-          <AnimeGrid animes={filteredAnimes} />
+          searchTerm && <AnimeGrid animes={filteredAnimes} /> // Passando os animes filtrados para o AnimeGrid
         )}
       </div>
     </div>

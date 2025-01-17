@@ -1,20 +1,9 @@
-// src/pages/episodios/EpisodiosPage.tsx (ou o caminho correto do seu arquivo)
-
 import { useState } from 'react';
-import Link from 'next/link';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay } from '@fortawesome/free-solid-svg-icons';
-import data from '@/data/animes.json';
+import useFetchEpisodes from '../../hooks/useFetchEpisodes'; // Caminho correto do hook
 import styles from './Episodios.module.css';
 
-// Importando as interfaces dos arquivos corretos
-import { Anime } from '@/types/anime'; // Caminho correto para Anime
-import { Episode } from '@/types/episode'; // Caminho correto para Episode
-
 const EpisodesPage = () => {
-  const animes: Anime[] = data.Animes;
-  const episodes: Episode[] = data.Episodes;
-
+  const { episodes, loading, error } = useFetchEpisodes();
   const [currentPage, setCurrentPage] = useState(1);
   const episodesPerPage = 20;
   const totalPages = Math.ceil(episodes.length / episodesPerPage);
@@ -25,8 +14,13 @@ const EpisodesPage = () => {
     currentPage * episodesPerPage
   );
 
-  // Retorna o anime correspondente ao `animeId` de cada episódio
-  const getAnimeById = (animeId: number) => animes.find((a) => a.id === animeId);
+  if (loading) {
+    return <div>Carregando episódios...</div>; // Exibe enquanto carrega
+  }
+
+  if (error) {
+    return <div>{error}</div>; // Exibe o erro se houver
+  }
 
   return (
     <div>
@@ -45,36 +39,29 @@ const EpisodesPage = () => {
       <div className={styles.episodesContainer}>
         <div className={styles.grid}>
           {currentEpisodes.length === 0 ? (
-            <div>Carregando episódios...</div>
+            <div>Não há episódios para exibir.</div>
           ) : (
-            currentEpisodes.map((episode) => {
-              const anime = getAnimeById(episode.animeId);
-              return (
-                <div key={episode.id} className={styles.episodeCard}>
-                  <div className={styles.episodeImageContainer}>
-                    {/* Link para a página específica do episódio */}
-                    <Link
-                      href={`/episodios/${anime?.slug || 'desconhecido'}/${episode.id}`}
-                      className={styles.episodeLink}
-                    >
-                      <img
-                        src={episode.image}
-                        alt={`Episódio ${episode.title}`}
-                        className={styles.episodeImage}
-                      />
-                      {episode.isLancamento && (
-                        <div className={styles.lancamentoLabel}>LANÇAMENTO</div>
-                      )}
-                      <div className={styles.playButton}>
-                        <FontAwesomeIcon icon={faPlay} className={styles.playIcon} />
-                      </div>
-                    </Link>
-                  </div>
-                  <p>{anime?.name || 'Anime Desconhecido'}</p>
-                  <p>{`Episódio ${episode.title.split(' ')[1] || episode.id}`}</p>
+            currentEpisodes.map((episode) => (
+              <div key={episode.id} className={styles.episodeCard}>
+                <div className={styles.episodeImageContainer}>
+                  {/* Link para a página específica do episódio */}
+                  <a
+                    href={`/episodios/${episode.id}`}
+                    className={styles.episodeLink}
+                  >
+                    <img
+                      src={episode.image}
+                      alt={`Episódio ${episode.title}`}
+                      className={styles.episodeImage}
+                    />
+                    {episode.isLancamento && (
+                      <div className={styles.lancamentoLabel}>LANÇAMENTO</div>
+                    )}
+                  </a>
                 </div>
-              );
-            })
+                <p>{episode.title}</p>
+              </div>
+            ))
           )}
         </div>
       </div>

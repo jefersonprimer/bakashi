@@ -1,16 +1,17 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { Anime } from "../../types/anime";
-import animesData from "../../data/animes.json"; 
+import useFetchAnimes from "../hooks/useFetchAnimes"; // Importando o hook
 import styles from "./styles.module.css";
 
 const ListaPage = () => {
   const [animeList, setAnimeList] = useState<Anime[]>([]);
+  const { animes, loading, error } = useFetchAnimes(); // Usando o hook aqui
   const router = useRouter();
   const searchParams = useSearchParams();
-  const animeId = searchParams.get("id"); 
+  const animeId = searchParams.get("id");
 
   useEffect(() => {
     const storedList = localStorage.getItem("animeList");
@@ -18,8 +19,8 @@ const ListaPage = () => {
       setAnimeList(JSON.parse(storedList));
     }
 
-    if (animeId) {
-      const anime = animesData.animes.find((a) => a.id === Number(animeId));
+    if (animeId && animes.length > 0) {
+      const anime = animes.find((a) => a.id === Number(animeId));
       if (anime) {
         if (!animeList.some((a) => a.id === anime.id)) {
           const confirmAdd = confirm(
@@ -31,7 +32,7 @@ const ListaPage = () => {
         }
       }
     }
-  }, [animeId]);
+  }, [animeId, animes, animeList]);
 
   const handleAddAnime = (anime: Anime) => {
     if (animeList.length >= 20) {
@@ -53,11 +54,14 @@ const ListaPage = () => {
   };
 
   const handlePlusClick = (animeId: number) => {
-    const anime = animesData.animes.find((a) => a.id === animeId);
+    const anime = animes.find((a) => a.id === animeId);
     if (anime) {
       handleAddAnime(anime);
     }
   };
+
+  if (loading) return <p>Carregando...</p>;
+  if (error) return <p>{error}</p>;
 
   return (
     <div className={styles.listPage}>
@@ -89,7 +93,7 @@ const ListaPage = () => {
 
       <div className={styles.animeGrid}>
         <h2>Adicionar Mais Animes</h2>
-        {animesData.animes.map((anime) => (
+        {animes.map((anime) => (
           <div key={anime.id} className={styles.animeCard}>
             <img src={anime.image} alt={anime.name} className={styles.image} />
             <div className={styles.cardButtons}>

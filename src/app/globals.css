@@ -1,3 +1,20 @@
+
+
+/* Garante que a página não tenha rolagem horizontal */
+body, html {
+  overflow-x: hidden; /* Remove o scroll horizontal */
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* Garantir que a largura da página seja 100% e que nenhum elemento transborde */
+* {
+  box-sizing: border-box; /* Impede que o padding e as bordas aumentem o tamanho total */
+  margin: 0;
+  padding: 0;
+}
+
 /* Estilos globais no seu arquivo global.css ou equivalente */
 /* * {
   margin: 0;
@@ -40,11 +57,9 @@ body {
 
 .anime-carousel-lancamentos {
   position: relative; /* Certifique-se de que está no fluxo normal */
-  margin-top: -17vh; /* Sobrepõe parcialmente o fullscreen */
+  margin-top: -14vh; /* Sobrepõe parcialmente o fullscreen */
   /* margin: auto -10vh; */
   /* padding: 20px; */
   z-index: 2;
   backdrop-filter: blur(2px); /* Desfoque no fundo */
 }
-
-

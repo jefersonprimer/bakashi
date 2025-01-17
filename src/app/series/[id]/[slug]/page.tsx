@@ -2,13 +2,13 @@
 
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import animesData from '@/data/animes.json';
-import episodesData from '@/data/episodes.json';
 import styles from './styles.module.css';
 import Link from 'next/link';
 
 import { Anime } from '@/types/anime';
 import { Episode } from '@/types/episode';
+import useFetchAnimes from '../../../hooks/useFetchAnimes'; // Importando o hook de animes
+import useFetchEpisodes from '../../../hooks/useFetchEpisodes'; // Importando o hook de episódios
 import Image from 'next/image';
 
 const Page = () => {
@@ -18,18 +18,22 @@ const Page = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [recommendations, setRecommendations] = useState<Anime[]>([]);
 
+  // Usando os hooks para obter dados da API
+  const { animes, loading: loadingAnimes, error: errorAnimes } = useFetchAnimes();
+  const { episodes: allEpisodes, loading: loadingEpisodes, error: errorEpisodes } = useFetchEpisodes();
+
   useEffect(() => {
     if (slug) {
-      const foundAnime = animesData.animes.find((anime) => anime.slug === slug);
+      const foundAnime = animes.find((anime) => anime.slug === slug);
       if (foundAnime) {
         setAnime(foundAnime);
 
-        const relatedEpisodes = episodesData.episodes.filter(
+        const relatedEpisodes = allEpisodes.filter(
           (episode) => episode.animeId === foundAnime.id
         );
         setEpisodes(relatedEpisodes);
 
-        const filteredRecommendations = animesData.animes.filter(
+        const filteredRecommendations = animes.filter(
           (recAnime) =>
             recAnime.id !== foundAnime.id &&
             recAnime.genres.some((genre) => foundAnime.genres.includes(genre))
@@ -38,7 +42,7 @@ const Page = () => {
         setRecommendations(filteredRecommendations.slice(0, 5));
       }
     }
-  }, [slug]);
+  }, [slug, animes, allEpisodes]);
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value.toLowerCase());
@@ -48,8 +52,16 @@ const Page = () => {
     episode.title.toLowerCase().includes(searchQuery)
   );
 
+  if (loadingAnimes || loadingEpisodes) {
+    return <p>Carregando...</p>;
+  }
+
+  if (errorAnimes || errorEpisodes) {
+    return <p>Erro ao carregar dados: {errorAnimes || errorEpisodes}</p>;
+  }
+
   if (!anime) {
-    return <p>Carregando anime...</p>;
+    return <p>Anime não encontrado.</p>;
   }
 
   return (
@@ -134,7 +146,7 @@ const Page = () => {
           {recommendations.length > 0 ? (
             recommendations.map((recommendation) => (
               <li key={recommendation.id} className={styles.recommendationItem}>
-               <Link href={`/series/${recommendation.id}/${recommendation.slug}`}>
+                <Link href={`/series/${recommendation.id}/${recommendation.slug}`}>
                   <div className={styles.recommendationContent}>
                     <img
                       src={recommendation.image}

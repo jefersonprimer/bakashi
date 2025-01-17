@@ -4,29 +4,39 @@ import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight, faChevronLeft, faStar } from "@fortawesome/free-solid-svg-icons";
 import styles from "./AnimeCarouselFullScreen.module.css";
-import animesData from "@/data/animes.json";
-import { Anime } from "@/types/anime";
-import MaturityRating from "../elements/MaturityRating";
+import { Anime } from "@/types/anime"; // Tipagem de anime
+import MaturityRating from "../elements/MaturityRating"; // Componente para exibir a classificação indicativa
+import useFetchAnimes from "@/app/hooks/useFetchAnimes"; // Hook customizado para buscar os animes
 
 interface AnimeCarouselFullScreenProps {
-  animes: Anime[];
   className?: string; // Propriedade opcional
 }
 
 const AnimeCarouselFullScreen: React.FC<AnimeCarouselFullScreenProps> = ({
-  animes,
+  className = "",
 }) => {
+  const { animes, loading, error } = useFetchAnimes(); // Hook para buscar os dados da API
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [thumbnailAnimes, setThumbnailAnimes] = useState<Anime[]>([]);
 
-  const thumbnailAnimes = animes.filter((anime) => anime.isThumbnail);
-
+  // Filtrar apenas os animes com a propriedade "isThumbnail"
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % thumbnailAnimes.length);
-    }, 5000);
+    if (animes) {
+      const filteredAnimes = animes.filter((anime) => anime.isThumbnail);
+      setThumbnailAnimes(filteredAnimes);
+    }
+  }, [animes]);
 
-    return () => clearInterval(interval);
-  }, [thumbnailAnimes.length]);
+  // Alternar automaticamente entre os animes
+  useEffect(() => {
+    if (thumbnailAnimes.length > 0) {
+      const interval = setInterval(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % thumbnailAnimes.length);
+      }, 5000);
+
+      return () => clearInterval(interval);
+    }
+  }, [thumbnailAnimes]);
 
   const nextPage = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % thumbnailAnimes.length);
@@ -43,30 +53,41 @@ const AnimeCarouselFullScreen: React.FC<AnimeCarouselFullScreenProps> = ({
     setCurrentIndex(index);
   };
 
-  if (!animes || thumbnailAnimes.length === 0) {
-    return <div>Loading...</div>;
+  if (loading) {
+    return <div>Carregando...</div>;
+  }
+
+  if (error) {
+    return <div>Erro ao carregar os dados: {error}</div>;
+  }
+
+  if (!thumbnailAnimes || thumbnailAnimes.length === 0) {
+    return <div>Nenhum anime disponível.</div>;
   }
 
   return (
-    <div className={styles.carouselContainer}>
+    <div className={`${styles.carouselContainer} ${className}`}>
       <div
         className={styles.backgroundImage}
         style={{
-          backgroundImage: `url("http://localhost:3000${thumbnailAnimes[currentIndex].thumbnailImage}")`,
+          backgroundImage: `url("${thumbnailAnimes[currentIndex].thumbnailImage}")`,
         }}
-        
       />
 
       <div className={styles.cardContainer}>
         <div className={styles.cardContent}>
           <div className={styles.leftColumn}>
-            <MaturityRating rating={thumbnailAnimes[currentIndex].rating} />{" "}
-            {thumbnailAnimes[currentIndex].audioType}{" "}
-            {/* {thumbnailAnimes[currentIndex].genres.join(", ")} */}
+            <div className={styles.ratingAndAudioType}>
+              <MaturityRating rating={thumbnailAnimes[currentIndex].rating} />
+              <p className={styles.audioType}>
+                {thumbnailAnimes[currentIndex].audioType}
+              </p>
+            </div>
             <p className={styles.name}>{thumbnailAnimes[currentIndex].name}</p>
             <p className={styles.synopsis}>
               {thumbnailAnimes[currentIndex].synopsis}
             </p>
+
             <div className={styles.buttonsContainer}>
               <div className={styles.playButton}>
                 <div className={styles.tooltip}>
@@ -104,35 +125,35 @@ const AnimeCarouselFullScreen: React.FC<AnimeCarouselFullScreenProps> = ({
               </div>
             </div>
           </div>
-            <div className={styles.pageIndicator}>
-              {thumbnailAnimes.map((anime, index) => (
-                <button
-                  key={anime.id}
-                  className={`${styles.pageDot} ${
-                    currentIndex === index ? styles.active : ""
-                  }`}
-                  onClick={() => navigateToPage(index)}
-                >
-                  <span className={styles.pageLoader}></span>
-                </button>
-              ))}
-            </div>
+
+          <div className={styles.pageIndicator}>
+            {thumbnailAnimes.map((anime, index) => (
+              <button
+                key={anime.id}
+                className={`${styles.pageDot} ${
+                  currentIndex === index ? styles.active : ""
+                }`}
+                onClick={() => navigateToPage(index)}
+              >
+                <span className={styles.pageLoader}></span>
+              </button>
+            ))}
           </div>
         </div>
-
+      </div>
 
       <div className={styles.navigationButtons}>
         <button
           className={styles.arrowButton}
           onClick={prevPage}
-          aria-label="Previous Item"
+          aria-label="Anterior"
         >
           <FontAwesomeIcon icon={faChevronLeft} />
         </button>
         <button
           className={styles.arrowButton}
           onClick={nextPage}
-          aria-label="Next Item"
+          aria-label="Próximo"
         >
           <FontAwesomeIcon icon={faChevronRight} />
         </button>

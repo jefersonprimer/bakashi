@@ -1,76 +1,54 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
-import { Anime } from "@/types/anime";
-import styles from "./AnimeCarousel.module.css";
-import Link from "next/link";
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft, faChevronRight, faStar } from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight, faChevronLeft, faStar } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
+import styles from "./oldAnimeCarousel.module.css";
 import MaturityRating from "../elements/MaturityRating"; 
+import { Anime } from "@/types/anime"; 
 
-interface AnimeCarouselProps {
-  animes: Anime[];
+interface oldAnimeCarouselProps {
+  animes: Anime[]; // Utilizando a interface importada
+  itemsPerPage?: number;
 }
 
-const AnimeCarousel: React.FC<AnimeCarouselProps> = ({ animes }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
+const oldAnimeCarousel: React.FC<oldAnimeCarouselProps> = ({
+  animes,
+  itemsPerPage = 5,
+}) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const updateScrollState = () => {
-    if (containerRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
-      setCanScrollLeft(scrollLeft > 0);
-      setCanScrollRight(scrollLeft + clientWidth < scrollWidth);
+  const nextPage = () => {
+    if (currentIndex + itemsPerPage < animes.length) {
+      setCurrentIndex(currentIndex + itemsPerPage);
     }
   };
 
-  const scrollLeft = () => {
-    if (containerRef.current) {
-      containerRef.current.scrollBy({
-        left: -300,
-        behavior: "smooth",
-      });
+  const prevPage = () => {
+    if (currentIndex - itemsPerPage >= 0) {
+      setCurrentIndex(currentIndex - itemsPerPage);
     }
   };
-
-  const scrollRight = () => {
-    if (containerRef.current) {
-      containerRef.current.scrollBy({
-        left: 300,
-        behavior: "smooth",
-      });
-    }
-  };
-
-  useEffect(() => {
-    const container = containerRef.current;
-    if (container) {
-      updateScrollState(); // Atualiza o estado inicial
-      container.addEventListener("scroll", updateScrollState);
-      return () => container.removeEventListener("scroll", updateScrollState);
-    }
-  }, []);
 
   return (
     <div className={styles.carouselContainer}>
-      <div className={styles.outer}>
-        {/* Botão esquerdo */}
-        {canScrollLeft && (
-          <button
-            className={`${styles.scrollButton} ${styles.scrollLeft}`}
-            onClick={scrollLeft}
-            aria-label="Scroll Left"
-          >
-            <FontAwesomeIcon icon={faChevronLeft} className={styles.arrowIcon} />
-          </button>
-        )}
+      {currentIndex > 0 && (
+        <button
+          className={`${styles.arrowButton} ${styles.arrowLeft}`}
+          onClick={prevPage}
+          disabled={currentIndex === 0}
+          aria-label="Previous Page"
+        >
+          <FontAwesomeIcon icon={faChevronLeft} className={styles.arrowIcon} />
+        </button>
+      )}
 
-        {/* Container dos cards */}
-        <div className={styles.flexContainer} ref={containerRef}>
-          {animes.map((anime) => (
-            <div key={anime.id} className={styles.card}>
-              <Link href={`/series/${anime.id}/${anime.slug}`} className={styles.animeLink}>
+      <div className={styles.animesGrid}>
+        {animes
+          .slice(currentIndex, currentIndex + itemsPerPage)
+          .map((anime) => (
+            <Link className={styles.animeCard} href={`/series/${anime.id}/${anime.slug}`} key={anime.id}>
               <img
                 src={anime.image}
                 alt={anime.name}
@@ -84,14 +62,14 @@ const AnimeCarousel: React.FC<AnimeCarouselProps> = ({ animes }) => {
               <div className={styles.cardInfo}>
                 <h3 className={styles.name}>{anime.name}</h3>
                 <div className={styles.infoText}>
-                  <div className={styles.flexContainer2}>
-                      <MaturityRating rating={anime.rating} />
-                      <span className={styles.score}>
-                          {anime.score}
-                          <FontAwesomeIcon icon={faStar} className={styles.iconStar} />
-                      </span>
+                  <div className={styles.flexContainer}>
+                    <MaturityRating rating={anime.rating} />
+                    <span className={styles.score}>
+                      {anime.score}
+                      <FontAwesomeIcon icon={faStar} className={styles.iconStar} />
+                    </span>
                   </div>
-                 </div>
+                </div>
 
                 <p className={`${styles.infoText} ${styles.seasonText}`}>
                   Season: {anime.season}
@@ -151,24 +129,22 @@ const AnimeCarousel: React.FC<AnimeCarouselProps> = ({ animes }) => {
                   </svg>
                 </div>
               </div>
-              </Link>
-            </div>
+            </Link>
           ))}
-        </div>
-
-        {/* Botão direito */}
-        {canScrollRight && (
-          <button
-            className={`${styles.scrollButton} ${styles.scrollRight}`}
-            onClick={scrollRight}
-            aria-label="Scroll Right"
-          >
-            <FontAwesomeIcon icon={faChevronRight} className={styles.arrowIcon} />
-          </button>
-        )}
       </div>
+
+      {currentIndex + itemsPerPage < animes.length && (
+        <button
+          className={`${styles.arrowButton} ${styles.arrowRight}`}
+          onClick={nextPage}
+          disabled={currentIndex + itemsPerPage >= animes.length}
+          aria-label="Next Page"
+        >
+          <FontAwesomeIcon icon={faChevronRight} className={styles.arrowIcon} />
+        </button>
+      )}
     </div>
   );
 };
 
-export default AnimeCarousel;
+export default oldAnimeCarousel;
