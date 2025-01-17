@@ -1,4 +1,20 @@
+.outdoor-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ocupa a altura total da tela */
+  text-align: center; /* Centraliza o texto */
+  flex-direction: column; /* Garante que o título fique acima do card */
+}
 
+.outdoor-container h1 {
+  margin-bottom: 20px; /* Espaço entre o título e o card */
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+}
 
 /* Garante que a página não tenha rolagem horizontal */
 body, html {
@@ -62,4 +78,28 @@ body {
   /* padding: 20px; */
   z-index: 2;
   backdrop-filter: blur(2px); /* Desfoque no fundo */
+}
+
+/* scroll */
+/* Estilo geral para navegadores baseados em WebKit (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 12px; /* Largura da barra de rolagem vertical */
+  height: 12px; /* Altura da barra de rolagem horizontal */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #686868; /* Cor do "thumb" (parte arrastável) */
+  border-radius: 10px; /* Arredondamento das extremidades */
+  border: 3px solid #424242; /* Espaço ao redor do thumb */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #424242; /* Cor do fundo do track (trilho da rolagem) */
+  border-radius: 10px; /* Arredondamento do track */
+}
+
+/* Para navegadores como Firefox */
+html {
+  scrollbar-width: thin; /* Largura da barra de rolagem: thin | auto | none */
+  scrollbar-color: #686868 #424242; /* thumb-color track-color */
 }

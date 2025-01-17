@@ -5,6 +5,7 @@ import AnimeCarousel from "./AnimeCarousel";
 import { Anime } from "@/types/anime";
 import styles from "./AnimeCarouselLancamentos.module.css";
 import useFetchAnimes from "@/app/hooks/useFetchAnimes"; // Hook customizado para buscar os animes
+import Loading from "@/app/loading";
 
 interface AnimeCarouselLancamentosProps {
   itemsPerPage?: number;
@@ -25,7 +26,7 @@ const AnimeCarouselLancamentos: React.FC<AnimeCarouselLancamentosProps> = ({
   }, [animes]);
 
   if (loading) {
-    return <div>Carregando...</div>;
+    return <Loading/>;
   }
 
   if (error) {

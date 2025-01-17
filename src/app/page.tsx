@@ -10,6 +10,8 @@ import animesData from "@/data/animes.json";
 
 import "./globals.css";
 import AnimeCarouselByDay from "./components/cards/AnimeCarouselByDay";
+import OutdoorCard from "./components/cards/OutdoorCard";
+import Outdoor from "./components/cards/Outdoor";
 
 const HomePage = () => {
   const [animes, setAnimes] = useState<Anime[]>([]);
@@ -32,8 +34,6 @@ const HomePage = () => {
     <div className="home-container">
       <AnimeCarouselFullScreen />
       <AnimeCarouselLancamentos className="anime-carousel-lancamentos" />
-      <AnimeCarouselByDay />
-   
     </div>
   );
 };

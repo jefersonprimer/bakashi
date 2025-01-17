@@ -37,9 +37,9 @@ const AnimeCarouselByDay: React.FC<AnimeCarouselByDayProps> = ({
   const todaysAnimes: Anime[] =
     animes?.filter((anime) => anime.airingDay === currentDay) || [];
 
-  if (loading) {
-    return <div>Carregando...</div>;
-  }
+  // if (loading) {
+  //   return <div>Carregando...</div>;
+  // }
 
   if (error) {
     return <div>{error}</div>;

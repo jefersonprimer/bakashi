@@ -7,6 +7,7 @@ import styles from "./AnimeCarouselFullScreen.module.css";
 import { Anime } from "@/types/anime"; // Tipagem de anime
 import MaturityRating from "../elements/MaturityRating"; // Componente para exibir a classificação indicativa
 import useFetchAnimes from "@/app/hooks/useFetchAnimes"; // Hook customizado para buscar os animes
+import Loading from "../../../app/loading"
 
 interface AnimeCarouselFullScreenProps {
   className?: string; // Propriedade opcional
@@ -54,7 +55,7 @@ const AnimeCarouselFullScreen: React.FC<AnimeCarouselFullScreenProps> = ({
   };
 
   if (loading) {
-    return <div>Carregando...</div>;
+    return <Loading />;
   }
 
   if (error) {
