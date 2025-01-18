@@ -24,7 +24,7 @@
   align-items: center;
   justify-content: flex-start;
   width: 100%;
-  max-width: 90%; /* Substitui 800px */
+  max-width: 60%; /* Substitui 800px */
   padding: 1.25rem; /* Substitui 20px */
   margin-bottom: 1.25rem; /* Substitui 20px */
 }

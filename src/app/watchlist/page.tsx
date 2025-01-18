@@ -1,107 +1,109 @@
-"use client";
+'use client'
 
-import { useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Anime } from "../../types/anime";
-import useFetchAnimes from "../hooks/useFetchAnimes"; // Importando o hook
-import AnimeGrid from "../components/cards/AnimeGrid"; // Importando AnimeGrid
-import styles from "./styles.module.css";
+import { useRouter } from 'next/navigation';
 
-const ListaPage = () => {
-  const [animeList, setAnimeList] = useState<Anime[]>([]);
-  const { animes, loading, error } = useFetchAnimes(); // Usando o hook aqui
+const MyLists = () => {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const animeId = searchParams.get("id");
+  const [activeTab, setActiveTab] = useState<"fila" | "crunchylists" | "history">("fila");
 
+  // Efeito para definir a aba ativa com base na URL
   useEffect(() => {
-    const storedList = localStorage.getItem("animeList");
-    if (storedList) {
-      setAnimeList(JSON.parse(storedList));
-    }
+    const path = window.location.pathname;
 
-    if (animeId && animes.length > 0) {
-      const anime = animes.find((a) => a.id === Number(animeId));
-      if (anime) {
-        if (!animeList.some((a) => a.id === anime.id)) {
-          const confirmAdd = confirm(
-            `O anime "${anime.name}" não está na lista. Deseja adicionar?`
-          );
-          if (confirmAdd) {
-            handleAddAnime(anime);
-          }
-        }
-      }
+    if (path === "/watchlist") {
+      setActiveTab("fila");
+    } else if (path === "/crunchylists") {
+      setActiveTab("crunchylists");
+    } else if (path === "/history") {
+      setActiveTab("history");
     }
-  }, [animeId, animes, animeList]);
+  }, []);
 
-  const handleAddAnime = (anime: Anime) => {
-    if (animeList.length >= 20) {
-      alert("Lista cheia. Remova um anime para adicionar outro.");
-      return;
-    }
-
-    if (!animeList.find((a) => a.id === anime.id)) {
-      const updatedList = [...animeList, anime];
-      setAnimeList(updatedList);
-      localStorage.setItem("animeList", JSON.stringify(updatedList));
+  const renderContent = () => {
+    switch (activeTab) {
+      case "fila":
+        return <div>Conteúdo da Fila</div>;
+      case "crunchylists":
+        return <div>Conteúdo das Crunchylistas</div>;
+      case "history":
+        return <div>Conteúdo do Histórico</div>;
+      default:
+        return null;
     }
   };
-
-  const handleRemoveAnime = (id: number) => {
-    const updatedList = animeList.filter((anime) => anime.id !== id);
-    setAnimeList(updatedList);
-    localStorage.setItem("animeList", JSON.stringify(updatedList));
-  };
-
-  const handlePlusClick = (animeId: number) => {
-    const anime = animes.find((a) => a.id === animeId);
-    if (anime) {
-      handleAddAnime(anime);
-    }
-  };
-
-  if (loading) return <p>Carregando...</p>;
-  if (error) return <p>{error}</p>;
 
   return (
-    <div className={styles.listPage}>
-      <h1>Sua Lista de Animes</h1>
-      {animeList.length === 0 ? (
-        <p>Sua lista está vazia. Adicione animes!</p>
-      ) : (
-        <ul className={styles.list}>
-          {animeList.map((anime) => (
-            <li key={anime.id} className={styles.listItem}>
-              <img
-                src={anime.image}
-                alt={anime.name}
-                className={styles.image}
-              />
-              <div className={styles.info}>
-                <h3>{anime.name}</h3>
-                <button
-                  onClick={() => handleRemoveAnime(anime.id)}
-                  className={styles.removeButton}
-                >
-                  Remover
-                </button>
-              </div>
-            </li>
-          ))}
-        </ul>
-      )}
-
-      {/* Exibindo o AnimeGrid com a lista de animes restantes */}
-      <div className={styles.animeGrid}>
-        <AnimeGrid
-          animes={animes}
-          handleAddAnime={handleAddAnime}
-          handlePlusClick={handlePlusClick} // Passando a função para o AnimeGrid
-        />
-      </div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start", // Alinha ao topo
+        alignItems: "center",
+        minHeight: "100vh",
+        padding: "20px",
+        fontFamily: "Arial, sans-serif",
+        gap: "20px", // Para adicionar um espaçamento entre os elementos
+      }}
+    >
+      <header style={{ marginBottom: "20px", textAlign: "center" }}>
+        <h1 style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+          >
+            <path
+              d="M17 18.113l-3.256-2.326A2.989 2.989 0 0 0 12 15.228c-.629 0-1.232.194-1.744.559L7 18.113V4h10v14.113zM18 2H6a1 1 0 0 0-1 1v17.056c0 .209.065.412.187.581a.994.994 0 0 0 1.394.233l4.838-3.455a1 1 0 0 1 1.162 0l4.838 3.455A1 1 0 0 0 19 20.056V3a1 1 0 0 0-1-1z"
+              fill="currentColor"
+            />
+          </svg>
+          Minhas Listas
+        </h1>
+      </header>
+      <nav style={{ display: "flex", gap: "20px", marginBottom: "20px" }}>
+        <Link href="/watchlist">
+          <button
+            onClick={() => setActiveTab("fila")}
+            style={{
+              padding: "10px",
+              borderBottom: activeTab === "fila" ? "2px solid orange" : "none",
+              cursor: "pointer",
+            }}
+          >
+            Fila
+          </button>
+        </Link>
+        <Link href="/crunchylists">
+          <button
+            onClick={() => setActiveTab("crunchylists")}
+            style={{
+              padding: "10px",
+              borderBottom: activeTab === "crunchylists" ? "2px solid orange" : "none",
+              cursor: "pointer",
+            }}
+          >
+            Crunchylist
+          </button>
+        </Link>
+        <Link href="/history">
+          <button
+            onClick={() => setActiveTab("history")}
+            style={{
+              padding: "10px",
+              borderBottom: activeTab === "history" ? "2px solid orange" : "none",
+              cursor: "pointer",
+            }}
+          >
+            Histórico
+          </button>
+        </Link>
+      </nav>
+      <main style={{ textAlign: "center" }}>{renderContent()}</main>
     </div>
   );
 };
 
-export default ListaPage;
+export default MyLists;
