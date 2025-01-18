@@ -1,79 +1,91 @@
+/* Container principal */
 .glossaryContainer {
-  padding: 20px;
+  padding: 1.25rem; /* Substitui 20px */
   display: flex;
-  flex-direction: column;  /* Muda para coluna */
-  align-items: center;     /* Centraliza os itens */
+  flex-direction: column;
+  align-items: center;
 }
 
+/* Cabeçalho */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 0 auto 1.25rem; /* Substitui 20px */
+  padding: 0 1rem;
   width: 100%;
-  margin-bottom: 20px;
+  max-width: 90%; /* Substitui largura fixa */
 }
 
 .title {
-  font-size: 2rem;
+  font-size: 1.8rem; /* Ajuste para responsividade */
   font-weight: bold;
 }
 
+/* Botões de filtro por letras */
 .letterFilter {
   display: flex;
-  gap: 5px;
-  flex-wrap: wrap;         /* Permite que os botões quebrem para a próxima linha, caso necessário */
-  margin-bottom: 20px;
+  gap: 0.5rem; /* Substitui 5px */
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem; /* Substitui 20px */
 }
 
 .letterFilter button {
   color: white;
-  padding: 10px 8px;
-  border-radius: 4px;
+  padding: 0.625rem 0.5rem; /* Substitui 10px 8px */
+  border-radius: 0.25rem; /* Substitui 4px */
   cursor: pointer;
   transition: background-color 0.3s ease;
-  background-color: transparent; /* Remove fundo */
-  border: none; /* Remove bordas */
+  background-color: transparent;
+  border: none;
 }
 
 .letterFilter button:hover {
-  background-color: transparent; /* Remove o fundo no hover */
-  color: inherit; /* Mantém a cor original do texto */
+  background-color: transparent;
+  color: inherit;
 }
 
+/* Carrossel */
 .carousel {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  width: 80%;
-  max-width: 1000px;
+  gap: 1.25rem; /* Substitui 20px */
+  width: 90%; /* Substitui 80% */
+  max-width: 100%; /* Garante que não ultrapasse o container */
 }
 
 .carousel a {
-  text-decoration: none; /* Remove o sublinhado */
-  color: inherit; /* Herda a cor do elemento pai (ex: a cor do texto) */
+  text-decoration: none;
+  color: inherit;
 }
 
+/* Card de anime */
 .anime_card {
   overflow: hidden;
   transition: transform 0.3s ease-in-out;
   display: flex;
+  flex-direction: column; /* Ajuste para mobile */
+  background-color: #23252B;
+  border-radius: 0.5rem; /* Para consistência */
 }
 
 .anime_card:hover {
-  background-color: #23252B;
+  transform: scale(1.02);
 }
 
 .anime_content {
   display: flex;
-  padding: 16px;
-  gap: 16px;
-  align-items: flex-start; /* Alinha o conteúdo ao topo */
+  flex-direction: column; /* Para mobile */
+  padding: 1rem; /* Substitui 16px */
+  gap: 1rem; /* Substitui 16px */
 }
 
 .anime_image {
-  width: 120px;
-  height: 180px;
+  width: 100%; /* Largura dinâmica */
+  height: auto; /* Mantém proporção */
+  max-width: 120px; /* Restringe tamanho máximo */
   object-fit: cover;
+  border-radius: 0.5rem;
 }
 
 .anime_details {
@@ -85,16 +97,16 @@
 .anime_name {
   font-size: 1.2rem;
   font-weight: bold;
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem; /* Substitui 8px */
 }
 
 .anime_synopsis {
   font-size: 1rem;
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem; /* Substitui 8px */
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2; /* Limita a sinopse a 2 linhas */
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
 
@@ -103,46 +115,25 @@
   color: #555;
 }
 
-
-.header {
-  display: flex;
-  justify-content: space-between; /* Alinha o título e o botão */
-  align-items: center; /* Alinha verticalmente */
-  margin-bottom: 20px;
-  margin: auto 80px;
-  max-width: 1000px;
-}
-
-.title {
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-.ordemAlfabetica {
-  cursor: pointer;
-}
-
-.header h1 {
-  font-size: 2rem;
-  font-weight: bold;
-}
-
+/* Filtros */
 .filters {
-  width: 160px;
+  width: 100%; /* Ajuste para mobile */
+  max-width: 160px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625rem; /* Substitui 10px */
   position: relative;
-  align-items: center; /* Alinha verticalmente o SVG com o título */
+  align-items: center;
 }
 
 .filters button {
   display: flex;
-  align-items: center; /* Alinha o ícone e o texto */
-  padding: 10px 16px;
+  align-items: center;
+  padding: 0.625rem 1rem; /* Substitui 10px 16px */
   background-color: #23252B;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  border-radius: 0.25rem;
 }
 
 .filters button:hover {
@@ -154,27 +145,87 @@
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625rem; /* Substitui 10px */
   position: absolute;
   top: 100%;
   left: 0;
   background-color: #23252B;
-  padding: 10px;
+  padding: 0.625rem; /* Substitui 10px */
   z-index: 10;
+  border-radius: 0.25rem;
 }
 
 .filterOptions button {
   background-color: #23252B;
   color: white;
-  padding: 10px 16px;
+  padding: 0.625rem 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-/* Diminuindo o tamanho do SVG */
+/* Ícones */
 .svgIcon {
-  width: 14px; /* Ajuste o tamanho desejado */
-  height: 14px;
-  margin-right: 8px; /* Dá um espaçamento entre o ícone e o texto */
+  width: 1rem; /* Substitui 14px */
+  height: 1rem; /* Substitui 14px */
+  margin-right: 0.5rem; /* Substitui 8px */
   fill: white;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .carousel {
+    gap: 1rem;
+  }
+
+  .anime_content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .anime_image {
+    max-width: 100px;
+  }
+
+  .filters {
+    width: auto;
+    gap: 0.5rem;
+  }
+
+  .filters button {
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .anime_card {
+    flex-direction: column;
+  }
+
+  .anime_image {
+    max-width: 80px;
+  }
+
+  .filters button {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.875rem;
+  }
+
+  .filterOptions {
+    gap: 0.5rem;
+  }
 }

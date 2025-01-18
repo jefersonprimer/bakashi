@@ -1,11 +1,11 @@
 /* Container para a grid de resultados */
 .resultsContainer {
   display: grid;
-  gap: 16px;
-  margin-top: 20px;
+  gap: 1rem; /* Substitui 16px */
+  margin-top: 1.25rem; /* Substitui 20px */
   width: 100%;
-  max-width: 800px;
-  padding: 0 20px;
+  max-width: 90%; /* Dinâmico para telas pequenas */
+  padding: 0 1.25rem; /* Substitui 20px */
 }
 
 /* Outros estilos da página */
@@ -15,7 +15,7 @@
   align-items: center;
   min-height: 100vh;
   background-color: #141519;
-  padding-top: 20px;
+  padding-top: 1.25rem; /* Substitui 20px */
 }
 
 .searchContainer {
@@ -24,18 +24,18 @@
   align-items: center;
   justify-content: flex-start;
   width: 100%;
-  max-width: 800px;
-  padding: 20px;
-  margin-bottom: 20px;
+  max-width: 90%; /* Substitui 800px */
+  padding: 1.25rem; /* Substitui 20px */
+  margin-bottom: 1.25rem; /* Substitui 20px */
 }
 
 .searchInput {
   color: white;
   width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
+  padding: 0.625rem; /* Substitui 10px */
+  margin-bottom: 0.625rem; /* Substitui 10px */
   border: none;
-  font-size: 32px;
+  font-size: 2rem; /* Substitui 32px */
   background-color: #141519;
   border-bottom: 1px solid gray;
 }
@@ -50,10 +50,10 @@
 .searchButton {
   background-color: #0070f3;
   color: white;
-  padding: 10px 20px;
+  padding: 0.625rem 1.25rem; /* Substitui 10px 20px */
   border: none;
-  border-radius: 4px;
-  font-size: 16px;
+  border-radius: 0.25rem; /* Substitui 4px */
+  font-size: 1rem; /* Substitui 16px */
   cursor: pointer;
   transition: background-color 0.3s;
 }
@@ -72,7 +72,7 @@
 .resultItem {
   display: flex;
   align-items: center;
-  padding: 10px;
+  padding: 0.625rem; /* Substitui 10px */
   border-bottom: 1px solid #eaeaea;
 }
 
@@ -86,8 +86,8 @@
 }
 
 .resultImage {
-  border-radius: 8px;
-  margin-right: 10px;
+  border-radius: 0.5rem; /* Substitui 8px */
+  margin-right: 0.625rem; /* Substitui 10px */
 }
 
 .textContent {
@@ -100,12 +100,65 @@
 }
 
 .resultScore {
-  font-size: 14px;
+  font-size: 0.875rem; /* Substitui 14px */
   color: #555;
 }
 
 .loading {
   text-align: center;
   color: #888;
-  font-size: 16px;
+  font-size: 1rem; /* Substitui 16px */
+}
+
+/* Media Queries para telas menores */
+@media (max-width: 768px) {
+  .resultsContainer {
+    gap: 0.75rem; /* Reduz o espaçamento entre os itens */
+    padding: 0 1rem; /* Espaçamento menor */
+  }
+
+  .searchContainer {
+    padding: 1rem; /* Compacta o container */
+  }
+
+  .searchInput {
+    font-size: 1.5rem; /* Texto menor */
+  }
+
+  .searchButton {
+    padding: 0.5rem 1rem; /* Botão menor */
+    font-size: 0.875rem; /* Texto menor */
+  }
+
+  .resultItem {
+    padding: 0.5rem; /* Mais compacto */
+  }
+
+  .resultImage {
+    margin-right: 0.5rem; /* Ajusta margens */
+  }
+}
+
+/* Media Queries para telas muito pequenas (ex: 400px) */
+@media (max-width: 400px) {
+  .searchInput {
+    font-size: 1.25rem; /* Fonte ainda menor */
+  }
+
+  .searchButton {
+    padding: 0.4rem 0.8rem; /* Botão compacto */
+    font-size: 0.75rem; /* Texto menor */
+  }
+
+  .resultItem {
+    padding: 0.4rem; /* Compacta os resultados */
+  }
+
+  .resultImage {
+    margin-right: 0.4rem;
+  }
+
+  .resultScore {
+    font-size: 0.75rem; /* Texto menor */
+  }
 }

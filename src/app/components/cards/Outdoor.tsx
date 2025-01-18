@@ -51,7 +51,7 @@ const Outdoor: React.FC<OutdoorProps> = ({
           alt={title}
           style={{
             width: "100%",
-            height: "100%",
+            height: "350px",
             objectFit: "cover",
           }}
         />

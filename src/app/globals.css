@@ -1,19 +1,18 @@
-.outdoor-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* Ocupa a altura total da tela */
-  text-align: center; /* Centraliza o texto */
-  flex-direction: column; /* Garante que o título fique acima do card */
+/* Garantir que a largura da página seja 100% e que nenhum elemento transborde */
+* {
+  box-sizing: border-box; /* Impede que o padding e as bordas aumentem o tamanho total */
+  margin: 0;
+  padding: 0;
 }
 
-.outdoor-container h1 {
-  margin-bottom: 20px; /* Espaço entre o título e o card */
+#root {
+  height: 100%;
 }
 
-.home-container {
-  display: flex;
-  flex-direction: column;
+/* Para navegadores como Firefox */
+html {
+  scrollbar-width: thin; /* Largura da barra de rolagem: thin | auto | none */
+  scrollbar-color: #686868 #424242; /* thumb-color track-color */
 }
 
 /* Garante que a página não tenha rolagem horizontal */
@@ -24,27 +23,9 @@ body, html {
   width: 100%;
 }
 
-/* Garantir que a largura da página seja 100% e que nenhum elemento transborde */
-* {
-  box-sizing: border-box; /* Impede que o padding e as bordas aumentem o tamanho total */
-  margin: 0;
-  padding: 0;
-}
-
-/* Estilos globais no seu arquivo global.css ou equivalente */
-/* * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-} */
-
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
-}
-
-#root {
   height: 100%;
 }
 
@@ -54,30 +35,6 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   font-weight: 400;
-}
-
-.home-container {
-  /* justify-content: center;
-  align-items: center;
-  display: flex;
-  flex-direction: column;  */
-}
-
-.anime-carousel-fullscreen {
-  position: relative; /* Não use absoluto */
-  height: 100vh; /* Continua ocupando a tela inteira */
-  background-size: cover;
-  background-position: center;
-  z-index: 1;
-}
-
-.anime-carousel-lancamentos {
-  position: relative; /* Certifique-se de que está no fluxo normal */
-  margin-top: -14vh; /* Sobrepõe parcialmente o fullscreen */
-  /* margin: auto -10vh; */
-  /* padding: 20px; */
-  z-index: 2;
-  backdrop-filter: blur(2px); /* Desfoque no fundo */
 }
 
 /* scroll */
@@ -98,8 +55,65 @@ body {
   border-radius: 10px; /* Arredondamento do track */
 }
 
-/* Para navegadores como Firefox */
-html {
-  scrollbar-width: thin; /* Largura da barra de rolagem: thin | auto | none */
-  scrollbar-color: #686868 #424242; /* thumb-color track-color */
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center;
+  align-items: center;*/
+}
+
+.anime-carousel-fullscreen {
+  position: relative; /* Não use absoluto */
+  height: 100vh; /* Continua ocupando a tela inteira */
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+.anime-carousel-lancamentos {
+  position: relative; /* Certifique-se de que está no fluxo normal */
+  margin-top: -14vh; /* Sobrepõe parcialmente o fullscreen */
+  /* margin: auto -10vh; */
+  /* padding: 20px; */
+  z-index: 2;
+  backdrop-filter: blur(2px); /* Desfoque no fundo */
+}
+
+.anime-carousel-popular-season {
+  
+  /* margin: auto -10vh; */
+  /* padding: 20px; */
+  
+  backdrop-filter: blur(2px); /* Desfoque no fundo */
+}
+
+.anime-carousel-popular {
+  position: relative; /* Certifique-se de que está no fluxo normal */
+
+  /* margin: auto -10vh; */
+  /* padding: 20px; */
+  z-index: 2;
+  backdrop-filter: blur(2px); /* Desfoque no fundo */
+}
+
+.movie-card {
+  
+  /* margin: auto -10vh; */
+  /* padding: 20px; */
+  
+  backdrop-filter: blur(2px); /* Desfoque no fundo */
+}
+
+.outdoor-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ocupa a altura total da tela */
+  text-align: center; /* Centraliza o texto */
+  flex-direction: column; /* Garante que o título fique acima do card */
+}
+
+.outdoor-container h1 {
+  margin-bottom: 20px; 
 }

@@ -1,22 +1,62 @@
+/* Estilo base (desktop e mobile) */
 .calendar {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px;
-  min-height: 100vh;
+  padding: 1rem; /* Substitui valores fixos */
+  min-height: 100vh; /* Mantém responsivo ao viewport */
   text-align: center;
+  box-sizing: border-box; /* Garante que o padding não quebre o layout */
 }
 
 .title {
-  padding: 1rem;
+  padding: 0.5rem; /* Ajuste menor para telas pequenas */
+  font-size: 1.5rem; /* Escalável */
 }
 
 .dayContainer {
-  margin-bottom: 20px;
-  width: 100%;
+  margin-bottom: 1rem; /* Substitui valores fixos */
+  width: 90%; /* Deixa margem para respiro */
 }
 
 .dayTitle {
-  padding: 1rem;
+  padding: 0.5rem; /* Menor para telas pequenas */
+  font-size: 1.2rem; /* Adaptado */
+}
+
+/* Media Queries para dispositivos menores */
+@media (max-width: 768px) {
+  .calendar {
+    padding: 0.5rem; /* Reduz espaços */
+  }
+
+  .title {
+    font-size: 1.2rem; /* Reduz o tamanho da fonte */
+  }
+
+  .dayContainer {
+    width: 100%; /* Usa todo o espaço disponível */
+    margin-bottom: 0.75rem; /* Margem menor */
+  }
+
+  .dayTitle {
+    font-size: 1rem; /* Ajuste proporcional */
+    padding: 0.5rem; /* Menos espaçamento */
+  }
+}
+
+/* Media Queries para telas muito pequenas (ex: 400px) */
+@media (max-width: 400px) {
+  .title {
+    font-size: 1rem; /* Fonte ainda menor */
+  }
+
+  .dayContainer {
+    margin-bottom: 0.5rem; /* Mais compacto */
+  }
+
+  .dayTitle {
+    font-size: 0.9rem; /* Pequeno, mas ainda legível */
+  }
 }

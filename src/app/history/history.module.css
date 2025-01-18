@@ -1,46 +1,92 @@
 .history-container {
-  padding: 16px;
-  max-width: 1200px;
-  margin: 0 auto;
+  padding: 1rem; /* Substitui 16px */
+  max-width: 90%; /* Limita largura em telas menores */
+  margin: 0 auto; /* Centraliza */
 }
 
 .history-title {
-  font-size: 24px;
+  font-size: 1.5rem; /* Substitui 24px */
   font-weight: bold;
-  margin-bottom: 16px;
+  margin-bottom: 1rem; /* Substitui 16px */
   text-align: center;
 }
 
 .history-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Flexível para mobile */
+  gap: 1rem; /* Substitui 16px */
 }
 
 .history-item {
-  border-radius: 8px;
-  padding: 8px;
+  border-radius: 0.5rem; /* Substitui 8px */
+  padding: 0.5rem; /* Substitui 8px */
   text-align: left;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-.history-item:hover {
-  transform: translateY(-4px);
-}
-
 .history-item img {
   width: 100%;
-  border-radius: 8px;
-  margin-bottom: 8px;
+  border-radius: 0.5rem; /* Substitui 8px */
+  margin-bottom: 0.5rem; /* Substitui 8px */
 }
 
 .history-item h3 {
-  font-size: 16px;
+  font-size: 1rem; /* Substitui 16px */
   font-weight: bold;
   color: #FFFFFF;
 }
 
 .history-item p {
-  font-size: 14px;
+  font-size: 0.875rem; /* Substitui 14px */
   color: #FFFFFF;
+}
+
+/* Media Queries para dispositivos menores */
+@media (max-width: 768px) {
+  .history-container {
+    padding: 0.5rem; /* Reduz espaços */
+  }
+
+  .history-title {
+    font-size: 1.25rem; /* Reduz o tamanho da fonte */
+  }
+
+  .history-grid {
+    gap: 0.5rem; /* Reduz o espaçamento entre os itens */
+  }
+
+  .history-item {
+    padding: 0.5rem; /* Compacta os itens */
+  }
+
+  .history-item h3 {
+    font-size: 0.875rem; /* Texto menor */
+  }
+
+  .history-item p {
+    font-size: 0.75rem; /* Texto menor */
+  }
+}
+
+/* Media Queries para telas muito pequenas (ex: 400px) */
+@media (max-width: 400px) {
+  .history-title {
+    font-size: 1rem; /* Fonte mais pequena, mas legível */
+  }
+
+  .history-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Ajusta colunas para telas pequenas */
+  }
+
+  .history-item {
+    padding: 0.25rem; /* Elementos mais compactos */
+  }
+
+  .history-item h3 {
+    font-size: 0.75rem; /* Tamanho menor */
+  }
+
+  .history-item p {
+    font-size: 0.625rem; /* Tamanho menor */
+  }
 }

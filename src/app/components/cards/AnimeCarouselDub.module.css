@@ -18,3 +18,16 @@
   padding-left: 30px;
 }
 
+/* Responsividade para telas pequenas */
+@media (max-width: 768px) {
+  .carouselContainer {
+    padding-bottom: 40px; /* Ajusta o padding para telas menores */
+  }
+}
+
+/* Responsividade para dispositivos muito pequenos */
+@media (max-width: 480px) {
+  .carouselContainer {
+    padding-bottom: 20px; /* Ajusta ainda mais o padding em telas muito pequenas */
+  }
+}

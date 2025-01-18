@@ -7,9 +7,14 @@ import { Anime, Genre, AiringDay } from "../types/anime";
 import animesData from "@/data/animes.json"; 
 import "./globals.css";
 import AnimeCarouselByDay from "./components/cards/AnimeCarouselByDay";
-import OutdoorCard from "./components/cards/OutdoorCard"; // Importando o componente OutdoorCard
+import OutdoorCard from "./components/cards/OutdoorCard"; 
 import Outdoor from "./components/cards/Outdoor";
 import Episodios from "./components/cards/Episodios";
+import AnimeCarouselDub from "./components/cards/AnimeCarouselDub";
+import AnimeCarouselNextSeason from "./components/cards/AnimeCarouselNextSeason";
+import AnimeCarouselPopular from "./components/cards/AnimeCarouselPopular";
+import AnimeCarouselPopularSeason from "./components/cards/AnimeCarouselPopularSeason";
+import MovieCard from "./components/cards/MovieCard";
 
 const HomePage = () => {
   const [animes, setAnimes] = useState<Anime[]>([]);
@@ -32,6 +37,12 @@ const HomePage = () => {
     <div className="home-container">
       <AnimeCarouselFullScreen />
       <AnimeCarouselLancamentos className="anime-carousel-lancamentos" />
+      <AnimeCarouselByDay />
+      <AnimeCarouselPopularSeason />
+      <AnimeCarouselPopular />
+      <AnimeCarouselNextSeason />
+      <AnimeCarouselDub />
+      <MovieCard />
       
       {/* Outdoor Component */}
       <Outdoor 

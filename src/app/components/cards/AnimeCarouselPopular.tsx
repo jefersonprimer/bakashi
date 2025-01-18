@@ -1,51 +1,54 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import AnimeCarousel from "./AnimeCarousel"; // Componente de carrossel existente
-import { Anime } from "@/types/anime"; // Tipagem de anime
-import styles from "./AnimeCarouselPopular.module.css"; // Estilos específicos
-import useFetchAnimes from "@/app/hooks/useFetchAnimes"; // Hook customizado para buscar os animes da API
+import AnimeCarousel from "./AnimeCarousel";
+import { Anime } from "@/types/anime";
+import styles from "./AnimeCarouselPopular.module.css";
+import useFetchAnimes from "@/app/hooks/useFetchAnimes"; // Hook customizado para buscar os animes
+import Loading from "@/app/loading";
 
-interface AnimeCarouselPopularProps {
-  itemsPerPage?: number; // Número de itens por página (opcional)
-  className?: string; // Classe CSS adicional (opcional)
+interface AnimeCarousePopularProps {
+  itemsPerPage?: number;
+  className?: string; // Propriedade opcional
 }
 
-const AnimeCarouselPopular: React.FC<AnimeCarouselPopularProps> = ({
+const AnimeCarousePopular: React.FC<AnimeCarousePopularProps> = ({
   itemsPerPage = 5,
-  className = "",
 }) => {
-  const { animes, loading, error } = useFetchAnimes(); // Hook para buscar os animes da API
-  const [popularAnimes, setPopularAnimes] = useState<Anime[]>([]);
+  const { animes, loading, error } = useFetchAnimes(); // Hook para buscar os dados da API
+  const [popular, setPopular] = useState<Anime[]>([]);
 
   useEffect(() => {
     if (animes) {
       const filteredAnimes = animes.filter((anime) => anime.isPopular);
-      setPopularAnimes(filteredAnimes);
+      setPopular(filteredAnimes);
     }
   }, [animes]);
 
   if (loading) {
-    return <div>Carregando...</div>;
+    return <Loading />;
   }
 
   if (error) {
     return <div>Erro ao carregar os dados: {error}</div>;
   }
 
-  if (popularAnimes.length === 0) {
-    return <div>Não há animes populares disponíveis no momento.</div>;
+  if (popular.length === 0) {
+    return <div>Nenhum anime popular disponível no momento.</div>;
   }
 
   return (
-    <div className={`${styles.popularContainer} ${className}`}>
-      <h1 className={styles.titulo}>Animes Populares</h1>
+    <div className="anime-carousel-popular">
+      <h1 className={styles.titulo}>
+        animes popular
+      </h1>
       <p className={styles.subtitulo}>
-        Explore os animes mais populares do momento!
+        Assista os três primeiros episódios desses simulcasts de outubro de
+        2024 de graça!
       </p>
-      <AnimeCarousel animes={popularAnimes} itemsPerPage={itemsPerPage} />
+      <AnimeCarousel animes={popular} itemsPerPage={itemsPerPage} />
     </div>
   );
 };
 
-export default AnimeCarouselPopular;
+export default AnimeCarousePopular;

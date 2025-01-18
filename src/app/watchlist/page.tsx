@@ -4,6 +4,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Anime } from "../../types/anime";
 import useFetchAnimes from "../hooks/useFetchAnimes"; // Importando o hook
+import AnimeGrid from "../components/cards/AnimeGrid"; // Importando AnimeGrid
 import styles from "./styles.module.css";
 
 const ListaPage = () => {
@@ -91,27 +92,13 @@ const ListaPage = () => {
         </ul>
       )}
 
+      {/* Exibindo o AnimeGrid com a lista de animes restantes */}
       <div className={styles.animeGrid}>
-        <h2>Adicionar Mais Animes</h2>
-        {animes.map((anime) => (
-          <div key={anime.id} className={styles.animeCard}>
-            <img src={anime.image} alt={anime.name} className={styles.image} />
-            <div className={styles.cardButtons}>
-              <button
-                onClick={() => router.push(`/lista?id=${anime.id}`)}
-                className={styles.bookmarkButton}
-              >
-                Bookmark
-              </button>
-              <button
-                onClick={() => handlePlusClick(anime.id)}
-                className={styles.plusButton}
-              >
-                Plus
-              </button>
-            </div>
-          </div>
-        ))}
+        <AnimeGrid
+          animes={animes}
+          handleAddAnime={handleAddAnime}
+          handlePlusClick={handlePlusClick} // Passando a função para o AnimeGrid
+        />
       </div>
     </div>
   );

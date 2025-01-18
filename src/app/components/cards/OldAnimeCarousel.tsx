@@ -4,7 +4,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight, faChevronLeft, faStar } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-import styles from "./oldAnimeCarousel.module.css";
+import styles from "./OldAnimeCarousel.module.css";
 import MaturityRating from "../elements/MaturityRating"; 
 import { Anime } from "@/types/anime"; 
 

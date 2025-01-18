@@ -1,5 +1,97 @@
+/* Centralizando a página inteira */
 .listPage {
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza horizontalmente */
+  justify-content: center; /* Centraliza verticalmente */
+  min-height: 100vh; /* Garante que ocupe toda a altura da tela */
+  text-align: center; /* Centraliza o texto */
+}
+
+/* Container principal da grid */
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 colunas de largura igual */
+  gap: 16px; /* Espaçamento entre os cards */
+  justify-items: center; /* Centraliza os itens na grid */
+  align-items: center; /* Alinha os itens verticalmente */
+  width: 100%; /* Garante que ocupe a largura disponível */
+  max-width: 1200px; /* Limita a largura da grid */
+  margin: 0 auto; /* Centraliza horizontalmente */
+}
+
+/* Ajuste na animeGrid para garantir centralização */
+.animeGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 colunas fixas */
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: center; /* Garante que os itens fiquem centralizados */
+  width: 100%;
+  margin: 0 auto; /* Centraliza horizontalmente */
+}
+
+.animeCard {
+  background-color: #fff; /* Cor de fundo do card */
+  border-radius: 8px; /* Bordas arredondadas */
+  overflow: hidden; /* Para esconder qualquer conteúdo que ultrapasse os limites do card */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra leve para os cards */
+  text-align: center; /* Alinha o conteúdo dentro do card */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza o conteúdo dentro do card */
+  justify-content: center;
+}
+
+.animeImage {
+  width: 100%; /* Garante que a imagem ocupe toda a largura do card */
+  height: auto; /* Ajusta a altura proporcionalmente */
+}
+
+.nomeDataContainer {
+  padding: 10px;
+}
+
+.nome {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.data {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Responsividade para o layout de 4 colunas */
+@media (max-width: 1200px) {
+  .gridContainer {
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas em telas menores que 1200px */
+  }
+
+  .animeGrid {
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas na grid */
+  }
+}
+
+@media (max-width: 900px) {
+  .gridContainer {
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas em telas menores que 900px */
+  }
+
+  .animeGrid {
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas na grid */
+  }
+}
+
+@media (max-width: 600px) {
+  .gridContainer {
+    grid-template-columns: 1fr; /* 1 coluna em telas menores que 600px */
+  }
+
+  .animeGrid {
+    grid-template-columns: 1fr; /* 1 coluna na grid */
+  }
 }
 
 .list {
@@ -29,45 +121,4 @@
   border: none;
   padding: 0.5rem;
   cursor: pointer;
-}
-
-.animeGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
-.animeCard {
-  text-align: center;
-}
-
-.animeCard .image {
-  width: 100%;
-  height: auto;
-  cursor: pointer;
-}
-
-.cardButtons {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 0.5rem;
-}
-
-.bookmarkButton,
-.plusButton {
-  padding: 0.5rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.bookmarkButton {
-  background-color: #007bff;
-  color: white;
-}
-
-.plusButton {
-  background-color: #28a745;
-  color: white;
 }

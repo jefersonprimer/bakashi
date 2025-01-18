@@ -1,87 +1,133 @@
+/* Container principal */
 .newReleasesContainer {
-  padding: 20px;
+  padding: 1.25rem; /* Substitui 20px */
 }
 
+/* Cabeçalho */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
-  margin: auto 220px;
+  margin: 0 auto 1.25rem; /* Substitui 20px */
+  padding: 0 1rem;
+  width: 100%;
+  max-width: 90%; /* Substitui largura fixa */
   position: relative;
 }
 
-
 .header h1 {
-  font-size: 2rem;
+  font-size: 1.8rem; /* Ajuste para responsividade */
   font-weight: bold;
 }
 
+/* Botões de filtros */
 .filters {
-  width: 160px;
+  width: 100%; /* Ajuste para mobile */
+  max-width: 160px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625rem; /* Substitui 10px */
   position: relative;
-  align-items: center; /* Alinha verticalmente o SVG com o título */
+  align-items: center;
 }
 
 .filters button {
   display: flex;
-  align-items: center; /* Alinha o ícone e o texto */
-  padding: 10px 16px;
+  align-items: center;
+  padding: 0.625rem 1rem; /* Substitui 10px 16px */
   background-color: #23252B;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  border-radius: 0.25rem; /* Estilo consistente */
 }
 
 .filters button:hover {
   background-color: #dcdcdc;
 }
 
-/* Filtro de opções */
+/* Opções de filtro */
 .filterOptions {
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625rem; /* Substitui 10px */
   position: absolute;
   top: 100%;
   left: 0;
   background-color: #23252B;
-  padding: 10px;
+  padding: 0.625rem; /* Substitui 10px */
   z-index: 10;
+  border-radius: 0.25rem; /* Adiciona bordas arredondadas */
 }
 
 .filterOptions button {
   color: #FFF;
   background-color: #23252B;
-  padding: 10px 16px;
+  padding: 0.625rem 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
+/* Títulos */
 .title {
-  font-size: 2rem;
+  font-size: 1.8rem; /* Ajuste para responsividade */
   font-weight: bold;
 }
 
+/* Botão "Mais Recentes" */
 .maisRecentes {
   cursor: pointer;
 }
 
-/* Diminuindo o tamanho do SVG */
+/* Ícones SVG */
 .svgIcon {
-  width: 14px; /* Ajuste o tamanho desejado */
-  height: 14px;
-  margin-right: 8px; /* Dá um espaçamento entre o ícone e o texto */
+  width: 1rem; /* Substitui 14px */
+  height: 1rem; /* Substitui 14px */
+  margin-right: 0.5rem; /* Substitui 8px */
   fill: white;
 }
 
-.popularTitle {
-  padding-left: 220px;
+/* Títulos específicos */
+.popularTitle,
+.newTitle {
+  padding-left: 1rem; /* Substitui 220px */
+  font-size: 1.5rem; /* Ajuste para consistência */
 }
 
-.newTitle {
-  padding-left: 220px;
+/* Media Queries */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  .filters {
+    align-items: flex-start; /* Ajusta alinhamento */
+  }
+
+  .popularTitle,
+  .newTitle {
+    padding-left: 0; /* Remove espaçamento excessivo */
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 1.25rem;
+  }
+
+  .filters button {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.875rem;
+  }
+
+  .filterOptions {
+    gap: 0.5rem;
+  }
 }

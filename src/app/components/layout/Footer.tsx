@@ -3,13 +3,13 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleUp } from '@fortawesome/free-solid-svg-icons';
-import styles from './Footer.module.css'; // Importando o arquivo de estilos
+import styles from './Footer.module.css'; 
 
 const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth', // Scroll suave
+      behavior: 'smooth',
     });
   };
 

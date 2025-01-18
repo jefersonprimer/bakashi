@@ -7,7 +7,7 @@ const NotFound: React.FC = () => {
   const router = useRouter();
 
   const handleGoBack = () => {
-    router.push('/'); // Redireciona para a página inicial
+    router.push('/');
   };
 
   return (

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import styles from "./calendar.module.css";
 import useFetchAnimes from "@/app/hooks/useFetchAnimes"; 
-import OldAnimeCarousel from "../components/cards/oldAnimeCarousel"; 
+import OldAnimeCarousel from "../components/cards/OldAnimeCarousel"; 
 import { Anime } from "@/types/anime";
 
 const CalendarPage = () => {

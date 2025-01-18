@@ -17,3 +17,41 @@
   margin-bottom: 1rem;
   color: #666;
 }
+
+/* Responsividade para telas pequenas */
+@media (max-width: 768px) {
+  .genreSection {
+    margin: 1.5rem 0;
+  }
+
+  .genreTitle {
+    font-size: 1.75rem;
+  }
+
+  .carouselContainer {
+    margin-bottom: 1.5rem;
+  }
+
+  .carouselTitle {
+    font-size: 1.25rem;
+  }
+}
+
+/* Responsividade para telas muito pequenas (dispositivos móveis) */
+@media (max-width: 480px) {
+  .genreSection {
+    margin: 1rem 0;
+  }
+
+  .genreTitle {
+    font-size: 1.5rem;
+  }
+
+  .carouselContainer {
+    margin-bottom: 1rem;
+  }
+
+  .carouselTitle {
+    font-size: 1.1rem;
+  }
+}

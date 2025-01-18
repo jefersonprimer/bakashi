@@ -1,12 +1,11 @@
-
 .header {
   border: none;
   display: flex;
   justify-content: space-between; 
   align-items: center;
-  padding: 8px 60px;
-  max-width: 1520px;
-  max-height: 60px;
+  padding: 0.5rem 3.75rem;
+  max-width: 100%; /*TODO: estava 1520px*/
+  max-height: 3.75rem; /*TODO: estava 60px*/
   background-color: #23252B;
   color: #FFFFFF;
 }
@@ -208,3 +207,7 @@
 }
 
 
+/* Para telas maiores (tablet, desktop) */
+@media (min-width: 769px) {
+  
+}
