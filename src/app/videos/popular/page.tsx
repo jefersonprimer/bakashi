@@ -40,7 +40,6 @@ export default function PopularPage() {
   return (
     <div className={styles.popularContainer}>
       <div className={styles.header}>
-        {/* Título e ícone alinhados horizontalmente */}
         <h1 className={styles.title}>Animes Mais Populares</h1>
         <div className={styles.filters}>
           <div onClick={toggleFilterOptions}>
@@ -70,7 +69,7 @@ export default function PopularPage() {
       </div>
 
       {/* Grade de Animes Populares */}
-      <div>
+      <div className={styles.gridPopular}>
         <h1 className={styles.popularTitle}>Populares</h1>
         <AnimeGrid animes={filteredAnimes} />
       </div>

@@ -1,35 +1,34 @@
 .popularContainer {
   padding: 20px;
- 
 }
 
 .header {
+  width: 72%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
-  margin: auto 220px;
+  margin: 0 auto 20px;
   position: relative;
 }
 
-
 .header h1 {
-  font-size: 2rem;
+  font-size: 1.5rem; 
   font-weight: bold;
 }
 
 .filters {
-  width: 160px;
+  width: 100%;
+  max-width: 160px; 
   display: flex;
   flex-direction: column;
   gap: 10px;
   position: relative;
-  align-items: center; /* Alinha verticalmente o SVG com o título */
+  align-items: center;
 }
 
 .filters button {
   display: flex;
-  align-items: center; /* Alinha o ícone e o texto */
+  align-items: center;
   padding: 10px 16px;
   background-color: #23252B;
   cursor: pointer;
@@ -40,7 +39,6 @@
   background-color: #dcdcdc;
 }
 
-/* Filtro de opções */
 .filterOptions {
   cursor: pointer;
   display: flex;
@@ -63,7 +61,7 @@
 }
 
 .title {
-  font-size: 2rem;
+  font-size: 1.5rem; 
   font-weight: bold;
 }
 
@@ -71,14 +69,48 @@
   cursor: pointer;
 }
 
-/* Diminuindo o tamanho do SVG */
 .svgIcon {
-  width: 14px; /* Ajuste o tamanho desejado */
+  width: 14px;
   height: 14px;
-  margin-right: 8px; /* Dá um espaçamento entre o ícone e o texto */
+  margin-right: 8px;
   fill: white;
 }
 
 .popularTitle {
-  padding-left: 220px;
+  padding-left: 1rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header h1 {
+    font-size: 1.25rem;
+  }
+
+  .filters {
+    width: 100%; 
+    align-items: flex-start;
+  }
+
+  .popularTitle {
+    padding-left: 1rem; 
+  }
+}
+
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 1rem; 
+  }
+
+  .filters button {
+    padding: 8px 12px; 
+  }
+
+  .filterOptions button {
+    padding: 8px 12px;
+  }
 }

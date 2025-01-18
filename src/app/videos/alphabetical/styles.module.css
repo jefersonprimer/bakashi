@@ -1,39 +1,36 @@
-/* Container principal */
 .glossaryContainer {
-  padding: 1.25rem; /* Substitui 20px */
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Cabeçalho */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 auto 1.25rem; /* Substitui 20px */
+  margin: 0 auto 1.25rem;
   padding: 0 1rem;
   width: 100%;
-  max-width: 90%; /* Substitui largura fixa */
+  max-width: 90%;
 }
 
 .title {
-  font-size: 1.8rem; /* Ajuste para responsividade */
+  font-size: 1.8rem;
   font-weight: bold;
 }
 
-/* Botões de filtro por letras */
 .letterFilter {
   display: flex;
-  gap: 0.5rem; /* Substitui 5px */
+  gap: 0.5rem;
   flex-wrap: wrap;
-  margin-bottom: 1.25rem; /* Substitui 20px */
+  margin-bottom: 1.25rem;
 }
 
 .letterFilter button {
   color: white;
-  padding: 0.625rem 0.5rem; /* Substitui 10px 8px */
-  border-radius: 0.25rem; /* Substitui 4px */
+  padding: 0.625rem 0.5rem;
+  border-radius: 0.25rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
   background-color: transparent;
@@ -45,13 +42,12 @@
   color: inherit;
 }
 
-/* Carrossel */
 .carousel {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem; /* Substitui 20px */
-  width: 90%; /* Substitui 80% */
-  max-width: 100%; /* Garante que não ultrapasse o container */
+  gap: 1.25rem;
+  width: 90%;
+  max-width: 100%;
 }
 
 .carousel a {
@@ -59,14 +55,13 @@
   color: inherit;
 }
 
-/* Card de anime */
 .anime_card {
   overflow: hidden;
   transition: transform 0.3s ease-in-out;
   display: flex;
-  flex-direction: column; /* Ajuste para mobile */
+  flex-direction: column;
   background-color: #23252B;
-  border-radius: 0.5rem; /* Para consistência */
+  border-radius: 0.5rem;
 }
 
 .anime_card:hover {
@@ -75,15 +70,15 @@
 
 .anime_content {
   display: flex;
-  flex-direction: column; /* Para mobile */
-  padding: 1rem; /* Substitui 16px */
-  gap: 1rem; /* Substitui 16px */
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
 }
 
 .anime_image {
-  width: 100%; /* Largura dinâmica */
-  height: auto; /* Mantém proporção */
-  max-width: 120px; /* Restringe tamanho máximo */
+  width: 100%;
+  height: auto;
+  max-width: 120px;
   object-fit: cover;
   border-radius: 0.5rem;
 }
@@ -97,12 +92,12 @@
 .anime_name {
   font-size: 1.2rem;
   font-weight: bold;
-  margin-bottom: 0.5rem; /* Substitui 8px */
+  margin-bottom: 0.5rem;
 }
 
 .anime_synopsis {
   font-size: 1rem;
-  margin-bottom: 0.5rem; /* Substitui 8px */
+  margin-bottom: 0.5rem;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -115,13 +110,12 @@
   color: #555;
 }
 
-/* Filtros */
 .filters {
-  width: 100%; /* Ajuste para mobile */
+  width: 100%;
   max-width: 160px;
   display: flex;
   flex-direction: column;
-  gap: 0.625rem; /* Substitui 10px */
+  gap: 0.625rem;
   position: relative;
   align-items: center;
 }
@@ -129,7 +123,7 @@
 .filters button {
   display: flex;
   align-items: center;
-  padding: 0.625rem 1rem; /* Substitui 10px 16px */
+  padding: 0.625rem 1rem;
   background-color: #23252B;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -140,17 +134,16 @@
   background-color: #dcdcdc;
 }
 
-/* Filtro de opções */
 .filterOptions {
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  gap: 0.625rem; /* Substitui 10px */
+  gap: 0.625rem;
   position: absolute;
   top: 100%;
   left: 0;
   background-color: #23252B;
-  padding: 0.625rem; /* Substitui 10px */
+  padding: 0.625rem;
   z-index: 10;
   border-radius: 0.25rem;
 }
@@ -163,15 +156,13 @@
   transition: background-color 0.3s ease;
 }
 
-/* Ícones */
 .svgIcon {
-  width: 1rem; /* Substitui 14px */
-  height: 1rem; /* Substitui 14px */
-  margin-right: 0.5rem; /* Substitui 8px */
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
   fill: white;
 }
 
-/* Media Queries */
 @media (max-width: 768px) {
   .header {
     flex-direction: column;

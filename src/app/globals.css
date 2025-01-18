@@ -1,6 +1,6 @@
 /* Garantir que a largura da página seja 100% e que nenhum elemento transborde */
 * {
-  box-sizing: border-box; /* Impede que o padding e as bordas aumentem o tamanho total */
+  box-sizing: border-box; 
   margin: 0;
   padding: 0;
 }
@@ -17,7 +17,7 @@ html {
 
 /* Garante que a página não tenha rolagem horizontal */
 body, html {
-  overflow-x: hidden; /* Remove o scroll horizontal */
+  overflow-x: hidden;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -81,10 +81,8 @@ body {
 }
 
 .anime-carousel-popular-season {
-  
   /* margin: auto -10vh; */
   /* padding: 20px; */
-  
   backdrop-filter: blur(2px); /* Desfoque no fundo */
 }
 

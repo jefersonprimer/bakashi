@@ -4,59 +4,59 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1rem; /* Substitui valores fixos */
-  min-height: 100vh; /* Mantém responsivo ao viewport */
+  padding: 1rem; 
+  min-height: 100vh;
   text-align: center;
-  box-sizing: border-box; /* Garante que o padding não quebre o layout */
+  box-sizing: border-box;
 }
 
 .title {
-  padding: 0.5rem; /* Ajuste menor para telas pequenas */
-  font-size: 1.5rem; /* Escalável */
+  padding: 0.5rem; 
+  font-size: 1.5rem; 
 }
 
 .dayContainer {
-  margin-bottom: 1rem; /* Substitui valores fixos */
-  width: 90%; /* Deixa margem para respiro */
+  margin-bottom: 1rem; 
+  width: 90%; 
 }
 
 .dayTitle {
-  padding: 0.5rem; /* Menor para telas pequenas */
-  font-size: 1.2rem; /* Adaptado */
+  padding: 0.5rem;
+  font-size: 1.2rem; 
 }
 
 /* Media Queries para dispositivos menores */
 @media (max-width: 768px) {
   .calendar {
-    padding: 0.5rem; /* Reduz espaços */
+    padding: 0.5rem; 
   }
 
   .title {
-    font-size: 1.2rem; /* Reduz o tamanho da fonte */
+    font-size: 1.2rem; 
   }
 
   .dayContainer {
-    width: 100%; /* Usa todo o espaço disponível */
-    margin-bottom: 0.75rem; /* Margem menor */
+    width: 100%;
+    margin-bottom: 0.75rem; 
   }
 
   .dayTitle {
-    font-size: 1rem; /* Ajuste proporcional */
-    padding: 0.5rem; /* Menos espaçamento */
+    font-size: 1rem; 
+    padding: 0.5rem; 
   }
 }
 
 /* Media Queries para telas muito pequenas (ex: 400px) */
 @media (max-width: 400px) {
   .title {
-    font-size: 1rem; /* Fonte ainda menor */
+    font-size: 1rem;
   }
 
   .dayContainer {
-    margin-bottom: 0.5rem; /* Mais compacto */
+    margin-bottom: 0.5rem; 
   }
 
   .dayTitle {
-    font-size: 0.9rem; /* Pequeno, mas ainda legível */
+    font-size: 0.9rem;
   }
 }

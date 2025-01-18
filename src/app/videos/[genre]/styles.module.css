@@ -18,7 +18,6 @@
   color: #666;
 }
 
-/* Responsividade para telas pequenas */
 @media (max-width: 768px) {
   .genreSection {
     margin: 1.5rem 0;
@@ -37,7 +36,6 @@
   }
 }
 
-/* Responsividade para telas muito pequenas (dispositivos móveis) */
 @media (max-width: 480px) {
   .genreSection {
     margin: 1rem 0;
