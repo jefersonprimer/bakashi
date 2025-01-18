@@ -4,7 +4,7 @@ const Loading: React.FC = () => {
   return (
     <div style={styles.container}>
       <svg
-        width="80" // Tamanho ajustável do SVG
+        width="80"
         height="80"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
@@ -42,11 +42,11 @@ const styles = {
     position: 'fixed',
     top: 0,
     left: 0,
-    backgroundColor: 'transparent', // Fundo completamente transparente
-    zIndex: 9999, // Certifique-se de que o loader fique acima de outros elementos
+    backgroundColor: 'transparent', 
+    zIndex: 9999,
   },
   svg: {
-    fill: '#0070f3', // Cor do SVG (ajustável)
+    fill: '#0070f3', 
   },
 };
 

@@ -1,11 +1,10 @@
 'use client'
 
 import { useState, useEffect } from "react";
+import { Anime, Genre, AiringDay } from "../types/anime"; 
 import AnimeCarouselFullScreen from "./components/cards/AnimeCarouselFullScreen";
 import AnimeCarouselLancamentos from './components/cards/AnimeCarouselLancamentos';
-import { Anime, Genre, AiringDay } from "../types/anime"; 
 import animesData from "@/data/animes.json"; 
-import "./globals.css";
 import AnimeCarouselByDay from "./components/cards/AnimeCarouselByDay";
 import OutdoorCard from "./components/cards/OutdoorCard"; 
 import Outdoor from "./components/cards/Outdoor";
@@ -15,6 +14,7 @@ import AnimeCarouselNextSeason from "./components/cards/AnimeCarouselNextSeason"
 import AnimeCarouselPopular from "./components/cards/AnimeCarouselPopular";
 import AnimeCarouselPopularSeason from "./components/cards/AnimeCarouselPopularSeason";
 import MovieCard from "./components/cards/MovieCard";
+import "./globals.css";
 
 const HomePage = () => {
   const [animes, setAnimes] = useState<Anime[]>([]);
@@ -31,7 +31,7 @@ const HomePage = () => {
     setAnimes(transformedAnimes); 
   }, []);
 
-  console.log("Animes carregados:", animes); // TODO: Debug
+  console.log("Animes carregados:", animes);
 
   return (
     <div className="home-container">

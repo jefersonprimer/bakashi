@@ -1,17 +1,21 @@
 .popularContainer {
-  padding: 20px;
+  width: 100%;
+  padding: 3.75rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza o contêiner */
 }
 
 .header {
-  width: 72%;
+  width: 70%; /* Mesma largura do grid */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 auto 20px;
+  margin: 0 auto 20px; /* Centraliza horizontalmente */
   position: relative;
 }
 
-.header h1 {
+.title {
   font-size: 1.5rem; 
   font-weight: bold;
 }
@@ -60,11 +64,6 @@
   transition: background-color 0.3s ease;
 }
 
-.title {
-  font-size: 1.5rem; 
-  font-weight: bold;
-}
-
 .maisPopulares {
   cursor: pointer;
 }
@@ -76,12 +75,29 @@
   fill: white;
 }
 
+.gridPopular {
+  width: 70%; /* Mesma largura do header */
+  margin: 0 auto; /* Centraliza horizontalmente */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alinha os itens à esquerda */
+  gap: 1rem; /* Espaço entre o título e os cards */
+}
+
 .popularTitle {
-  padding-left: 1rem;
+  margin: 0; /* Remove margens extras */
+  padding: 0; /* Remove o padding */
+  font-size: 1.5rem; 
+  font-weight: bold;
+  text-align: left; /* Garante alinhamento à esquerda */
 }
 
 /* Responsividade */
 @media (max-width: 768px) {
+  .header, .gridPopular {
+    width: 90%; /* Reduz a largura para telas menores */
+  }
+
   .header {
     flex-direction: column;
     align-items: flex-start;
@@ -97,11 +113,15 @@
   }
 
   .popularTitle {
-    padding-left: 1rem; 
+    font-size: 1.25rem;
   }
 }
 
 @media (max-width: 480px) {
+  .header, .gridPopular {
+    width: 100%; /* Usa toda a largura disponível em telas muito pequenas */
+  }
+
   .header h1 {
     font-size: 1rem; 
   }
@@ -112,5 +132,9 @@
 
   .filterOptions button {
     padding: 8px 12px;
+  }
+
+  .popularTitle {
+    font-size: 1rem; /* Ajusta o tamanho da fonte se necessário */
   }
 }

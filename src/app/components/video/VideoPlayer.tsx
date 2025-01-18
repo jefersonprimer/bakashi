@@ -3,7 +3,7 @@ import styles from "./VideoPlayer.module.css";
 
 interface VideoPlayerProps {
   videoUrl: string;
-  posterImage?: string; // Opcional para imagem de poster
+  posterImage?: string; 
 }
 
 const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoUrl, posterImage }) => {

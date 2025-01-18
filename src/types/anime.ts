@@ -24,7 +24,7 @@ export interface Anime {
   synopsis: string;
   rating: number;
   score: number;
-  genres: Genre[]; // Agora o tipo é um array de Genre
+  genres: Genre[]; 
   airingDay: AiringDay;
   episodes: number;
   season: number;

@@ -70,7 +70,6 @@
   transition: opacity 0.3s ease;
   z-index: 1; /* Para garantir que fique sobre a imagem */
 }
-
   
   /* Texto do nome */
   .nome {
@@ -79,10 +78,12 @@
     text-overflow: ellipsis;
     font-size: 14px;
     font-weight: bold;
+    padding: 10px 0px;
   }
   
   /* Texto da data */
   .data {
+    
     font-size: 12px;
     margin: 0;
   }

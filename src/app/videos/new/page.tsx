@@ -38,9 +38,7 @@ export default function NewReleasesPage() {
   return (
     <div className={styles.newReleasesContainer}>
       <div className={styles.header}>
-        <h1>Animes Recém-Adicionados</h1>
-
-        {/* Filtro de Ordem Alfabética e as opções */}
+        <h1 className={styles.title}>Animes Recém-Adicionados</h1>
         <div className={styles.filters}>
           <div onClick={toggleFilterOptions}>
             <svg 
@@ -69,7 +67,7 @@ export default function NewReleasesPage() {
       </div>
 
       {/* Substituindo AnimeCarousel por AnimeGrid */}
-      <div>
+      <div className={styles.gridPopular}>
         <h1 className={styles.newTitle}>Ultimos Lançamentos</h1>
         <AnimeGrid animes={filteredAnimes} />
       </div>
