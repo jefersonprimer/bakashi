@@ -1,7 +1,8 @@
 import React from 'react';
 import { Anime } from '@/types/anime';
 import animesData from '@/data/animes.json';
-import AnimeGrid from '../../components/cards/AnimeGrid'; // Importando AnimeGrid
+import AnimeCarouselGenre from '../../components/cards/AnimeCarouselGenre';
+import styles from './styles.module.css'
 
 const genreMapping: Record<string, string> = {
   action: "Ação",
@@ -48,31 +49,40 @@ const GenrePage: React.FC<GenrePageProps> = ({ params }) => {
     });
 
   return (
-    <div>
-      <h1>Animes de {genreInPortuguese}</h1>
+    <div className={styles.mainContainer}>
+      <h1 className={styles.mainTitle}>Animes de {genreInPortuguese}</h1>
 
-      {/* AnimeGrid para Populares */}
+      {/* AnimeCarousel para Populares */}
       {popularAnimes.length > 0 && (
         <div>
-          <h3>Populares</h3>
-          <AnimeGrid animes={popularAnimes} />
+          <div className={styles.sectionHeader}>
+            <h3 className={styles.sectionTitle}>Populares</h3>
+            <h3 className={styles.viewAll}>VER TODOS</h3>
+          </div>
+          <AnimeCarouselGenre animes={popularAnimes} />
         </div>
       )}
 
-      {/* AnimeGrid para Novidades */}
+      {/* AnimeCarousel para Novidades */}
       {newReleasesAnimes.length > 0 && (
         <div>
-          <h3>Novidades</h3>
-          <AnimeGrid animes={newReleasesAnimes} />
+          <div className={styles.sectionHeader}>
+            <h3 className={styles.sectionTitle}>Novidades</h3>
+            <h3 className={styles.viewAll}>VER TODOS</h3>
+          </div>
+          <AnimeCarouselGenre animes={newReleasesAnimes} />
         </div>
       )}
 
-      {/* AnimeGrid para os outros gêneros */}
+      {/* AnimeCarousel para os outros gêneros */}
       <div>
         {otherGenresAnimes.map(({ genre, animes }) => (
           <div key={genre}>
-            <h3>Outros Animes de {genre}</h3>
-            <AnimeGrid animes={animes} />
+            <div className={styles.sectionHeader}>
+              <h3>{genre}</h3>
+              <h3 className={styles.viewAll}>VER TODOS</h3>
+            </div>
+            <AnimeCarouselGenre animes={animes} />
           </div>
         ))}
       </div>

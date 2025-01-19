@@ -1,22 +1,50 @@
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centraliza verticalmente */
+  align-items: center; /* Centraliza horizontalmente */
+  text-align: center; /* Centraliza o texto */
+  padding: 2rem; /* Adiciona algum espaço ao redor */
+}
+
+.mainTitle {
+  font-size: 2rem; /* Tamanho do título */
+  color: #333; /* Cor do título */
+  margin: 0; /* Remove margens extras */
+}
+
 .genreSection {
-  margin: 2rem 0;
-}
-
-.genreTitle {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: #333;
-}
-
-.carouselContainer {
+  width: 100%;
+  max-width: 800px; /* Reduzindo a largura máxima */
   margin-bottom: 2rem;
 }
 
-.carouselTitle {
-  font-size: 1.5rem;
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 1rem;
-  color: #666;
+  padding: 0 10rem;
+  gap: 10px; /* Reduz o espaço entre o título e "VER TODOS" */
 }
+
+
+.sectionTitle {
+  font-size: 1.5rem;
+  color: #666;
+  margin: 0; /* Remove margens adicionais */
+}
+
+.viewAll {
+  font-size: 1rem;
+  color: #ff640a;
+  cursor: pointer;
+  text-decoration: underline;
+  margin: 0; /* Remove margens adicionais */
+}
+
+
 
 @media (max-width: 768px) {
   .genreSection {
