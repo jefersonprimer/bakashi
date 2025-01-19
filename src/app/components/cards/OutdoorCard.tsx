@@ -31,20 +31,12 @@ const OutdoorCard: React.FC<OutdoorCardProps> = ({ link, imageUrl, altText = "Ou
           position: relative;
           text-decoration: none;
           overflow: hidden;
-          border-radius: 10px;
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .outdoor-card img {
           width: 100%;
           height: 100%;
           object-fit: cover;
-        }
-
-        .outdoor-card:hover {
-          transform: scale(1.02);
-          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
         }
       `}</style>
 

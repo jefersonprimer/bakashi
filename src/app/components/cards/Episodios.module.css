@@ -9,14 +9,18 @@
 .seeAll {
   margin-left: 10px;
   padding: 5px 10px;
-  background-color: #007BFF;
-  border-radius: 5px;
-  color: #FFFFFF;
+  color: #A0A0A0;
   text-decoration: none;
 }
 
 .seeAll:hover {
   text-decoration: underline;
+  color: #FFFFFF;
+}
+
+.seeAll:active {
+  background-color: #003c8c;
+  border: 1px solid white;
 }
 
 /* Contêiner de episódios */

@@ -26,7 +26,6 @@
 
 .poster img {
   width: 200px;
-  border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
@@ -34,9 +33,12 @@
   position: absolute;
   top: 10px;
   left: 45%;
-  transform: translateX(-50%);
-  font-size: 1.5rem;
-  color: #ffd700;
+  transform: translateX(-99%);
+  font-size: 0.6rem;
+  color: #fff;
+  background-color: #F1C40F;
+  border-radius: 2px;
+  padding: 5px;
   display: flex;
   align-items: center;
 }

@@ -26,11 +26,11 @@ const EpisodesPage = () => {
     <div>
       {/* Header da página de episódios */}
       <header className={styles.header}>
-        <h2>Episódios</h2>
+        <h2>Novos Lançamentos</h2>
         <span>
-          {episodes.length}{' '}
-          <a href="/episodios" className={styles.seeAll}>
-            Ver todos
+          {/* {episodes.length}{' '} */}
+          <a href="/calendar" className={styles.seeAll}>
+            VER CALENDÁRIO DE LANÇAMENTOS
           </a>
         </span>
       </header>
