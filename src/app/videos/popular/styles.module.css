@@ -7,17 +7,20 @@
 }
 
 .header {
-  width: 70%; /* Mesma largura do grid */
+  width: 70%; 
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 auto 20px; /* Centraliza horizontalmente */
+  margin-bottom: 2rem;
   position: relative;
 }
 
 .title {
-  font-size: 1.5rem; 
-  font-weight: bold;
+  font-size: 1.70rem; 
+  font-weight: 500;
+  font-family: Lato, Helvetica Neue, helvetica, sans-serif;
+  padding: 0;
+  margin: 0;
 }
 
 .filters {
@@ -52,43 +55,54 @@
   top: 100%;
   left: 0;
   background-color: #23252B;
-  padding: 10px;
+  padding: 10px 0;
   z-index: 10;
 }
 
-.filterOptions button {
-  color: #FFF;
+.item {
+  padding: 10px;
+}
+
+.item:hover {
+  background-color: #1D1E22;
+}
+
+.svgBtn {
+  padding: 0.6rem;
+}
+
+.svgBtn:hover {
   background-color: #23252B;
-  padding: 10px 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+ 
 }
 
 .maisPopulares {
   cursor: pointer;
+  color: #A0A0A0;
 }
 
 .svgIcon {
   width: 14px;
   height: 14px;
   margin-right: 8px;
-  fill: white;
+  fill: #A0A0A0;
 }
 
 .gridPopular {
-  width: 70%; /* Mesma largura do header */
-  margin: 0 auto; /* Centraliza horizontalmente */
+  width: 70%; 
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Alinha os itens à esquerda */
-  gap: 1rem; /* Espaço entre o título e os cards */
+  align-items: flex-start;
+  gap: 1rem; 
 }
 
 .popularTitle {
   margin: 0; /* Remove margens extras */
   padding: 0; /* Remove o padding */
   font-size: 1.5rem; 
-  font-weight: bold;
+  font-weight: 500;
+  font-family: Lato, Helvetica Neue, helvetica, sans-serif;
   text-align: left; /* Garante alinhamento à esquerda */
 }
 

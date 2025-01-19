@@ -60,7 +60,7 @@ export default function Glossary() {
 
         {/* Filtro de Ordem Alfabética e as opções */}
         <div className={styles.filters}>
-          <div onClick={toggleFilterOptions}>
+          <div onClick={toggleFilterOptions} className={styles.svgBtn}>
             <svg 
               className={styles.svgIcon}
               xmlns="http://www.w3.org/2000/svg" 
@@ -76,9 +76,9 @@ export default function Glossary() {
           </div>
           {showFilterOptions && (
             <div className={styles.filterOptions}>
-              <div onClick={goToPopular}>Mais Populares</div>
-              <div onClick={goToNewReleases}>Mais Recentes</div>
-              <div onClick={goToAlphabeticOrder}>Ordem Alfabética</div>
+              <div onClick={goToPopular} className={styles.item}>Mais Populares</div>
+              <div onClick={goToNewReleases} className={styles.item}>Mais Recentes</div>
+              <div onClick={goToAlphabeticOrder} className={styles.item}>Ordem Alfabética</div>
             </div>
           )}
         </div>
@@ -86,13 +86,23 @@ export default function Glossary() {
 
       {/* Filtro de letras */}
       <div className={styles.letterFilter}>
-        <button onClick={() => handleLetterClick('#')}>#</button>
+        <button
+          className={activeLetter === '#' ? styles.activeLetter : ''}
+          onClick={() => handleLetterClick('#')}
+        >
+          #
+        </button>
         {letters.map((letter) => (
-          <button key={letter} onClick={() => handleLetterClick(letter)}>
+          <button
+            key={letter}
+            className={activeLetter === letter ? styles.activeLetter : ''}
+            onClick={() => handleLetterClick(letter)}
+          >
             {letter}
           </button>
         ))}
       </div>
+
 
       <div className={styles.carousel}>
         {filteredAnimes.length > 0 ? (

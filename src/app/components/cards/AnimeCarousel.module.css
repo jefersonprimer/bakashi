@@ -131,7 +131,6 @@
   width: 90%;
   opacity: 1;
   transition: opacity 0.3s ease;
- 
 }
 
 .nome {
@@ -277,15 +276,6 @@
   height: 1.5rem;
   justify-content: center;
   width: 1.5rem;
-}
-
-/* Hover nos ícones de play, bookmark, e plus */
-.playButton:hover .iconPlay,
-.playButton:hover .iconBookmark,
-.playButton:hover .iconPlus {
-  fill: #ff3d00; /* Cor de destaque quando em hover */
-  transform: scale(1.2); /* Aumentar ligeiramente o tamanho */
-  transition: transform 0.3s, fill 0.3s; /* Suavizar a transição */
 }
 
 /* Tornar os botões visíveis quando o card for hover */

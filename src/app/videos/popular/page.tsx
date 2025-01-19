@@ -42,7 +42,7 @@ export default function PopularPage() {
       <div className={styles.header}>
         <h1 className={styles.title}>Animes Mais Populares</h1>
         <div className={styles.filters}>
-          <div onClick={toggleFilterOptions}>
+          <div onClick={toggleFilterOptions} className={styles.svgBtn}>
             <svg 
               className={styles.svgIcon}
               xmlns="http://www.w3.org/2000/svg" 
@@ -60,9 +60,9 @@ export default function PopularPage() {
           {/* Filtro de opções que aparece sobre o botão */}
           {showFilterOptions && (
             <div className={styles.filterOptions}>
-              <div onClick={goToPopular}>Mais Populares</div>
-              <div onClick={goToNewReleases}>Mais Recentes</div>
-              <div onClick={goToAlphabeticOrder}>Ordem Alfabética</div>
+              <div onClick={goToPopular} className={styles.item}>Mais Populares</div>
+              <div onClick={goToNewReleases} className={styles.item}>Mais Recentes</div>
+              <div onClick={goToAlphabeticOrder} className={styles.item}>Ordem Alfabética</div>
             </div>
           )}
         </div>
@@ -71,7 +71,9 @@ export default function PopularPage() {
       {/* Grade de Animes Populares */}
       <div className={styles.gridPopular}>
         <h1 className={styles.popularTitle}>Populares</h1>
-        <AnimeGrid animes={filteredAnimes} />
+        <div>
+          <AnimeGrid animes={filteredAnimes} />
+        </div>
       </div>
     </div>
   );
