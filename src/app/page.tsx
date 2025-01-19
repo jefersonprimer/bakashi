@@ -47,10 +47,10 @@ const HomePage = () => {
       {/* Outdoor Component */}
       <Outdoor 
         imageUrl="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=2700/CurationAssets/HeadhuntedToAnotherWorld-S1C1-KV2-Banner-2100x700-PT.png"
-        title="Unnamed Memory"
-        audiotype="Anime"
-        description="A thrilling story of magic, mystery, and fate unfolds in this anime."
-        buttonText="Saiba mais"
+        title="Dr. Stone"
+        audiotype="Dub | Leg"
+        description="Milhares de anos após um misterioso fenômeno transformar a humanidade inteira em pedra, desperta um garoto extraordinariamente inteligente e motivado pela ciência - Senku Ishigami. Diante de um mundo de pedra e do colapso generalizado da civilização, Senku decide usar sua..."
+        buttonText="Começar a assistir T1 E1"
         buttonLink="https://www.crunchyroll.com/pt-br/series/G9VHN9QXQ/unnamed-memory"
         addToQueueText="Adicionar à Fila"
         addToQueueLink="#"

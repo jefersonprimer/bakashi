@@ -29,10 +29,8 @@ const Outdoor: React.FC<OutdoorProps> = ({
         alignItems: "center",
         gap: "16px",
         padding: "24px",
-        border: "1px solid #ddd",
-        borderRadius: "8px",
         boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-        backgroundColor: "#fff",
+        backgroundColor: "#000",
         width: "1350px",
         height: "371px",
         margin: "0 auto",
@@ -43,7 +41,6 @@ const Outdoor: React.FC<OutdoorProps> = ({
         style={{
           flex: "1", // Ajustado para ocupar 50% do container
           overflow: "hidden",
-          borderRadius: "8px",
         }}
       >
         <img
@@ -67,7 +64,7 @@ const Outdoor: React.FC<OutdoorProps> = ({
           style={{
             fontSize: "24px",
             margin: "0 0 16px",
-            color: "#333",
+            color: "#fff",
           }}
         >
           {title}
@@ -76,7 +73,7 @@ const Outdoor: React.FC<OutdoorProps> = ({
           style={{
             fontSize: "24px",
             margin: "0 0 16px",
-            color: "#333",
+            color: "#FFF",
           }}
         >
           {audiotype}
@@ -86,7 +83,7 @@ const Outdoor: React.FC<OutdoorProps> = ({
             fontSize: "16px",
             margin: "0 0 16px",
             lineHeight: "1.5",
-            color: "#555",
+            color: "#FFF",
           }}
         >
           {description}
