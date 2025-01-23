@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from './Header.module.css';
 import logo from '../../../../public/logo.png';
+import cat from '../../../../public/cat.png';
 import { useRouter } from 'next/navigation';
 import { Anime } from '@/types/anime'; 
 
@@ -15,10 +16,31 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false); // Controla se os resultados estão visíveis
   const [isDropdownNavOpen, setDropdownNavOpen] = useState(false); // Dropdown de navegação
   const [isDropdownNewsOpen, setDropdownNewsOpen] = useState(false); // Dropdown de notícias
+
+  const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
+  const [isMobileView, setIsMobileView] = useState(false);
+
   const resultsRef = useRef<HTMLUListElement | null>(null); // Referência para o container dos resultados de pesquisa
   const dropdownNavRef = useRef<HTMLDivElement | null>(null); // Referência para o container do menu dropdown de navegação
   const dropdownNewsRef = useRef<HTMLDivElement | null>(null); // Referência para o container do menu dropdown de notícias
   const router = useRouter(); // Usando o useRouter para navegação programática
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileView(window.innerWidth <= 768);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const toggleHamburgerMenu = () => {
+    setIsHamburgerOpen((prevState) => !prevState);
+  };
 
    // Função que detecta clique fora do contêiner de resultados ou dropdown
    const handleClickOutside = (event: MouseEvent) => {
@@ -70,15 +92,52 @@ export default function Header() {
     <header className={styles.header}>
       <div className={styles.container}>
         {/* Logo */}
-        <div className={styles.headerLogo}>
+        <div
+          className={styles.headerLogo}
+          style={{ display: isMobileView ? 'none' : 'block' }}
+        >
           <Link href="/">
             <Image src={logo} alt="Logo do Site" width={180} height={40} priority />
           </Link>
         </div>
 
+
         <div className={styles.headerMenu}>
           {/* Links de Navegação */}
-          {/* Links de Navegação */}
+          {isMobileView ? (
+            <div className={styles.hamburgerMenu}>
+              {/* Contêiner flex para alinhar o hambúrguer e a logo */}
+              <div className={styles.hamburgerHeader}>
+                <button
+                  onClick={toggleHamburgerMenu}
+                  className={styles.hamburgerIcon}
+                  aria-expanded={isHamburgerOpen}
+                >
+                  <svg
+                    className="header-svg-icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    aria-labelledby="menu-svg"
+                    aria-hidden="true"
+                    role="img"
+                  >
+                    <title id="menu-svg">Menu</title>
+                    <path d="M21 4a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2h18zm0 7a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2h18zm0 7a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2h18z"></path>
+                  </svg>
+                </button>
+                <div className={styles.headerLogoMobile}>
+                  <Link href="/">
+                  <Image src={cat} alt="Logo do Site" width={30} height={30} priority />
+                  </Link>
+                </div>
+              </div>
+              {isHamburgerOpen && (
+                <div className={styles.hamburgerLinks}>
+                  <Link href="/videos/popular">Populares</Link>
+                </div>
+              )}
+            </div>
+          ) : (
         <ul className={styles.navLinks}>
           {/* Navegação com Dropdown */}
           <li className={styles.navItem} onClick={toggleDropdownNav}>
@@ -181,7 +240,7 @@ export default function Header() {
               </div>
             )}
           </li>
-        </ul>
+        </ul>)}
         </div>
 
         {/* Ícones de Busca, Watchlist e Menu de Conta */}

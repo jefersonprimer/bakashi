@@ -1,0 +1,188 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #000;
+    width: 1350px;
+    height: 371px; 
+    margin: 0 auto; 
+}
+
+.imageContainer {
+    flex: 1;
+    overflow: hidden;
+}
+
+.image {
+    width: 100%;
+    height: 350px; 
+    object-fit: cover; 
+}
+
+.textContainer {
+    flex: 1;
+}
+
+.title {
+    font-size: 24px;
+    margin: 0 0 16px; 
+    color: #fff; 
+}
+
+.audioType {
+    font-size: 24px;
+    margin: 0 0 16px; 
+    color: #FFF; 
+}
+
+.description {
+    font-size: 16px;
+    margin: 0 0 16px; 
+    line-height: 1.5; 
+    color: #FFF; 
+}
+
+.containerBtn {
+    display: flex;
+    gap: 8px;
+}
+
+.buttonLink {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0070f3;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.addToQueueLink {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #555; 
+    color: #fff; 
+    text-decoration: none; 
+    border-radius: 4px; 
+    font-size: 14px; 
+}
+
+
+/* mobile */
+@media (max-width: 768px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background-color: #000;
+        width: 410px;
+        height: 450px; 
+        margin: 0 auto; 
+    }
+    
+    .imageContainer {
+        flex: 1;
+        overflow: hidden;
+    }
+    
+    .image {
+        width: 100%;
+        height: 350px; 
+        object-fit: cover; 
+    }
+    
+    .textContainer {
+        width: 100%;
+        height: 350px; 
+        object-fit: cover; 
+    }
+    
+    .title {
+        font-size: 1.5rem;
+        margin: 0 0 16px; 
+        color: #fff; 
+    }
+    
+    .audioType {
+        font-size: 0.9rem;
+        margin: 0 0 16px; 
+        color: gray; 
+    }
+    
+    .description {
+        font-size: 0.9rem;
+        margin: 0 0 16px; 
+        line-height: 1.5; 
+        color: #FFF; 
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        width: 350px;
+    }
+    
+    .containerBtn {
+        display: flex;
+        gap: 8px;
+    }
+    
+    .buttonLink {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #0070f3;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+    
+    .addToQueueLink {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #555; 
+        color: #fff; 
+        text-decoration: none; 
+        border-radius: 4px; 
+        font-size: 14px; 
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./OutdoorCard.module.css";
 
 interface OutdoorCardProps {
   link: string; // URL para onde o card deve redirecionar
@@ -12,34 +13,9 @@ const OutdoorCard: React.FC<OutdoorCardProps> = ({ link, imageUrl, altText = "Ou
       href={link}
       target="_blank"
       rel="noopener noreferrer"
-      className="outdoor-card"
+      className={styles.outdoorCard}
     >
-      <img src={imageUrl} alt={altText} />
-      <style jsx>{`
-        .outdoor-card-container {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 100vh; /* Ocupa a altura total da janela */
-          background-color: #f5f5f5; /* Cor de fundo opcional */
-        }
-
-        .outdoor-card {
-          width: 1350px;
-          height: 450px;
-          display: block;
-          position: relative;
-          text-decoration: none;
-          overflow: hidden;
-        }
-
-        .outdoor-card img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-      `}</style>
-
+      <img src={imageUrl} alt={altText} className={styles.image} />
     </a>
   );
 };

@@ -19,8 +19,23 @@
 
 /* Responsividade para telas pequenas */
 @media (max-width: 768px) {
-  .carouselContainer {
-    padding-bottom: 40px; /* Ajusta o padding para telas menores */
+  .anime-carousel-lancamentos {
+    padding: 0 10px; /* Adiciona espaçamento lateral */
+    text-align: center; /* Centraliza o texto horizontalmente */
+  }
+  
+  .titulo {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #fff;
+    padding-left: 20px;
+  }
+  
+  .subtitulo {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    color: #ccc;
+    padding-left: 20px;
   }
 }
 

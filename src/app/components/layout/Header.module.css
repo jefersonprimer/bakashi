@@ -1,3 +1,94 @@
+.headerLogoMobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .headerLogoMobile {
+    display: block;
+  }
+}
+
+
+.hamburgerMenu {
+  display: flex;
+  flex-direction: column;
+}
+
+.hamburgerHeader {
+  display: flex; /* Torna os itens flexíveis */
+  align-items: center; /* Alinha verticalmente no centro */
+  justify-content: space-between; /* Espaço entre o botão e a logo */
+  width: 100%; /* Garante que ocupe toda a largura */
+  padding: 0 16px; /* Espaço interno opcional */
+}
+
+.hamburgerIcon {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.headerLogoMobile {
+  margin-left: 20px; /* Empurra a logo para o lado direito */
+}
+
+
+.hamburgerMenu {
+  display: flex;
+  flex-direction: column;
+  position: relative; /* Define o contexto para o dropdown */
+}
+
+.hamburgerIcon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  z-index: 2;
+}
+
+.hamburgerIcon svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor; /* Isso usa a cor definida no elemento pai */
+  color: #ffffff; /* Define a cor branca para o ícone */
+}
+
+.header-svg-icon {
+  width: 24px;
+  height: 24px;
+  fill: #ffffff; /* Branco */
+}
+
+.hamburgerLinks {
+  position: absolute; /* Sobrepõe os conteúdos */
+  top: 100%; /* Posiciona logo abaixo do botão */
+  left: 0; /* Alinha à esquerda do botão */
+  width: 200px; /* Largura fixa ou dinâmica */
+  background-color: #333; /* Fundo do dropdown */
+  color: #fff; /* Cor do texto */
+  border-radius: 4px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  z-index: 1000; /* Coloca acima dos outros conteúdos */
+}
+
+.hamburgerLinks a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+.hamburgerLinks a:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Destaque no hover */
+}
+
+
 .header {
   border: none;
   display: flex;
@@ -209,6 +300,199 @@
 
 
 /* Para telas maiores (tablet, desktop) */
-@media (min-width: 769px) {
-  
+@media (max-width: 768px) {
+  .header {
+    border: none;
+    display: flex;
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    align-items: center;
+    padding: 0.5rem 1rem; /* Reduz o padding para telas menores */
+    max-width: 100%;
+    max-height: 3.75rem;
+    background-color: #23252B;
+    color: #FFFFFF;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center; /* Centraliza o conteúdo */
+    width: 100%;
+    align-items: center;
+    background-color: #23252B;
+  }
+
+  .headerLogo {
+    display: flex;
+    align-items: center;
+    margin-right: auto; /* Garante que o logo esteja à esquerda */
+  }
+
+  .headerMenu {
+    display: flex;
+    align-items: center;
+    margin-left: 0;
+    color: #FFF;
+  }
+
+  .navLinks {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    justify-content: center; /* Centraliza os links de navegação */
+    width: 100%;
+  }
+
+  .navItem {
+    margin-right: 20px;
+    position: relative;
+  }
+
+  .navItem a {
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+  }
+
+  .headerActions {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    color: #FFF;
+  }
+
+  .searchContainer {
+    display: flex;
+    align-items: center;
+    gap: 16px; /* Espaçamento entre os ícones */
+  }
+
+  .ercHeaderSvg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 24px;
+    color: #FFF;
+  }
+
+  .searchContainer {
+    display: flex;
+    align-items: center;
+  }
+
+  .searchButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .iconBookmark, .headerSvgIcon {
+    fill: #FFF;
+    width: 24px;
+    height: 24px;
+    margin-left: 0px;
+    cursor: pointer;
+  }
+
+  .dropdownMenu {
+    display: flex;
+    flex-direction: column; /* Muda para coluna para melhor visualização em dispositivos móveis */
+    position: absolute;
+    background-color: #141519;
+    width: 100%; /* Ajusta a largura para 100% */
+    top: 180%;
+    left: 0;
+    padding: 0px;
+    z-index: 100;
+  }
+
+  .menuContent {
+    display: flex;
+    flex-direction: column; /* Coloca o conteúdo em uma coluna */
+    width: 100%;
+  }
+
+  .categoriesColumn {
+    display: flex;
+    flex-direction: column;
+    margin-right: 0; /* Remove a margem direita */
+    padding: 10px;
+  }
+
+  .categoryTitle {
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+
+  .categoriesColumn a {
+    color: #fff;
+    padding: 6px;
+    text-decoration: none;
+    margin-bottom: 8px;
+  }
+
+  .categoriesColumn a:hover {
+    background-color: #23252B;
+  }
+
+  .divider {
+    border-right: none; /* Remove a divisória entre colunas */
+    margin: 0;
+    height: 100%;
+  }
+
+  .genresGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Ajusta para 2 colunas em telas pequenas */
+    gap: 10px;
+  }
+
+  .genresColumn a {
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    padding: 10px 5px;
+    text-decoration: none;
+  }
+
+  .genresColumn a:hover {
+    background-color: #23252B;
+  }
+
+  .genresSection {
+    padding: 14px 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .genresTitle {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 200;
+    color: gray;
+    margin-bottom: 6px;
+    text-align: left;
+    padding: 4px 4px;
+    font-size: 14px;
+  }
+
+  .newsDropdown {
+    width: 100%; /* Ajusta a largura do dropdown */
+  }
+
+  .newsDropdown a {
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .titleNavegation {
+    color: #FFF;
+  }
+
+  .titleNews {
+    color: #FFF;
+  }
 }

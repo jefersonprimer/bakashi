@@ -1,5 +1,7 @@
 import React from "react";
 
+import styles from "./Outdoor.module.css"
+
 interface OutdoorProps {
   imageUrl: string;
   title: string;
@@ -22,85 +24,29 @@ const Outdoor: React.FC<OutdoorProps> = ({
   addToQueueLink = "#",
 }) => {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        gap: "16px",
-        padding: "24px",
-        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-        backgroundColor: "#000",
-        width: "1350px",
-        height: "371px",
-        margin: "0 auto",
-      }}
-    >
-      {/* Imagem */}
-      <div
-        style={{
-          flex: "1", // Ajustado para ocupar 50% do container
-          overflow: "hidden",
-        }}
-      >
-        <img
+    <div className={styles.container}>
+      <div className={styles.imageContainer}>
+        <img className={styles.image}
           src={imageUrl}
           alt={title}
-          style={{
-            width: "100%",
-            height: "350px",
-            objectFit: "cover",
-          }}
         />
       </div>
 
-      {/* Texto */}
-      <div
-        style={{
-          flex: "1", // Ajustado para ocupar 50% do container
-        }}
-      >
-        <h2
-          style={{
-            fontSize: "24px",
-            margin: "0 0 16px",
-            color: "#fff",
-          }}
-        >
+      <div className={styles.textContainer}>
+        <h2 className={styles.title}>
           {title}
         </h2>
-        <h2
-          style={{
-            fontSize: "24px",
-            margin: "0 0 16px",
-            color: "#FFF",
-          }}
-        >
+        <h2 className={styles.audioType}>
           {audiotype}
         </h2>
-        <p
-          style={{
-            fontSize: "16px",
-            margin: "0 0 16px",
-            lineHeight: "1.5",
-            color: "#FFF",
-          }}
-        >
+        <p className={styles.description}>
           {description}
         </p>
-        <div style={{ display: "flex", gap: "8px" }}>
+        <div className={styles.containerBtn}>
           {buttonText && buttonLink && (
-            <a
+            <a 
               href={buttonLink}
-              style={{
-                display: "inline-block",
-                padding: "10px 20px",
-                backgroundColor: "#0070f3",
-                color: "#fff",
-                textDecoration: "none",
-                borderRadius: "4px",
-                fontSize: "14px",
-              }}
+              className={styles.buttonLink}
             >
               {buttonText}
             </a>
@@ -108,15 +54,7 @@ const Outdoor: React.FC<OutdoorProps> = ({
           {addToQueueText && addToQueueLink && (
             <a
               href={addToQueueLink}
-              style={{
-                display: "inline-block",
-                padding: "10px 20px",
-                backgroundColor: "#555",
-                color: "#fff",
-                textDecoration: "none",
-                borderRadius: "4px",
-                fontSize: "14px",
-              }}
+              className={styles.addToQueueLink}
             >
               {addToQueueText}
             </a>

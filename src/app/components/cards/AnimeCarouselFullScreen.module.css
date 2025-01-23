@@ -36,41 +36,30 @@
   position: relative;
   width: 100%;
   max-width: 600px;
-  height: 340px;
+  height: 500px;
   color: white;
   z-index: 2;
   display: flex;
   flex-direction: column;
   justify-content: flex-start; /* Alinha o conteúdo ao topo */
   align-items: flex-start; /* Alinha o conteúdo à esquerda */
-  background-color: rgba(0, 0, 0, 0.7);
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  transform: translateX(-60%); /* Move o card para o lado esquerdo */
+  transform: translateX(-70%); /* Move o card para o lado esquerdo */
   padding: 20px;
+}
+
+.logoAnime {
+  /* display: none; */
+  width: 325px;
+  height: 123px;
+  margin-bottom: 20px;
 }
 
 .cardContent {
   display: flex;
   flex-direction: column;
   align-items: flex-start; /* Alinha o conteúdo da cardContent à esquerda */
-  width: 100%;
-}
-
-.cardContent {
-  
   justify-content: space-between;
   align-items: flex-start;
-  width: 100%;
-  height: 300px; /* Define a altura fixa */
- 
-  min-height: 300px;
-  padding: 16px;
-  box-sizing: border-box;
-  overflow: hidden; /* Esconde o texto excedente */
-  
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .leftColumn {
@@ -266,16 +255,253 @@
   border-color: orangered; /* Opção de cor de borda no hover */
 }
 
+
+
 /* Responsividade para telas pequenas */
 @media (max-width: 768px) {
-  .carouselContainer {
-    padding-bottom: 40px; /* Ajusta o padding para telas menores */
+  .ratingAndAudioType {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
   }
-}
 
-/* Responsividade para dispositivos muito pequenos */
-@media (max-width: 480px) {
+  .audioType {
+    font-size: 0.9rem;
+    color: #aaa;
+  }
+
   .carouselContainer {
-    padding-bottom: 20px; /* Ajusta ainda mais o padding em telas muito pequenas */
+    position: relative;
+    width: 100%;
+    height: 100vh; 
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logoAnime {
+    /* display: none; */
+    width: 180px;
+    height: 71px;
+    margin-bottom: 10px;
+  }
+
+  .backgroundImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90%;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+    filter: brightness(0.5); 
+  }
+
+  .cardContainer {
+    position: relative;
+    width: 100%;
+    height: auto; /* Ajusta a altura do card para se adaptar ao conteúdo */
+    color: white;
+    z-index: 2;
+    display: flex;
+    flex-direction: column; /* Alinha o conteúdo em coluna */
+    justify-content:flex-end;
+    align-items:flex-end; /* Alinha o conteúdo à esquerda */
+   
+    transform: translateX(0); /* Remove o deslocamento horizontal */
+    padding: 0px;
+    bottom: 0px;
+    background-color:transparent;
+    border: none;
+  }
+
+  .cardContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    bottom: 0;
+    border: none;
+    width: 100%;
+    height: auto; 
+    min-height: 100px;
+    box-sizing: border-box;
+    overflow: hidden;
+  
+    margin-top: 170px; /* Move o cardContent para baixo */
+    /* OU */
+    position: relative;
+    top: 20px; /* Ajusta a posição relativa para baixo */
+  }
+
+  .leftColumn {
+    width: 100%;
+    justify-content: end;
+    align-items: end;
+    bottom: 0px;
+  }
+
+  .name {
+    display: none;
+  }
+
+  .audioType {
+    margin: 5px 0;
+    font-size: 1rem;
+  }
+
+  .synopsis {
+    display: none;
+  }
+
+  .buttonsContainer {
+    border: none;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center; /* Alinha os itens ao centro */
+    justify-content: center; 
+  }
+
+  .playButton,
+  .bookmarkButton {
+    display: flex;
+    flex-direction: row; /* Alinha ícones e texto em linha */
+    align-items: center;
+    padding: 8px 55px;
+    background-color: #ff640a;
+    color: #000;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-bottom: 10px; /* Espaçamento entre os botões */
+  }
+
+  .titleName {
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+
+  .audioType {
+    margin: 0px 0;
+    font-size: 1rem;
+    color: white;
+  }
+
+  /* calendar.module.css */
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+  }
+
+  .iconPlay {
+    fill: #000;
+    display: flex;
+    stroke-width: 2;
+    height: 1.5rem;
+    justify-content: center;
+    width: 1.5rem;
+  }
+
+  .playButton {
+    display: flex;
+  }
+
+  .iconBookmark {
+    margin-left: 8px;
+    border: 2px solid #ff640a;
+    padding: 6px;
+    align-items: center;
+    fill: #ff640a;
+    stroke-width: 2;
+    height: 2.4rem;
+    justify-content: center;
+    width: 2.4rem;
+    cursor: pointer;
+  }
+
+  .tooltipText {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .tooltip:hover .tooltipText {
+    visibility: visible;
+    opacity: 1;
+  }
+
+   .navigationButtons {
+    display: none;
+  }
+
+  .arrowButton {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 10px;
+    transition: color 0.3s ease;
+  }
+
+  .arrowButton:hover {
+    color: #f0f0f0;
+  }
+
+  .pageIndicator {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .pageDot {
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 20px;
+    height: 8px;
+    position: relative;
+    background-color: transparent;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: gray;
+    transition: width 0.3s ease, background-color 0.3s ease;
+  }
+
+  .pageLoader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: orangered;
+    transition: width 5s ease-in-out;
+  }
+
+  .pageDot.active {
+    width: 40px;
+  }
+
+  .pageDot.active .pageLoader {
+    width: 100%;
+  }
+
+  .pageDot:hover {
+    border-color: orangered;
   }
 }
