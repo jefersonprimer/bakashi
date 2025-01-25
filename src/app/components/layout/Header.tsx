@@ -5,8 +5,8 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './Header.module.css';
-import logo from '../../../../public/logo.png';
-import cat from '../../../../public/cat.png';
+import logo from '../../../../public/Crunchyroll-Logo.png';
+import cat from '../../../../public/3357695.webp';
 import { useRouter } from 'next/navigation';
 import { Anime } from '@/types/anime'; 
 
@@ -97,7 +97,9 @@ export default function Header() {
           style={{ display: isMobileView ? 'none' : 'block' }}
         >
           <Link href="/">
-            <Image src={logo} alt="Logo do Site" width={180} height={40} priority />
+            <div className={styles.logoContainer}>
+              <Image className={styles.logo} src={logo} alt="Logo do Site" width={1200} height={720} priority />
+            </div>
           </Link>
         </div>
 
@@ -127,7 +129,9 @@ export default function Header() {
                 </button>
                 <div className={styles.headerLogoMobile}>
                   <Link href="/">
-                  <Image src={cat} alt="Logo do Site" width={30} height={30} priority />
+                  <div className={styles.logoMobileContainer}>
+                    <Image src={cat} alt="Logo do Site" width={26} height={26} priority />
+                  </div>
                   </Link>
                 </div>
               </div>
@@ -208,6 +212,15 @@ export default function Header() {
             )}
           </li>
 
+             {/* Dropdown de jogos */}
+             <li id='games' className={styles.navItem}>
+            <Link href="/games/index.html">
+              <span className={styles.titleNews}>Jogos</span>
+              <div className={`${styles.ercHeaderSvg} menu-icon`}> 
+              </div>
+            </Link>
+          </li>
+
           {/* Dropdown de Notícias */}
           <li className={styles.navItem} onClick={toggleDropdownNews}>
             <Link href="#">
@@ -264,20 +277,22 @@ export default function Header() {
                 </div>
               </button>
             </div>
-            <div className={styles.ercHeaderSvg} onClick={handleWatchlistClick}>
-              <svg
-                className={styles.headerSvgIcon}
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                data-t="watchlist-svg"
-                aria-labelledby="watchlist-svg"
-                aria-hidden="false"
-                role="img"
-              >
-                <title id="watchlist-svg">Fila</title>
-                <path d="M17 18.113l-3.256-2.326A2.989 2.989 0 0 0 12 15.228c-.629 0-1.232.194-1.744.559L7 18.113V4h10v14.113zM18 2H6a1 1 0 0 0-1 1v17.056c0 .209.065.412.187.581a.994.994 0 0 0 1.394.233l4.838-3.455a1 1 0 0 1 1.162 0l4.838 3.455A1 1 0 0 0 19 20.056V3a1 1 0 0 0-1-1z"></path>
-              </svg>
-            </div>
+            <Link href="/watchlist">
+              <div className={styles.ercHeaderSvg} onClick={handleWatchlistClick}>
+                <svg
+                  className={styles.headerSvgIcon}
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  data-t="watchlist-svg"
+                  aria-labelledby="watchlist-svg"
+                  aria-hidden="false"
+                  role="img"
+                >
+                  <title id="watchlist-svg">Fila</title>
+                  <path d="M17 18.113l-3.256-2.326A2.989 2.989 0 0 0 12 15.228c-.629 0-1.232.194-1.744.559L7 18.113V4h10v14.113zM18 2H6a1 1 0 0 0-1 1v17.056c0 .209.065.412.187.581a.994.994 0 0 0 1.394.233l4.838-3.455a1 1 0 0 1 1.162 0l4.838 3.455A1 1 0 0 0 19 20.056V3a1 1 0 0 0-1-1z"></path>
+                </svg>
+              </div>
+            </Link>
             <div className={styles.ercHeaderSvg} onClick={handleUserClick}>
               <svg
                 className={styles.headerSvgIcon}

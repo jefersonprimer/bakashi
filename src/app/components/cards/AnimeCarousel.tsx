@@ -8,6 +8,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faChevronRight, faStar } from "@fortawesome/free-solid-svg-icons";
 import MaturityRating from "../elements/MaturityRating";
 
+import { useAnimeList } from "../../contexts/AnimeListContext";
+
 interface AnimeCarouselProps {
   animes: Anime[];
 }
@@ -16,14 +18,24 @@ const AnimeCarousel: React.FC<AnimeCarouselProps> = ({ animes }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchDiff, setTouchDiff] = useState<number | null>(null);
+  const { addToWatchlist } = useAnimeList();
+
+  const debounce = (func: () => void, delay: number) => {
+    let timeout: NodeJS.Timeout;
+    return () => {
+      clearTimeout(timeout);
+      timeout = setTimeout(func, delay);
+    };
+  };
 
   const updateScrollState = () => {
     if (containerRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
 
-      // Adiciona uma margem de erro para cálculos de scroll
       const isAtStart = scrollLeft <= 0;
-      const isAtEnd = Math.ceil(scrollLeft + clientWidth) >= scrollWidth;
+      const isAtEnd = scrollLeft + clientWidth >= scrollWidth - 1;
 
       setCanScrollLeft(!isAtStart);
       setCanScrollRight(!isAtEnd);
@@ -48,19 +60,57 @@ const AnimeCarousel: React.FC<AnimeCarouselProps> = ({ animes }) => {
     }
   };
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.touches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (touchStart !== null) {
+      const currentTouch = e.touches[0].clientX;
+      setTouchDiff(touchStart - currentTouch);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    if (touchDiff !== null && containerRef.current) {
+      if (touchDiff > 50) {
+        scrollRight();
+      } else if (touchDiff < -50) {
+        scrollLeft();
+      }
+    }
+    setTouchStart(null);
+    setTouchDiff(null);
+  };
+
   useEffect(() => {
     const container = containerRef.current;
+    const handleScroll = debounce(updateScrollState, 100);
+    const handleResize = () => {
+      updateScrollState();
+    };
+
     if (container) {
-      updateScrollState(); // Atualiza o estado inicial
-      container.addEventListener("scroll", updateScrollState);
-      return () => container.removeEventListener("scroll", updateScrollState);
+      updateScrollState(); // Atualiza o estado ao montar
+      container.addEventListener("scroll", handleScroll);
+      window.addEventListener("resize", handleResize);
     }
-  }, []);
+
+    return () => {
+      if (container) {
+        container.removeEventListener("scroll", handleScroll);
+      }
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [containerRef, animes]);
+
+  useEffect(() => {
+    updateScrollState(); // Força a atualização ao montar
+  }, [animes]);
 
   return (
     <div className={styles.carouselContainer}>
       <div className={styles.outer}>
-        {/* Botão esquerdo */}
         {canScrollLeft && (
           <button
             className={`${styles.scrollButton} ${styles.scrollLeft}`}
@@ -71,11 +121,16 @@ const AnimeCarousel: React.FC<AnimeCarouselProps> = ({ animes }) => {
           </button>
         )}
 
-        {/* Container dos cards */}
-        <div className={styles.flexContainer} ref={containerRef}>
+        <div
+          className={styles.flexContainer}
+          ref={containerRef}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
           {animes.map((anime) => (
             <div key={anime.id} className={styles.card}>
-              <Link href={`/series/${anime.id}/${anime.slug}`} className={styles.animeLink}>
+              <Link href="#" className={styles.animeLink}>
                 <img src={anime.image} alt={anime.name} className={styles.animeImage} />
                 <div className={styles.nomeDataContainer}>
                   <p className={styles.nome}>{anime.name}</p>
@@ -103,7 +158,6 @@ const AnimeCarousel: React.FC<AnimeCarouselProps> = ({ animes }) => {
                   <p className={`${styles.infoText} ${styles.synopsis}`}>{anime.synopsis}</p>
                 </div>
 
-                {/* Botões de Ação (Play, Watchlist, Primerlist) */}
                 <div className={styles.playButton}>
                   <div className={styles.tooltip}>
                     <span className={styles.tooltipText}>Play</span>
@@ -120,7 +174,7 @@ const AnimeCarousel: React.FC<AnimeCarouselProps> = ({ animes }) => {
                     </svg>
                   </div>
 
-                  <div className={styles.tooltip}>
+                  <div className={styles.tooltip} onClick={() => addToWatchlist(anime)}>
                     <span className={styles.tooltipText}>Add to Watchlist</span>
                     <svg
                       className={styles.iconBookmark}
@@ -155,7 +209,6 @@ const AnimeCarousel: React.FC<AnimeCarouselProps> = ({ animes }) => {
           ))}
         </div>
 
-        {/* Botão direito */}
         {canScrollRight && (
           <button
             className={`${styles.scrollButton} ${styles.scrollRight}`}

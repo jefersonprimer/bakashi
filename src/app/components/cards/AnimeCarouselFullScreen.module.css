@@ -273,7 +273,7 @@
   .carouselContainer {
     position: relative;
     width: 100%;
-    height: 100vh; 
+    height: 94vh; 
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -316,6 +316,31 @@
     background-color:transparent;
     border: none;
   }
+  
+  .blurOverlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20%; /* Ajuste a altura conforme necessário */
+    background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,    /* Transparente */
+    rgba(0, 0, 0, 0.3) 10%, /* 10% opacidade */
+    rgba(0, 0, 0, 0.6) 20%, /* 20% opacidade */
+    rgba(0, 0, 0, 0.9) 30%, /* 30% opacidade */
+    rgba(0, 0, 0, 0.9) 40%, /* 40% opacidade */
+    rgba(0, 0, 0, 0.9) 50%, /* 50% opacidade */
+    rgba(0, 0, 0, 0.9) 60%, /* 60% opacidade */
+    rgba(0, 0, 0, 0.9) 70%, /* 70% opacidade */
+    rgba(0, 0, 0, 0.9) 80%, /* 80% opacidade */
+    rgba(0, 0, 0, 0.9) 90%, /* 90% opacidade */
+    rgba(0, 0, 0, 0.9) 100% /* 90% opacidade (fixa no final) */
+  );
+    backdrop-filter: blur(1px); /* Aplica o efeito de desfoque */
+    z-index: 1; /* Coloca sobre a imagem */
+  }
+  
 
   .cardContent {
     display: flex;
@@ -329,7 +354,7 @@
     box-sizing: border-box;
     overflow: hidden;
   
-    margin-top: 170px; /* Move o cardContent para baixo */
+    margin-top: 110px; /* Move o cardContent para baixo */
     /* OU */
     position: relative;
     top: 20px; /* Ajusta a posição relativa para baixo */
@@ -368,7 +393,7 @@
     display: flex;
     flex-direction: row; /* Alinha ícones e texto em linha */
     align-items: center;
-    padding: 8px 55px;
+    padding: 8px 40px;
     background-color: #ff640a;
     color: #000;
     font-size: 1rem;

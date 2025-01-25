@@ -299,7 +299,7 @@
     position: relative;
     overflow: hidden;
   }
-  
+
   .carouselTitle {
     text-align: left;
     margin-left: 1rem;
@@ -333,10 +333,12 @@
   
   
   .scrollLeft {
+    display: none;
     left: 10px;
   }
   
   .scrollRight {
+    display: none;
     right: 10px;
   }
   

@@ -1,51 +1,102 @@
 .footer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background-color: #222;
   color: #fff;
-  padding: 1.875rem 0;
-  font-size: 0.875rem;
-  text-align: center;
+  align-items: center;
 }
 
-.copyRight {
-  font-size: 0.75rem;
-  margin-top: 0.625rem;
+.footer a {
+  text-decoration: none;
+  color: #A0A0A0;
+  list-style: none;
 }
 
-/* Estilos do Footer */
-.footer {
-  border-top: 1px solid rgb(78, 77, 77);
-  position: relative;
-  padding: 1.25rem;
-  background-color: #0E0E0E;
-  color: white;
-  text-align: center;
+.footer a:hover {
+  text-decoration: underline;
+  color: #FFF;
 }
 
-/* Estilos do Copyright */
-.copyRight p {
-  margin: 0;
-}
-
-/* Botão de Voltar ao Topo */
-.scrollToTopButton {
-  position: absolute;
-  right: 1.25rem;
-  bottom: 0.625rem;
-  background-color: #333;
-  color: white;
-  padding: 1.25rem;
-  border: none;
-  border-radius: 50%;
-  font-size: 1.25rem;
-  cursor: pointer;
-  transition: background-color 0.3s;
+.footerColumns {
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 1.25rem;
-  height: 1.25rem;
+  flex-wrap: wrap;
+  gap: 16px;
+  border-bottom: 1px solid gray;
 }
 
-/* Hover do Botão */
-.scrollToTopButton:hover {
-  background-color: #005bb5;
+.footerColumns > div {
+  text-align: left;
+  flex: 1 1 calc(20% - 16px);
+  min-width: 200px;
+  
 }
+
+.footerColumns ul {
+  text-decoration: none;
+  list-style: none;
+  padding: 0;
+}
+
+.footerColumns ul li {
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+.title {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.list {
+ 
+  list-style: none;
+  padding: 0;
+}
+
+.list li {
+  margin-bottom: 5px;
+}
+
+.list a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.list a:hover {
+  text-decoration: underline;
+}
+
+.footerLegalWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.footerLogo {
+  width: 158px;
+  height: 12px;
+}
+
+.dropdownTrigger {
+  font-size: 14px;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+}
+
+.footerLegalWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  gap: 20px;
+  flex-basis: 100%; 
+}
+

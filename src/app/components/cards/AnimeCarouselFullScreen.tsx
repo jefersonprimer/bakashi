@@ -4,36 +4,37 @@ import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight, faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import styles from "./AnimeCarouselFullScreen.module.css";
-import { Anime } from "@/types/anime"; // Tipagem de anime
-import MaturityRating from "../elements/MaturityRating"; // Componente para exibir a classificação indicativa
-import useFetchAnimes from "@/app/hooks/useFetchAnimes"; // Hook customizado para buscar os animes
+import { Anime } from "@/types/anime";
+import MaturityRating from "../elements/MaturityRating";
+import useFetchAnimes from "@/app/hooks/useFetchAnimes";
 import Loading from "../../../app/loading";
 
 interface AnimeCarouselFullScreenProps {
-  className?: string; // Propriedade opcional
+  className?: string;
 }
 
 const AnimeCarouselFullScreen: React.FC<AnimeCarouselFullScreenProps> = ({
   className = "",
 }) => {
-  const { animes, loading, error } = useFetchAnimes(); // Hook para buscar os dados da API
+  const { animes, loading, error } = useFetchAnimes();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [thumbnailAnimes, setThumbnailAnimes] = useState<Anime[]>([]);
-  const [isMobile, setIsMobile] = useState(false); // Estado para detectar o tamanho da tela
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Detectar o tamanho da tela e ajustar a imagem
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [touchEndX, setTouchEndX] = useState<number | null>(null);
+
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768); // Altera para 'true' se a largura for <= 768px
+      setIsMobile(window.innerWidth <= 768);
     };
 
-    handleResize(); // Verifica a largura da tela na primeira renderização
+    handleResize();
     window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Filtrar apenas os animes com a propriedade "isThumbnail"
   useEffect(() => {
     if (animes) {
       const filteredAnimes = animes.filter((anime) => anime.isThumbnail);
@@ -41,7 +42,6 @@ const AnimeCarouselFullScreen: React.FC<AnimeCarouselFullScreenProps> = ({
     }
   }, [animes]);
 
-  // Alternar automaticamente entre os animes
   useEffect(() => {
     if (thumbnailAnimes.length > 0) {
       const interval = setInterval(() => {
@@ -67,6 +67,31 @@ const AnimeCarouselFullScreen: React.FC<AnimeCarouselFullScreenProps> = ({
     setCurrentIndex(index);
   };
 
+  // Eventos de toque
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEndX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX || !touchEndX) return;
+
+    const touchDistance = touchStartX - touchEndX;
+
+    if (touchDistance > 50) {
+      nextPage(); // Swipe para a esquerda
+    } else if (touchDistance < -50) {
+      prevPage(); // Swipe para a direita
+    }
+
+    // Resetar os valores de toque
+    setTouchStartX(null);
+    setTouchEndX(null);
+  };
+
   if (loading) {
     return <Loading />;
   }
@@ -80,22 +105,31 @@ const AnimeCarouselFullScreen: React.FC<AnimeCarouselFullScreenProps> = ({
   }
 
   return (
-    <div className={`${styles.carouselContainer} ${className}`}>
+    <div
+      className={`${styles.carouselContainer} ${className}`}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
       <div
         className={styles.backgroundImage}
         style={{
           backgroundImage: `url("${
             isMobile
-              ? thumbnailAnimes[currentIndex].image // Imagem para telas pequenas
-              : thumbnailAnimes[currentIndex].thumbnailImage // Imagem para telas grandes
+              ? thumbnailAnimes[currentIndex].image
+              : thumbnailAnimes[currentIndex].thumbnailImage
           }")`,
         }}
       />
-
+      <div className={styles.blurOverlay}></div>
       <div className={styles.cardContainer}>
         <div className={styles.cardContent}>
           <div className={styles.logoAnime}>
-            <img className={styles.logoAnime} src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=600/CurationAssets/Dr%20STONE%20/SEASON%204/ULTRA-WIDE/DrSTONE-S4-KV1-UW-Logo-EN.png" alt="" />
+            <img
+              className={styles.logoAnime}
+              src={thumbnailAnimes[currentIndex].logoAnime}
+              alt=""
+            />
           </div>
           <div className={styles.leftColumn}>
             <div className={styles.ratingAndAudioType}>
@@ -104,7 +138,7 @@ const AnimeCarouselFullScreen: React.FC<AnimeCarouselFullScreenProps> = ({
                 {thumbnailAnimes[currentIndex].audioType}
               </p>
             </div>
-            <p className={styles.name}>{thumbnailAnimes[currentIndex].name}</p>
+            {/* <p className={styles.name}>{thumbnailAnimes[currentIndex].name}</p> */}
             <p className={styles.synopsis}>
               {thumbnailAnimes[currentIndex].synopsis}
             </p>
