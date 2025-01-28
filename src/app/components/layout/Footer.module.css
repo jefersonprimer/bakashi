@@ -3,9 +3,19 @@
   flex-direction: column;
   gap: 20px;
   padding: 20px;
-  background-color: #222;
+  background: linear-gradient(to bottom, #000000, #1C3039);
   color: #fff;
   align-items: center;
+  padding-bottom: 35px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.footer item {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .footer a {
@@ -23,15 +33,15 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 16px;
-  border-bottom: 1px solid gray;
+  gap: 80px;
+  border-bottom: 1px solid #A0A0A0;
 }
 
 .footerColumns > div {
   text-align: left;
   flex: 1 1 calc(20% - 16px);
   min-width: 200px;
-  
+  margin-bottom: 20px;
 }
 
 .footerColumns ul {
@@ -70,10 +80,30 @@
 }
 
 .footerLegalWrapper {
+  width: 76%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 10px; 
+}
+
+.footerWrapper {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  justify-content: center;
+}
+
+.division {
+  width: 0.5px;
+  height: 20px; 
+  background-color: #A0A0A0;
+  margin: 0 10px; 
+  display: inline-block; 
+  vertical-align: middle;
+}
+
+.copyright {
+  color: #A0A0A0;
 }
 
 .footerLogo {
@@ -100,3 +130,33 @@
   flex-basis: 100%; 
 }
 
+.textIconWrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px; 
+}
+
+.leftIcon {
+  width: 16px;
+  height: 16px;
+  fill: #FFF;
+}
+
+.leftIconPremium {
+  width: 16px;
+  height: 16px;
+  fill: #FAB818;
+}
+
+.titlePremium {
+  color: #FAB818;
+}
+
+.text {
+  font-size: 14px; 
+  color: #fff; 
+}
+
+.dropdownLanguage {
+  color: #A0A0A0; 
+}

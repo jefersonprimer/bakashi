@@ -1,9 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useRouter } from 'next/router'; // Importação do roteador
 import { useLists } from '../contexts/ListsContext';
 import AddToListModal from '../components/AddToListModal';
+ import { useRouter } from 'next/navigation'; // Importa o hook useRouter
 
 import styles from './CrunchyList.module.css';
 
@@ -15,11 +15,14 @@ const CrunchyList = () => {
   const [editingListId, setEditingListId] = useState(null);
   const [newListName, setNewListName] = useState('');
   const [visibleMenu, setVisibleMenu] = useState(null);
-  const router = useRouter(); // Inicialização do roteador
+ 
+
+  const router = useRouter(); // Inicializa o roteador do Next.js
 
   const handleNavigateToList = (listId) => {
-    router.push(`/crunchylists/${listId}`); // Redirecionamento para a rota dinâmica
+    router.push(`/crunchylists/${listId}`); // Redireciona para a página detalhada
   };
+
 
   const handleAddItem = (anime) => {
     setSelectedAnime(anime);
@@ -81,7 +84,8 @@ const CrunchyList = () => {
               ) : (
                 <h3
                   className={styles.listTitle}
-                  onClick={() => handleNavigateToList(list.id)}
+                  onClick={() => handleNavigateToList(list.id)} 
+
                 >
                   {list.name}
                 </h3>

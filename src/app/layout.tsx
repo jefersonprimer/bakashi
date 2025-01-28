@@ -11,9 +11,10 @@ import Footer from './components/layout/Footer';
 import { AnimeListProvider } from "./contexts/AnimeListContext";
 
 import "./globals.css"; 
+import { ListsProvider } from './contexts/ListsContext';
 
 export const metadata: Metadata = {
-  title: "Bakashi Tv - Assista Animes Online em FULL HD, HD E SD",
+  title: "Crunchyroll - Assista a Animes, Jogue Games e Compre Online",
   description: "create by primerdev",
 };
 
@@ -34,7 +35,7 @@ export default function RootLayout({
         </head>
         <body>
           <Header />
-          {children}
+          <ListsProvider>{children}</ListsProvider>
           <Footer />
         </body>
       </html>

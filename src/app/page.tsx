@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { useState, useEffect } from "react";
 import { Anime, Genre, AiringDay } from "../types/anime"; 
@@ -15,6 +15,9 @@ import AnimeCarouselPopular from "./components/cards/AnimeCarouselPopular";
 import AnimeCarouselPopularSeason from "./components/cards/AnimeCarouselPopularSeason";
 import MovieCard from "./components/cards/MovieCard";
 import "./globals.css";
+import { AnimeListProvider } from "./contexts/AnimeListContext";
+import { FavoritesProvider } from "./contexts/FavoritesContext";
+import { ListsProvider } from "./contexts/ListsContext";
 
 const HomePage = () => {
   const [animes, setAnimes] = useState<Anime[]>([]);
@@ -24,7 +27,7 @@ const HomePage = () => {
       ...anime,
       rating: Number(anime.rating), 
       score: Number(anime.score),
-      genres: anime.genres as Genre[],
+      genres: anime.genres as Genre[] ,
       airingDay: anime.airingDay as AiringDay,
     })) as Anime[];
 
@@ -35,15 +38,23 @@ const HomePage = () => {
 
   return (
     <div className="home-container">
-      <AnimeCarouselFullScreen />
-      <AnimeCarouselLancamentos className="anime-carousel-lancamentos" />
-      <AnimeCarouselByDay />
-      <AnimeCarouselPopularSeason />
-      <AnimeCarouselPopular />
-      <AnimeCarouselNextSeason />
-      <AnimeCarouselDub />
-      <MovieCard />
-      
+      {/* Envolver os dois providers para garantir que os componentes tenham acesso aos contextos */}
+      <FavoritesProvider>
+        <AnimeListProvider> {/* Envolva o AnimeListProvider aqui */}
+        <ListsProvider>
+          <AnimeCarouselFullScreen />
+          <AnimeCarouselLancamentos className="anime-carousel-lancamentos" />
+          <AnimeCarouselByDay />
+          <AnimeCarouselPopularSeason />
+          <AnimeCarouselPopular />
+          <AnimeCarouselNextSeason />
+          <AnimeCarouselDub />
+          <MovieCard />
+        </ListsProvider>
+        
+        </AnimeListProvider>
+      </FavoritesProvider>
+
       {/* Outdoor Component */}
       <Outdoor 
         imageUrl="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=2700/CurationAssets/HeadhuntedToAnotherWorld-S1C1-KV2-Banner-2100x700-PT.png"
@@ -64,6 +75,31 @@ const HomePage = () => {
           link="https://www.crunchyroll.com/pt-br/series/G9VHN9QXQ/unnamed-memory"
           imageUrl="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=2700/CurationAssets/HeadhuntedToAnotherWorld-S1C1-KV2-Banner-2100x700-PT.png"
         />
+      </div>
+
+      <div className="container--cq5XE">
+        <div className="erc-view-all-feed-section">
+          <img 
+            className="view-all-feed-image" 
+            src="https://www.crunchyroll.com/build/assets/img/home/yuzu.png" 
+            srcSet="https://www.crunchyroll.com/build/assets/img/home/yuzu@2x.png 2x" 
+            alt="Yuzu." 
+          />
+          <h3 className="heading">
+            Ainda está procurando algo pra assistir? <br />
+            Confira o nosso acervo completo
+          </h3>
+          <a 
+            // tabIndex="0" 
+            className="button" 
+            data-t="view-all-btn" 
+            href="/pt-br/videos/popular"
+          >
+            <span className="viewAll">
+              VER TUDO
+            </span>
+          </a>
+        </div>
       </div>
     </div>
   );

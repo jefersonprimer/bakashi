@@ -1,169 +1,122 @@
-/* Header */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-}
-
-.seeAll {
-  margin-left: 10px;
-  padding: 5px 10px;
-  color: #A0A0A0;
-  text-decoration: none;
-}
-
-.seeAll:hover {
-  text-decoration: underline;
-  color: #FFFFFF;
-}
-
-.seeAll:active {
-  background-color: #003c8c;
-  border: 1px solid white;
-}
-
-/* Contêiner de episódios */
-.episodesContainer {
-  padding: 20px;
-  border-bottom: 1px solid rgb(78, 77, 77);
+.container {
+  width: 92%;
+  margin-left: auto;
+  margin-right: auto; /* Centraliza o container */
  
 }
 
-.grid {
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Estilo geral para a página de episódios */
+.episodesContainer {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  
+  grid-template-columns: repeat(3, 1fr); /* Exibe 3 colunas por linha */
+  gap: 20px; /* Espaço entre os itens */
+  padding: 20px;
 }
 
+/* Estilo do cartão de episódio */
 .episodeCard {
-   border-radius: 10px;
-  position: relative;
-  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 15px;
 }
 
+/* Contêiner da imagem do episódio */
 .episodeImageContainer {
+  flex-shrink: 0;
+  width: 100px; /* Defina o tamanho da imagem */
+  height: 170px; /* Defina a altura desejada */
+  margin-right: 20px;
   position: relative;
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-  border-radius: 5px;
 }
 
-.episodeImageContainer img {
+.episodeImage {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
+  object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+  border-radius: 8px;
 }
 
-/* Efeito de foco */
-.episodeCard:hover .episodeImageContainer img {
-  transform: scale(1.1);
+/* Estilo para as informações do episódio à direita da imagem */
+.episodeDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-grow: 1;
 }
 
-.episodeLink {
-  position: relative;
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-/* Remover a segunda definição da classe playButton que está com o fundo escuro */
-
-.playButton {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.playButton .playIcon {
-  font-size: 60px;
-  color: white;
-  /* Remover o fundo e a borda */
-  background-color: transparent;  /* Fundo transparente */
-  border-radius: 0;  /* Sem borda arredondada */
-  padding: 0;  /* Sem espaçamento */
-}
-
-/* Exibe o botão de play quando o mouse está sobre a imagem */
-.episodeCard:hover .playButton {
-  opacity: 1;
-}
-
-/* Label de Lançamento */
-.lancamentoLabel {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background-color: red;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
+/* Estilo do bloco de informações do anime */
+.animeInfo h3 {
+  margin: 0;
+  font-size: 18px;
   font-weight: bold;
-  font-size: 12px;
+  color: #fff;
 }
 
-
-/* Exibe o botão de play quando o mouse está sobre a imagem */
-.episodeCard:hover .playButton {
-  opacity: 1;
+.animeInfo p {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
 }
 
-/* Label de Lançamento */
-.lancamentoLabel {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background-color: red;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
+/* Estilo do bloco de informações do episódio */
+.episodeInfo p {
+  margin: 5px 0;
+  color: #333;
+  font-size: 14px;
+}
+
+.episodeInfo strong {
   font-weight: bold;
-  font-size: 12px;
 }
 
-/* Paginação */
+/* Estilo da paginação */
 .pagination {
   display: flex;
   justify-content: center;
+  gap: 10px;
   margin-top: 20px;
-  margin-bottom: 20px;
 }
 
 .pagination button {
-  margin: 0 5px;
-  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+.pagination button.active {
+  background-color: #0056b3;
+}
+
+.loadMore {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.loadMore button {
   background-color: #0070f3;
   color: white;
   border: none;
+  padding: 10px 20px;
+  font-size: 16px;
   cursor: pointer;
   border-radius: 5px;
 }
 
-.pagination button:hover {
+.loadMore button:hover {
   background-color: #005bb5;
-}
-
-.pagination button.active {
-  background-color: #003c8c;
-}
-
-/* Responsividade para telas pequenas */
-@media (max-width: 768px) {
-  .carouselContainer {
-    padding-bottom: 40px; /* Ajusta o padding para telas menores */
-  }
-}
-
-/* Responsividade para dispositivos muito pequenos */
-@media (max-width: 480px) {
-  .carouselContainer {
-    padding-bottom: 20px; /* Ajusta ainda mais o padding em telas muito pequenas */
-  }
 }

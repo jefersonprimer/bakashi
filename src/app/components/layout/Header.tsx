@@ -1,29 +1,27 @@
 'use client';
 
-
 import { useState, useEffect, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './Header.module.css';
 import logo from '../../../../public/Crunchyroll-Logo.png';
 import cat from '../../../../public/3357695.webp';
-import { useRouter } from 'next/navigation';
 import { Anime } from '@/types/anime'; 
 
 export default function Header() {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredAnimes, setFilteredAnimes] = useState<Anime[]>([]);
-  const [isOpen, setIsOpen] = useState(false); // Controla se os resultados estão visíveis
-  const [isDropdownNavOpen, setDropdownNavOpen] = useState(false); // Dropdown de navegação
-  const [isDropdownNewsOpen, setDropdownNewsOpen] = useState(false); // Dropdown de notícias
-
+  const [isOpen, setIsOpen] = useState(false);
+  const [isDropdownNavOpen, setDropdownNavOpen] = useState(false);
+  const [isDropdownNewsOpen, setDropdownNewsOpen] = useState(false); 
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
   const [isMobileView, setIsMobileView] = useState(false);
 
-  const resultsRef = useRef<HTMLUListElement | null>(null); // Referência para o container dos resultados de pesquisa
-  const dropdownNavRef = useRef<HTMLDivElement | null>(null); // Referência para o container do menu dropdown de navegação
-  const dropdownNewsRef = useRef<HTMLDivElement | null>(null); // Referência para o container do menu dropdown de notícias
-  const router = useRouter(); // Usando o useRouter para navegação programática
+  const resultsRef = useRef<HTMLUListElement | null>(null); 
+  const dropdownNavRef = useRef<HTMLDivElement | null>(null); 
+  const dropdownNewsRef = useRef<HTMLDivElement | null>(null); 
+  const router = useRouter();
 
   useEffect(() => {
     const handleResize = () => {
@@ -49,9 +47,9 @@ export default function Header() {
       (dropdownNavRef.current && !dropdownNavRef.current.contains(event.target as Node)) ||
       (dropdownNewsRef.current && !dropdownNewsRef.current.contains(event.target as Node))
     ) {
-      setIsOpen(false); // Fecha os resultados se clicar fora
-      setDropdownNavOpen(false); // Fecha o dropdown de navegação
-      setDropdownNewsOpen(false); // Fecha o dropdown de notícias
+      setIsOpen(false);
+      setDropdownNavOpen(false); 
+      setDropdownNewsOpen(false);
     }
   };
 
@@ -60,7 +58,7 @@ export default function Header() {
     document.addEventListener('mousedown', handleClickOutside);
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside); // Limpa o ouvinte ao desmontar
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 
@@ -98,17 +96,16 @@ export default function Header() {
         >
           <Link href="/">
             <div className={styles.logoContainer}>
-              <Image className={styles.logo} src={logo} alt="Logo do Site" width={1200} height={720} priority />
+              <Image className={styles.logo} src={logo} alt="Logo da Crunchyroll" width={1200} height={720} priority />
             </div>
           </Link>
         </div>
-
 
         <div className={styles.headerMenu}>
           {/* Links de Navegação */}
           {isMobileView ? (
             <div className={styles.hamburgerMenu}>
-              {/* Contêiner flex para alinhar o hambúrguer e a logo */}
+              {/* */}
               <div className={styles.hamburgerHeader}>
                 <button
                   onClick={toggleHamburgerMenu}
@@ -127,6 +124,7 @@ export default function Header() {
                     <path d="M21 4a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2h18zm0 7a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2h18zm0 7a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2h18z"></path>
                   </svg>
                 </button>
+                {/*logo mobile*/}
                 <div className={styles.headerLogoMobile}>
                   <Link href="/">
                   <div className={styles.logoMobileContainer}>
@@ -166,7 +164,7 @@ export default function Header() {
             {isDropdownNavOpen && (
               <div ref={dropdownNavRef} className={styles.dropdownMenu}>
                 <div className={styles.menuContent}>
-                  {/* Coluna de Categorias (Popular, Novidades, A-Z) */}
+                  {/* A-Z */}
                   <div className={styles.categoriesColumn}>
                     <Link href="/videos/popular">Populares</Link>
                     <Link href="/videos/new">Novidades</Link>
@@ -239,8 +237,8 @@ export default function Header() {
                   <path d="M7 10h10l-5 5z"></path>
                 </svg>
               </div>
-
             </Link>
+            {/* Dropdown de Notícias */}
             {isDropdownNewsOpen && (
               <div ref={dropdownNewsRef} className={`${styles.dropdownMenu} ${styles.newsDropdown}`}>
                 <div className={styles.menuContent}>
@@ -311,6 +309,5 @@ export default function Header() {
         </div>
       </div>
     </header>
-
   );
 }

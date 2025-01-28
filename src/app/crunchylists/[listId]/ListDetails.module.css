@@ -1,0 +1,17 @@
+.container {
+  width: 100%;
+  height: 100vh;
+}
+
+/* Em ListDetails.module.css ou outro arquivo de estilo */
+.listItem {
+    border: 1px solid #ccc;  /* Adiciona uma borda para garantir que o item seja visível */
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .animeItem {
+    border: 1px solid #000;  /* Teste a borda nos itens de anime */
+    margin: 5px 0;
+  }
+  

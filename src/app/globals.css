@@ -115,3 +115,36 @@ body {
 .outdoor-container h1 {
   margin-bottom: 20px; 
 }
+
+.container--cq5XE {
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  padding: 50px;
+  padding-bottom: 80px;
+}
+
+.erc-view-all-feed-section {
+  text-align: center; /* Alinha o texto no centro */
+}
+
+.view-all-feed-image {
+  max-width: 100%;
+  height: auto; /* Ajusta o tamanho da imagem */
+}
+
+.heading {
+  padding-bottom: 40px;
+}
+
+.button {
+  margin-top: 20px; /* Espaço entre o texto e o botão */
+  text-decoration: none;
+}
+
+.viewAll {
+  padding: 10px 20px;
+  border: 2px solid #ff640a;
+  color: #ff640a;
+  text-decoration: none;
+}

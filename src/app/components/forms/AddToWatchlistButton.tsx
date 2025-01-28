@@ -1,18 +1,23 @@
+// components/AddToWatchlistButton.tsx
 "use client";
 
-import { useAnimeList } from "../contexts/AnimeListContext";
-import styles from "./WatchlistButton.module.css";
-import { Anime } from "@/types/anime";
+import { useAnimeList } from "../../contexts/AnimeListContext";
+import styles from "./AddToWatchlistButton.module.css";
 
-interface WatchlistButtonProps {
+interface AddToWatchlistButtonProps {
   anime: Anime;
 }
 
-const WatchlistButton: React.FC<WatchlistButtonProps> = ({ anime }) => {
+const AddToWatchlistButton: React.FC<AddToWatchlistButtonProps> = ({ anime }) => {
   const { addToWatchlist } = useAnimeList();
 
+  const handleAddToWatchlist = () => {
+    addToWatchlist(anime);
+    window.location.href = "/watchlist"; // Redireciona para a página Watchlist
+  };
+
   return (
-    <div className={styles.tooltip} onClick={() => addToWatchlist(anime)}>
+    <div className={styles.tooltip} onClick={handleAddToWatchlist}>
       <span className={styles.tooltipText}>Add to Watchlist</span>
       <svg
         className={styles.iconBookmark}
@@ -29,4 +34,4 @@ const WatchlistButton: React.FC<WatchlistButtonProps> = ({ anime }) => {
   );
 };
 
-export default WatchlistButton;
+export default AddToWatchlistButton;

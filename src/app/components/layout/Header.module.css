@@ -1,55 +1,69 @@
-.logoContainer {
-  padding: 0px 40px;
+.header {
+  border: none;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  padding: 0.5rem 3.75rem;
+  max-width: 100%; 
+  max-height: 3.75rem;
+  background-color: #23252B;
+  color: #FFFFFF;
 }
 
-.logoMobileContainer {
-  padding: 15px;
+.container {
+  display: flex;
+  justify-content: space-between; 
+  width: 100%;
+  align-items: center;
+  background-color: #23252B;
+}
+
+.headerLogo {
+  display: flex;
+  align-items: center;
+  padding-right: 30px;
+}
+
+.logoContainer {
+  width: 136;
+  height: 60px; 
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
 }
 
 .logo {
-  width: 133px;
-  height: 50px;
+  width: 133;
+  height: 21px;
+  object-fit: cover;
 }
 
-.headerLogoMobile {
-  display: none;
+.headerLogo .logoContainer:hover .logo {
+  filter: brightness(0) invert(1); /* Para imagens */
+  transition: filter 0.3s ease;
 }
 
-@media (max-width: 768px) {
-  .headerLogoMobile {
-    display: block;
-  }
+.headerMenu {
+  display: flex;
+  align-items: center;
+  margin-left: 0; 
+  color: #FFF;
 }
-
 
 .hamburgerMenu {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .hamburgerHeader {
-  display: flex; /* Torna os itens flexíveis */
-  align-items: center; /* Alinha verticalmente no centro */
-  justify-content: space-between; /* Espaço entre o botão e a logo */
-  width: 100%; /* Garante que ocupe toda a largura */
-  padding: 0 16px; /* Espaço interno opcional */
-}
-
-.hamburgerIcon {
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.headerLogoMobile {
-  margin-left: 20px; /* Empurra a logo para o lado direito */
-}
-
-
-.hamburgerMenu {
-  display: flex;
-  flex-direction: column;
-  position: relative; /* Define o contexto para o dropdown */
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  width: 100%;
+  padding: 0 16px; 
 }
 
 .hamburgerIcon {
@@ -66,27 +80,47 @@
 .hamburgerIcon svg {
   width: 24px;
   height: 24px;
-  fill: currentColor; /* Isso usa a cor definida no elemento pai */
-  color: #ffffff; /* Define a cor branca para o ícone */
+  fill: currentColor;
+  color: #ffffff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.logoMobileContainer {
+  padding: 15px;
+}
+
+.headerLogoMobile {
+  display: none;
+  margin-left: 20px;
 }
 
 .header-svg-icon {
   width: 24px;
   height: 24px;
-  fill: #ffffff; /* Branco */
+  fill: #ffffff; 
 }
 
 .hamburgerLinks {
-  position: absolute; /* Sobrepõe os conteúdos */
-  top: 100%; /* Posiciona logo abaixo do botão */
-  left: 0; /* Alinha à esquerda do botão */
-  width: 200px; /* Largura fixa ou dinâmica */
-  background-color: #333; /* Fundo do dropdown */
-  color: #fff; /* Cor do texto */
+  position: absolute; 
+  top: 100%;
+  left: 0;
+  width: 200px;
+  background-color: #333; 
+  color: #fff; 
   border-radius: 4px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
   padding: 10px;
-  z-index: 1000; /* Coloca acima dos outros conteúdos */
+  z-index: 1000;
 }
 
 .hamburgerLinks a {
@@ -98,40 +132,7 @@
 }
 
 .hamburgerLinks a:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* Destaque no hover */
-}
-
-
-.header {
-  border: none;
-  display: flex;
-  justify-content: space-between; 
-  align-items: center;
-  padding: 0.5rem 3.75rem;
-  max-width: 100%; /*TODO: estava 1520px*/
-  max-height: 3.75rem; /*TODO: estava 60px*/
-  background-color: #23252B;
-  color: #FFFFFF;
-}
-
-.container {
-  display: flex;
-  justify-content: space-between; 
-  width: 100%;
-  align-items: center;
-  background-color: #23252B;
-}
-
-.headerLogo {
-  display: flex;
-  align-items: center;
-}
-
-.headerMenu {
-  display: flex;
-  align-items: center;
-  margin-left: 0; 
-  color: #FFF;
+  background-color: rgba(255, 255, 255, 0.1); 
 }
 
 .navLinks {
@@ -155,7 +156,6 @@
   align-items: center;
 }
 
-
 .headerActions {
   display: flex;
   align-items: center;
@@ -171,7 +171,7 @@
 .searchContainer {
   display: flex;
   align-items: center;
-  gap: 16px; /* Espaçamento entre os ícones */
+  gap: 16px;
 }
 
 .ercHeaderSvg {
@@ -182,7 +182,6 @@
   height: 24px;
   color: #FFF;
 }
-
 
 .searchContainer {
   display: flex;
@@ -199,7 +198,7 @@
   fill: #FFF;
   width: 24px;
   height: 24px;
-  margin-left: 0px; /* Distância entre os ícones */
+  margin-left: 0px;
   cursor: pointer;
 }
 
@@ -208,7 +207,7 @@
   flex-direction: row;
   position: absolute;
   background-color: #141519;
-  width: 700px; /* Largura total do menu */
+  width: 700px; 
   top: 180%;
   left: 0;
   padding: 0px;
@@ -321,9 +320,9 @@
   .header {
     border: none;
     display: flex;
-    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    justify-content: center; 
     align-items: center;
-    padding: 0.5rem 0.2rem; /* Reduz o padding para telas menores */
+    padding: 0.5rem 0.2rem;
     max-width: 100%;
     max-height: 3.75rem;
     background-color: #23252B;
@@ -332,7 +331,7 @@
 
   .container {
     display: flex;
-    justify-content: center; /* Centraliza o conteúdo */
+    justify-content: center;
     width: 100%;
     align-items: center;
     background-color: #23252B;
@@ -341,7 +340,11 @@
   .headerLogo {
     display: flex;
     align-items: center;
-    margin-right: auto; /* Garante que o logo esteja à esquerda */
+    margin-right: auto; 
+  }
+
+  .headerLogoMobile {
+    display: block;
   }
 
   .headerMenu {
@@ -356,7 +359,7 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    justify-content: center; /* Centraliza os links de navegação */
+    justify-content: center;
     width: 100%;
   }
 
@@ -384,7 +387,7 @@
   .searchContainer {
     display: flex;
     align-items: center;
-    gap: 16px; /* Espaçamento entre os ícones */
+    gap: 16px; 
   }
 
   .ercHeaderSvg {
@@ -417,10 +420,10 @@
 
   .dropdownMenu {
     display: flex;
-    flex-direction: column; /* Muda para coluna para melhor visualização em dispositivos móveis */
+    flex-direction: column; 
     position: absolute;
     background-color: #141519;
-    width: 100%; /* Ajusta a largura para 100% */
+    width: 100%; 
     top: 180%;
     left: 0;
     padding: 0px;
@@ -429,14 +432,14 @@
 
   .menuContent {
     display: flex;
-    flex-direction: column; /* Coloca o conteúdo em uma coluna */
+    flex-direction: column; 
     width: 100%;
   }
 
   .categoriesColumn {
     display: flex;
     flex-direction: column;
-    margin-right: 0; /* Remove a margem direita */
+    margin-right: 0; 
     padding: 10px;
   }
 
@@ -458,14 +461,14 @@
   }
 
   .divider {
-    border-right: none; /* Remove a divisória entre colunas */
+    border-right: none; 
     margin: 0;
     height: 100%;
   }
 
   .genresGrid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Ajusta para 2 colunas em telas pequenas */
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
 
@@ -498,7 +501,7 @@
   }
 
   .newsDropdown {
-    width: 100%; /* Ajusta a largura do dropdown */
+    width: 100%;
   }
 
   .newsDropdown a {

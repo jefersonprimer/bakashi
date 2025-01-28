@@ -1,0 +1,149 @@
+.crunchyListContainer {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.listsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.listItem {
+  padding: 15px;
+  background-color: #141519;
+  border-radius: 8px;
+  position: relative;
+  transition: background-color 0.3s;
+}
+
+.listItem:hover {
+  background-color: #23252B;
+}
+
+.listTitle {
+  font-size: 1.5rem;
+  margin: 0;
+  cursor: pointer;
+}
+
+.listInfo {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #A0A0A0;
+}
+
+.updatedAt {
+  font-style: italic;
+}
+
+.listItems {
+  margin-top: 15px;
+}
+
+.animeItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.animeImage {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.removeButton {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.removeButton:hover {
+  background-color: #e63939;
+}
+
+.renameListContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.renameInput {
+  flex: 1;
+  padding: 5px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.saveRenameButton {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.saveRenameButton:hover {
+  background-color: #43a047;
+}
+
+.menuContainer {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.menuIcon {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #A0A0A0;
+}
+
+.menuIcon:hover {
+  color: #FFF;
+}
+
+.dropdownMenu {
+  width: 200px;
+  position: absolute;
+  top: 35px;
+  right: 0;
+  background-color: #23252B;
+  z-index: 10;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dropdownItem {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #A0A0A0;
+}
+
+.dropdownItem:hover {
+  background-color: #141519;
+}
