@@ -15,6 +15,7 @@ const CrunchyList = () => {
   const [editingListId, setEditingListId] = useState(null);
   const [newListName, setNewListName] = useState('');
   const [visibleMenu, setVisibleMenu] = useState(null);
+  const { createList } = useLists();
  
 
   const router = useRouter(); // Inicializa o roteador do Next.js
@@ -56,9 +57,24 @@ const CrunchyList = () => {
     setEditingListId(null);
   };
 
+  
+
+  const handleCreateList = () => {
+    if (lists.length < 10) {
+      createList(`Minha Lista ${lists.length + 1}`);
+    } else {
+      alert("Você atingiu o limite de 10 listas.");
+    }
+  };
+
+  
+
   return (
     <div className={styles.crunchyListContainer}>
-      <h1 className={styles.title}>Crunchylistas</h1>
+      <div className={styles.header}>
+        <button onClick={handleCreateList} className={styles.createListBtn}>CRIAR NOVA LISTA</button>
+        <span className={styles.listLength}>{lists.length}/10 listas</span>
+      </div>
 
       <div className={styles.listsContainer}>
         {lists.length === 0 ? (
@@ -94,7 +110,7 @@ const CrunchyList = () => {
               <div className={styles.listInfo}>
                 <p>{`${list.items.length} Itens`}</p>
                 <p className={styles.updatedAt}>
-                  Atualizada em {formatDate(list.updatedAt)}
+                  - Atualizada em {formatDate(list.updatedAt)}
                 </p>
               </div>
 

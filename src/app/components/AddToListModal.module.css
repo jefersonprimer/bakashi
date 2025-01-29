@@ -28,20 +28,87 @@
     border: none;
     font-size: 20px;
     cursor: pointer;
+    color: #FFF;
   }
   
   .listsContainer {
     margin-top: 20px;
+    padding: 10px;
+    max-height: 300px; /* Altura suficiente para 5 listas */
+    overflow-y: auto; 
   }
   
   .createListContainer {
     display: flex;
-    gap: 10px;
+    flex-direction: column;
+    gap: 10px; /* Ajusta o espaçamento entre os elementos */
   }
   
+  .createListInput {
+    color: #FFF;
+    padding: 10px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #A0A0A0; /* Cor padrão da borda */
+    outline: none; /* Remove a linha de foco (outline) */
+    transition: border-bottom 0.3s ease; /* Adiciona transição suave na mudança de cor */
+  }
+  
+  .createListInput:focus {
+    border-bottom: 1px solid #ff640a; /* Cor da borda no foco (laranja) */
+    outline: none; /* Garante que não haja borda extra ao focar */
+  }
+  
+  
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    padding: 20px 0px;
+    border-bottom: 1px solid #A0A0A0;
+  }
+  
+  .title {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 20px; /* Ajusta o espaçamento acima do título */
+  }
+
+  .textListItem p {
+    padding-bottom: 10px;
+  }
+
+  .btnRemoveOrAdd {
+    color: #FF5E00;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 32px;
+    background-color: transparent;
+    border: none;
+  }
+  
+  .btnCreate {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #A0A0A0;
+  }
+
+  .btnCreate:hover {
+    color: #FFF;
+  }
+
   .listItem {
     display: flex;
     justify-content: space-between;
-    margin-top: 10px;
+    padding-bottom: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #A0A0A0;
+  }
+
+  .listItem:hover {
+    background-color: #141519;
   }
   

@@ -64,9 +64,7 @@ export const ListsProvider: React.FC<ListsProviderProps> = ({ children }) => {
     };
     
     setLists((prevLists) => [...prevLists, newList]);
-  };
-  
-  
+  };  
 
   const addItemToList = (listId: string, anime: Anime) => {
     setLists((prevLists) =>

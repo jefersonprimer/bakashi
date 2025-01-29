@@ -1,24 +1,35 @@
 .crunchyListContainer {
-  padding: 20px;
   font-family: Arial, sans-serif;
 }
 
-.title {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  text-align: center;
+.header {
+ padding: 30px 0px;
+}
+
+.createListBtn {
+  font-size: 0.9rem;
+  margin-right: 15px;
+  padding: 10px 14px;
+  border: 1px solid #FF640A;
+  color: #FF640A;
+  background-color: #000;
+  cursor: pointer;
+}
+
+.listLength {
+  color: #A0A0A0;
+  font-size: 1rem;
 }
 
 .listsContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 2fr));
   gap: 20px;
 }
 
 .listItem {
-  padding: 15px;
+  padding: 20px;
   background-color: #141519;
-  border-radius: 8px;
   position: relative;
   transition: background-color 0.3s;
 }
@@ -36,13 +47,13 @@
 .listInfo {
   margin-top: 10px;
   display: flex;
-  justify-content: space-between;
+  gap: 5px;
   font-size: 0.9rem;
   color: #A0A0A0;
 }
 
 .updatedAt {
-  font-style: italic;
+  
 }
 
 .listItems {
@@ -128,17 +139,16 @@
   right: 0;
   background-color: #23252B;
   z-index: 10;
-  padding: 10px;
+  padding: 10px 0px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
 }
 
 .dropdownItem {
   background: none;
   border: none;
   text-align: left;
-  padding: 5px 10px;
+  padding: 15px 20px;
   cursor: pointer;
   font-size: 1rem;
   color: #A0A0A0;
@@ -146,4 +156,5 @@
 
 .dropdownItem:hover {
   background-color: #141519;
+  color: #FFF;
 }

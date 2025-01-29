@@ -1,3 +1,49 @@
+.emptyListBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  padding-bottom: 60px;
+  flex-direction: column;
+  /* border: 2px dotted white; */
+}
+
+.wrapper {
+  text-align: center;
+}
+
+.image {
+  width: 100%;
+  max-width: 250px;
+}
+
+.description {
+  font-size: 1rem;
+  margin-bottom: 40px;
+  color: #DADADA;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .removeButton {
   background-color: transparent; /* Remove o fundo branco do botão */
   border: none; /* Remove qualquer borda */
@@ -30,39 +76,23 @@
   justify-content: space-between;
 }
 
-.emptyListBox {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    flex-direction: column;
-  }
+
   
-  .wrapper {
-    text-align: center;
-  }
+
   
-  .image {
-    width: 100%;
-    max-width: 400px;
-    margin-bottom: 20px;
-  }
-  
-  .description {
-    font-size: 18px;
-    margin-bottom: 20px;
-  }
+
   
   .button {
     margin-top: 20px;
+    color: #000;
   }
   
   .returnButton {
-    background-color: #ff6f00;
-    color: white;
-    padding: 10px 20px;
+    background-color: #FF640A;
+    color: #000!important;
+    font-weight: bold;
+    padding: 12px 15px;
     text-decoration: none;
-    border-radius: 5px;
   }
   
   .animeList {

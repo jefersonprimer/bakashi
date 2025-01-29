@@ -1,36 +1,30 @@
 'use client';
 
-import React from 'react';
 import { useParams } from 'next/navigation';
 import { useLists } from '../../contexts/ListsContext';
+import ListDetails from "./ListDetails";
+import { useState, useEffect } from 'react';
 
-const ListDetails = () => {
-  const { listId } = useParams(); // Obtém o ID da URL
+const ListDetailsHome = () => {
+  const { listId } = useParams();
   const { lists } = useLists();
+  const [currentList, setCurrentList] = useState(() =>
+    lists.find((list) => list.id === listId)
+  );
 
-  const list = lists.find((list) => list.id === listId);
+  useEffect(() => {
+    setCurrentList(lists.find((list) => list.id === listId));
+  }, [lists, listId]);
 
-  if (!list) {
+  if (!currentList) {
     return <p>Lista não encontrada.</p>;
   }
 
   return (
     <div>
-      <h1>{list.name}</h1>
-      <p>Última atualização: {new Date(list.updatedAt).toLocaleString()}</p>
-      {list.items.length === 0 ? (
-        <p>Nenhum anime nesta lista.</p>
-      ) : (
-        <ul>
-          {list.items.map((anime) => (
-            <li key={anime.id}>
-              <span>{anime.name}</span>
-            </li>
-          ))}
-        </ul>
-      )}
+      <ListDetails key={currentList.id} list={currentList} />
     </div>
   );
 };
 
-export default ListDetails;
+export default ListDetailsHome;

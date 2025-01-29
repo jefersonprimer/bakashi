@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { useLists } from '../contexts/ListsContext';
 import { Anime } from '@/types/anime';
 import styles from './AddToListModal.module.css';
+import { list } from 'postcss';
 
 interface AddToListModalProps {
   anime: Anime;
@@ -46,7 +47,7 @@ const AddToListModal: React.FC<AddToListModalProps> = ({ anime, onClose }) => {
     <div className={styles.overlay} onClick={handleOverlayClick}>
       <div className={styles.modalContent}>
         <button className={styles.closeButton} onClick={onClose}>X</button>
-        <h3>Adicionar à Crunchylista</h3>
+        <h3 className={styles.title}>Adicionar à Crunchylista</h3>
 
         <div className={styles.listsContainer}>
           <div className={styles.createListContainer}>
@@ -55,13 +56,21 @@ const AddToListModal: React.FC<AddToListModalProps> = ({ anime, onClose }) => {
               value={newListName}
               onChange={(e) => setNewListName(e.target.value)}
               placeholder="Nome da nova lista"
+              className={styles.createListInput}
             />
-            <button onClick={handleCreateList}>Criar Nova Lista</button>
+
+            <div className={styles.header}>
+              <span>{lists.length}/10 listas</span>
+              <button onClick={handleCreateList} className={styles.btnCreate}>CRIAR NOVA LISTA</button>
+            </div>
           </div>
 
           {lists.map((list) => (
             <div key={list.id} className={styles.listItem}>
-              <p>{list.name}</p>
+              <div className={styles.textListItem}>
+                <p>{list.name}</p>
+                <span>{list.items.length} itens</span>
+              </div>
               {/* Exibe "Remover" caso o anime já esteja na lista, caso contrário, exibe "Adicionar" */}
               <button
                 onClick={() => 
@@ -69,8 +78,9 @@ const AddToListModal: React.FC<AddToListModalProps> = ({ anime, onClose }) => {
                     ? handleRemoveFromList(list.id) // Remove o anime da lista
                     : handleAddToList(list.id) // Adiciona o anime à lista
                 }
+                className={styles.btnRemoveOrAdd}
               >
-                {isAnimeInList(list.id) ? 'Remover' : 'Adicionar'}
+                {isAnimeInList(list.id) ? '-' : '+'}
               </button>
             </div>
           ))}

@@ -1,17 +1,329 @@
 .container {
-  width: 100%;
-  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-/* Em ListDetails.module.css ou outro arquivo de estilo */
+.heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 40px;
+  width: 100%;
+  text-decoration: none;
+}
+
+.heading a {
+  text-decoration: none;
+}
+
+.heading > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.angleLeftIcon {
+  width: 24px; /* Tamanho do ícone */
+  height: 24px;
+  fill: #A0A0A0; /* Remove o preenchimento branco */
+  stroke: #A0A0A0; /* Define a cor do contorno */
+  stroke-width: 1; /* Ajusta a espessura do contorno */
+}
+
+.beforeLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #A0A0A0;
+}
+
+.beforeLink:hover {
+  color: #FFF;
+}
+
+.nameList {
+  margin-top: 40px;
+  margin-bottom: 30px;
+  padding: 0;
+  text-align: left;
+}
+
+.inputSearch {
+  border: none;
+  outline: none;
+  padding: 5px;
+  background-color: #000;
+  border-bottom: 1px solid #ccc;
+  color: #FFF;
+  font-size: 16px;
+  margin-right: 5px;
+}
+
+.inputSearch:focus {
+  border: none;
+  outline: none;
+  border-bottom: 2px solid gray;
+  color: white;
+}
+
+.settingDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.settingDiv:hover {
+  color: #FFF;
+}
+
+.settings {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.settings button {
+  padding: 8px 12px;
+  cursor: pointer;
+  color: #A0A0A0;
+  border: none;
+  background-color: transparent;
+}
+
+.settings button:hover {
+  background-color: #23252B;
+}
+
+
+
+.dropdownMenu {
+  width: 200px;
+  position: absolute;
+  margin-top: 10px;
+  
+  background-color: #23252B;
+  display: flex;
+  flex-direction: column;
+  
+  z-index: 10;
+  text-align: left;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 10px 0px;
+  top: 35px;
+  right: 0;
+}
+
+.dropdownMenu button {
+  text-align: left;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 15px 20px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  color: #A0A0A0;
+  width: 100%;
+}
+
+.dropdownMenu button:hover {
+  background-color: #141519;
+  color: #FFF;
+}
+
 .listItem {
-    border: 1px solid #ccc;  /* Adiciona uma borda para garantir que o item seja visível */
-    padding: 10px;
-    margin-bottom: 10px;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.listItem:hover {
+ background-color: #23252B;
+}
+
+.image {
+  flex-shrink: 0;
+  width: 120px;
+  height: auto;
+  margin-right: 15px;
+}
+
+.image img {
+  width: 120px;
+  height: auto;
+}
+
+.infoContainer {
+  display: flex;
+  flex-direction: column; /* Organiza os elementos em coluna */
+  align-items: flex-start; /* Alinha os itens à esquerda */
+  gap: 60px; /* Espaço entre o nome e o audioType */
+}
+
+.name {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.audioType {
+  font-size: 0.9rem;
+  color: gray;
+}
+
+.rightContainer {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.trashIcon {
+  width: 24px; /* Tamanho do ícone */
+  height: 24px;
+  fill: none; /* Remove o preenchimento branco */
+  stroke: #A0A0A0; /* Define a cor do contorno */
+  stroke-width: 1; /* Ajusta a espessura do contorno */
+}
+
+.removeButton {
+  background: none; /* Remove fundo do botão */
+  border: none; /* Remove borda */
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.removeButton:hover .trashIcon {
+  stroke: #ff0000; /* Altera a cor para vermelho ao passar o mouse */
+}
+
+
+.image {
+  flex-shrink: 0; /* Impede que a imagem encolha */
+  width: 230px; /* Defina um tamanho fixo para a imagem */
+  height: 130px;
+  margin-right: 10px; /* Adiciona um espaço entre a imagem e os outros elementos */
+}
+
+.image img {
+  width: 100%;
+  height: 130px;
+}
+
+.name {
+  font-weight: bold;
+  margin-right: 10px; /* Espaço entre o nome e o tipo de áudio */
+}
+
+.audioType {
+  font-size: 0.9rem;
+  color: gray;
+  margin-right: 10px; /* Espaço entre o tipo de áudio e o botão Remover */
+}
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  width: 600px; /* Aumenta o tamanho do modal */
+  max-width: 90%;
+  height: 300px;
+  background: #23252B;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  text-align: center; /* Centraliza apenas o título */
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.label {
+  font-size: 12px;
+  margin-bottom: 5px;
+  text-align: left; /* Mantém o label alinhado à esquerda */
+}
+
+.inputSrcDiv {
+  width: 80%;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #23252B;
+  margin-bottom: 15px;
+}
+
+.inputSrc {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-bottom: 1px solid #ccc;
+  background-color: #23252B;
+  margin-bottom: 6px;
+  outline: none;
+
+
+  border: none;
+  outline: none;
+  padding: 5px;
   
-  .animeItem {
-    border: 1px solid #000;  /* Teste a borda nos itens de anime */
-    margin: 5px 0;
-  }
-  
+  border-bottom: 1px solid #ccc;
+  color: #FFF;
+  font-size: 16px;
+  margin-right: 5px;
+}
+
+.inputSrc:focus {
+  border: none;
+  outline: none;
+  border-bottom: 2px solid #FF640A;
+  color: white;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-start; /* Mantém os botões alinhados à esquerda */
+  gap: 10px;
+}
+
+.saveButton, .cancelButton {
+  padding: 8px 30px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+.saveButton {
+  background: #FF640A;
+  color: #000;
+  font-weight: bold;
+}
+
+.cancelButton {
+  border: 1px solid #FF640A;
+  background-color: transparent;
+  color: #FF640A;
+}

@@ -25,7 +25,7 @@ const Fila = () => {
           </h4>
           <div className={styles.button}>
             <a href="/" className={styles.returnButton}>
-              Voltar para tela inicial
+              VOLTAR PARA A TELA INICIAL
             </a>
           </div>
         </div>

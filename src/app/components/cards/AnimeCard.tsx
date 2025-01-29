@@ -111,6 +111,7 @@ const AnimeCard: React.FC<AnimeCardProps> = ({ anime }) => {
           </span>
           <FontAwesomeIcon
             icon={isFavorited ? bookmarkSolid : bookmarkOutline}
+            style={{ color: isFavorited ? "#FF640A" : "#FF640A", transition: "color 0.3s ease-in-out" }}
             className={`${styles.iconBookmark} ${isFavorited ? "filled" : "outline"}`}
           />
         </div>

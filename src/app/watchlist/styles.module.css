@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+ 
   height: 100vh;
   margin-bottom: 600px;
 }
@@ -38,7 +38,7 @@
 
 .pageWrapper {
   width: 100%;
-  max-width: 1200px; /* Ajuste conforme necessário */
+  max-width: 1100px; /* Ajuste conforme necessário */
   height: 100vh;
   margin: 0 auto;
 }
@@ -53,7 +53,7 @@
 .myListsHeader {
   width: 100%;
   text-align: center;
-  margin-bottom: 20px;
+  
 }
 
 .heading {
@@ -71,9 +71,12 @@
   display: flex;
   justify-content: center;
   gap: 20px; /* Espaço entre as abas */
-  border-bottom: 1px solid gray;
-  width: 100%;
+  border-bottom: 2px solid gray; /* Borda com espessura ajustada */
+  width: 96.5%; /* Largura reduzida */
+  margin: 0 auto; /* Centraliza o container */
+  margin-bottom: 5px;
 }
+
 
 .tabsContentWrapper {
   display: flex;
