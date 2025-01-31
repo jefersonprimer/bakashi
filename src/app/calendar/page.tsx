@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import styles from "./calendar.module.css";
+
+import { useEffect, useState } from "react";
 import useFetchAnimes from "@/app/hooks/useFetchAnimes"; 
-import OldAnimeCarousel from "../components/cards/OldAnimeCarousel"; 
 import { Anime } from "@/types/anime";
+import OldAnimeCarousel from "../components/cards/OldAnimeCarousel"; 
 
 const CalendarPage = () => {
   const { animes, loading, error } = useFetchAnimes();

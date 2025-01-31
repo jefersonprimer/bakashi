@@ -1,17 +1,16 @@
-// src/app/layout.tsx
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { config } from '@fortawesome/fontawesome-svg-core'; 
 config.autoAddCss = false;
 
+import "./globals.css"; 
+
 import type { Metadata } from "next"; 
+
+import { ListsProvider } from './contexts/ListsContext';
+
 import Header from "./components/layout/Header"; 
 import Footer from './components/layout/Footer';
-
-import { AnimeListProvider } from "./contexts/AnimeListContext";
-
-import "./globals.css"; 
-import { ListsProvider } from './contexts/ListsContext';
 
 export const metadata: Metadata = {
   title: "Crunchyroll - Assista a Animes, Jogue Games e Compre Online",
@@ -24,7 +23,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <AnimeListProvider>
       <html lang="pt-br">
         <head>
           <link
@@ -39,6 +37,5 @@ export default function RootLayout({
           <Footer />
         </body>
       </html>
-      </AnimeListProvider>
   );
 }

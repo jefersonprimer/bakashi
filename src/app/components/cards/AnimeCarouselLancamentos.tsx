@@ -40,11 +40,10 @@ const AnimeCarouselLancamentos: React.FC<AnimeCarouselLancamentosProps> = ({
   return (
     <div className="anime-carousel-lancamentos">
       <h1 className={styles.titulo}>
-        Uma amostra da temporada de outubro de 2024
+       Uma amostra da temporada de inverno 2025
       </h1>
       <p className={styles.subtitulo}>
-        Assista os três primeiros episódios desses simulcasts de outubro de
-        2024 de graça!
+       Assista os três primeiros episódios desses simulcasts da inverno 2025 de graça!
       </p>
       <AnimeCarousel animes={lancamentos} itemsPerPage={itemsPerPage} />
     </div>

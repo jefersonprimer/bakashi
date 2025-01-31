@@ -143,7 +143,7 @@ export default function Header() {
         <ul className={styles.navLinks}>
           {/* Navegação com Dropdown */}
           <li className={styles.navItem} onClick={toggleDropdownNav}>
-            <Link href="#">
+            <Link href="#" className={styles.cNavegation}>
               <span className={styles.titleNavegation}>Navegar</span>
               <div className={`${styles.ercHeaderSvg} menu-icon`}>
                 <svg

@@ -1,33 +1,68 @@
 'use client';
 
-import React, { useState } from 'react';
-import { useLists } from '../contexts/ListsContext';
-import AddToListModal from '../components/AddToListModal';
- import { useRouter } from 'next/navigation'; // Importa o hook useRouter
-
 import styles from './CrunchyList.module.css';
 
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+
+import { useLists } from '../contexts/ListsContext';
+
+import AddToListModal from '../components/AddToListModal';
+
+// Componente Modal para renomear a lista
+const RenameListModal = ({
+  currentName,
+  onSave,
+  onClose
+}: {
+  currentName: string;
+  onSave: (newName: string) => void;  // Passando a função para salvar o novo nome
+  onClose: () => void;
+}) => {
+  const [newListName, setNewListName] = useState(currentName);
+
+  return (
+    <div className={styles.modalOverlay}>
+      <div className={styles.modalContent}>
+        <h2>Renomear Crunchylista</h2>
+        <input
+          type="text"
+          value={newListName}
+          onChange={(e) => setNewListName(e.target.value)}
+          className={styles.renameInput}
+        />
+        <div>
+          <button
+             className={styles.saveRenameButton}
+             onClick={() => onSave(newListName)}  // Passa o novo nome para o onSave
+          >
+            RENOMEAR LISTA
+          </button>
+          <button
+            className={styles.cancelButton}
+            onClick={onClose} // Fecha o modal sem salvar
+          >
+            CANCELAR
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const CrunchyList = () => {
-  const { lists, addItemToList, removeItemFromList, removeList, updateListName } = useLists();
+  const { lists, addItemToList, removeItemFromList, removeList, updateListName, createList } = useLists();
   const [showModal, setShowModal] = useState(false);
   const [selectedAnime, setSelectedAnime] = useState(null);
   const [expandedList, setExpandedList] = useState(null);
   const [editingListId, setEditingListId] = useState(null);
   const [newListName, setNewListName] = useState('');
   const [visibleMenu, setVisibleMenu] = useState(null);
-  const { createList } = useLists();
- 
 
   const router = useRouter(); // Inicializa o roteador do Next.js
 
   const handleNavigateToList = (listId) => {
     router.push(`/crunchylists/${listId}`); // Redireciona para a página detalhada
-  };
-
-
-  const handleAddItem = (anime) => {
-    setSelectedAnime(anime);
-    setShowModal(true);
   };
 
   const handleRemoveItem = (listId, itemId) => {
@@ -36,10 +71,7 @@ const CrunchyList = () => {
 
   const handleDeleteList = (listId) => {
     removeList(listId);
-  };
-
-  const handleToggleExpand = (listId) => {
-    setExpandedList(expandedList === listId ? null : listId);
+    setEditingListId(null); // Fecha o modal quando a lista for excluída
   };
 
   const formatDate = (date) => {
@@ -52,27 +84,27 @@ const CrunchyList = () => {
     setNewListName(currentName);
   };
 
-  const handleSaveNewName = (listId) => {
-    updateListName(listId, newListName);
-    setEditingListId(null);
+  const handleSaveNewName = (newName: string) => {
+    if (editingListId) {
+      updateListName(editingListId, newName);
+      setEditingListId(null); // Fecha o modal após salvar o novo nome
+    }
   };
-
-  
 
   const handleCreateList = () => {
     if (lists.length < 10) {
       createList(`Minha Lista ${lists.length + 1}`);
     } else {
-      alert("Você atingiu o limite de 10 listas.");
+      alert('Você atingiu o limite de 10 listas.');
     }
   };
-
-  
 
   return (
     <div className={styles.crunchyListContainer}>
       <div className={styles.header}>
-        <button onClick={handleCreateList} className={styles.createListBtn}>CRIAR NOVA LISTA</button>
+        <button onClick={handleCreateList} className={styles.createListBtn}>
+          CRIAR NOVA LISTA
+        </button>
         <span className={styles.listLength}>{lists.length}/10 listas</span>
       </div>
 
@@ -82,30 +114,14 @@ const CrunchyList = () => {
         ) : (
           lists.map((list) => (
             <div key={list.id} className={styles.listItem}>
-              {editingListId === list.id ? (
-                <div className={styles.renameListContainer}>
-                  <input
-                    type="text"
-                    value={newListName}
-                    onChange={(e) => setNewListName(e.target.value)}
-                    className={styles.renameInput}
-                  />
-                  <button
-                    className={styles.saveRenameButton}
-                    onClick={() => handleSaveNewName(list.id)}
-                  >
-                    Salvar
-                  </button>
-                </div>
-              ) : (
+              <div className={styles.listTitleContainer}>
                 <h3
                   className={styles.listTitle}
-                  onClick={() => handleNavigateToList(list.id)} 
-
+                  onClick={() => handleNavigateToList(list.id)}
                 >
                   {list.name}
                 </h3>
-              )}
+              </div>
 
               <div className={styles.listInfo}>
                 <p>{`${list.items.length} Itens`}</p>
@@ -121,7 +137,11 @@ const CrunchyList = () => {
                   ) : (
                     list.items.map((anime) => (
                       <div key={anime.id} className={styles.animeItem}>
-                        <img src={anime.image} alt={anime.name} className={styles.animeImage} />
+                        <img
+                          src={anime.image}
+                          alt={anime.name}
+                          className={styles.animeImage}
+                        />
                         <span>{anime.name}</span>
                         <button
                           className={styles.removeButton}
@@ -138,9 +158,7 @@ const CrunchyList = () => {
               <div className={styles.menuContainer}>
                 <button
                   className={styles.menuIcon}
-                  onClick={() =>
-                    setVisibleMenu(visibleMenu === list.id ? null : list.id)
-                  }
+                  onClick={() => setVisibleMenu(visibleMenu === list.id ? null : list.id)}
                 >
                   &#x22EE;
                 </button>
@@ -148,13 +166,19 @@ const CrunchyList = () => {
                 {visibleMenu === list.id && (
                   <div className={styles.dropdownMenu}>
                     <button
-                      onClick={() => handleRenameList(list.id, list.name)}
+                      onClick={() => {
+                        handleRenameList(list.id, list.name);  // Abre o modal de renomear
+                        setVisibleMenu(null);  // Fecha o menu
+                      }}
                       className={styles.dropdownItem}
                     >
                       Renomear
                     </button>
                     <button
-                      onClick={() => handleDeleteList(list.id)}
+                      onClick={() => {
+                        handleDeleteList(list.id);  // Exclui a lista
+                        setVisibleMenu(null);  // Fecha o menu
+                      }}
                       className={styles.dropdownItem}
                     >
                       Excluir Lista
@@ -167,10 +191,19 @@ const CrunchyList = () => {
         )}
       </div>
 
+      {/* Modal para Renomear Lista */}
+      {editingListId && (
+        <RenameListModal
+          currentName={newListName}
+          onSave={handleSaveNewName}  // Passando a função para o modal
+          onClose={() => setEditingListId(null)} // Fecha o modal sem salvar
+        />
+      )}
+
       {showModal && selectedAnime && (
         <AddToListModal
           anime={selectedAnime}
-          onClose={() => setShowModal(false)}
+          onClose={() => setShowModal(true)}
         />
       )}
     </div>

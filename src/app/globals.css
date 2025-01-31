@@ -1,8 +1,7 @@
-/* Garantir que a largura da página seja 100% e que nenhum elemento transborde */
 * {
-  box-sizing: border-box; 
   margin: 0;
   padding: 0;
+  box-sizing: border-box; 
 }
 
 #root {
@@ -11,28 +10,22 @@
 
 /* Para navegadores como Firefox */
 html {
-  scrollbar-width: thin; /* Largura da barra de rolagem: thin | auto | none */
-  scrollbar-color: #686868 #424242; /* thumb-color track-color */
-}
-
-/* Garante que a página não tenha rolagem horizontal */
-body, html {
-  overflow-x: hidden;
-  margin: 0;
-  padding: 0;
-  width: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: #686868 #424242;
 }
 
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 body {
-  padding-top: 60px; /* Mesmo valor da altura do header */
-  background-color: #000000;
+  padding-top: 60px;
   color: #FFFFFF;
+  background-color: #000000;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   font-weight: 400;
@@ -41,19 +34,19 @@ body {
 /* scroll */
 /* Estilo geral para navegadores baseados em WebKit (Chrome, Edge, Safari) */
 ::-webkit-scrollbar {
-  width: 12px; /* Largura da barra de rolagem vertical */
-  height: 12px; /* Altura da barra de rolagem horizontal */
+  width: 12px; 
+  height: 12px; 
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #686868; /* Cor do "thumb" (parte arrastável) */
-  border-radius: 10px; /* Arredondamento das extremidades */
-  border: 3px solid #424242; /* Espaço ao redor do thumb */
+  background-color: #686868; 
+  border-radius: 10px; 
+  border: 3px solid #424242;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #424242; /* Cor do fundo do track (trilho da rolagem) */
-  border-radius: 10px; /* Arredondamento do track */
+  background-color: #424242;
+  border-radius: 10px; 
 }
 
 
@@ -65,52 +58,49 @@ body {
 }
 
 .anime-carousel-fullscreen {
-  position: relative; /* Não use absoluto */
-  height: 100vh; /* Continua ocupando a tela inteira */
+  position: relative;
+  height: 100vh;
   background-size: cover;
   background-position: center;
   z-index: 1;
 }
 
 .anime-carousel-lancamentos {
-  position: relative; /* Certifique-se de que está no fluxo normal */
-  margin-top: -14vh; /* Sobrepõe parcialmente o fullscreen */
+  position: relative; 
+  margin-top: -13.8vh;
   /* margin: auto -10vh; */
   /* padding: 20px; */
   z-index: 2;
-  backdrop-filter: blur(2px); /* Desfoque no fundo */
+  backdrop-filter: blur(2px);
 }
 
 .anime-carousel-popular-season {
   /* margin: auto -10vh; */
   /* padding: 20px; */
-  backdrop-filter: blur(2px); /* Desfoque no fundo */
+  backdrop-filter: blur(2px);
 }
 
 .anime-carousel-popular {
-  position: relative; /* Certifique-se de que está no fluxo normal */
-
+  position: relative; 
   /* margin: auto -10vh; */
   /* padding: 20px; */
   z-index: 2;
-  backdrop-filter: blur(2px); /* Desfoque no fundo */
+  backdrop-filter: blur(2px);
 }
 
 .movie-card {
-  
   /* margin: auto -10vh; */
   /* padding: 20px; */
-  
-  backdrop-filter: blur(2px); /* Desfoque no fundo */
+  backdrop-filter: blur(2px);
 }
 
 .outdoor-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Ocupa a altura total da tela */
-  text-align: center; /* Centraliza o texto */
-  flex-direction: column; /* Garante que o título fique acima do card */
+  height: 100vh;
+  text-align: center;
+  flex-direction: column;
 }
 
 .outdoor-container h1 {
@@ -119,19 +109,19 @@ body {
 
 .container--cq5XE {
   display: flex;
-  justify-content: center; /* Centraliza horizontalmente */
-  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; 
+  align-items: center;
   padding: 50px;
   padding-bottom: 80px;
 }
 
 .erc-view-all-feed-section {
-  text-align: center; /* Alinha o texto no centro */
+  text-align: center; 
 }
 
 .view-all-feed-image {
   max-width: 100%;
-  height: auto; /* Ajusta o tamanho da imagem */
+  height: auto; 
 }
 
 .heading {
@@ -139,7 +129,7 @@ body {
 }
 
 .button {
-  margin-top: 20px; /* Espaço entre o texto e o botão */
+  margin-top: 20px;
   text-decoration: none;
 }
 

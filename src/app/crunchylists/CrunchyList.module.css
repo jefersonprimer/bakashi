@@ -1,3 +1,59 @@
+/* Estilos para o Modal */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContent {
+  background-color: #23252B;
+  padding: 20px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.renameInput {
+  outline: none;
+  width: 100%;
+  margin: 20px 0;
+  color: #FFF;
+  background-color: transparent;
+  border: none; /* Remove todas as bordas, exceto a inferior */
+  border-bottom: 2px solid #ccc; /* Borda inferior */
+}
+
+.renameInput:focus {
+  border-bottom: 2px solid #FF640A;
+}
+
+.saveRenameButton,
+.cancelButton {
+  padding: 8px 16px;
+  margin: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.saveRenameButton {
+  background-color: #FF640A;
+  color: black;
+  font-weight: bold;
+  border: none;
+}
+
+.cancelButton {
+  background-color: transparent;
+  color: #FF640A;
+  border: 1px solid #FF640A;;
+}
+
+
 .crunchyListContainer {
   font-family: Arial, sans-serif;
 }
@@ -93,26 +149,6 @@
   gap: 10px;
 }
 
-.renameInput {
-  flex: 1;
-  padding: 5px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.saveRenameButton {
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 5px 10px;
-  cursor: pointer;
-}
-
-.saveRenameButton:hover {
-  background-color: #43a047;
-}
 
 .menuContainer {
   position: absolute;

@@ -65,6 +65,23 @@
   font-size: 14px;
 }
 
+.titleRealese {
+  color: #FFF;
+  font-size: 26px;
+}
+
+.seeRealese {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.angle {
+  fill: #FFF;
+  width: 24px;
+  height: 24px;
+}
+
 /* Estilo do bloco de informações do episódio */
 .episodeInfo p {
   margin: 5px 0;
@@ -85,7 +102,7 @@
 }
 
 .pagination button {
-  background-color: #007bff;
+  background-color: #213944;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -108,15 +125,19 @@
 }
 
 .loadMore button {
-  background-color: #0070f3;
+  width: 100%;
+  background-color: #213944;
   color: white;
   border: none;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
-  border-radius: 5px;
 }
 
 .loadMore button:hover {
   background-color: #005bb5;
+}
+
+.titleSeeMore {
+  color: #FFF;
 }

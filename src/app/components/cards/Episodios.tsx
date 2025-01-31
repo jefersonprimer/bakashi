@@ -61,13 +61,19 @@ const EpisodesPage = () => {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       {/* Header da página de episódios */}
       <header className={styles.header}>
-        <h2>Novos Lançamentos</h2>
+        <div className={styles.seeRealese}>
+          <span><svg className={styles.angle} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-t="curated-carousel-svg" aria-labelledby="curated-carousel-svg" aria-hidden="true" role="img"><title id="curated-carousel-svg">Carrossel Curado</title><path d="M22 1.2v17h-5.5L12 22.8l-4.5-4.6H2v-17h20zm-2 1.9H4v13h4.4l3.6 3.8 3.6-3.7H20V3.1zM9.5 5c.3-.1.7-.1 1 .1L16 8.9c.3.1.5.5.5.8 0 .3-.1.6-.4.8l-5.5 3.8c-.2.1-.4.2-.6.2-.2 0-.4 0-.5-.1-.3-.2-.5-.5-.5-.9V5.9c0-.4.2-.7.5-.9zM11 7.8v3.8l2.7-1.9L11 7.8z"></path></svg></span>
+          <h2 className={styles.titleRealese}> Novos Lançamentos</h2>
+        </div>
         <span>
           <a href="/calendar" className={styles.seeAll}>
-            VER CALENDÁRIO DE LANÇAMENTOS
+            <div className={styles.seeRealese}>
+              VER CALENDÁRIO DE LANÇAMENTOS
+              <span><svg className={styles.angle} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-t="angle-right-svg" aria-labelledby="angle-svg" aria-hidden="true" role="img"><title id="angle-svg">Próximo</title><path d="M8.6 7.4L10 6l6 6-6 6-1.4-1.4 4.6-4.6z"></path></svg></span>
+            </div>
           </a>
         </span>
       </header>
@@ -170,7 +176,7 @@ const EpisodesPage = () => {
 
       {/* Botão para carregar mais episódios */}
       <div className={styles.loadMore}>
-        <button>Ver mais</button>
+        <button><span className={styles.titleSeeMore}>VER MAIS</span></button>
       </div>
     </div>
   );

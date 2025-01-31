@@ -46,7 +46,7 @@ const styles = {
     zIndex: 9999,
   },
   svg: {
-    fill: '#0070f3', 
+    fill: '#FF640A', 
   },
 };
 
