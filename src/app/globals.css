@@ -101,6 +101,7 @@ body {
   height: 100vh;
   text-align: center;
   flex-direction: column;
+  margin: 0px auto;
 }
 
 .outdoor-container h1 {

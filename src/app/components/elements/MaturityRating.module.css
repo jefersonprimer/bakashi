@@ -1,21 +1,21 @@
 .maturityRating {
   border: 1px solid #FFF;
-  display: inline-flex; /* Usar inline-flex para controle melhor do espaçamento */
+  display: inline-flex; 
   border-radius: 1px;
   color: white;
   font-size: 10px;
-  padding: 0px 1px; /* Ajustar o padding para espaçamento interno desejado */
+  padding: 0px 1px;
   text-align: center;
-  align-items: center; /* Centraliza o conteúdo verticalmente */
-  justify-content: center; /* Centraliza o conteúdo horizontalmente */
-  letter-spacing: -1px; /* Ajusta o espaço entre as letras */
-  width: auto; /* Deixa o width auto para ajustar ao conteúdo */
-  height: auto; /* Deixa a altura automática também */
-  transform: scale(0.9, 1.2); /* Aumenta altura, reduz largura */
-  transform-origin: center; /* Garante centralização */
+  align-items: center;
+  justify-content: center;
+  letter-spacing: -1px;
+  width: auto; 
+  height: auto;
+  transform: scale(0.9, 1.2);
+  transform-origin: center; 
 }
 
 .maturityRating span {
-  display: inline-block; /* Para garantir que o texto/ícone se ajuste corretamente */
-  margin: 0; /* Remove margens extras que podem estar interferindo */
+  display: inline-block;
+  margin: 0; 
 }

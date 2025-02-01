@@ -7,7 +7,7 @@ import { faBookmark as bookmarkOutline } from "@fortawesome/free-regular-svg-ico
 import { useFavorites } from "../../contexts/FavoritesContext";
 import useFetchEpisodes from '@/app/hooks/useFetchEpisodes';
 import { Episode } from '@/types/episode';
-import AddToListModal from "../AddToListModal"; // Importando o modal
+import AddToListModal from "../modal/AddToListModal"; // Importando o modal
 
 import styles from "./AnimeCard.module.css";
 import Link from 'next/link';

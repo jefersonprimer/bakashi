@@ -2,7 +2,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: calc(100% - 17px); /* Evita sobreposição com a barra de rolagem */
+  width: calc(100% - 17px);
   height: 60px;
   background-color: #23252B;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -12,7 +12,6 @@
   padding: 0 80px;
   z-index: 1000;
 }
-
 
 .container {
   display: flex;
@@ -35,7 +34,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
- 
 }
 
 .logo {
@@ -45,7 +43,7 @@
 }
 
 .headerLogo .logoContainer:hover .logo {
-  filter: brightness(0) invert(1); /* Para imagens */
+  filter: brightness(0) invert(1);
   transition: filter 0.3s ease;
 }
 
@@ -88,30 +86,13 @@
   color: #ffffff;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-.logoMobileContainer {
-  padding: 15px;
-}
-
 .headerLogoMobile {
   display: none;
   margin-left: 20px;
 }
 
-.header-svg-icon {
-  width: 24px;
-  height: 24px;
-  fill: #ffffff; 
+.logoMobileContainer {
+  padding: 15px;
 }
 
 .hamburgerLinks {
@@ -160,22 +141,8 @@
   align-items: center;
 }
 
-.headerActions {
-  display: flex;
-  align-items: center;
-  margin-left: auto; 
+.titleNavegation {
   color: #FFF;
-}
-
-.headerActions {
-  display: flex;
-  align-items: center;
-}
-
-.searchContainer {
-  display: flex;
-  align-items: center;
-  gap: 16px;
 }
 
 .ercHeaderSvg {
@@ -185,25 +152,6 @@
   width: 34px;
   height: 24px;
   color: #FFF;
-}
-
-.searchContainer {
-  display: flex;
-  align-items: center;
-}
-
-.searchButton {
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.iconBookmark, .headerSvgIcon {
-  fill: #FFF;
-  width: 24px;
-  height: 24px;
-  margin-left: 0px;
-  cursor: pointer;
 }
 
 .dropdownMenu {
@@ -232,13 +180,6 @@
   padding: 10px;
 }
 
-/* Títulos das colunas */
-.categoryTitle {
-  font-weight: bold;
-  color: #fff;
-  margin-bottom: 10px;
-}
-
 /* Estilo do link nas colunas */
 .categoriesColumn a {
 
@@ -259,26 +200,6 @@
   height: 100%;
 }
 
-/* Coluna de Gêneros */
-.genresGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 colunas */
-  gap: 15px;
-}
-
-/* Estilo do link nas colunas de Gêneros */
-.genresColumn a {
-  font-family: 'Roboto', sans-serif;
-  color: #fff;
-  padding: 10px 5px;
-  text-decoration: none;
- 
-}
-
-.genresColumn a:hover {
-  background-color: #23252B;
-}
-
 /* Título "Gêneros" */
 .genresSection {
   padding: 14px 0;
@@ -297,23 +218,69 @@
   font-size: 14px;
 }
 
-.newsDropdown {
-  width: 220px;
+/* Coluna de Gêneros */
+.genresGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 15px;
 }
 
-.newsDropdown a {
+/* Estilo do link nas colunas de Gêneros */
+.genresColumn a {
   font-family: 'Roboto', sans-serif;
-
+  color: #fff;
+  padding: 10px 5px;
+  text-decoration: none;
+ 
 }
 
-.titleNavegation {
-  color: #FFF;
+.genresColumn a:hover {
+  background-color: #23252B;
 }
 
 .titleNews {
   color: #FFF;
 }
 
+.newsDropdown {
+  width: 220px;
+}
+
+.newsDropdown a {
+  font-family: 'Roboto', sans-serif;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  margin-left: auto; 
+  color: #FFF;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+}
+
+.searchContainer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.searchButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.iconBookmark, .headerSvgIcon {
+  fill: #FFF;
+  width: 24px;
+  height: 24px;
+  margin-left: 0px;
+  cursor: pointer;
+}
 
 /* Para telas maiores (tablet, desktop) */
 @media (max-width: 768px) {

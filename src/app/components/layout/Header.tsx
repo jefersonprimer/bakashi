@@ -1,12 +1,13 @@
 'use client';
 
+import styles from './Header.module.css';
+import logo from '../../../../public/Crunchyroll-Logo.png';
+import cat from '../../../../public/3357695.webp';
+
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import styles from './Header.module.css';
-import logo from '../../../../public/Crunchyroll-Logo.png';
-import cat from '../../../../public/3357695.webp';
 import { Anime } from '@/types/anime'; 
 
 export default function Header() {

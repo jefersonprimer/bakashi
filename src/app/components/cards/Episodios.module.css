@@ -65,15 +65,35 @@
   font-size: 14px;
 }
 
+.seeAll {
+  text-decoration: none;
+  /* Adiciona outras propriedades aqui, se necessário */
+}
+
 .titleRealese {
   color: #FFF;
   font-size: 26px;
 }
 
+
 .seeRealese {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.seeCalendar {
+  color: #A0A0A0;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.seeCalendar:hover {
+  color: #FFF;
+}
+
+.titleSection {
+  color: red;
 }
 
 .angle {

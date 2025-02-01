@@ -166,8 +166,12 @@ const Footer = () => {
           <span className={styles.division}></span>
           <p className={styles.copyright}>© Crunchyroll, LLC</p>
         </div>
-        <div role="button" tabIndex="0" className={styles.dropdownTrigger}>
-          <span className={styles.dropdownLanguage}>PORTUGUÊS (BRASIL)</span>
+        <div role="button" className={styles.dropdownTrigger}>
+          <span className={styles.dropdownLanguage}>
+            <span>
+            <svg className={styles.dropdownIcon} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-t="dropdown-svg" aria-labelledby="dropdown-svg" aria-hidden="true" role="img"><title id="dropdown-svg">Menu dropdown</title><path d="M7 10h10l-5 5z"></path></svg>
+            </span>
+            PORTUGUÊS (BRASIL)</span>
         </div>
       </div>
     </footer>

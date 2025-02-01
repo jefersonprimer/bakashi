@@ -40,7 +40,7 @@ const AnimeCarousePopular: React.FC<AnimeCarousePopularProps> = ({
   return (
     <div className="anime-carousel-popular">
       <h1 className={styles.titulo}>
-        animes popular
+        Animes Populares
       </h1>
       <p className={styles.subtitulo}>
         Assista os três primeiros episódios desses simulcasts de outubro de

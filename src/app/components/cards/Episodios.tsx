@@ -1,7 +1,9 @@
+import styles from './Episodios.module.css';
+
 import { useState, useEffect } from 'react';
+
 import useFetchEpisodes from '../../hooks/useFetchEpisodes';
 import useFetchAnimes from '../../hooks/useFetchAnimes';
-import styles from './Episodios.module.css';
 
 const EpisodesPage = () => {
   const { episodes, loading: loadingEpisodes, error: errorEpisodes } = useFetchEpisodes();
@@ -71,7 +73,7 @@ const EpisodesPage = () => {
         <span>
           <a href="/calendar" className={styles.seeAll}>
             <div className={styles.seeRealese}>
-              VER CALENDÁRIO DE LANÇAMENTOS
+              <h2 className={styles.seeCalendar}>VER CALENDÁRIO DE LANÇAMENTOS</h2>
               <span><svg className={styles.angle} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-t="angle-right-svg" aria-labelledby="angle-svg" aria-hidden="true" role="img"><title id="angle-svg">Próximo</title><path d="M8.6 7.4L10 6l6 6-6 6-1.4-1.4 4.6-4.6z"></path></svg></span>
             </div>
           </a>
@@ -81,7 +83,7 @@ const EpisodesPage = () => {
       {/* Seção de Episódios - Hoje */}
       {episodesGrouped.hoje.length > 0 ? (
         <div>
-          <h3>Hoje</h3>
+          <h3 className={styles.titleSection}>Hoje</h3>
           <div className={styles.episodesContainer}>
             {episodesGrouped.hoje.map((episode) => {
               const anime = getAnimeDetails(episode.animeId);
@@ -113,7 +115,7 @@ const EpisodesPage = () => {
       {/* Seção de Episódios - Ontem */}
       {episodesGrouped.ontem.length > 0 ? (
         <div>
-          <h3>Ontem</h3>
+          <h3 className={styles.titleSection}>Ontem</h3>
           <div className={styles.episodesContainer}>
             {episodesGrouped.ontem.map((episode) => {
               const anime = getAnimeDetails(episode.animeId);
@@ -145,7 +147,7 @@ const EpisodesPage = () => {
       {/* Seção de Episódios - Anteontem */}
       {episodesGrouped.anteontem.length > 0 ? (
         <div>
-          <h3>Anteontem</h3>
+          <h3 className={styles.titleSection}>Anteontem</h3>
           <div className={styles.episodesContainer}>
             {episodesGrouped.anteontem.map((episode) => {
               const anime = getAnimeDetails(episode.animeId);

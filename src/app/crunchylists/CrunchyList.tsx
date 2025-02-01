@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 
 import { useLists } from '../contexts/ListsContext';
 
-import AddToListModal from '../components/AddToListModal';
+import AddToListModal from '../components/modal/AddToListModal';
 
 // Componente Modal para renomear a lista
 const RenameListModal = ({

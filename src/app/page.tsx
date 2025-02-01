@@ -1,7 +1,6 @@
 'use client';
 
 import "./globals.css";
-
 import { FavoritesProvider } from "./contexts/FavoritesContext";
 import { ListsProvider } from "./contexts/ListsContext";
 
@@ -17,46 +16,55 @@ import MovieCard from "./components/cards/MovieCard";
 import Episodios from "./components/cards/Episodios";
 import OutdoorCard from "./components/cards/OutdoorCard"; 
 import Outdoor from "./components/cards/Outdoor";
+import FavoritesCarousel from "./components/cards/FavoritesCarousel";
+
+import { useFavorites } from "./contexts/FavoritesContext";
+import HistoryCarousel from "./components/cards/HistoryCarousel";
+import { HistoryProvider, useHistory } from "./contexts/HistoryContext"; 
 
 const HomePage = () => {
-
   return (
-    <div className="home-container">
-  
-      <FavoritesProvider>
-        <ListsProvider>
+    <FavoritesProvider>
+      <ListsProvider>
+        <div className="home-container">
           <AnimeCarouselFullScreen />
           <AnimeCarouselLancamentos className="anime-carousel-lancamentos" />
+
+          <HistoryProvider>
+            <HistorySection />
+          </HistoryProvider>
+
+
           <AnimeCarouselByDay />
           <AnimeCarouselPopularSeason />
           <AnimeCarouselPopular />
           <AnimeCarouselNextSeason />
           <AnimeCarouselDub />
           <MovieCard />
-        </ListsProvider>
-      </FavoritesProvider>
 
-      {/* Outdoor Component */}
-      <Outdoor 
-        imageUrl="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=2700/CurationAssets/HeadhuntedToAnotherWorld-S1C1-KV2-Banner-2100x700-PT.png"
-        title="Dr. Stone"
-        audiotype="Dub | Leg"
-        description="Milhares de anos após um misterioso fenômeno transformar a humanidade inteira em pedra, desperta um garoto extraordinariamente inteligente e motivado pela ciência - Senku Ishigami. Diante de um mundo de pedra e do colapso generalizado da civilização, Senku decide usar sua..."
-        buttonText="Começar a assistir T1 E1"
-        buttonLink="https://www.crunchyroll.com/pt-br/series/G9VHN9QXQ/unnamed-memory"
-        addToQueueText="Adicionar à Fila"
-        addToQueueLink="#"
-      />
-      {/* episode card */}
-      <Episodios/>
+          {/* Outdoor Component */}
+          <Outdoor 
+            imageUrl="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=2700/CurationAssets/HeadhuntedToAnotherWorld-S1C1-KV2-Banner-2100x700-PT.png"
+            title="Dr. Stone"
+            audiotype="Dub | Leg"
+            description="Milhares de anos após um misterioso fenômeno transformar a humanidade inteira em pedra, desperta um garoto extraordinariamente inteligente e motivado pela ciência - Senku Ishigami. Diante de um mundo de pedra e do colapso generalizado da civilização, Senku decide usar sua..."
+            buttonLink="https://www.crunchyroll.com/pt-br/series/G9VHN9QXQ/unnamed-memory"
+            addToQueueLink="#"
+          />
 
-      {/* OutdoorCard Component */}
-      <div className="outdoor-container">
-        <OutdoorCard
-          link="https://www.crunchyroll.com/pt-br/series/G9VHN9QXQ/unnamed-memory"
-          imageUrl="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=2700/CurationAssets/HeadhuntedToAnotherWorld-S1C1-KV2-Banner-2100x700-PT.png"
-        />
-      </div>
+          <FavoritesSection /> 
+          <Episodios />
+
+          {/* OutdoorCard Component */}
+          <div className="outdoor-container">
+            <OutdoorCard
+              link="https://www.crunchyroll.com/pt-br/series/G9VHN9QXQ/unnamed-memory"
+              imageUrl="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=2700/CurationAssets/HeadhuntedToAnotherWorld-S1C1-KV2-Banner-2100x700-PT.png"
+            />
+          </div>
+
+        </div>
+      </ListsProvider>
 
       <div className="container--cq5XE">
         <div className="erc-view-all-feed-section">
@@ -71,7 +79,6 @@ const HomePage = () => {
             Confira o nosso acervo completo
           </h3>
           <a 
-            // tabIndex="0" 
             className="button" 
             data-t="view-all-btn" 
             href="/pt-br/videos/popular"
@@ -82,7 +89,28 @@ const HomePage = () => {
           </a>
         </div>
       </div>
-    </div>
+    </FavoritesProvider>
+  );
+};
+
+// Verifica o histórico antes de renderizar o componente
+const HistorySection = () => {
+  const { history } = useHistory(); // Pega o histórico do contexto
+
+  if (history.length === 0) {
+    return null; // Não renderiza o HistoryCarousel se não houver episódios no histórico
+  }
+
+  return <HistoryCarousel />;
+};
+
+const FavoritesSection = () => {
+  const { favorites } = useFavorites(); // Agora está dentro do provider, funciona corretamente
+
+  return (
+    <>
+      {favorites.length > 0 && <FavoritesCarousel />}
+    </>
   );
 };
 

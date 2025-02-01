@@ -8,7 +8,7 @@
     background-color: #000;
     width: 1350px;
     height: 371px; 
-    margin: 0 auto; 
+    margin: 100px auto; 
 }
 
 .imageContainer {
@@ -33,9 +33,9 @@
 }
 
 .audioType {
-    font-size: 24px;
+    font-size: 16px;
     margin: 0 0 16px; 
-    color: #FFF; 
+    color: #A0A0A0; 
 }
 
 .description {
@@ -50,26 +50,77 @@
     gap: 8px;
 }
 
+.tooltipText {
+    display: none; /* Oculta o tooltip por padrão */
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    top: -30px; /* Ajuste conforme necessário */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  /* Exibe o tooltip apenas no hover */
+  .tooltip:hover .tooltipText {
+    display: block;
+  }
+  
+  /* Alinhar SVG e texto na horizontal */
+  .queueContent {
+    display: flex;
+    align-items: center; /* Centraliza verticalmente */
+    gap: 8px; /* Espaço entre o ícone e o texto */
+    color: #FF640A;
+    
+  }
+  
+  .buttonBookMark {
+    border: 1px solid #FF640A;
+  }
+
+  /* Ajustar tamanho do ícone se necessário */
+  .iconBookmark {
+    width: 20px;
+    height: 20px;
+    fill: #FF640A;
+  }
+  
+
 .buttonLink {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #0070f3;
-    color: #fff;
+    background-color: #FF640A;
+    color: #000;
+    font-weight: bold;
     text-decoration: none;
-    border-radius: 4px;
     font-size: 14px;
 }
 
 .addToQueueLink {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #555; 
+    background-color: transparent; 
     color: #fff; 
     text-decoration: none; 
-    border-radius: 4px; 
     font-size: 14px; 
+    border: 2px solid #FF640A;
 }
 
+.iconPlay {
+    width: 20px;
+    height: 20px;
+}
+
+.buttonContent {
+    display: flex;
+    align-items: center; /* Centraliza verticalmente */
+    gap: 8px; /* Espaço entre o ícone e o texto */
+}
+  
 
 /* mobile */
 @media (max-width: 768px) {
@@ -136,7 +187,7 @@
     .buttonLink {
         display: inline-block;
         padding: 10px 20px;
-        background-color: #0070f3;
+        background-color: #FF640A;
         color: #fff;
         text-decoration: none;
         border-radius: 4px;

@@ -12,11 +12,6 @@
   font-weight: 400;
 }
 
-.footer item {
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-}
 
 .footer a {
   text-decoration: none;
@@ -34,7 +29,7 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 80px;
-  border-bottom: 1px solid #A0A0A0;
+  border-bottom: 1px solid #323D46;
 }
 
 .footerColumns > div {
@@ -79,6 +74,33 @@
   text-decoration: underline;
 }
 
+.textIconWrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px; 
+}
+
+.leftIcon {
+  width: 16px;
+  height: 16px;
+  fill: #FFF;
+}
+
+.leftIconPremium {
+  width: 16px;
+  height: 16px;
+  fill: #FAB818;
+}
+
+.titlePremium {
+  color: #FAB818;
+}
+
+.titlePremium:hover {
+  color: #FFF;
+  text-decoration: underline;
+}
+
 .footerLegalWrapper {
   width: 76%;
   display: flex;
@@ -111,6 +133,14 @@
   height: 12px;
 }
 
+.footerLegalWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  gap: 20px;
+  flex-basis: 100%; 
+}
+
 .dropdownTrigger {
   font-size: 14px;
   color: #fff;
@@ -122,41 +152,15 @@
   border: none;
 }
 
-.footerLegalWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between; 
-  gap: 20px;
-  flex-basis: 100%; 
-}
-
-.textIconWrapper {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px; 
-}
-
-.leftIcon {
-  width: 16px;
-  height: 16px;
-  fill: #FFF;
-}
-
-.leftIconPremium {
-  width: 16px;
-  height: 16px;
-  fill: #FAB818;
-}
-
-.titlePremium {
-  color: #FAB818;
-}
-
-.text {
-  font-size: 14px; 
-  color: #fff; 
-}
-
 .dropdownLanguage {
   color: #A0A0A0; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropdownIcon {
+  width: 24px;
+  height: 24px;
+  fill: #A0A0A0; 
 }
