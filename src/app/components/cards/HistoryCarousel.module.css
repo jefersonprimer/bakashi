@@ -1,0 +1,66 @@
+.history-carousel-container {
+    margin-top: 20px;
+  }
+  
+  .history-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .history-carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 10px 0;
+  }
+  
+  .history-item {
+    min-width: 300px;
+    max-width: 300px;
+    flex-shrink: 0;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .history-image {
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  .episode-info {
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .watch-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #ff5733;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+  }
+  
+  .remove-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .remove-button img {
+    width: 20px;
+  }
+  
+  .trashIcon {
+    display: block;
+    margin: 0 auto;
+  }
+  

@@ -1,0 +1,148 @@
+.carouselContainer {
+    padding: 0px 60px;
+    background-color: #000000;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+    color: #FFFFFF;
+    margin-bottom: 8px;
+  }
+  
+  /* Layout do carrossel */
+  .carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding-bottom: 10px;
+    scrollbar-width: none;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000000;
+  }
+  
+  .filaLink {
+    display: flex;
+    align-items: center;
+  }
+  
+  .filaButton {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #A0A0A0;
+    font-weight: bold;
+    transition: color 0.2s;
+  }
+  
+  .filaButton:hover {
+    color: #FFFFFF;
+  }
+  
+  .angle {
+    width: 24px;
+    height: 24px;
+    fill: currentColor; /* Mantém a cor igual ao texto */
+  }
+  
+  
+  .carousel::-webkit-scrollbar {
+    display: none; /* Remove scrollbar no Chrome e Edge */
+  }
+  
+  /* Cada anime é um card */
+  .animeCard {
+    width: 180px;
+    height: 360px;
+    background: #1c1c1c;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .animeImage {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .animeInfo {
+    margin-top: 10px;
+  }
+  
+  .animeName {
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .animeEpisode {
+    font-size: 0.9rem;
+    color: gray;
+    display: block;
+  }
+  
+  /* Seção de ações */
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+  }
+  
+  .audioType {
+    font-size: 0.8rem;
+    color: #ffcc00;
+  }
+  
+  /* Botão de remover */
+  .removeButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .trashIcon {
+    width: 20px;
+    height: 20px;
+    fill: #ff3333;
+    transition: transform 0.2s;
+  }
+  
+  .removeButton:hover .trashIcon {
+    transform: scale(1.1);
+  }
+  
+  /* Estilização da lista vazia */
+  .emptyState {
+    text-align: center;
+    padding: 40px;
+  }
+  
+  .image {
+    max-width: 200px;
+    margin-bottom: 15px;
+  }
+  
+  .description {
+    font-size: 1rem;
+    color: white;
+    margin-bottom: 10px;
+  }
+  
+  .returnButton {
+    background: #ffcc00;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    display: inline-block;
+  }
+  
