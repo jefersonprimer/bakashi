@@ -34,9 +34,16 @@ const HomePage = () => {
             <HistorySection />
           </HistoryProvider>
 
+           {/* OutdoorCard Component */}
+           <div className="outdoor-container">
+            <OutdoorCard
+              link="https://www.crunchyroll.com/pt-br/series/G9VHN9QXQ/unnamed-memory"
+              imageUrl="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=2700/CurationAssets/Anyway%20I'm%20Falling%20in%20Love%20with%20You/SEASON%201/MARKETING%20BANNER/AnywayImFallinginLoveWithYou-S1-KV1-Banner-2100x700-PT.png"
+            />
+          </div>
 
-          <AnimeCarouselByDay />
-          <AnimeCarouselPopularSeason />
+          <AnimeCarouselByDay className="anime-carousel-by-day"/>
+          <AnimeCarouselPopularSeason className="anime-carousel-popular-season"/>
           <AnimeCarouselPopular />
           <AnimeCarouselNextSeason />
           <AnimeCarouselDub />

@@ -74,6 +74,14 @@ body {
   backdrop-filter: blur(2px);
 }
 
+.anime-carousel-by-day {
+  margin: 50px 0px;
+}
+
+.anime-carousel-popular-season {
+  margin: 50px 0px;
+}
+
 .anime-carousel-popular-season {
   /* margin: auto -10vh; */
   /* padding: 20px; */
@@ -98,7 +106,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  /* height: 100vh; */
   text-align: center;
   flex-direction: column;
   margin: 0px auto;

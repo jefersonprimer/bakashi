@@ -1,5 +1,6 @@
 .carouselContainer {
     padding: 0px 60px;
+    margin: 100px 0px;
     background-color: #000000;
   }
   
@@ -46,28 +47,30 @@
   .angle {
     width: 24px;
     height: 24px;
-    fill: currentColor; /* Mantém a cor igual ao texto */
+    fill: currentColor;
   }
-  
-  
+
   .carousel::-webkit-scrollbar {
-    display: none; /* Remove scrollbar no Chrome e Edge */
+    display: none;
   }
   
   /* Cada anime é um card */
   .animeCard {
     width: 180px;
     height: 360px;
-    background: #1c1c1c;
-    border-radius: 10px;
-    padding: 10px;
-    text-align: center;
+    text-align: left;
+  }
+
+  .animeCard:hover {
+    width: 180px;
+    height: 360px;
+    text-align: left;
+    background-color: red;
   }
   
   .animeImage {
     width: 100%;
     height: auto;
-    border-radius: 8px;
   }
   
   .animeInfo {
@@ -77,7 +80,7 @@
   .animeName {
     font-size: 1rem;
     font-weight: bold;
-    color: white;
+    color: #FFFFFF;
     display: block;
     margin-bottom: 5px;
   }
@@ -98,7 +101,7 @@
   
   .audioType {
     font-size: 0.8rem;
-    color: #ffcc00;
+    color: #A0A0A0;
   }
   
   /* Botão de remover */
@@ -111,14 +114,10 @@
   .trashIcon {
     width: 20px;
     height: 20px;
-    fill: #ff3333;
+    fill: #A0A0A0;
     transition: transform 0.2s;
   }
-  
-  .removeButton:hover .trashIcon {
-    transform: scale(1.1);
-  }
-  
+
   /* Estilização da lista vazia */
   .emptyState {
     text-align: center;
