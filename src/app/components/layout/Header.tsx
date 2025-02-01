@@ -114,7 +114,7 @@ export default function Header() {
                   aria-expanded={isHamburgerOpen}
                 >
                   <svg
-                    className="header-svg-icon"
+                    className="headerSvgIcon"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     aria-labelledby="menu-svg"
@@ -143,7 +143,10 @@ export default function Header() {
           ) : (
         <ul className={styles.navLinks}>
           {/* Navegação com Dropdown */}
-          <li className={styles.navItem} onClick={toggleDropdownNav}>
+          <li
+            className={`${styles.navItem} ${isDropdownNavOpen ? styles.activeNews : ''}`}
+            onClick={toggleDropdownNav}
+          >
             <Link href="#" className={styles.cNavegation}>
               <span className={styles.titleNavegation}>Navegar</span>
               <div className={`${styles.ercHeaderSvg} menu-icon`}>
@@ -161,6 +164,7 @@ export default function Header() {
                 </svg>
               </div>
             </Link>
+
             {/* Dropdown de Navegação */}
             {isDropdownNavOpen && (
               <div ref={dropdownNavRef} className={styles.dropdownMenu}>
@@ -170,10 +174,9 @@ export default function Header() {
                     <Link href="/videos/popular">Populares</Link>
                     <Link href="/videos/new">Novidades</Link>
                     <Link href="/videos/alphabetical">A-Z</Link>
-                    <Link href="/calendar">Calendário</Link>
-                    <Link href="/history">Histórico</Link>
-                    <Link href="/series">Animes</Link>
-                    {/* <Link href="/watch">Episódios</Link> */}
+                    <Link href="/calendar">Simulcasts da Temporada</Link>
+                    <Link href="/history">Calendário de Lançamentos</Link>
+                    <Link href="/series">Videoclips & Shows</Link>
                   </div>
 
                   {/* Divisória entre as colunas */}
@@ -211,6 +214,7 @@ export default function Header() {
             )}
           </li>
 
+
             {/* Dropdown de jogos */}
           <li id='games' className={styles.navItem}>
             <Link href="/games/index.html">
@@ -221,7 +225,10 @@ export default function Header() {
           </li>
 
           {/* Dropdown de Notícias */}
-          <li className={styles.navItem} onClick={toggleDropdownNews}>
+          <li
+            className={`${styles.navItem} ${isDropdownNewsOpen ? styles.activeNews : ''}`}
+            onClick={toggleDropdownNews}
+          >
             <Link href="#">
               <span className={styles.titleNews}>Notícias</span>
               <div className={`${styles.ercHeaderSvg} menu-icon`}>
@@ -239,6 +246,7 @@ export default function Header() {
                 </svg>
               </div>
             </Link>
+
             {/* Dropdown de Notícias */}
             {isDropdownNewsOpen && (
               <div ref={dropdownNewsRef} className={`${styles.dropdownMenu} ${styles.newsDropdown}`}>
@@ -252,6 +260,7 @@ export default function Header() {
               </div>
             )}
           </li>
+
         </ul>)}
         </div>
 

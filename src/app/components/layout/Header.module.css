@@ -153,7 +153,7 @@
 }
 
 .titleNavegation {
-  color: #FFF;
+  color: #DADADA;
 }
 
 .ercHeaderSvg {
@@ -179,7 +179,7 @@
   flex-direction: row;
   position: absolute;
   background-color: #141519;
-  width: 700px; 
+  width: 850px; 
   top: 100%;
   left: 0;
   padding: 0px;
@@ -198,11 +198,12 @@
   flex-direction: column;
   /* margin-right: 20px; */
   padding: 6px 0px;
+  width: 360px;
 }
 
 /* Estilo do link nas colunas */
 .categoriesColumn a {
-  color: #fff;
+  color: #F8F8F8;
   padding: 10px 20px;
   text-decoration: none;
   margin-bottom: 0px;
@@ -248,7 +249,7 @@
 /* Estilo do link nas colunas de Gêneros */
 .genresColumn a {
   font-family: 'Roboto', sans-serif;
-  color: #fff;
+  color: #DADADA;
   padding: 10px 15px;
   text-decoration: none;
 }
@@ -258,16 +259,20 @@
 }
 
 .titleNews {
-  color: #FFF;
+  color: #DADADA;
 }
 
 .newsDropdown {
   width: 220px;
 }
 
-.newsDropdown a {
-  font-family: 'Roboto', sans-serif;
+
+.activeNews {
+  background-color: #141519;
+  transition: background-color 0.3s ease; /* Animação suave */
 }
+
+
 
 .headerActions {
   display: flex;
@@ -287,13 +292,7 @@
   padding-top: 20px;
 }
 
-/* Container para os textos */
-.textContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
+
 
 /* Esconde o popup inicialmente */
 .ercUpsellPopup {
@@ -377,14 +376,10 @@
   font-size: 14px;
 }
 
-
-
-
-
 .textContainer {
   display: flex;
   flex-direction: column; /* Empilha os textos */
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
   text-align: left;
   gap: 2px;
@@ -405,7 +400,7 @@
 
 .premiumText {
   font-size: 10px;
-  color: #FFFFFF; /* Cor para o texto 'Premium' */
+  color: #DADADA; /* Cor para o texto 'Premium' */
 }
 
 .searchContainer {
@@ -421,7 +416,7 @@
 }
 
 .iconBookmark, .headerSvgIcon {
-  fill: #FFF;
+  fill: #DADADA;
   width: 24px;
   height: 24px;
   margin-left: 0px;
