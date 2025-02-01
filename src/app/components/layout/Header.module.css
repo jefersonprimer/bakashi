@@ -128,10 +128,10 @@
 }
 
 .navLinks a {
-  color: white;             /* Cor do texto para garantir visibilidade */
-  text-decoration: none;    /* Remover sublinhado */
-  display: inline-block;       /* Opcional: bordas arredondadas para um visual mais suave */
-  transition: background-color 0.3s ease;  /* Suaviza a mudança de cor ao passar o mouse */
+  color: white;            
+  text-decoration: none;   
+  display: inline-block;      
+  transition: background-color 0.3s ease; 
 }
 
 .navLinks a:hover {
@@ -196,17 +196,17 @@
 .categoriesColumn {
   display: flex;
   flex-direction: column;
-  margin-right: 20px;
-  padding: 10px;
+  /* margin-right: 20px; */
+  padding: 6px 0px;
 }
 
 /* Estilo do link nas colunas */
 .categoriesColumn a {
-
   color: #fff;
-  padding: 6px;
+  padding: 10px 20px;
   text-decoration: none;
-  margin-bottom: 8px;
+  margin-bottom: 0px;
+  width: 100%;
 }
 
 .categoriesColumn a:hover {
@@ -216,7 +216,7 @@
 /* Divisória entre as colunas */
 .divider {
   border-right: 2px solid #23252B;
-  margin: 0 20px;
+  margin: 0px;
   height: 100%;
 }
 
@@ -234,7 +234,7 @@
   color: gray;
   margin-bottom: 6px;
   text-align: left; 
-  padding: 4px 4px;
+  padding: 4px 14px;
   font-size: 14px;
 }
 
@@ -249,7 +249,7 @@
 .genresColumn a {
   font-family: 'Roboto', sans-serif;
   color: #fff;
-  padding: 10px 5px;
+  padding: 10px 15px;
   text-decoration: none;
 }
 
