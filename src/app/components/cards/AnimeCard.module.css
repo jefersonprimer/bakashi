@@ -1,3 +1,198 @@
+/* Card */
+.card {
+  position: relative;
+  flex: 0 0 264px; /*254*/
+  height: 455px; /*437*/
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-align: left;
+}
+
+.card:hover .animeImage {
+  height: 100%;
+}
+
+.card:hover .cardInfo {
+  opacity: 1;
+  background-color: rgba(20, 21, 25, 0.9);
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.card:hover .nomeDataContainer {
+  opacity: 0;
+}
+
+.animeLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.animeImage {
+  width: 100%;
+  height: 88%;
+  object-fit: cover;
+}
+
+.nomeDataContainer {
+  position: absolute;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 90%;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.nome {
+  padding-top: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.data {
+  padding-top: 10px;
+  font-size: 12px;
+  margin: 0;
+}
+
+.cardInfo {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  padding: 10px;
+  color: white;
+  text-align: left;
+  opacity: 0; 
+  background-color: rgba(20, 21, 25, 0.8); 
+  transition: color 0.2s ease;
+  z-index: 2; 
+  height: 100%;
+  width: 100%;
+}
+
+.name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  width: 220px;
+}
+
+.flexContainer2 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  scroll-behavior: smooth;
+  margin: 0;
+}
+
+.score {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center; 
+  gap: 5px;
+}
+
+.iconStar {
+  margin-left: 2px; 
+  font-size: 12px; 
+  color: #f1f1f1;
+}
+
+/* Informações do anime */
+.name,
+.infoText,
+.synopsis {
+  font-size: 14px;
+  margin: 5px 0;
+  color: #f1f1f1;
+}
+
+/* Estilo de Season e Episódios */
+.seasonText,
+.episodesText {
+  font-size: 14px;
+  color: #9A9A9A; 
+  margin: 5px 0;
+}
+
+/* Sinopse com limite de 6 linhas */
+.synopsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  width: 220px;
+}
+
+/* Botão de play */
+.playButton {
+  position: absolute;
+  bottom: 5px;
+  left: 10px;
+  border-radius: 50%;
+  padding: 5px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 3;
+}
+
+/* Tooltip */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.tooltipText {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltipText {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Ícones */
+.iconPlay,
+.iconBookmark,
+.iconPlus {
+  align-items: center;
+  fill:#ff640a;
+  display: flex;
+  stroke-width: 2;
+  height: 1.5rem;
+  justify-content: center;
+  width: 1.5rem;
+}
+
 .iconBookmark {
   width: 24px;
   height: 24px;
@@ -15,612 +210,8 @@
   stroke-width: 2px;
 }
 
-.favorite-btn {
-  background-color: #FF640A;
-  border: none;
-  color: #FF640A;
-  padding: 8px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+/* Tornar os botões visíveis quando o card for hover */
+.card:hover .playButton {
+  opacity: 1;
 }
 
-.favorite-btn:hover {
-  background-color: #e55b09;
-}
-
-
-.carouselContainer {
-    align-items: center;
-    width: 100vw;
-    margin: 0;
-    padding-bottom: 60px;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .carouselTitle {
-    text-align: left;
-    margin-left: 1rem;
-    padding-left: 30px;
-  }
-  
-  .outer {
-    width: 100%;
-    display: flex;
-    align-items: center;
-  }
-  
-  /* Botões de scroll */
-  .scrollButton {
-    font-size: 24px;
-    position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: transparent; /* Removendo o fundo */
-    color: white;
-    border: none;
-    border-radius: 50%; /* Pode ser mantido se o botão for arredondado */
-    cursor: pointer;
-    z-index: 10;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  
-  .scrollLeft {
-    left: 10px;
-  }
-  
-  .scrollRight {
-    right: 10px;
-  }
-  
-  .arrowIcon {}
-  
-  /* Container dos cards */
-  .flexContainer {
-    width: 100%;
-    align-items: flex-start;
-    display: flex;
-    overflow-x: hidden;
-    gap: 1.37rem;
-    scroll-behavior: smooth;
-    padding: 0 60px; /* Removido o padding à esquerda */
-    margin: 0;
-  }
-  
-  .flexContainer2 {
-    width: 100%;
-    display: flex;
-    align-items: center; /* Garante que os itens fiquem alinhados verticalmente ao centro */
-    gap: .5rem;
-    scroll-behavior: smooth;
-    margin: 0;
-  }
-  
-  .score {
-    display: flex;
-    align-items: center; /* Alinha o conteúdo (score e estrela) verticalmente */
-    gap: 5px; /* Espaçamento entre o score e a estrela */
-  }
-  
-  .iconStar {
-    margin-left: 2px; /* Espaço entre o score e a estrela */
-    font-size: 12px; /* Tamanho do ícone */
-    color: #f1f1f1;
-  }
-  
-  
-  /* Card */
-  .card {
-    position: relative;
-    flex: 0 0 264px; /*254*/
-    height: 455px; /*437*/
-    overflow: hidden;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    text-align: left;
-  }
-  
-  .card:hover .animeImage {
-    height: 100%;
-  }
-  
-  .card:hover .cardInfo {
-    opacity: 1;
-    background-color: rgba(20, 21, 25, 0.9);
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-direction: column;
-  }
-  
-  .card:hover .nomeDataContainer {
-    opacity: 0;
-  }
-  
-  .animeLink {
-    text-decoration: none;
-    color: inherit;
-  }
-  
-  .animeImage {
-    width: 100%;
-    height: 88%;
-    object-fit: cover;
-  }
-  
-  .nomeDataContainer {
-    position: absolute;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    width: 90%;
-    opacity: 1;
-    transition: opacity 0.3s ease;
-  }
-  
-  .nome {
-    padding-top: 10px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: 14px;
-    font-weight: bold;
-  }
-  
-  .data {
-    padding-top: 10px;
-    font-size: 12px;
-    margin: 0;
-  }
-  
-  /* Informações do anime */
-  .name,
-  .infoText,
-  .synopsis {
-    font-size: 14px;
-    margin: 5px 0;
-    color: #f1f1f1;
-  }
-  
-  .name {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    width: 220px;
-  }
-  
-  .audioType {}
-  
-  .cardInfo {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    transform: translateY(-50%);
-    padding: 10px;
-    color: white;
-    text-align: left;
-    opacity: 0; /* Inicialmente invisível */
-    background-color: rgba(20, 21, 25, 0.8); /* Fundo semi-transparente */
-    transition: color 0.2s ease;
-    z-index: 2; /* Garante que fique sobre a imagem */
-    height: 100%;
-    width: 100%;
-  }
-  
-  /* Flexbox para o rating, score e season */
-  .ratingAndScore {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    justify-content: flex-start; /* Garantir que os itens fiquem alinhados à esquerda */
-  }
-  
-  .score {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-  }
-  
-  .iconStar {
-    margin-left: 5px;
-    font-size: 12px;
-    color: #f1f1f1;
-  }
-  
-  /* Estilo de Season e Episódios */
-  .seasonText,
-  .episodesText {
-    font-size: 14px;
-    color: #9A9A9A; /* Cor desejada */
-    margin: 5px 0;
-  }
-  
-  /* Sinopse com limite de 6 linhas */
-  .synopsis {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 6;
-    -webkit-box-orient: vertical;
-    width: 220px;
-  }
-  
-  /* Botão de play */
-  .playButton {
-    position: absolute;
-    bottom: 5px;
-    left: 10px;
-    border-radius: 50%;
-    padding: 5px;
-    cursor: pointer;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 3;
-  }
-  
-  /* Tooltip */
-  .tooltip {
-    position: relative;
-    display: inline-block;
-    margin-right: 10px;
-  }
-  
-  .tooltipText {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 5px;
-    padding: 5px;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%; /* A posição fica acima do ícone */
-    left: 50%;
-    margin-left: -60px;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-  
-  .tooltip:hover .tooltipText {
-    visibility: visible;
-    opacity: 1;
-  }
-  
-  /* Ícones */
-  .iconPlay,
-  .iconBookmark,
-  .iconPlus {
-    align-items: center;
-    fill:#ff640a;
-    display: flex;
-    stroke-width: 2;
-    height: 1.5rem;
-    justify-content: center;
-    width: 1.5rem;
-  }
-  
-  /* Tornar os botões visíveis quando o card for hover */
-  .card:hover .playButton {
-    opacity: 1;
-  }
-  
-  /* Tooltip para os botões de ação */
-  .tooltip:hover .tooltipText {
-    visibility: visible;
-    opacity: 1;
-  }
-  
-  /* Responsividade para telas pequenas */
-  @media (max-width: 768px) {
-    .carouselContainer {
-      align-items: center;
-      width: 100vw;
-      margin: 0;
-      padding-bottom: 60px;
-      position: relative;
-      overflow: hidden;
-    }
-  
-    .carouselTitle {
-      text-align: left;
-      margin-left: 1rem;
-      padding-left: 30px;
-    }
-    
-    .outer {
-      width: 100%;
-      display: flex;
-      align-items: center;
-    }
-    
-    /* Botões de scroll */
-    .scrollButton {
-      font-size: 24px;
-      position: fixed;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: transparent; /* Removendo o fundo */
-      color: white;
-      border: none;
-      border-radius: 50%; /* Pode ser mantido se o botão for arredondado */
-      cursor: pointer;
-      z-index: 10;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    
-    
-    .scrollLeft {
-      display: none;
-      left: 10px;
-    }
-    
-    .scrollRight {
-      display: none;
-      right: 10px;
-    }
-    
-    .arrowIcon {}
-    
-    /* Container dos cards */
-    .flexContainer {
-      width: 100%;
-      align-items: flex-start;
-      display: flex;
-      overflow-x: hidden;
-      gap: 0.537rem;
-      scroll-behavior: smooth;
-      padding: 0 20px; /* Removido o padding à esquerda */
-      margin: 0;
-    }
-    
-    .flexContainer2 {
-      width: 100%;
-      display: flex;
-      align-items: center; /* Garante que os itens fiquem alinhados verticalmente ao centro */
-      gap: .5rem;
-      scroll-behavior: smooth;
-      margin: 0;
-    }
-    
-    .score {
-      display: flex;
-      align-items: center; /* Alinha o conteúdo (score e estrela) verticalmente */
-      gap: 5px; /* Espaçamento entre o score e a estrela */
-    }
-    
-    .iconStar {
-      margin-left: 2px; /* Espaço entre o score e a estrela */
-      font-size: 12px; /* Tamanho do ícone */
-      color: #f1f1f1;
-    }
-    
-    
-    /* Card */
-    .card {
-      position: relative;
-      flex: 0 0 180px; /*254*/
-      height: 326px; /*437*/
-      overflow: hidden;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      text-align: left;
-    }
-    
-    .card:hover .animeImage {
-      height: 100%;
-    }
-    
-    .card:hover .cardInfo {
-      opacity: 1;
-      background-color: rgba(20, 21, 25, 0.9);
-      display: flex;
-      justify-content: flex-start;
-      align-items: flex-start;
-      flex-direction: column;
-    }
-    
-    .card:hover .nomeDataContainer {
-      opacity: 0;
-    }
-    
-    .animeLink {
-      text-decoration: none;
-      color: inherit;
-    }
-    
-    .animeImage {
-      width: 100%;
-      height: 78%;
-      object-fit: cover;
-    }
-    
-    .nomeDataContainer {
-      position: absolute;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      width: 90%;
-      opacity: 1;
-      transition: opacity 0.3s ease;
-    }
-    
-    .nome {
-      padding-top: 10px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      font-size: 14px;
-      font-weight: bold;
-    }
-    
-    .data {
-      padding-top: 10px;
-      font-size: 12px;
-      margin: 0;
-    }
-    
-    /* Informações do anime */
-    .name,
-    .infoText,
-    .synopsis {
-      font-size: 14px;
-      margin: 5px 0;
-      color: #f1f1f1;
-    }
-    
-    .name {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      width: 220px;
-    }
-    
-    .audioType {}
-    
-    .cardInfo {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      right: 0;
-      transform: translateY(-50%);
-      padding: 10px;
-      color: white;
-      text-align: left;
-      opacity: 0; /* Inicialmente invisível */
-      background-color: rgba(20, 21, 25, 0.8); /* Fundo semi-transparente */
-      transition: color 0.2s ease;
-      z-index: 2; /* Garante que fique sobre a imagem */
-      height: 100%;
-      width: 100%;
-    }
-    
-    /* Flexbox para o rating, score e season */
-    .ratingAndScore {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      justify-content: flex-start; /* Garantir que os itens fiquem alinhados à esquerda */
-    }
-    
-    .score {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-    }
-    
-    .iconStar {
-      margin-left: 5px;
-      font-size: 12px;
-      color: #f1f1f1;
-    }
-    
-    /* Estilo de Season e Episódios */
-    .seasonText,
-    .episodesText {
-      font-size: 14px;
-      color: #9A9A9A; /* Cor desejada */
-      margin: 5px 0;
-    }
-    
-    /* Sinopse com limite de 6 linhas */
-    .synopsis {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-line-clamp: 6;
-      -webkit-box-orient: vertical;
-      width: 220px;
-    }
-    
-    /* Botão de play */
-    .playButton {
-      position: absolute;
-      bottom: 5px;
-      left: 10px;
-      border-radius: 50%;
-      padding: 5px;
-      cursor: pointer;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      z-index: 3;
-    }
-    
-    /* Tooltip */
-    .tooltip {
-      position: relative;
-      display: inline-block;
-      margin-right: 10px;
-    }
-    
-    .tooltipText {
-      visibility: hidden;
-      width: 120px;
-      background-color: black;
-      color: #fff;
-      text-align: center;
-      border-radius: 5px;
-      padding: 5px;
-      position: absolute;
-      z-index: 1;
-      bottom: 125%; /* A posição fica acima do ícone */
-      left: 50%;
-      margin-left: -60px;
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    
-    .tooltip:hover .tooltipText {
-      visibility: visible;
-      opacity: 1;
-    }
-    
-    /* Ícones */
-    .iconPlay,
-    .iconBookmark,
-    .iconPlus {
-      align-items: center;
-      fill:#ff640a;
-      display: flex;
-      stroke-width: 2;
-      height: 1.5rem;
-      justify-content: center;
-      width: 1.5rem;
-    }
-    
-    /* Tornar os botões visíveis quando o card for hover */
-    .card:hover .playButton {
-      opacity: 1;
-    }
-    
-    /* Tooltip para os botões de ação */
-    .tooltip:hover .tooltipText {
-      visibility: visible;
-      opacity: 1;
-    }
-    
-  }
-  
-  /* Responsividade para dispositivos muito pequenos */
-  @media (max-width: 480px) {
-    .carouselContainer {
-      padding-bottom: 20px; /* Ajusta ainda mais o padding em telas muito pequenas */
-    }
-  }
