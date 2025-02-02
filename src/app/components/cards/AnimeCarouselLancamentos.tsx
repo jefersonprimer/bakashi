@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import AnimeCarousel from "./AnimeCarousel";
-import { Anime } from "@/types/anime";
-import styles from "./AnimeCarouselLancamentos.module.css";
-import useFetchAnimes from "@/app/hooks/useFetchAnimes"; // Hook customizado para buscar os animes
 import Loading from "@/app/loading";
+import useFetchAnimes from "@/app/hooks/useFetchAnimes";
+import { Anime } from "@/types/anime";
+import AnimeCarousel from "./AnimeCarousel";
+import styles from "./AnimeCarouselLancamentos.module.css";
+
+import { useState, useEffect } from "react";
 
 interface AnimeCarouselLancamentosProps {
   itemsPerPage?: number;
@@ -15,7 +16,7 @@ interface AnimeCarouselLancamentosProps {
 const AnimeCarouselLancamentos: React.FC<AnimeCarouselLancamentosProps> = ({
   itemsPerPage = 5,
 }) => {
-  const { animes, loading, error } = useFetchAnimes(); // Hook para buscar os dados da API
+  const { animes, loading, error } = useFetchAnimes(); 
   const [lancamentos, setLancamentos] = useState<Anime[]>([]);
 
   useEffect(() => {

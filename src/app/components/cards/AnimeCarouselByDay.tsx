@@ -1,10 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import AnimeCarousel from "./AnimeCarousel";
-import useFetchAnimes from "@/app/hooks/useFetchAnimes"; // Atualize o caminho conforme necessário.
+import useFetchAnimes from "@/app/hooks/useFetchAnimes";
 import { Anime } from "../../../types/anime";
+import AnimeCarousel from "./AnimeCarousel";
 import styles from "./AnimeCarouselByDay.module.css";
+
+import { useEffect, useState } from "react";
+import Loading from "@/app/loading";
 
 interface AnimeCarouselByDayProps {
   itemsPerPage?: number;
@@ -37,16 +39,16 @@ const AnimeCarouselByDay: React.FC<AnimeCarouselByDayProps> = ({
   const todaysAnimes: Anime[] =
     animes?.filter((anime) => anime.airingDay === currentDay) || [];
 
-  // if (loading) {
-  //   return <div>Carregando...</div>;
-  // }
+  if (loading) {
+    return <Loading />;
+  }
 
   if (error) {
     return <div>{error}</div>;
   }
 
   if (!currentDay) {
-    return <div>Carregando...</div>;
+    return <Loading />;
   }
 
   return (

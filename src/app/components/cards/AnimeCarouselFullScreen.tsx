@@ -1,16 +1,19 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import Loading from "../../../app/loading";
+import styles from "./AnimeCarouselFullScreen.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight, faChevronLeft } from "@fortawesome/free-solid-svg-icons";
-import styles from "./AnimeCarouselFullScreen.module.css";
-import { Anime } from "@/types/anime";
-import MaturityRating from "../elements/MaturityRating";
+
 import useFetchAnimes from "@/app/hooks/useFetchAnimes";
-import Loading from "../../../app/loading";
 import useFetchEpisodes from '@/app/hooks/useFetchEpisodes';
+import { Anime } from "@/types/anime";
 import { Episode } from '@/types/episode';
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
+
+import MaturityRating from "../elements/MaturityRating";
 
 
 interface AnimeCarouselFullScreenProps {

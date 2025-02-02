@@ -1,11 +1,14 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
 import styles from "./AnimeCarousel.module.css";
-import { Anime } from "@/types/anime";
 import AnimeCard from "./AnimeCard";
+import { Anime } from "@/types/anime";
+
+import { useRef, useState, useEffect } from "react";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+
 
 interface AnimeCarouselProps {
   animes: Anime[];

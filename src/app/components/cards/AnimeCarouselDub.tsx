@@ -1,21 +1,23 @@
 "use client";
 
+import Loading from "@/app/loading";
+import useFetchAnimes from "@/app/hooks/useFetchAnimes"; 
+import { Anime } from "@/types/anime"; 
+import AnimeCarousel from "./AnimeCarousel"; 
+import styles from "./AnimeCarouselDub.module.css"; 
+
 import { useEffect, useState } from "react";
-import AnimeCarousel from "./AnimeCarousel"; // Componente de carrossel para exibir os animes
-import { Anime } from "@/types/anime"; // Tipagem de anime
-import useFetchAnimes from "@/app/hooks/useFetchAnimes"; // Hook para buscar dados da API
-import styles from "./AnimeCarouselDub.module.css"; // Estilos para o componente
 
 interface AnimeCarouselDubProps {
-  itemsPerPage?: number; // Número de itens por página (opcional)
-  className?: string; // Classe CSS adicional (opcional)
+  itemsPerPage?: number; 
+  className?: string;
 }
 
 const AnimeCarouselDub: React.FC<AnimeCarouselDubProps> = ({
   itemsPerPage = 5,
   className = "",
 }) => {
-  const { animes, loading, error } = useFetchAnimes(); // Busca os animes da API
+  const { animes, loading, error } = useFetchAnimes();
   const [animesWithDub, setAnimesWithDub] = useState<Anime[]>([]);
 
   // Filtrar animes com áudio dublado
@@ -29,7 +31,7 @@ const AnimeCarouselDub: React.FC<AnimeCarouselDubProps> = ({
   }, [animes]);
 
   if (loading) {
-    return <div>Carregando...</div>;
+    return <Loading />;
   }
 
   if (error) {

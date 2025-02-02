@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import AnimeCarousel from "./AnimeCarousel";
-import { Anime } from "@/types/anime";
-import styles from "./AnimeCarouselPopularSeason.module.css";
-import useFetchAnimes from "@/app/hooks/useFetchAnimes"; // Hook customizado para buscar os animes
 import Loading from "@/app/loading";
+import useFetchAnimes from "@/app/hooks/useFetchAnimes"; 
+import AnimeCarousel from "./AnimeCarousel";
+import styles from "./AnimeCarouselPopularSeason.module.css";
+import { Anime } from "@/types/anime";
+
+import { useState, useEffect } from "react";
 
 interface AnimeCarouselPopularSeasonProps {
   itemsPerPage?: number;
@@ -15,7 +16,7 @@ interface AnimeCarouselPopularSeasonProps {
 const AnimeCarouselPopularSeason: React.FC<AnimeCarouselPopularSeasonProps> = ({
   itemsPerPage = 5,
 }) => {
-  const { animes, loading, error } = useFetchAnimes(); // Hook para buscar os dados da API
+  const { animes, loading, error } = useFetchAnimes(); 
   const [popularSeason, setPopularSeason] = useState<Anime[]>([]);
 
   useEffect(() => {

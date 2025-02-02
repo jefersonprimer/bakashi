@@ -1,10 +1,12 @@
 "use client";
 
+import useFetchAnimes from "@/app/hooks/useFetchAnimes"; 
+import { Anime } from "@/types/anime"; 
+import AnimeCarousel from "./AnimeCarousel"; 
+import styles from "./AnimeCarouselNextSeason.module.css";
+
 import { useState, useEffect } from "react";
-import AnimeCarousel from "./AnimeCarousel"; // Componente de carrossel existente
-import { Anime } from "@/types/anime"; // Tipagem de anime
-import styles from "./AnimeCarouselNextSeason.module.css"; // Estilos específicos
-import useFetchAnimes from "@/app/hooks/useFetchAnimes"; // Hook customizado para buscar os animes da API
+import Loading from "@/app/loading";
 
 interface AnimeCarouselNextSeasonProps {
   itemsPerPage?: number; // Número de itens por página (opcional)
@@ -14,7 +16,7 @@ interface AnimeCarouselNextSeasonProps {
 const AnimeCarouselNextSeason: React.FC<AnimeCarouselNextSeasonProps> = ({
   itemsPerPage = 5,
 }) => {
-  const { animes, loading, error } = useFetchAnimes(); // Hook para buscar os animes da API
+  const { animes, loading, error } = useFetchAnimes(); 
   const [nextSeasonAnimes, setNextSeasonAnimes] = useState<Anime[]>([]);
 
   useEffect(() => {
@@ -25,7 +27,7 @@ const AnimeCarouselNextSeason: React.FC<AnimeCarouselNextSeasonProps> = ({
   }, [animes]);
 
   if (loading) {
-    return <div>Carregando...</div>;
+    return <Loading/>;
   }
 
   if (error) {

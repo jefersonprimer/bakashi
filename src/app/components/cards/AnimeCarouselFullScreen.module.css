@@ -1,14 +1,3 @@
-.ratingAndAudioType {
-  display: flex;
-  align-items: center; /* Alinha os itens verticalmente ao centro */
-  gap: 5px; /* Pequeno espaço entre o rating e o audioType */
-}
-
-.audioType {
-  font-size: 0.9rem;
-  color: #aaa;
-}
-
 .carouselContainer {
   position: relative;
   width: 100%;
@@ -41,10 +30,19 @@
   z-index: 2;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Alinha o conteúdo ao topo */
-  align-items: flex-start; /* Alinha o conteúdo à esquerda */
-  transform: translateX(-70%); /* Move o card para o lado esquerdo */
+  justify-content: flex-start; 
+  align-items: flex-start; 
+  transform: translateX(-70%); 
   padding: 20px;
+}
+
+.cardContent {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; 
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .logoAnime {
@@ -54,24 +52,15 @@
   margin-bottom: 20px;
 }
 
-.cardContent {
-  position: fixed; /*nao estava aqui, posso tirar qualquer coiisa*/
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Alinha o conteúdo da cardContent à esquerda */
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
 .leftColumn {
   width: 100%;
-  text-align: left; /* Alinha o texto à esquerda */
+  text-align: left;
 }
 
-.name,
-.audioType,
-.synopsis {
-  text-align: left; /* Garantir que os textos dentro de 'name', 'audioType' e 'synopsis' fiquem alinhados à esquerda */
+.ratingAndAudioType {
+  display: flex;
+  align-items: center; 
+  gap: 5px; 
 }
 
 .name {
@@ -86,8 +75,15 @@
 }
 
 .audioType {
+  font-size: 0.9rem;
   margin: 5px 0;
-  font-size: 1rem;
+  color: #aaa;
+}
+
+.name,
+.audioType,
+.synopsis {
+  text-align: left;
 }
 
 .synopsis {
@@ -105,14 +101,18 @@
   border: none;
   margin-top: 30px;
   margin-bottom: 50px;
-  display: flex; /* Para alinhar os itens em linha */
-  align-items: center; /* Alinha os itens verticalmente */
+  display: flex; 
+  align-items: center; 
+}
+
+.playButton {
+  display: flex;
 }
 
 .playButton,
 .bookmarkButton {
-  display: flex; /* Usado para alinhar os ícones e o texto */
-  align-items: center; /* Alinha verticalmente os itens dentro do botão */
+  display: flex; 
+  align-items: center; 
   padding: 8px 15px;
   background-color: #ff640a;
   color: #000;
@@ -121,48 +121,10 @@
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.titleName {
-  font-size: 0.9rem;
-  font-weight: bold;
-}
-
-.audioType {
-  margin: 5px 0;
-  font-size: 1rem;
-  color: white; /* Certifique-se de que a cor é visível */
-}
-
-/* calendar.module.css */
 .tooltip {
   position: relative;
   display: inline-block;
   margin-right: 10px;
-}
-
-.iconPlay {
-  fill: #000;
-  display: flex;
-  stroke-width: 2;
-  height: 1.5rem;
-  justify-content: center;
-  width: 1.5rem;
-}
-
-.playButton {
-  display: flex;
-}
-
-.iconBookmark {
-  margin-left: 8px; /* Adiciona espaço entre o ícone de bookmark e o texto */
-  border: 2px solid #ff640a;
-  padding: 6px;
-  align-items: center;
-  fill: #ff640a;
-  stroke-width: 2;
-  height: 2.4rem;
-  justify-content: center;
-  width: 2.4rem;
-  cursor: pointer;
 }
 
 .tooltipText {
@@ -175,7 +137,7 @@
   padding: 5px;
   position: absolute;
   z-index: 1;
-  bottom: 125%; /* A posição fica acima do ícone */
+  bottom: 125%; 
   left: 50%;
   margin-left: -60px;
   opacity: 0;
@@ -187,42 +149,43 @@
   opacity: 1;
 }
 
-.navigationButtons {
-  position: absolute;
-  top: 35%;
-  width: 100%;
+.iconPlay {
+  fill: #000;
   display: flex;
-  justify-content: space-between;
-  z-index: 3;
-  padding: 0px 15px;
-  transform: translateY(-20%); /*estava em -50%*/
+  stroke-width: 2;
+  height: 1.5rem;
+  justify-content: center;
+  width: 1.5rem;
 }
 
-.arrowButton {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.5rem;
+.titleName {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.iconBookmark {
+  margin-left: 8px; 
+  border: 2px solid #ff640a;
+  padding: 6px;
+  align-items: center;
+  fill: #ff640a;
+  stroke-width: 2;
+  height: 2.4rem;
+  justify-content: center;
+  width: 2.4rem;
   cursor: pointer;
-  padding: 10px;
-  transition: color 0.3s ease;
-}
-
-.arrowButton:hover {
-  color: #A0A0A0;
 }
 
 .pageIndicator {
   display: flex;
   justify-content: center;
   gap: 10px;
- 
 }
 
 .pageDot {
   border: 1px solid #818181;
   border-radius: 5px;
-  width: 20px; /* Largura inicial da bolinha */
+  width: 20px;
   height: 8px;
   position: relative;
   background-color: transparent;
@@ -243,296 +206,46 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 0%; /* Inicialmente sem preenchimento */
+  width: 0%; 
   height: 100%;
   background-color: #FF4500;
-  transition: width 5s ease-in-out; /* Transição para o preenchimento */
+  transition: width 5s ease-in-out;
 }
 
 .pageDot.active {
-  width: 40px; /* Aumenta a largura quando a bolinha estiver ativa */
+  width: 40px; 
 }
 
 .pageDot.active .pageLoader {
-  width: 100%; /* Preenche totalmente a bolinha ativa */
+  width: 100%;
 }
 
 .pageDot:hover {
-  border-color: #FF4500; /* Opção de cor de borda no hover */
+  border-color: #FF4500; 
 }
 
-
-
-/* Responsividade para telas pequenas */
-@media (max-width: 768px) {
-  .ratingAndAudioType {
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-  }
-
-  .audioType {
-    font-size: 0.9rem;
-    color: #aaa;
-  }
-
-  .carouselContainer {
-    position: relative;
-    width: 100%;
-    height: 94vh; 
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .logoAnime {
-    /* display: none; */
-    width: 180px;
-    height: 71px;
-    margin-bottom: 10px;
-  }
-
-  .backgroundImage {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 90%;
-    background-size: cover;
-    background-position: center;
-    z-index: 1;
-    filter: brightness(0.5); 
-  }
-
-  .cardContainer {
-    position: relative;
-    width: 100%;
-    height: auto; /* Ajusta a altura do card para se adaptar ao conteúdo */
-    color: white;
-    z-index: 2;
-    display: flex;
-    flex-direction: column; /* Alinha o conteúdo em coluna */
-    justify-content:flex-end;
-    align-items:flex-end; /* Alinha o conteúdo à esquerda */
-   
-    transform: translateX(0); /* Remove o deslocamento horizontal */
-    padding: 0px;
-    bottom: 0px;
-    background-color:transparent;
-    border: none;
-  }
-  
-  .blurOverlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 20%; /* Ajuste a altura conforme necessário */
-    background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0) 0%,    /* Transparente */
-    rgba(0, 0, 0, 0.3) 10%, /* 10% opacidade */
-    rgba(0, 0, 0, 0.6) 20%, /* 20% opacidade */
-    rgba(0, 0, 0, 0.9) 30%, /* 30% opacidade */
-    rgba(0, 0, 0, 0.9) 40%, /* 40% opacidade */
-    rgba(0, 0, 0, 0.9) 50%, /* 50% opacidade */
-    rgba(0, 0, 0, 0.9) 60%, /* 60% opacidade */
-    rgba(0, 0, 0, 0.9) 70%, /* 70% opacidade */
-    rgba(0, 0, 0, 0.9) 80%, /* 80% opacidade */
-    rgba(0, 0, 0, 0.9) 90%, /* 90% opacidade */
-    rgba(0, 0, 0, 0.9) 100% /* 90% opacidade (fixa no final) */
-  );
-    backdrop-filter: blur(1px); /* Aplica o efeito de desfoque */
-    z-index: 1; /* Coloca sobre a imagem */
-  }
-  
-
-  .cardContent {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    bottom: 0;
-    border: none;
-    width: 100%;
-    height: auto; 
-    min-height: 100px;
-    box-sizing: border-box;
-    overflow: hidden;
-  
-    margin-top: 110px; /* Move o cardContent para baixo */
-    /* OU */
-    position: relative;
-    top: 20px; /* Ajusta a posição relativa para baixo */
-  }
-
-  .leftColumn {
-    width: 100%;
-    justify-content: end;
-    align-items: end;
-    bottom: 0px;
-  }
-
-  .name {
-    display: none;
-  }
-
-  .audioType {
-    margin: 5px 0;
-    font-size: 1rem;
-  }
-
-  .synopsis {
-    display: none;
-  }
-
-  .buttonsContainer {
-    border: none;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center; /* Alinha os itens ao centro */
-    justify-content: center; 
-  }
-
-  .playButton,
-  .bookmarkButton {
-    display: flex;
-    flex-direction: row; /* Alinha ícones e texto em linha */
-    align-items: center;
-    padding: 8px 40px;
-    background-color: #ff640a;
-    color: #000;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    margin-bottom: 10px; /* Espaçamento entre os botões */
-  }
-
-  .titleName {
-    font-size: 0.9rem;
-    font-weight: bold;
-  }
-
-  .audioType {
-    margin: 0px 0;
-    font-size: 1rem;
-    color: white;
-  }
-
-  /* calendar.module.css */
-  .tooltip {
-    position: relative;
-    display: inline-block;
-    margin-right: 10px;
-  }
-
-  .iconPlay {
-    fill: #000;
-    display: flex;
-    stroke-width: 2;
-    height: 1.5rem;
-    justify-content: center;
-    width: 1.5rem;
-  }
-
-  .playButton {
-    display: flex;
-  }
-
-  .iconBookmark {
-    margin-left: 8px;
-    border: 2px solid #ff640a;
-    padding: 6px;
-    align-items: center;
-    fill: #ff640a;
-    stroke-width: 2;
-    height: 2.4rem;
-    justify-content: center;
-    width: 2.4rem;
-    cursor: pointer;
-  }
-
-  .tooltipText {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 5px;
-    padding: 5px;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -60px;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-
-  .tooltip:hover .tooltipText {
-    visibility: visible;
-    opacity: 1;
-  }
-
-   .navigationButtons {
-    display: none;
-  }
-
-  .arrowButton {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 2rem;
-    cursor: pointer;
-    padding: 10px;
-    transition: color 0.3s ease;
-  }
-
-  .arrowButton:hover {
-    color: #f0f0f0;
-  }
-
-  .pageIndicator {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-  }
-
-  .pageDot {
-    border: 1px solid gray;
-    border-radius: 5px;
-    width: 20px;
-    height: 8px;
-    position: relative;
-    background-color: transparent;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    background-color: gray;
-    transition: width 0.3s ease, background-color 0.3s ease;
-  }
-
-  .pageLoader {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 100%;
-    background-color: orangered;
-    transition: width 5s ease-in-out;
-  }
-
-  .pageDot.active {
-    width: 40px;
-  }
-
-  .pageDot.active .pageLoader {
-    width: 100%;
-  }
-
-  .pageDot:hover {
-    border-color: orangered;
-  }
+.navigationButtons {
+  position: absolute;
+  top: 35%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  z-index: 3;
+  padding: 0px 15px;
+  transform: translateY(-20%);
 }
+
+.arrowButton {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 10px;
+  transition: color 0.3s ease;
+}
+
+.arrowButton:hover {
+  color: #A0A0A0;
+}
+
