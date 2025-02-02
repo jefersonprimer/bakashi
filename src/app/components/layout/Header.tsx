@@ -253,8 +253,8 @@ export default function Header() {
                 <div className={styles.menuContent}>
                   <div className={styles.categoriesColumn}>
                     <Link href="/news/popular">Todas as Notícias</Link>
-                    <Link href="/news/new">Animes do Ano</Link>
-                    <Link href="/news/alphabetical">Animes da Temporada</Link>
+                    <Link href="/news/new">Anime Awards</Link>
+                    <Link href="/news/alphabetical">Evento & Experiências</Link>
                   </div>
                 </div>
               </div>
