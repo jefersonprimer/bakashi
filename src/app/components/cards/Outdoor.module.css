@@ -7,8 +7,8 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-color: #000;
     width: 1350px;
-    height: 371px; 
-    margin: 100px auto; 
+    height: 371px;
+    margin: 100px auto;
 }
 
 .imageContainer {
@@ -18,8 +18,8 @@
 
 .image {
     width: 100%;
-    height: 350px; 
-    object-fit: cover; 
+    height: 350px;
+    object-fit: cover;
 }
 
 .textContainer {
@@ -28,21 +28,21 @@
 
 .title {
     font-size: 24px;
-    margin: 0 0 16px; 
-    color: #fff; 
+    margin: 0 0 16px;
+    color: #fff;
 }
 
 .audioType {
     font-size: 16px;
-    margin: 0 0 16px; 
-    color: #A0A0A0; 
+    margin: 0 0 16px;
+    color: #A0A0A0;
 }
 
 .description {
     font-size: 16px;
-    margin: 0 0 16px; 
-    line-height: 1.5; 
-    color: #FFF; 
+    margin: 0 0 16px;
+    line-height: 1.5;
+    color: #FFF;
 }
 
 .containerBtn {
@@ -51,7 +51,7 @@
 }
 
 .tooltipText {
-    display: none; /* Oculta o tooltip por padrão */
+    display: none;
     position: absolute;
     background-color: rgba(0, 0, 0, 0.8);
     color: #fff;
@@ -59,36 +59,31 @@
     border-radius: 4px;
     font-size: 12px;
     white-space: nowrap;
-    top: -30px; /* Ajuste conforme necessário */
+    top: -30px;
     left: 50%;
     transform: translateX(-50%);
-  }
-  
-  /* Exibe o tooltip apenas no hover */
-  .tooltip:hover .tooltipText {
-    display: block;
-  }
-  
-  /* Alinhar SVG e texto na horizontal */
-  .queueContent {
-    display: flex;
-    align-items: center; /* Centraliza verticalmente */
-    gap: 8px; /* Espaço entre o ícone e o texto */
-    color: #FF640A;
-    
-  }
-  
-  .buttonBookMark {
-    border: 1px solid #FF640A;
-  }
+}
 
-  /* Ajustar tamanho do ícone se necessário */
-  .iconBookmark {
+.tooltip:hover .tooltipText {
+    display: block;
+}
+
+.queueContent {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #FF640A;
+}
+
+.buttonBookMark {
+    border: 1px solid #FF640A;
+}
+
+.iconBookmark {
     width: 20px;
     height: 20px;
     fill: #FF640A;
-  }
-  
+}
 
 .buttonLink {
     display: inline-block;
@@ -103,10 +98,10 @@
 .addToQueueLink {
     display: inline-block;
     padding: 10px 20px;
-    background-color: transparent; 
-    color: #fff; 
-    text-decoration: none; 
-    font-size: 14px; 
+    background-color: transparent;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
     border: 2px solid #FF640A;
 }
 
@@ -117,123 +112,87 @@
 
 .buttonContent {
     display: flex;
-    align-items: center; /* Centraliza verticalmente */
-    gap: 8px; /* Espaço entre o ícone e o texto */
+    align-items: center;
+    gap: 8px;
 }
-  
 
-/* mobile */
 @media (max-width: 768px) {
-    .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 16px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        background-color: #000;
-        width: 410px;
-        height: 450px; 
-        margin: 0 auto; 
-    }
-    
-    .imageContainer {
-        flex: 1;
-        overflow: hidden;
-    }
-    
-    .image {
-        width: 100%;
-        height: 350px; 
-        object-fit: cover; 
-    }
-    
-    .textContainer {
-        width: 100%;
-        height: 350px; 
-        object-fit: cover; 
-    }
-    
-    .title {
-        font-size: 1.5rem;
-        margin: 0 0 16px; 
-        color: #fff; 
-    }
-    
-    .audioType {
-        font-size: 0.9rem;
-        margin: 0 0 16px; 
-        color: gray; 
-    }
-    
-    .description {
-        font-size: 0.9rem;
-        margin: 0 0 16px; 
-        line-height: 1.5; 
-        color: #FFF; 
-
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        width: 350px;
-    }
-    
-    .containerBtn {
-        display: flex;
-        gap: 8px;
-    }
-    
-    .buttonLink {
-        display: inline-block;
-        padding: 10px 20px;
-        background-color: #FF640A;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 4px;
-        font-size: 14px;
-    }
-    
-    .addToQueueLink {
-        display: inline-block;
-        padding: 10px 20px;
-        background-color: #555; 
-        color: #fff; 
-        text-decoration: none; 
-        border-radius: 4px; 
-        font-size: 14px; 
-    }
-    
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #000;
+    width: 410px;
+    height: 450px;
+    margin: 0 auto;
 }
 
+.imageContainer {
+    flex: 1;
+    overflow: hidden;
+}
 
+.image {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
 
+.textContainer {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
 
+.title {
+    font-size: 1.5rem;
+    margin: 0 0 16px;
+    color: #fff;
+}
 
+.audioType {
+    font-size: 0.9rem;
+    margin: 0 0 16px;
+    color: gray;
+}
 
+.description {
+    font-size: 0.9rem;
+    margin: 0 0 16px;
+    line-height: 1.5;
+    color: #FFF;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    width: 350px;
+}
 
+.containerBtn {
+    display: flex;
+    gap: 8px;
+}
 
+.buttonLink {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #FF640A;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.addToQueueLink {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #555;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+}
+}

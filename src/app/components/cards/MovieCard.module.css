@@ -1,6 +1,6 @@
 .movie-card {
-  padding: 0 20px; /* Adiciona espaçamento lateral */
-  text-align: center; /* Centraliza o texto horizontalmente */
+  padding: 0 20px; 
+  text-align: center; 
 }
 
 .titulo {
@@ -20,8 +20,8 @@
 /* Responsividade para telas pequenas */
 @media (max-width: 768px) {
   .anime-carousel-lancamentos {
-    padding: 0 20px; /* Adiciona espaçamento lateral */
-    text-align: center; /* Centraliza o texto horizontalmente */
+    padding: 0 20px; 
+    text-align: center; 
   }
   
   .titulo {
@@ -43,6 +43,6 @@
 /* Responsividade para dispositivos muito pequenos */
 @media (max-width: 480px) {
   .carouselContainer {
-    padding-bottom: 20px; /* Ajusta ainda mais o padding em telas muito pequenas */
+    padding-bottom: 20px;
   }
 }

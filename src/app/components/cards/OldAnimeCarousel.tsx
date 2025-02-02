@@ -1,12 +1,13 @@
 "use client";
 
+import styles from "./OldAnimeCarousel.module.css";
+import { Anime } from "@/types/anime"; 
+import MaturityRating from "../elements/MaturityRating"; 
+
 import { useState } from "react";
+import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight, faChevronLeft, faStar } from "@fortawesome/free-solid-svg-icons";
-import Link from "next/link";
-import styles from "./OldAnimeCarousel.module.css";
-import MaturityRating from "../elements/MaturityRating"; 
-import { Anime } from "@/types/anime"; 
 
 interface oldAnimeCarouselProps {
   animes: Anime[]; // Utilizando a interface importada

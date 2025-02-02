@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import Loading from "@/app/loading";
+import useFetchAnimes from "@/app/hooks/useFetchAnimes"; 
 import AnimeCarousel from "./AnimeCarousel";
 import { Anime } from "@/types/anime";
 import styles from "./AnimeCarouselLancamentos.module.css";
-import useFetchAnimes from "@/app/hooks/useFetchAnimes"; // Hook customizado para buscar os animes
-import Loading from "@/app/loading";
+import { useState, useEffect } from "react";
 
 interface MovieCardProps {
   itemsPerPage?: number;
@@ -15,7 +15,7 @@ interface MovieCardProps {
 const MovieCard: React.FC<MovieCardProps> = ({
   itemsPerPage = 5,
 }) => {
-  const { animes, loading, error } = useFetchAnimes(); // Hook para buscar os dados da API
+  const { animes, loading, error } = useFetchAnimes(); 
   const [movie, setMovie] = useState<Anime[]>([]);
 
   useEffect(() => {
