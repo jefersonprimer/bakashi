@@ -44,10 +44,10 @@ const HomePage = () => {
 
           <AnimeCarouselByDay className="anime-carousel-by-day"/>
           <AnimeCarouselPopularSeason className="anime-carousel-popular-season"/>
-          <AnimeCarouselPopular />
-          <AnimeCarouselNextSeason />
-          <AnimeCarouselDub />
-          <MovieCard />
+          <AnimeCarouselPopular className="anime-carousel-popular" />
+          <AnimeCarouselNextSeason className="anime-carousel-next-season"/>
+          <AnimeCarouselDub className="anime-carousel-dub"/>
+          <MovieCard className="movie-card"/>
 
           {/* Outdoor Component */}
           <Outdoor 
@@ -59,8 +59,13 @@ const HomePage = () => {
             addToQueueLink="#"
           />
 
-          <FavoritesSection /> 
-          <Episodios />
+          <div className="favorites-section">
+            <FavoritesSection /> 
+          </div>
+
+          <div className="episodios-card">
+            <Episodios/>
+          </div>
 
           {/* OutdoorCard Component */}
           <div className="outdoor-container">

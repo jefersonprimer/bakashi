@@ -1,60 +1,57 @@
+:root {
+  --card-spacing-vertical: 10px 0px;
+}
+
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
-#root {
-  height: 100%;
-}
-
-/* Para navegadores como Firefox */
-html {
-  scrollbar-width: thin;
-  scrollbar-color: #686868 #424242;
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
+#root, html, body {
   height: 100%;
   width: 100%;
+  margin: 0;
+  padding: 0;
   overflow-x: hidden;
 }
 
 body {
-  padding-top: 60px;
   color: #FFFFFF;
   background-color: #000000;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   font-weight: 400;
+  padding-top: 60px;
 }
 
-/* scroll */
-/* Estilo geral para navegadores baseados em WebKit (Chrome, Edge, Safari) */
+/* Scrollbar para navegadores como Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #686868 #424242;
+}
+
+/* Estilo da scrollbar para navegadores WebKit */
 ::-webkit-scrollbar {
-  width: 12px; 
-  height: 12px; 
+  width: 12px;
+  height: 12px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #686868; 
-  border-radius: 10px; 
+  background-color: #686868;
+  border-radius: 10px;
   border: 3px solid #424242;
 }
 
 ::-webkit-scrollbar-track {
   background-color: #424242;
-  border-radius: 10px; 
+  border-radius: 10px;
 }
-
 
 .home-container {
   display: flex;
   flex-direction: column;
-  /* justify-content: center;
-  align-items: center;*/
+ 
 }
 
 .anime-carousel-fullscreen {
@@ -66,71 +63,58 @@ body {
 }
 
 .anime-carousel-lancamentos {
-  position: relative; 
+  position: relative;
   margin-top: -13.8vh;
-  /* margin: auto -10vh; */
-  /* padding: 20px; */
   z-index: 2;
   backdrop-filter: blur(2px);
 }
 
-.anime-carousel-by-day {
-  margin: 50px 0px;
+/* Aplicação global da margem vertical */
+.anime-carousel-by-day,
+.anime-carousel-popular-season,
+.anime-carousel-popular,
+.anime-carousel-next-season,
+.anime-carousel-dub,
+.movie-card,
+.favorites-section,
+.episodios-card,
+.outdoor-container {
+  margin: var(--card-spacing-vertical);
 }
 
+.anime-carousel-popular,
 .anime-carousel-popular-season {
-  margin: 50px 0px;
-}
-
-.anime-carousel-popular-season {
-  /* margin: auto -10vh; */
-  /* padding: 20px; */
   backdrop-filter: blur(2px);
-}
-
-.anime-carousel-popular {
-  position: relative; 
-  /* margin: auto -10vh; */
-  /* padding: 20px; */
   z-index: 2;
-  backdrop-filter: blur(2px);
-}
-
-.movie-card {
-  /* margin: auto -10vh; */
-  /* padding: 20px; */
-  backdrop-filter: blur(2px);
+  position: relative;
 }
 
 .outdoor-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* height: 100vh; */
   text-align: center;
   flex-direction: column;
-  margin: 0px auto;
 }
 
 .outdoor-container h1 {
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
 
 .container--cq5XE {
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
-  padding: 50px;
-  padding-bottom: 80px;
+  padding: 50px 80px 80px;
 }
 
 .erc-view-all-feed-section {
-  text-align: center; 
+  text-align: center;
 }
 
 .view-all-feed-image {
   max-width: 100%;
-  height: auto; 
+  height: auto;
 }
 
 .heading {

@@ -1,0 +1,95 @@
+.profileContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+    width: 388px;
+    height: 500px;
+}
+
+.profileImage {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.userName {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.editIcon {
+    cursor: pointer;
+    color: #555;
+}
+
+.adBanner {
+    background-color: #ffcc00;
+    color: #333;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.buttonGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+
+.button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 10px;
+    text-align: left;
+    width: 100%;
+}
+
+.button:hover {
+    background-color: #f5f5f5;
+}
+
+.linkGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+
+.linkGroup a {
+    text-decoration: none;
+    color: #0070f3;
+}
+
+.notificationSection {
+    display: block;
+    padding: 10px;
+    text-align: left;
+}
+
+.notificationSection div {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.logoutButton {
+    background: none;
+    border: none;
+    color: red;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+}
+
+.logoutButton:hover {
+    background-color: #ffebeb;
+}

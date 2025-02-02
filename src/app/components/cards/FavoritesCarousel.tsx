@@ -13,7 +13,7 @@ const FavoritesCarousel = () => {
       <div className={styles.header}>
         <h2 className={styles.title}>Sua Lista</h2>
         <div className={styles.filaLink}>
-            <Link href="#" className={styles.filaButton}>
+            <Link href="/watchlist" className={styles.filaButton}>
             <span>VER FILA</span>
             <svg
                 className={styles.angle}
