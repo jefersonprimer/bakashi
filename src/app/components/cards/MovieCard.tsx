@@ -2,9 +2,10 @@
 
 import Loading from "@/app/loading";
 import useFetchAnimes from "@/app/hooks/useFetchAnimes"; 
+import styles from "./AnimeCarouselLancamentos.module.css";
 import AnimeCarousel from "./AnimeCarousel";
 import { Anime } from "@/types/anime";
-import styles from "./AnimeCarouselLancamentos.module.css";
+
 import { useState, useEffect } from "react";
 
 interface MovieCardProps {
