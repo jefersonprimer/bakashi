@@ -1,6 +1,6 @@
 <h1>Bakashi</h1>
 
-<p>Bem-vindo ao <strong>Bakashi</strong>, um site de streaming de animes inspirado na Crunchyroll. Este projeto visa fornecer uma plataforma para assistir animes online, com uma API desenvolvida em Node.js e hospedada na Vercel.</p>
+<p>Bem-vindo ao <strong>Bakashi</strong>, um site de streaming de animes inspirado no Maior site de Streaming de animes. Este projeto visa fornecer uma plataforma para assistir animes online, com uma API desenvolvida em Node.js e hospedada na Vercel.</p>
 
 <h2>Funcionalidades</h2>
 
