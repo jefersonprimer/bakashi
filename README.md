@@ -19,6 +19,34 @@
   <li><strong>Armazenamento de Mídia</strong>: Todas as mídias, como imagens e vídeos, estão armazenadas no <a href="https://cloudinary.com/">Cloudinary</a>.</li>
 </ul>
 
+## Proposta do Projeto
+
+Este projeto tem como objetivo aprimorar minhas habilidades de desenvolvimento, replicando o maior site de streaming de animes existente. A proposta não é apenas criar uma interface semelhante, mas também implementar funcionalidades essenciais para um serviço de streaming eficiente.
+
+## Funcionalidades
+
+### Funcionalidades Básicas
+- 📌 **Catálogo de Animes** – Exibição de animes organizados por categorias e popularidade.  
+- 🔎 **Sistema de Busca** – Pesquisa rápida para encontrar animes pelo nome ou gênero.  
+- 🖼️ **Página de Anime** – Exibição de detalhes como capa, sinopse, ano de lançamento e gêneros.  
+- 🎥 **Lista de Episódios** – Cada anime possui uma listagem com seus episódios organizados.  
+- 📺 **Player de Vídeo** – Suporte para streaming direto no navegador.  
+
+### Funcionalidades Intermediárias
+- 📂 **Uso de Context API** – Gerenciamento global de estado para melhorar a experiência do usuário.  
+- 🌙 **Modo Escuro/Claro** – Tema dinâmico para melhorar a acessibilidade.  
+- 🛠️ **Filtros Avançados** – Filtragem por ano, gênero e status (em lançamento, finalizado, etc.).  
+- ⭐ **Favoritos** – Permite que usuários salvem animes na lista de favoritos.  
+
+### Funcionalidades Avançadas (Planejadas)
+- 🤖 **Sistema de Recomendação** – Sugestões inteligentes com base nos animes assistidos.  
+- 🗂️ **Histórico de Visualização** – Registro dos episódios assistidos, permitindo continuar de onde parou.  
+- 📊 **Ranking de Animes** – Exibição dos animes mais populares com base na interação dos usuários.  
+- 💬 **Comentários e Avaliações** – Opção para os usuários avaliarem e comentarem sobre os animes.  
+- 📡 **Notificações Push** – Aviso de novos episódios de animes em acompanhamento.  
+- 🏷️ **Sistema de Tags Inteligente** – Recomendação baseada em tags e preferências do usuário.  
+
+
 <h2>Estrutura do Projeto</h2>
 
 <pre>
