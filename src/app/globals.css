@@ -54,17 +54,17 @@ html {
  
 }
 
-.anime-carousel-fullscreen {
+/* .anime-carousel-fullscreen {
   position: relative;
   height: 100vh;
   background-size: cover;
   background-position: center;
   z-index: 1;
-}
+} */
 
 .anime-carousel-lancamentos {
   position: relative;
-  margin-top: -13.8vh;
+  margin-top: -25vh;
   z-index: 2;
   backdrop-filter: blur(2px);
 }

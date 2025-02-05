@@ -9,7 +9,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 80px;
+  padding: 0 max(5%, 40px);
   z-index: 1000;
 }
 
@@ -425,10 +425,6 @@
 
 /* Para telas maiores (tablet, desktop) */
 @media (max-width: 768px) {
-  #games {
-    display: none;
-  }
-
   .header {
     border: none;
     display: flex;
@@ -440,6 +436,15 @@
     background-color: #23252B;
     color: #FFFFFF;
   }
+  
+  #games {
+    display: none;
+  }
+
+  .textContainer {
+    display: none;
+  }
+
 
   .container {
     display: flex;

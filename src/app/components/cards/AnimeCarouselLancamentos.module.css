@@ -21,13 +21,16 @@
 @media (max-width: 768px) {
   .anime-carousel-lancamentos {
     padding: 0 10px; 
+    display: flex;
     text-align: center;
+    justify-content: center;
   }
   
   .titulo {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     margin-bottom: 7px;
     color: #fff;
+    
     padding-left: 20px;
   }
   

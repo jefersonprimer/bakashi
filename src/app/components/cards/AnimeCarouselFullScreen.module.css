@@ -1,13 +1,15 @@
 .carouselContainer {
   position: relative;
-  width: 100%;
-  height: 100vh;
+  width: 100vw;
+  aspect-ratio: 16 / 9; /* Mantém a proporção de uma tela widescreen */
   background-color: black;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 50px;
 }
+
 
 .backgroundImage {
   position: absolute;
@@ -16,16 +18,17 @@
   width: 100%;
   height: 100%;
   background-size: cover;
-  background-position: center;
+  background-position: center center; /* Centraliza melhor */
+  background-repeat: no-repeat;
   z-index: 1;
-  filter: brightness(0.5); /* Escurece a imagem de fundo para destacar o conteúdo */
+  filter: brightness(0.5);
 }
 
 .cardContainer {
   position: relative;
   width: 100%;
-  max-width: 600px;
-  height: 500px;
+  max-width: 42%;
+  height: 80%;
   color: white;
   z-index: 2;
   display: flex;
@@ -47,8 +50,8 @@
 
 .logoAnime {
   /* display: none; */
-  width: 325px;
-  height: 123px;
+  width: 16.93vw; /* 325px / 1920px * 100 */
+  height: 6.41vw; /* 123px / 1920px * 100 */
   margin-bottom: 20px;
 }
 
@@ -195,7 +198,7 @@
   align-items: center;
   overflow: hidden;
   background-color: #818181;
-  transition: width 0.3s ease, background-color 0.3s ease; /* Transição suave para a largura e cor de fundo */
+  transition: width 0.3s ease, background-color 0.3s ease; 
 }
 
 .pageDot:hover {
@@ -249,3 +252,238 @@
   color: #A0A0A0;
 }
 
+/* Responsividade para dispositivos menores */
+@media (max-width: 768px) {
+  .carouselContainer {
+    position: relative;
+    width: 100%;
+    height: 94vh;
+    background-color: black;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .backgroundImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90%;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+    filter: brightness(0.5);
+  }
+  
+  .cardContainer {
+    position: relative;
+    width: 100%;
+    color: white;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    transform: translateX(5%); 
+    transform: translateY(20%); 
+    padding: 20px;
+  }
+  
+  .cardContent {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: space-between;
+  }
+  
+  .logoAnime {
+    /* display: none; */
+    width: 165px;
+    height: 63px;
+    margin-bottom: 10px;
+  }
+  
+  .leftColumn {
+    width: 100%;
+  }
+  
+  .ratingAndAudioType {
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    gap: 5px; 
+  }
+  
+  .name {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 10px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .audioType {
+    font-size: 0.9rem;
+    margin: 5px 0;
+    color: #aaa;
+  }
+  
+  .name,
+  .audioType,
+  .synopsis {
+    text-align: left;
+  }
+  
+  .synopsis {
+    display: none;
+  }
+  
+  .buttonsContainer {
+    border: none;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    margin-left: 10px;
+    display: flex; 
+    align-items: center; 
+  }
+  
+  .playButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .playButton,
+  .bookmarkButton {
+    display: flex; 
+    align-items: center; 
+    padding: 8px 15px;
+    background-color: #ff640a;
+    color: #000;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  .tooltipText {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; 
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .tooltip:hover .tooltipText {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  .iconPlay {
+    fill: #000;
+    display: flex;
+    stroke-width: 2;
+    height: 1.5rem;
+    justify-content: center;
+    width: 1.5rem;
+  }
+  
+  .titleName {
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+  
+  .iconBookmark {
+    margin-left: 8px; 
+    border: 2px solid #ff640a;
+    padding: 6px;
+    align-items: center;
+    fill: #ff640a;
+    stroke-width: 2;
+    height: 2.4rem;
+    justify-content: center;
+    width: 2.4rem;
+    cursor: pointer;
+  }
+  
+  .pageIndicator {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .pageDot {
+    border: 1px solid #818181;
+    border-radius: 5px;
+    width: 20px;
+    height: 8px;
+    position: relative;
+    background-color: transparent;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: #818181;
+    transition: width 0.3s ease, background-color 0.3s ease; 
+  }
+  
+  .pageDot:hover {
+    background-color: #FF4500;
+  }
+  
+  .pageLoader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%; 
+    height: 100%;
+    background-color: #FF4500;
+    transition: width 5s ease-in-out;
+  }
+  
+  .pageDot.active {
+    width: 40px; 
+  }
+  
+  .pageDot.active .pageLoader {
+    width: 100%;
+  }
+  
+  .pageDot:hover {
+    border-color: #FF4500; 
+  }
+  
+  .navigationButtons {
+    display: none;
+  }
+  
+  .arrowButton {
+    display: none;
+  }
+  
+  .arrowButton:hover {
+    color: #A0A0A0;
+  } 
+}

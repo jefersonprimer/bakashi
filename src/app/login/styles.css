@@ -1,0 +1,155 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  color: #FFF!important;
+}
+
+.title {
+  font-size: 34px;
+  font-weight: 400;
+}
+
+.register-box {
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 540px;
+  text-align: center;
+  
+}
+
+.form-container {
+  background-color: #141519;
+  padding: 50px;
+  margin-bottom: 20px;
+}
+
+.title-form {
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 400;
+  padding-bottom: 40px;
+}
+
+/* Remove a borda padrão */
+.input-field {
+  color: #FFFFFF;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  border-bottom: 2px solid #ccc; /* Borda inferior padrão */
+  padding: 8px;
+  outline: none;
+  font-size: 16px;
+  transition: border-color 0.3s ease; /* Transição suave para a borda */
+  margin-bottom: 10px;
+}
+
+/* Container para alinhar o input e a label */
+.input-container {
+position: relative;
+margin-bottom: 20px;
+}
+
+/* Estilo da label */
+.input-label {
+position: absolute;
+top: 12px;
+left: 8px;
+font-size: 16px;
+color: #aaa;
+transition: 0.2s all ease; /* Transição suave */
+pointer-events: none; /* Impede a interação com a label */
+}
+
+/* Efeito quando o campo tem foco ou valor */
+.input-field:focus + .input-label,
+.input-label.filled {
+top: -14px;   /* Move a label para cima */
+left: 8px;    /* Deixa a label alinhada */
+font-size: 12px; /* Reduz o tamanho da fonte */
+}
+
+.register-button {
+border: 2px solid #0070f3;  /* Borda azul */
+background-color: #fff;     /* Cor de fundo branca */
+padding: 10px 20px;         /* Espaçamento interno */
+
+cursor: pointer;           /* Mudança do cursor para indicar que é clicável */
+transition: all 0.3s ease;  /* Transição suave para mudanças */
+}
+
+.next {
+
+}
+
+.register-button:hover {
+color: #fff;               /* Cor do texto ao passar o mouse */
+}
+
+
+
+.input-field:focus {
+  border-bottom: 2px solid #ff640a; /* Borda inferior verde quando em foco */
+}
+
+.input-field:focus-visible {
+  outline: none; /* Remove o contorno de foco se não necessário */
+}
+
+
+.checkbox-text {
+  color: #A0A0A0;
+  text-align: left;
+}
+
+.checkbox-text:hover {
+  color: #FFFFFF;
+}
+
+.checkbox-text a {
+  text-decoration: none;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.checkbox-input {
+  cursor: pointer;
+}
+
+.privacy-policy {
+  color: #ff640a;
+}
+
+.register-button {
+  padding: 10px 20px;
+  background: transparent;
+  border: 1px solid #A0A0A0;
+  color: #A0A0A0;
+  cursor: pointer;
+  width: 20%;
+}
+
+.login-link {
+  margin-top: 20px;
+}
+
+.login-button {
+  background: none;
+  color: #FF640A;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.login-button:hover {
+  text-decoration: underline;
+}

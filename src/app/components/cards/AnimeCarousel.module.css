@@ -45,3 +45,31 @@
 .scrollRight {
   right: 10px;
 }
+
+
+@media (max-width: 768px) {
+  .carouselContainer {
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Container dos cards */
+  .flexContainer {
+    width: 100%;
+    align-items: flex-start;
+    display: flex;
+    overflow-x: hidden;
+    gap: 0.5rem;
+    scroll-behavior: smooth;
+    padding: 0 20px; 
+    margin: 0;
+  }
+  
+  /* Botões de scroll */
+  .scrollButton {
+    display: none;
+  }
+}

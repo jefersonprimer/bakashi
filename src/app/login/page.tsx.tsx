@@ -1,6 +1,9 @@
 // src/app/login/page.tsx
+'use client';
+
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation'; // Para redirecionamento de rotas
+import './styles.css'; // Estilos do seu componente
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -9,56 +12,41 @@ const Login = () => {
 
   const handleLogin = () => {
     console.log('Login:', { email, password });
-    // Aqui você pode integrar a lógica de autenticação (com Firebase ou API)
-    // Exemplo:
-    // firebase.auth().signInWithEmailAndPassword(email, password)
-    //   .then(() => { /* Sucesso! */ })
-    //   .catch((error) => { console.error(error); });
+    // Lógica de login (Firebase ou API)
   };
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h2>Login</h2>
-      <form>
-        <div>
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            style={{ padding: '10px', margin: '10px 0', width: '100%' }}
-          />
+    <div className="container">
+      <h1 className='title'>Login</h1>
+      <div className="login-box">
+        <div className='form-container'>
+          <form>
+            <div>
+              <input
+                type="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="input-field"
+              />
+              <label htmlFor="email" className={`input-label ${email ? 'filled' : ''}`}>Email or Phone Number</label>
+            </div>
+            <div>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="input-field"
+                placeholder="Password"
+              />
+            </div>
+          </form>
         </div>
-        <div>
-          <input
-            type="password"
-            placeholder="Senha"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            style={{ padding: '10px', margin: '10px 0', width: '100%' }}
-          />
-        </div>
-        <button
-          type="button"
-          onClick={handleLogin}
-          style={{ padding: '10px 20px', background: '#007BFF', color: 'white', border: 'none', cursor: 'pointer' }}
-        >
-          Entrar
+        <button type="button" onClick={handleLogin} className="login-button">
+          LOG IN
         </button>
-      </form>
-
-      <div style={{ marginTop: '20px' }}>
-        <p>
-          No account?{' '}
-          <button
-            onClick={() => router.push('/register')}
-            style={{ background: 'none', color: '#007BFF', border: 'none', cursor: 'pointer' }}
-          >
-            Create One
-          </button>
-        </p>
       </div>
     </div>
   );

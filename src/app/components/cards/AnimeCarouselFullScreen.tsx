@@ -15,7 +15,6 @@ import Link from "next/link";
 
 import MaturityRating from "../elements/MaturityRating";
 
-
 interface AnimeCarouselFullScreenProps {
   className?: string;
 }
@@ -135,16 +134,14 @@ const AnimeCarouselFullScreen: React.FC<AnimeCarouselFullScreenProps> = ({
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      <div
+      <img
         className={styles.backgroundImage}
-        style={{
-          backgroundImage: `url("${
-            isMobile
-              ? thumbnailAnimes[currentIndex].image
-              : thumbnailAnimes[currentIndex].thumbnailImage
-          }")`,
-        }}
+        src={isMobile
+          ? thumbnailAnimes[currentIndex].image
+          : thumbnailAnimes[currentIndex].thumbnailImage}
+        alt="Background"
       />
+
       <div className={styles.blurOverlay}></div>
       <div className={styles.cardContainer}>
         <div className={styles.cardContent}>

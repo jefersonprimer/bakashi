@@ -93,7 +93,7 @@ const HomePage = () => {
           <a 
             className="button" 
             data-t="view-all-btn" 
-            href="/pt-br/videos/popular"
+            href="/videos/popular"
           >
             <span className="viewAll">
               VER TUDO
